@@ -1,0 +1,15 @@
+case 2
+Epileptic nystagmus (Left,Right)
+Eye blinking (Right,Bilateral)
+Version (Head and/or eyes, Gyration, Left/Right)
+Mimic automatisms
+Chapeau de gendarme
+Oroalimentary automatisms
+Gestural automatisms (Distal, Proximal,Genital,Grasping,Goal-targeted/Unoriented,Left/Right/Bilateral,Superior limb)
+Vocal automatisms (Vocal automatisms, Verbal automatisms, Humming, Singing)
+Laughter
+Crying
+Hypersalivation
+Sialorrhea
+Spitting
+Vomiting
