@@ -10,23 +10,28 @@ def filtrer_options(event):
     recherche = entry.get().lower()
     options_filtrées = [option for option in options if recherche in option.lower()]
     menu.configure(values=options_filtrées)
+    if len(options_filtrées)> 0 : 
+        menu.set(options_filtrées[0])
+    else :
+        menu.set("")
+
+if __name__ == "__main__" :
+
+    app = CTk.CTk()
+    app.title("Barre de recherche")
+    app.geometry("1000x500")
+
+    options = ["toto", "tata", "toti", "tota", "tato", "TiTi"]
+
+    entry = CTk.CTkEntry(app, placeholder_text="Symptomes")
+
+    entry.grid(row = 0)
+    entry.bind("<KeyRelease>", filtrer_options)
+
+    menu = CTk.CTkOptionMenu(app, values=options )
+    menu.grid(row=1)
+    menu.set("Symptomes")
 
 
-app = CTk.CTk()
-app.title("Barre de recherche")
-app.geometry("1000x500")
-
-options = ["toto", "tata", "toti", "tota", "tato", "TiTi"]
-
-entry = CTk.CTkEntry(app, placeholder_text="Symptomes")
-
-entry.grid(row = 0)
-entry.bind("<KeyRelease>", filtrer_options)
-
-menu = CTk.CTkOptionMenu(app, values=options )
-menu.grid(row=1)
-menu.set("Symptomes")
-
-
-app.mainloop()
+    app.mainloop()
 

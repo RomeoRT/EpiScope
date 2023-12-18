@@ -9,8 +9,9 @@ import os
 
 
 class Menu_symptomes(CTk.CTkFrame):
-    """Classe pour avoir les menus déroulants et la recherche textuelle
-       Les fichiers de symptomes doivent etre de la forme : Categorie; Symptome1; Symptome2; Symptome3 \n 
+    """
+    Classe pour avoir les menus déroulants et la recherche textuelle
+    Les fichiers de symptomes doivent etre de la forme : Categorie; Symptome1; Symptome2; Symptome3 \n 
     """
 
     # Methode constructeur
@@ -29,7 +30,7 @@ class Menu_symptomes(CTk.CTkFrame):
 
         # 2) Création des differents menus déroualant
 
-        with open(Monfichier, 'r') as file :       # Ouverture du fichier en lecture seule
+        with open(Monfichier, 'r') as file :    # Ouverture du fichier en lecture seule
             for line in file :
                 line = line.strip()             # Supprime les espaces inutiles
                 Liste = line.split(';')         # Indique que le point-virgule est l'outil de séparation des éléments dans chaque ligne du fichier
@@ -58,7 +59,11 @@ class Menu_symptomes(CTk.CTkFrame):
         recherche = self.entry.get().lower()
         for i in range(self.nb_menus) :
             options_filtrees = [option for option in self.options_symptomes[i] if recherche in option.lower()]
-            self.liste_MenuDeroulant[i].configure(values=options_filtrees)   
+            self.liste_MenuDeroulant[i].configure(values=options_filtrees)  
+            if len(options_filtrees)> 0 : 
+                self.liste_MenuDeroulant[i].set(options_filtrees[0])
+            else :
+                self.liste_MenuDeroulant[i].set("") 
         
             
 
