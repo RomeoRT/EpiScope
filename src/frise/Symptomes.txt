@@ -1,0 +1,6 @@
+Symptome 1 ; 5 ; 16
+Symptome 2 ; 8 ; 20
+Symptome 3 ; 17 ; 25
+Symptome 4 ; 3 ; 4
+Symptome 5 ; 6 ; 8
+Symptome 6 ; 7 ; 27

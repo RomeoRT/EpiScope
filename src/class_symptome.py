@@ -4,10 +4,10 @@
 
 
 class Symptome:
-    '''
-    Classe permettant d'instancier un objet Symptome avec tous ses attributs
-    ID, nom, lateralisation, segment corporel, Tps debut, Tps fin, Orientation, Attributs suppl, Commentaire
-    '''
+    """Classe permettant d'instancier un objet Symptome
+
+    attributs : ID, nom, lateralisation, segment corporel, Tps debut, Tps fin, Orientation, Attributs suppl, Commentaire
+    """
 
     def __init__(self, ID, Nom, Lateralisation, SegCorporel, Orientation, AttributSuppl, Tdeb, Tfin, Commentaire):
         self.ID = ID
@@ -23,7 +23,7 @@ class Symptome:
 
 
     def get_attributs(self):
-        ''' Retourne une liste contenant les valeurs des attributs de l'objet'''
+        """Retourne une liste contenant les valeurs des attributs de l'objet"""
         attributs = [
             self.ID,
             self.Nom,
