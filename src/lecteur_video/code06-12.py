@@ -10,7 +10,6 @@ import cv2
 from PIL import Image, ImageTk
 import datetime
 import tkinter.font as tkFont
-from class_Menu_symptomes import Menu_symptomes
 import os
 
 class Menu_symptomes(ctk.CTkFrame):
@@ -22,7 +21,7 @@ class Menu_symptomes(ctk.CTkFrame):
         self.nb_menus = 0
 
         script_directory = os.path.dirname(os.path.abspath(__file__))
-        Monfichier = os.path.join(script_directory, "Liste_Symptomes.txt")
+        Monfichier = os.path.join(script_directory, "../../data/Liste_Symptomes.txt")
 
         with open(Monfichier, 'r') as file:
             for line in file:
@@ -237,17 +236,17 @@ class LecteurVideo:
         colonne = x // largeur_case
         ligne = y // hauteur_case
         if colonne == 0 and ligne == 0:
-            self.remplir_menu_deroulant_i(x, y, "case1.txt")
+            self.remplir_menu_deroulant_i(x, y, "../../data/case1.txt")
         elif colonne == 1 and ligne == 0:
-            self.remplir_menu_deroulant_i(x, y, "case2.txt")
+            self.remplir_menu_deroulant_i(x, y, "../../data/case2.txt")
         elif colonne == 2 and ligne == 0:
-            self.remplir_menu_deroulant_i(x, y, "case3.txt")
+            self.remplir_menu_deroulant_i(x, y, "../../data/case3.txt")
         elif colonne == 0 and ligne == 1:
-            self.remplir_menu_deroulant_i(x, y, "case4.txt")
+            self.remplir_menu_deroulant_i(x, y, "../../data/case4.txt")
         elif colonne == 1 and ligne == 1:
-            self.remplir_menu_deroulant_i(x, y, "case5.txt")
+            self.remplir_menu_deroulant_i(x, y, "../../data/case5.txt")
         elif colonne == 2 and ligne == 1:
-            self.remplir_menu_deroulant_i(x, y, "case6.txt")
+            self.remplir_menu_deroulant_i(x, y, "../../data/case6.txt")
         
     def remplir_menu_deroulant_i(self, x, y, nom_fichier):
         try:
