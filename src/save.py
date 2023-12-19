@@ -8,8 +8,8 @@ Ce fichier contient des fonctions pour créer et éditer les fichiers '.txt' de 
 from tkinter import filedialog
 
 def save(Liste):
-     """
-    saves the contents of a list ina text file
+    """
+    saves the contents of a list in a text file
 
     :param kind: Optional "kind" of ingredients.
     :type kind: list[str] or None

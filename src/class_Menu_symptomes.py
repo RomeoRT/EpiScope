@@ -55,6 +55,7 @@ class Menu_symptomes(CTk.CTkFrame):
     def filtrer_options(self, event): 
         """
         filtre les options d'un menu déroulant en fonction d'une recherche textuelle
+        affiche dans le menu déroulant la premiere option correspondante
         """
         recherche = self.entry.get().lower()
         for i in range(self.nb_menus) :

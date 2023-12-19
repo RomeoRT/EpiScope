@@ -1,7 +1,7 @@
 #ce code affiche l'interface divisée, les 6 cases fictives avec le smeus deroulan et egalement les menus deroulant deroulant de la 
 #partie gauche de meme taille que la partie droite.
 #pour lancer ce code il faut avoir le fichier "Liste_Symptomes.txt" dans le meme dossier qu ce fichier.
-#il faut telechager de meme les codes "case_i.txt" (avec i=1 ..6) sur le drive dans programme>code26-11
+#il faut telechager de même les codes "case_i.txt" (avec i=1 ..6) sur le drive dans programme>code26-11
 
 import tkinter as tk
 import customtkinter as ctk

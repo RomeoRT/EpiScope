@@ -1,7 +1,7 @@
 import customtkinter as CTk
 import tkinter as tk
 
-# Je n'ai pas réussi à faire en sorte que le menu se déroule tout seul quand on fait la recherche (pour montrer les résultats)
+# Je n'ai pas réussi à faire en sorte que le menu se déroule tout seul quand on fait la recherche (pour montrer les résultats) <= peut etre inutile
 
 def filtrer_options(event):
     """
