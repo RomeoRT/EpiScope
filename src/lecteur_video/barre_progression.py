@@ -4,6 +4,8 @@ import cv2
 from PIL import Image, ImageTk
 import keyboard
 
+#### une modification de roméo
+
 # Fonction pour mettre à jour la barre de progression automatiquement
 def auto_update_progress():
     global progress_width, is_paused, cap
