@@ -1,0 +1,9 @@
+case 5
+Cutaneous Ictal Phenomena (Flushing, Pallor, Sweating, Piloerection)
+Cardiovascular manifestations (Tachycardia, Bradycardia, Ictal asystolia)
+Hypoventilation
+Apnea
+Choking
+Hyperventilation
+Miosis
+Mydriasis

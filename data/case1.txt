@@ -1,0 +1,5 @@
+case 1
+Dystonia
+posturing (Distal, Proximal,Left/Right/Bilateral,Hand/Superior,limb/Foot/Inferior)
+Fencing posture
+figure-of-four(Left/right arm extension)

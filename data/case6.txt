@@ -1,0 +1,34 @@
+case 6
+Subjective symptoms
+Abdominal aura (Epigastric to cephalic, Cephalic to epigastric)
+Mnesic symptoms (Déjà-vu, Déjà-vécu, Dreamy state, Reminiscence,Predominantly visual/emotional/auditivo-verbal)
+Auditory symptoms
+Elementary acoustic hallucination
+Acoustic illusion (Palinacousis)
+Verbal illusion (Palinacousis)
+Verbal hallucination
+Musical hallucination
+Deafness (Left,right,non-lateralized)
+Affective symptoms (Anger, Anxiety, Fear, Sadness, Guilt)
+Gustatory
+Illusion
+Hallucination
+Olfactory
+Illusion
+Hallucination (Pleasant/Unpleasant , Memory-related,Unrelated)
+Sexual arousal
+Genital signs
+Urinary sensations
+urination
+Ecstatic and mystic feeling
+bliss
+Somatosensory symptoms (Tinglings, tactile sensations, Pain,Inferior limb,Face,Throat,Left/Right/Bilateral)
+Vestibular symptoms (Rotating vertigo, Lateral thrust)
+Visual
+Elementary visual hallucination
+Complex visual hallucination (Pleasant/Unpleasant,Memory-related,Unrelated,Left/Right/Non lateralized ,Superior/Inferior/Center)
+Depersonalization
+Forced thinking
+Out-of-body experience
+Heautoscopy
+Headache (Pre-ictal, ictal, Post-ictal)

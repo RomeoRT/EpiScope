@@ -1,0 +1,6 @@
+Case 1; Dystonia; posturing; Fencing posture; figure-of-four
+Case 2; Laughter; Crying; Hypersalivation; Sialorrhea; Spitting; Vomiting
+Case 3; Astasia; Atonic; paresis; Hand/Superior limb; Negative myoclonus; Positive Myoclonus
+Case 4; Epileptic spasm; Postictal somato; sensory deficits; Nose wiping
+Case 5; Hypoventilation; Apnea; Choking; Hyperventilation; Miosis; Mydriasis
+Case 6; Gustatory; Illusion; Hallucination; Olfactory; Illusion; Hallucination ; Sexual arousal; Genital signs; Urinary sensations; urination
