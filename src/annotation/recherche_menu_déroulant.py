@@ -21,7 +21,7 @@ if __name__ == "__main__" :
     app.title("Barre de recherche")
     app.geometry("1000x500")
 
-    options = ["toto", "tata", "toti", "tota", "tato", "TiTi"]
+    options = ["toto", "tata", "toti", "tota", "tato", "TiTi", "fyfy"]
 
     entry = CTk.CTkEntry(app, placeholder_text="Symptomes")
 

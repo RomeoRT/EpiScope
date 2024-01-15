@@ -1,3 +1,11 @@
 # fichiers a ignorer pour le git
 
 __pycache__/
+
+*.moi*  # des fichiers inutiles, pour moi 
+
+# Fichiers d'environnement virtuel
+venv/
+
+# Fichiers générés par VSCode
+.vscode/
