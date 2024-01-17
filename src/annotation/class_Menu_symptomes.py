@@ -8,7 +8,7 @@ import os
 # - - - - - - - - - - - -
 
 
-class Menu_symptomes(CTk.CTkFrame):
+class MenuSymptomes(CTk.CTkFrame):
     """
     Classe pour avoir les menus déroulants et la recherche textuelle
     Les fichiers de symptomes doivent etre de la forme : Categorie; Symptome1; Symptome2; Symptome3 \n 
