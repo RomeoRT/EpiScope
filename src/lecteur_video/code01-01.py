@@ -94,8 +94,6 @@ class LecteurVideo:
         self.frame_middle.pack(side=ctk.LEFT, fill=ctk.BOTH, expand=True)
         self.frame_right.pack(side=ctk.RIGHT, fill=ctk.BOTH, expand=False)
 
-
-
         # Lire la vidéo avec OpenCV
         self.cap = None
 
@@ -109,10 +107,6 @@ class LecteurVideo:
         # Ajout de la partie gauche avec les menus déroulants
         self.menu_symptomes = Menu_symptomes(self.frame_left, self.frame_left.winfo_reqwidth())
         self.menu_symptomes.pack(side=ctk.LEFT, fill=ctk.Y)
-
-        # Barre de progression manuelle
-        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, orient="horizontal", command=self.manual_update_progress)
-        self.progress_slider.pack(side=tk.TOP, fill=tk.X)
 
         # Frame pour les boutons
         self.frame_CTkButton = ctk.CTkFrame(self.frame_middle, fg_color='grey', height=50)
@@ -140,7 +134,35 @@ class LecteurVideo:
         self.fenetre.bind('<space>', lambda event: self.pause_lecture())
         self.fenetre.bind('<Right>', lambda event: self.avance_progress())
         self.fenetre.bind('<Left>', lambda event: self.recule_progress())
- 
+    
+    def progress_slider(self, value):
+        self.progress_bar['value'] = value
+    
+    def auto_update_progress(self):
+        if not self.video_paused:
+            ret, frame = self.cap.read()
+            if ret:
+                self.progress_width += 1
+                self.canvas.delete("progress")
+
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                frame = Image.fromarray(frame)
+                photo = ImageTk.PhotoImage(frame)
+
+                self.canvas.create_image(0, 0, anchor=tk.NW, image=photo)
+                self.canvas.image = photo
+
+                self.canvas.create_rectangle(0, self.screen_height - 10, self.progress_width, self.screen_height, fill="Plum3", tags="progress")
+
+                self.progress_slider.set(self.progress_width)
+
+                # Calculer le délai en fonction du frame rate pour une mise à jour plus fréquente
+                delay = int(1000 / self.video_framerate)
+                self.fenetre.after(delay, self.auto_update_progress)
+
+                # Mettre à jour la barre de progression
+                self.update_progress_bar()
+
     def menu_action(self, selection):
         if selection == "Ouvrir":
             self.ouvrir_video()
@@ -151,7 +173,7 @@ class LecteurVideo:
     
     def ouvrir_video_noire(self):
         # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
-        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video.mp4")
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_noire.mp4")
         print("Chemin du fichier vidéo:", file_path)
 
         if os.path.exists(file_path):
@@ -167,13 +189,25 @@ class LecteurVideo:
 
             self.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
 
-            self.progress_slider.configure(to=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
             self.afficher_video()
             self.bouton_pause_lecture.configure(state=ctk.NORMAL)
+
+            # Création d'une barre de progression
+            self.progress_bar = tk.ttk.Progressbar(self.frame_middle, orient='horizontal', length=largeur_partie_milieu, mode='determinate')
+            self.progress_bar.pack(pady=10)
+
+            # Initialiser la barre de progression
+            self.update_progress_bar()
+
         else:
             print("La vidéo 'vidéo noire' n'a pas été trouvée dans le dossier courant.")
 
+    def update_progress_bar(self):
+        temps_ecoule_millisecondes = self.cap.get(cv2.CAP_PROP_POS_MSEC)
+        temps_ecoule_secondes = temps_ecoule_millisecondes / 1000.0
+        self.progress_bar['value'] = temps_ecoule_secondes
+        self.fenetre.after(100, self.update_progress_bar)
+    
 
 
 
@@ -193,14 +227,19 @@ class LecteurVideo:
             self.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
 
 
-
             # Ajuster la taille du canevas pour occuper toute la partie du milieu
             self.canvas.config(width=largeur_partie_milieu, height=hauteur_canevas)
 
-            self.progress_slider.configure(to=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
             self.afficher_video()
             self.bouton_pause_lecture.configure(state=ctk.NORMAL)
+
+            # Création d'une barre de progression
+            self.progress_bar = tk.ttk.Progressbar(self.frame_middle, orient='horizontal', length=largeur_partie_milieu, mode='determinate')
+            self.progress_bar.pack(pady=10)
+
+            # Initialiser la barre de progression
+            self.update_progress_bar()
+
 
     def afficher_video(self):
         ret, frame = self.cap.read()
@@ -243,12 +282,14 @@ class LecteurVideo:
     def avance_progress(self, event=None):
         current_time = self.cap.get(cv2.CAP_PROP_POS_MSEC)
         self.cap.set(cv2.CAP_PROP_POS_MSEC, current_time + 2000)  # Avancer de 2000 millisecondes (2 secondes)
+        self.auto_update_progress()
         self.afficher_video()
 
     def recule_progress(self, event=None):
         current_time = self.cap.get(cv2.CAP_PROP_POS_MSEC)
         new_time = max(0, current_time - 2000)  # Reculer de 2000 millisecondes (2 secondes)
         self.cap.set(cv2.CAP_PROP_POS_MSEC, new_time)
+        self.auto_update_progress()
         self.afficher_video()
 
     def format_duree(self, seconds):
@@ -268,51 +309,13 @@ class LecteurVideo:
         colonne = x // largeur_case
         ligne = y // hauteur_case
         if colonne == 0 and ligne == 0:
-            self.remplir_menu_deroulant_i(x, y, "case1.txt")
+            print("la case 1 a été selectionnée")
         elif colonne == 1 and ligne == 0:
-            self.remplir_menu_deroulant_i(x, y, "case2.txt")
+            print ("la case 2 a été sélectionnée")
         elif colonne == 0 and ligne == 1:
-            self.remplir_menu_deroulant_i(x, y, "case3.txt")
+            print ("la case 3 a été sélectionnée")
         elif colonne == 1 and ligne == 1:
-            self.remplir_menu_deroulant_i(x, y, "case4.txt")
-
-    def remplir_menu_deroulant_i(self, x, y, nom_fichier):
-        try:
-            lignes = self.lire_fichier(nom_fichier)
-            if lignes:
-                # Convertir les coordonnées du clic en coordonnées de la fenêtre principale
-               # x_root = self.fenetre.winfo_rootx() + x
-                #y_root = self.fenetre.winfo_rooty() + y
-                y_root=y+85
-                x_root=x+386
-                # Création du menu déroulant
-                menu_deroulant = tk.Menu(self.fenetre, tearoff=0)
-
-                # Dictionnaire pour stocker les sous-options associées à chaque option
-                sous_options = {}
-
-                # Remplissage du menu déroulant avec les options du fichier
-                for option in lignes:
-                    # Vérifier si l'option a une sous-option (entre parenthèses)
-                    if '(' in option and ')' in option:
-                        nom_option, sous_option_str = option.split('(')
-                        sous_option_str = sous_option_str.split(')')[0]
-                        sous_options_list = [sous.strip() for sous in sous_option_str.split(',')]
-                        sous_options.setdefault(nom_option.strip(), []).extend(sous_options_list)
-                    else:
-                        # Ajouter l'option au menu principal
-                        menu_deroulant.add_command(label=option.strip())
-
-                # Créer des sous-menus pour les options avec des sous-options
-                for nom_option, sous_options_list in sous_options.items():
-                    sous_menu = tk.Menu(menu_deroulant, tearoff=0)
-                    for sous_option in sous_options_list:
-                        sous_menu.add_command(label=sous_option.strip())
-                    menu_deroulant.add_cascade(label=nom_option.strip(), menu=sous_menu)
-                # Poste le menu contextuel avec les coordonnées de la fenêtre principale
-                menu_deroulant.post(x_root, y_root)
-        except FileNotFoundError:
-            print(f"Le fichier {nom_fichier} n'a pas été trouvé.")
+            print ("la case 4 a été sélectionnée")
 
 
     
