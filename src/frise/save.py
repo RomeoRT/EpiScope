@@ -3,7 +3,7 @@ Projet Episcope
 
 Auteur : Roméo RAMOS--TANGHE
 
-Ce fichier contient des fonctions pour créer et éditer les fichiers '.txt' de sortie
+Ce fichier contient des fonctions de base pour créer et éditer les fichiers '.txt' de sortie
 """
 from tkinter import filedialog
 
@@ -41,6 +41,6 @@ def edit(Liste):
 
 ############################################################################################################################################
 if __name__=="__main__":
-    liste = ["romeo\n", "yosra\n", "annaelle\n", "rachel\n", "chloe\n"]
+    liste = ["Romeo\n", "Yosra\n", "Annaelle\n", "Rachel\n", "Chloe\n"]
     save(liste)
     edit(liste)
