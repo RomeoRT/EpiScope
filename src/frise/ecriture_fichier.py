@@ -124,6 +124,7 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
     for symptome in listeSymptome :
         EcrireSymptome(symptome, nomfichier)
 
+
 def EcrireMetaData(ListeMeta, nomfichier) :
     """Ecrit les metadata d'une annotation dans un fichier texte
     """
@@ -137,7 +138,7 @@ def EcrireMetaData(ListeMeta, nomfichier) :
 
 ##########################################################################################################
 if __name__ == "__main__" :
-    
+    # test des fonctions 
     L = []
     for i in range(20) :
         S = Symptome(f"ID{i}", f"Nom{i}", f"Lateralisation{i}", f"SegCorporel{i}", f"Orientation{i}", f"AttributSuppl{i}", f"Tdeb{i}", f"Tfin{i}", f"Commentaire{i}")
