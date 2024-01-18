@@ -94,8 +94,6 @@ class LecteurVideo:
         self.frame_middle.pack(side=ctk.LEFT, fill=ctk.BOTH, expand=True)
         self.frame_right.pack(side=ctk.RIGHT, fill=ctk.BOTH, expand=False)
 
-
-
         # Lire la vidéo avec OpenCV
         self.cap = None
 
@@ -109,10 +107,6 @@ class LecteurVideo:
         # Ajout de la partie gauche avec les menus déroulants
         self.menu_symptomes = Menu_symptomes(self.frame_left, self.frame_left.winfo_reqwidth())
         self.menu_symptomes.pack(side=ctk.LEFT, fill=ctk.Y)
-
-        # Barre de progression manuelle
-        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, orient="horizontal", command=self.manual_update_progress)
-        self.progress_slider.pack(side=tk.TOP, fill=tk.X)
 
         # Frame pour les boutons
         self.frame_CTkButton = ctk.CTkFrame(self.frame_middle, fg_color='grey', height=50)
@@ -140,7 +134,35 @@ class LecteurVideo:
         self.fenetre.bind('<space>', lambda event: self.pause_lecture())
         self.fenetre.bind('<Right>', lambda event: self.avance_progress())
         self.fenetre.bind('<Left>', lambda event: self.recule_progress())
- 
+    
+    def progress_slider(self, value):
+        self.progress_bar['value'] = value
+    
+    def auto_update_progress(self):
+        if not self.video_paused:
+            ret, frame = self.cap.read()
+            if ret:
+                self.progress_width += 1
+                self.canvas.delete("progress")
+
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                frame = Image.fromarray(frame)
+                photo = ImageTk.PhotoImage(frame)
+
+                self.canvas.create_image(0, 0, anchor=tk.NW, image=photo)
+                self.canvas.image = photo
+
+                self.canvas.create_rectangle(0, self.screen_height - 10, self.progress_width, self.screen_height, fill="Plum3", tags="progress")
+
+                self.progress_slider.set(self.progress_width)
+
+                # Calculer le délai en fonction du frame rate pour une mise à jour plus fréquente
+                delay = int(1000 / self.video_framerate)
+                self.fenetre.after(delay, self.auto_update_progress)
+
+                # Mettre à jour la barre de progression
+                self.update_progress_bar()
+
     def menu_action(self, selection):
         if selection == "Ouvrir":
             self.ouvrir_video()
@@ -167,13 +189,25 @@ class LecteurVideo:
 
             self.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
 
-            self.progress_slider.configure(to=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
             self.afficher_video()
             self.bouton_pause_lecture.configure(state=ctk.NORMAL)
+
+            # Création d'une barre de progression
+            self.progress_bar = tk.ttk.Progressbar(self.frame_middle, orient='horizontal', length=largeur_partie_milieu, mode='determinate')
+            self.progress_bar.pack(pady=10)
+
+            # Initialiser la barre de progression
+            self.update_progress_bar()
+
         else:
             print("La vidéo 'vidéo noire' n'a pas été trouvée dans le dossier courant.")
 
+    def update_progress_bar(self):
+        temps_ecoule_millisecondes = self.cap.get(cv2.CAP_PROP_POS_MSEC)
+        temps_ecoule_secondes = temps_ecoule_millisecondes / 1000.0
+        self.progress_bar['value'] = temps_ecoule_secondes
+        self.fenetre.after(100, self.update_progress_bar)
+    
 
 
 
@@ -193,14 +227,19 @@ class LecteurVideo:
             self.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
 
 
-
             # Ajuster la taille du canevas pour occuper toute la partie du milieu
             self.canvas.config(width=largeur_partie_milieu, height=hauteur_canevas)
 
-            self.progress_slider.configure(to=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
             self.afficher_video()
             self.bouton_pause_lecture.configure(state=ctk.NORMAL)
+
+            # Création d'une barre de progression
+            self.progress_bar = tk.ttk.Progressbar(self.frame_middle, orient='horizontal', length=largeur_partie_milieu, mode='determinate')
+            self.progress_bar.pack(pady=10)
+
+            # Initialiser la barre de progression
+            self.update_progress_bar()
+
 
     def afficher_video(self):
         ret, frame = self.cap.read()
@@ -243,12 +282,14 @@ class LecteurVideo:
     def avance_progress(self, event=None):
         current_time = self.cap.get(cv2.CAP_PROP_POS_MSEC)
         self.cap.set(cv2.CAP_PROP_POS_MSEC, current_time + 2000)  # Avancer de 2000 millisecondes (2 secondes)
+        self.auto_update_progress()
         self.afficher_video()
 
     def recule_progress(self, event=None):
         current_time = self.cap.get(cv2.CAP_PROP_POS_MSEC)
         new_time = max(0, current_time - 2000)  # Reculer de 2000 millisecondes (2 secondes)
         self.cap.set(cv2.CAP_PROP_POS_MSEC, new_time)
+        self.auto_update_progress()
         self.afficher_video()
 
     def format_duree(self, seconds):
