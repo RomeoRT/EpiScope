@@ -1,5 +1,5 @@
 # fichiers a ignorer pour le git
-__pycache__/
+*__pycache__/
 
 *.moi*  # des fichiers inutiles, pour moi 
 
