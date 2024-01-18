@@ -4,7 +4,7 @@
 *.moi*  # des fichiers inutiles, pour moi 
 
 # Fichiers d'environnement virtuel
-venv/
+*venv/
 
 # Fichiers générés par VSCode
 .vscode/
