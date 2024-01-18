@@ -151,7 +151,7 @@ class LecteurVideo:
     
     def ouvrir_video_noire(self):
         # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
-        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video.mp4")
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_noire.mp4")
         print("Chemin du fichier vidéo:", file_path)
 
         if os.path.exists(file_path):
@@ -268,51 +268,13 @@ class LecteurVideo:
         colonne = x // largeur_case
         ligne = y // hauteur_case
         if colonne == 0 and ligne == 0:
-            self.remplir_menu_deroulant_i(x, y, "case1.txt")
+            print("la case 1 a été selectionnée")
         elif colonne == 1 and ligne == 0:
-            self.remplir_menu_deroulant_i(x, y, "case2.txt")
+            print ("la case 2 a été sélectionnée")
         elif colonne == 0 and ligne == 1:
-            self.remplir_menu_deroulant_i(x, y, "case3.txt")
+            print ("la case 3 a été sélectionnée")
         elif colonne == 1 and ligne == 1:
-            self.remplir_menu_deroulant_i(x, y, "case4.txt")
-
-    def remplir_menu_deroulant_i(self, x, y, nom_fichier):
-        try:
-            lignes = self.lire_fichier(nom_fichier)
-            if lignes:
-                # Convertir les coordonnées du clic en coordonnées de la fenêtre principale
-               # x_root = self.fenetre.winfo_rootx() + x
-                #y_root = self.fenetre.winfo_rooty() + y
-                y_root=y+85
-                x_root=x+386
-                # Création du menu déroulant
-                menu_deroulant = tk.Menu(self.fenetre, tearoff=0)
-
-                # Dictionnaire pour stocker les sous-options associées à chaque option
-                sous_options = {}
-
-                # Remplissage du menu déroulant avec les options du fichier
-                for option in lignes:
-                    # Vérifier si l'option a une sous-option (entre parenthèses)
-                    if '(' in option and ')' in option:
-                        nom_option, sous_option_str = option.split('(')
-                        sous_option_str = sous_option_str.split(')')[0]
-                        sous_options_list = [sous.strip() for sous in sous_option_str.split(',')]
-                        sous_options.setdefault(nom_option.strip(), []).extend(sous_options_list)
-                    else:
-                        # Ajouter l'option au menu principal
-                        menu_deroulant.add_command(label=option.strip())
-
-                # Créer des sous-menus pour les options avec des sous-options
-                for nom_option, sous_options_list in sous_options.items():
-                    sous_menu = tk.Menu(menu_deroulant, tearoff=0)
-                    for sous_option in sous_options_list:
-                        sous_menu.add_command(label=sous_option.strip())
-                    menu_deroulant.add_cascade(label=nom_option.strip(), menu=sous_menu)
-                # Poste le menu contextuel avec les coordonnées de la fenêtre principale
-                menu_deroulant.post(x_root, y_root)
-        except FileNotFoundError:
-            print(f"Le fichier {nom_fichier} n'a pas été trouvé.")
+            print ("la case 4 a été sélectionnée")
 
 
     
