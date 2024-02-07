@@ -21,7 +21,7 @@ class Menu_symptomes(ctk.CTkFrame):
         self.nb_menus = 0
 
         script_directory = os.path.dirname(os.path.abspath(__file__))
-        Monfichier = os.path.join(script_directory, "Objective_symptomes.txt")
+        Monfichier = os.path.join(script_directory, "Objective_symptomes.txt")  #"D:/Episcope/data/Subjective_symptoms.txt"
 
         with open(Monfichier, 'r') as file:
             for line in file:
