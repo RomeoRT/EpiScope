@@ -126,7 +126,7 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
 
 
 def EcrireMetaData(ListeMeta, nomfichier) :
-    """Ecrit les metadata d'une annotation dans un fichier texte
+    """Ecrit les metadata d'une annotation dans un fichier texte sous la forme : heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n
     """
     mydate = datetime.date.today()
     with open(nomfichier, 'a') as fichier :

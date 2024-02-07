@@ -4,9 +4,11 @@ import os
 def remplir_menu_deroulant_i(Monfichier):
     try:
         lignes = lire_fichier(Monfichier)
+       # Création du menu déroulant 
         menu_deroulant = tk.Menu(maFenêtre, tearoff=0)
+
         if lignes:
-            # Création du menu déroulant
+            
             # menu_deroulant = tk.Menu(maFenêtre, tearoff=0)
             # Dictionnaires pour stocker les sous-options associées à chaque option
             sous_options = {}
@@ -43,10 +45,12 @@ def remplir_menu_deroulant_i(Monfichier):
 
             # Poste le menu contextuel avec les coordonnées de la fenêtre principale
             menu_deroulant.post(100, 100)
+
     except FileNotFoundError:
         print(f"Le fichier {Monfichier} n'a pas été trouvé.")
 
 def lire_fichier(nom_fichier):
+    """Lecture d'un fichier texte ligne par ligne"""
     try:
         # Ouvre le fichier en mode lecture
         with open(nom_fichier, 'r') as fichier:
