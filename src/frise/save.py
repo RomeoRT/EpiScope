@@ -81,6 +81,8 @@ class metadata(CTK.CTkToplevel) :
 
 ############################################################################################################################################
 if __name__=="__main__":
+# test des fonctions
+    
     root = CTK.CTk()
 
     L = []
@@ -91,4 +93,5 @@ if __name__=="__main__":
     sauvegarde = save(L)
     Bouton_save = CTK.CTkButton(root, text = "save", command = sauvegarde.save)
     Bouton_save.grid(row=0, column=0, padx=20, pady=20)
+    
     root.mainloop()
