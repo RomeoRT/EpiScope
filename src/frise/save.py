@@ -8,7 +8,6 @@ Ce fichier contient des fonctions de base pour sauvegarder les fichiers '.txt' e
 from tkinter import filedialog
 import customtkinter as CTK
 import ecriture_fichier as EF
-import annotation.class_symptome as CS
 
 class save :
     """
@@ -27,9 +26,15 @@ class save :
         
         # recuperer les métadatas
         Meta_wd = metadata()
-        ListeMeta = Meta_wd.get_metadata()
-        EF.EcrireMetaData(ListeMeta, filename)
-        EF.EcrireListeSymptome(self.symptomes, filename)
+
+        if Meta_wd.closewd == 1 :
+            ListeMeta = Meta_wd.liste
+            EF.EcrireMetaData(ListeMeta, filename)
+            EF.EcrireListeSymptome(self.symptomes, filename)
+
+            Meta_wd.destroy()
+        
+        
 
 
 
@@ -40,6 +45,9 @@ class metadata(CTK.CTkToplevel) :
     """
     def __init__(self) :
         super().__init__()
+
+        self.liste = []
+        self.closewd = 0
 
         self.title("Metadata")
         self.geometry("400x150")
@@ -57,24 +65,23 @@ class metadata(CTK.CTkToplevel) :
         self.hour_entry.grid(row=3, column=0, padx=5, pady=5, sticky="ew")
 
         # Bouton
-        self.boutonOK = CTK.CTkButton(self, text="OK", command=self.okidoki)
+        self.boutonOK = CTK.CTkButton(self, text="OK")
+        self.boutonOK.bind("<Button-1>", self.get_metadata)
+        self.boutonOK.grid(row=4, column=0, padx=5, pady=5, sticky="ew")
     
-    def get_metadata(self):
+    def get_metadata(self, event):
         """
         recuperer une liste des metadonnées sous la forme [heure réelle, patient, praticien]
         """
-        liste =[]
+        
+        self.liste.append(self.hour_entry.get())
+        self.liste.append(self.doctor_entry.get())
+        self.liste.append(self.patient_entry.get())
 
-        liste.append(self.hour_entry.get())
-        liste.append(self.doctor_entry.get())
-        liste.append(self.patient_entry.get())
+        self.closewd = 1
 
-        return(liste)
-    
-    def okidoki(self):
-        """Ferme la fenetre et recupere les données"""
-        self.destroy
-        return self.get_metadata()
+        #return(self.liste)
+        
 
 
 
@@ -87,7 +94,7 @@ if __name__=="__main__":
 
     L = []
     for i in range(20) :
-        S = CS.Symptome(f"ID{i}", f"Nom{i}", f"Lateralisation{i}", f"SegCorporel{i}", f"Orientation{i}", f"AttributSuppl{i}", f"Tdeb{i}", f"Tfin{i}", f"Commentaire{i}")
+        S = EF.Symptome(f"ID{i}", f"Nom{i}", f"Lateralisation{i}", f"SegCorporel{i}", f"Orientation{i}", f"AttributSuppl{i}", f"Tdeb{i}", f"Tfin{i}", f"Commentaire{i}")
         L.append(S)   
 
     sauvegarde = save(L)
