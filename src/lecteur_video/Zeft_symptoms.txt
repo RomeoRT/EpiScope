@@ -1,0 +1,4 @@
+Dystonia posturing (Distal; Proximal [ Left * Right * Bilateral ]; Hand/Superior limb; Foot/Inferior limb)
+Fencing posture(Left arm extenxion;right arm extension)
+Ataxia (Left;Right;Bilateral;Hand/Superior limb;Foot/Inferior limb)
+Hyperkinetic behaviors (Goal-targeted;Unoriented;Oriented[Left*Right*Bilateral];Upper limb;Lower limb;Axial)
