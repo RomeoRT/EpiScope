@@ -16,7 +16,7 @@ class save :
     """
     def __init__(self, Liste_symptomes = []):
         self.symptomes = Liste_symptomes
-        self.closewd = 0
+        
 
     def save(self):
         """
