@@ -36,7 +36,7 @@ class Menu_symptomes(ctk.CTkFrame):
                 self.liste_MenuDeroulant[-1].set(Liste_cat[-1])
 
                 # Ajuster la largeur des menus déroulants à 1/5 de la largeur totale
-                menu_width = largeur_totale-91
+                menu_width = largeur_totale*0.33
                 self.liste_MenuDeroulant[-1].configure(width=menu_width, fg_color='Plum3')
 
         self.entry = ctk.CTkEntry(self, placeholder_text="Symptomes")
@@ -83,7 +83,7 @@ class InterfaceGenerale():
         # Cadres pour la partie de gauche, milieu et droite
         # Modify the frame initialization in the __init__ method of LecteurVideo class
         self.frame_left = ctk.CTkFrame(fenetre, fg_color='grey',border_width=5,border_color='Plum3' ,width=fenetre.winfo_screenwidth() // 5)
-        self.frame_middle = ctk.CTkFrame(fenetre, fg_color='grey',border_width=5,border_color='Plum3' ,width=3 * (fenetre.winfo_screenwidth()) // 5, height=fenetre.winfo_screenheight() - 200 )  # Ajustement ici
+        self.frame_middle = ctk.CTkFrame(fenetre, fg_color='grey',border_width=5,border_color='Plum3' ,width=3 * (fenetre.winfo_screenwidth()) // 5, height=fenetre.winfo_screenheight()  )  # Ajustement ici
         self.frame_right = ctk.CTkFrame(fenetre, fg_color='grey',border_width=5,border_color='Plum3' ,width=fenetre.winfo_screenwidth() // 5)
 
 
@@ -130,11 +130,6 @@ class InterfaceGenerale():
         self.menu_symptomes = Menu_symptomes(self.frame_left, self.frame_left.winfo_reqwidth())
         self.menu_symptomes.pack(side=ctk.LEFT, fill=ctk.Y)
 
-
-        # Ajuster la taille des cadres après ajout de la partie gauche
-        #self.frame_left.configure(width=fenetre.winfo_screenwidth() // 5)
-        #self.frame_middle.configure(width=3 * (fenetre.winfo_screenwidth()) // 5)
-        #self.frame_right.configure(width=fenetre.winfo_screenwidth() // 5)
 
 
         self.fenetre.bind('<space>', lambda event: self.lec_video.pause_lecture())
@@ -190,19 +185,19 @@ class LecteurVideo():
         print("Chemin du fichier vidéo:", file_path)
 
         if os.path.exists(file_path):
-            self.cap = cv2.VideoCapture(file_path)
+            self.interface_generale.cap = cv2.VideoCapture(file_path)
 
-            largeur = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-            hauteur = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            largeur = int(self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+            hauteur = int(self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
             # Mettre à jour la taille du canevas pour correspondre à la partie du milieu
             largeur_partie_milieu = self.interface_generale.frame_middle.winfo_reqwidth()
-            hauteur_partie_milieu = self.interface_generale.frame_middle.winfo_reqheight() - 50
+            hauteur_partie_milieu = self.interface_generale.frame_middle.winfo_reqheight()
             hauteur_canevas = (largeur_partie_milieu / largeur) * hauteur
 
             self.interface_generale.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
 
-            self.interface_generale.progress_slider.configure(to=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
+            self.interface_generale.progress_slider.configure(to=self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
             self.afficher_video()
             self.interface_generale.bouton_pause_lecture.configure(state=ctk.NORMAL)
@@ -274,12 +269,12 @@ class LecteurVideo():
         self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
         self.afficher_video()
 
-    def avance_progress(self, event=None):
+    def avance_progress(self):
         current_time = self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC)
         self.interface_generale.cap.set(cv2.CAP_PROP_POS_MSEC, current_time + 2000)  # Avancer de 2000 millisecondes (2 secondes)
         self.afficher_video()
 
-    def recule_progress(self, event=None):
+    def recule_progress(self):
         current_time = self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC)
         new_time = max(0, current_time - 2000)  # Reculer de 2000 millisecondes (2 secondes)
         self.interface_generale.cap.set(cv2.CAP_PROP_POS_MSEC, new_time)
