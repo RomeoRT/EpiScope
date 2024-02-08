@@ -35,6 +35,10 @@ class save :
             Meta_wd.destroy()
             Meta_wd.update()
             messagebox.showinfo('Episcope Error', 'No file selected\nCannot save properly')
+    
+    def set_symptomes(self, Liste_symptomes):
+        """Actualise les symptomes"""
+        self.symptomes = Liste_symptomes
 
 
 
