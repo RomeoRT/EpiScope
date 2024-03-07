@@ -63,7 +63,6 @@ def avance_progress():
     progress_width += 1
     manual_update_progress(progress_width)
 
-
 # Fonction qui permet de reculer de 2 secondes la vidéo:
 def recule_progress():
     global progress_width
