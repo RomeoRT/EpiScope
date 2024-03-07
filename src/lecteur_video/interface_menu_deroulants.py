@@ -1,4 +1,3 @@
-#pour lancer ce code il faut avoir le fichier "Objective_Sympotomes.txt" dans le meme dossier qu ce fichier.
 import tkinter as tk
 import customtkinter as ctk
 from tkinter import filedialog
@@ -7,25 +6,32 @@ from PIL import Image, ImageTk
 import datetime
 import tkinter.font as tkFont
 import os
-#from frise_chatgpt import afficher_frise
+import random
+
+#utile pour la génération de la frise chronologique:
+from fonctions_frise import afficher_frise
+from class_symptome import Symptome
 
 
 #Classe menu déroulant d'Annaelle:
 class MenuDeroulant(tk.Frame):
-    def __init__(self, master, largeur):
+    def __init__(self, master, largeur,InterfaceGenerale):
         super().__init__(master)
         self.interface_generale = InterfaceGenerale
         self.master = master
         self.largeur = largeur
         
-
         # Créer le cadre pour le menu déroulant
         self.frame_menu = tk.Frame(master, bg='grey')
         self.frame_menu.pack(side=tk.LEFT, fill=tk.Y)
 
         # Créer le menu déroulant
         self.create_dropdown_menus()
-
+        
+        # Zone de texte pour la partie de droite
+        self.symptomes_text = tk.Text(self.interface_generale.frame_right, height=40, width=40, relief=tk.GROOVE, wrap=tk.WORD, state=tk.DISABLED)
+        self.symptomes_text.pack(side=tk.TOP, padx=20,pady=15)
+    
     def create_dropdown_menus(self):
         # Charger les options du fichier
         script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -50,66 +56,19 @@ class MenuDeroulant(tk.Frame):
         symptome = var_selected.get()
 
         # Mettre à jour le contenu de la zone de texte des symptômes dans la partie droite
-        self.interface_generale.symptomes_text.config(state=tk.NORMAL)
-        self.interface_generale.symptomes_text.insert(tk.END, symptome + "\n")
-        self.interface_generale.symptomes_text.config(state=tk.DISABLED)
+        
+        self.symptomes_text.config(state=tk.NORMAL)
+        self.symptomes_text.insert(tk.END, symptome + "\n")
+        self.symptomes_text.config(state=tk.DISABLED)
 
-
-"""
-#Classe Menu déroulant de Yosra:
-class Menu_symptomes(ctk.CTkFrame):
-    def __init__(self, master, largeur_totale):
-        super().__init__(master)
-        Liste_cat = []
-        self.options_symptomes = []
-        self.liste_MenuDeroulant = []
-        self.nb_menus = 0
-
-        script_directory = os.path.dirname(os.path.abspath(__file__))
-        Monfichier = os.path.join(script_directory, "Objective_symptomes.txt")
-
-        with open(Monfichier, 'r') as file:
-            for line in file:
-                line = line.strip()
-                Liste = line.split(';')
-
-                Liste_cat.append(Liste[0])
-
-                Liste = Liste[1:]
-                self.options_symptomes.append(Liste)
-                self.nb_menus += 1
-
-                MenuDeroulant = ctk.CTkOptionMenu(self, values=Liste)
-                self.liste_MenuDeroulant.append(MenuDeroulant)
-                self.liste_MenuDeroulant[-1].grid(row=self.nb_menus, sticky="nsew", padx=5, pady=5)
-                self.liste_MenuDeroulant[-1].set(Liste_cat[-1])
-
-                # Ajuster la largeur des menus déroulants à 1/5 de la largeur totale
-                menu_width = largeur_totale*0.33
-                self.liste_MenuDeroulant[-1].configure(width=menu_width, fg_color='Plum3')
-
-        self.entry = ctk.CTkEntry(self, placeholder_text="Symptomes")
-        self.entry.grid(row=0)
-        self.entry.bind("<KeyRelease>", self.filtrer_options)
-
-        # definition des méthodes
-    def filtrer_options(self, event): 
-        """
-        #filtre les options d'un menu déroulant en fonction d'une recherche textuelle
-"""
-        recherche = self.entry.get().lower()
-        for i in range(self.nb_menus) :
-            options_filtrees = [option for option in self.options_symptomes[i] if recherche in option.lower()]
-            self.liste_MenuDeroulant[i].configure(values=options_filtrees) 
-
-            """
 
 class InterfaceGenerale():
-    def __init__(self, fenetre):
+    def __init__(self, fenetre,):
         self.fenetre = fenetre
         self.fenetre.title("Lecteur Vidéo")
         self.cap = None
         self.lec_video = LecteurVideo(self)
+        self.frise=FriseSymptomes(self,self)
 
         self.lec_video.video_paused = False
 
@@ -156,7 +115,7 @@ class InterfaceGenerale():
         self.bouton_avancer.pack(side=ctk.LEFT, padx=50)
 
         # Bouton pour activer la frise chronologique des symptomes:
-        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.affichage_frise, text_color='black', fg_color='Plum3')
+        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color='black', fg_color='Plum3')
         self.bouton_frise.pack(side=ctk.BOTTOM, padx=20, pady=20)
 
         # Étiquettes pour afficher le temps écoulé et la durée totale
@@ -175,7 +134,7 @@ class InterfaceGenerale():
         self.canvas.bind("<Button-1>", self.lec_video.afficher_menu_annotations)
 
         # Ajout de la partie gauche avec les menus déroulants
-        self.menu_symptomes = MenuDeroulant(self.frame_left,self.frame_left)
+        self.menu_symptomes = MenuDeroulant(self.frame_left,self.frame_left,self)
         self.menu_symptomes.pack(side=ctk.LEFT, fill=ctk.Y)
 
         self.fenetre.bind('<space>', lambda event: self.lec_video.pause_lecture())
@@ -183,8 +142,8 @@ class InterfaceGenerale():
         self.fenetre.bind('<Left>', lambda event: self.lec_video.recule_progress())
 
         # Créer une zone de texte pour afficher les symptômes dans la partie droite
-        self.symptomes_text = tk.Text(self.frame_right, height=20, width=50, relief=tk.GROOVE, wrap=tk.WORD)
-        self.symptomes_text.pack(side=tk.BOTTOM, pady=20)
+        self.zone_text = tk.Text(self.frame_right, height=40, width=40, relief=tk.GROOVE, wrap=tk.WORD)
+        self.zone_text.pack(side=tk.BOTTOM, pady=20)
 
 
     def ouvrir_video(self):
@@ -203,7 +162,6 @@ class InterfaceGenerale():
                 self.ouvrir_video_noire()
     
 
-    
     def lire_fichier(self,nom_fichier):
         try:
             # Ouvre le fichier en mode lecture
@@ -214,11 +172,39 @@ class InterfaceGenerale():
         except FileNotFoundError:
             print(f"Le fichier {nom_fichier} n'a pas été trouvé.")
             return 
-    
-    #Affichage de la frise chronologique:            
-    def affichage_frise(self):
-        self.frise.afficher_frise()
 
+
+# Classe frise de Chloé:
+class FriseSymptomes:
+    def __init__(self,InterfaceGenerale,MenuDeroulant):
+        self.menu_deroulant=MenuDeroulant
+        self.interface_generale=InterfaceGenerale
+
+    def afficher(self):
+        # Récupérer le texte de la zone de texte des symptômes
+        texte_symptomes = self.interface_generale.menu_symptomes.symptomes_text.get("1.0", tk.END)
+
+        # Diviser le texte en une liste de lignes
+        lignes_symptomes = texte_symptomes.splitlines()
+
+        # Créer une liste pour stocker les informations des symptômes
+        symptomes_formattes = []
+
+        # Parcourir chaque ligne de symptômes
+        for ligne in lignes_symptomes:
+            nom=ligne
+            # Extraire les informations sur le symptôme (nom, temps de début, temps de fin)
+            tdeb = random.randint(0,3)
+            tfin = random.randint(4,10)
+            # Ajouter les informations formatées à la liste des symptômes
+            symptomes_formattes.append([nom, tdeb, tfin])
+
+        # Triez les symptômes par temps de début
+        symptomes_formattes.pop()
+        symptomes_formattes.sort(key=lambda x: x[1])
+
+        # Appelez la fonction afficher_frise avec la liste de symptômes formatés
+        afficher_frise(symptomes_formattes)
 
 
 class LecteurVideo():
@@ -227,8 +213,6 @@ class LecteurVideo():
 
         self.interface_generale = InterfaceGenerale
         self.canvas = None  # Initialisation de la variable canvas
-
-
 
     def ouvrir_video_noire(self):
         # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
@@ -333,8 +317,6 @@ class LecteurVideo():
 
     def format_duree(self, seconds):
         return str(datetime.timedelta(seconds=seconds))
-
-
 
     def afficher_menu_annotations(self, event):
         # Coordonnées du clic
