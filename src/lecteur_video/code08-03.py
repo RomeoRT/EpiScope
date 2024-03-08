@@ -14,7 +14,7 @@ import random
 
 #utile pour la génération de la frise chronologique:
 from fonctions_frise import afficher_frise
-#from class_symptome import Symptome
+from class_symptome import Symptome
 
 class Menu_symptomes(ctk.CTkFrame):
     def __init__(self, master, interface_generale, largeur_totale):
@@ -22,21 +22,22 @@ class Menu_symptomes(ctk.CTkFrame):
         self.interface_generale = interface_generale
         self.file_name = "Objective_Symptomes.txt"
         title, symptoms = self.read_symptoms_from_file(self.file_name)
-        self.symptom_button = ctk.CTkButton(self, text=title, command=self.create_dropdown_menus, width=largeur_totale, fg_color='navajo white', text_color='black')
+        self.symptom_button = ctk.CTkButton(self, text=title, command=self.create_dropdown_menus, width=largeur_totale, fg_color='Plum3', text_color='black')
         self.symptom_button.pack(pady=20, fill='x')
-        self.symptoms = symptoms
+        self.symptoms = symptoms 
         self.top_level = None  
+        
 
 
     def create_dropdown_menus(self):
         if self.top_level is None or not self.top_level.winfo_exists():  # Vérifiez si la fenêtre n'existe pas déjà
             self.top_level = tk.Toplevel(self)
-            self.top_level.wm_title("Symptômes")  # Optionnel: donnez un titre à la fenêtre
+            self.top_level.wm_title("Symptômes")  # Optionnel: donnez un titre à la fenêtre où il y a les symptomes
 
             # Positionner la fenêtre juste en dessous du bouton
             x = self.symptom_button.winfo_rootx()
             y = self.symptom_button.winfo_rooty() + self.symptom_button.winfo_height()
-            self.top_level.geometry(f"+{x}+{y}")  # Positionne la fenêtre
+            self.top_level.geometry("100x100")  # Positionne la fenêtre
 
             # Définir la largeur de la fenêtre égale à celle du bouton
             self.top_level.geometry(f"{self.symptom_button.winfo_width()}x400")  # La hauteur peut être ajustée selon le besoin
@@ -44,13 +45,18 @@ class Menu_symptomes(ctk.CTkFrame):
             menu_bar = tk.Menu(self.top_level)
             self.top_level.config(menu=menu_bar)
             my_font = tkFont.Font(size=12)
-            main_menu = tk.Menu(menu_bar, tearoff=0, bg="#444444", fg="white", font=my_font)
-            menu_bar.add_cascade(label="Symptômes", menu=main_menu)
+            main_menu = tk.Menu(menu_bar, tearoff=0, bg="grey", fg="white", font=my_font)
+            menu_bar.add_cascade(label="Objective Symptômes ", menu=main_menu)
+            
             for symptom, sub_symptoms in self.symptoms:
                 self.create_submenu(main_menu, symptom, sub_symptoms)
+            
         else:
-            self.top_level.lift()  # Ramenez la fenêtre existante au premier plan
-            self.top_level.focus()  # Donnez le focus à la fenêtre
+           self.top_level.lift()  # Ramenez la fenêtre existante au premier plan
+           self.top_level.focus()  # Donnez le focus à la fenêtre
+            
+
+        
     def create_submenu(self, parent_menu, symptom, sub_symptoms):
         my_font = tkFont.Font(size=12)
         symptom_menu = tk.Menu(parent_menu, tearoff=0, font=my_font)
@@ -146,7 +152,7 @@ class InterfaceGenerale():
         self.lec_video.video_paused = False
  
         # Cadre pour le menu déroulant en haut
-        self.frame_menu = ctk.CTkFrame(fenetre, fg_color='Medium orchid', height=40)
+        self.frame_menu = ctk.CTkFrame(fenetre, fg_color='Plum2', height=40)
         self.frame_menu.pack(side=ctk.TOP, fill=ctk.X)
         police_label_m = tkFont.Font(size=12)
         # Menu déroulant
@@ -154,7 +160,7 @@ class InterfaceGenerale():
         self.menu_deroulant = ctk.StringVar()
         self.menu_deroulant.set('Menu')
         self.menu = tk.OptionMenu(self.frame_menu, self.menu_deroulant, *options, command=self.menu_action)
-        self.menu.config(bg='purple3',fg='white',font=police_label_m)
+        self.menu.config(bg='Plum3',fg='white',font=police_label_m)
         self.menu["menu"].config(bg='black', fg='white',font=14)
         self.menu.pack(side=ctk.LEFT, padx=10, pady=10)
 
@@ -175,8 +181,9 @@ class InterfaceGenerale():
         self.frame_middle.pack(side=ctk.LEFT, fill=ctk.BOTH, expand=True)
         self.frame_right.pack(side=ctk.RIGHT, fill=ctk.BOTH, expand=False)
 
-        self.text_output = tk.Text(self.frame_right, height=12, width=fenetre.winfo_screenwidth() // 5, relief=tk.GROOVE, wrap=tk.WORD, state=tk.DISABLED)  # Déplacé pour être un attribut de l'instance
-        self.text_output.grid(row=0, column=0,sticky="ew", padx=10,pady=0)
+        #Affichage des symptomes dans la partie de droite de l'interface:
+        self.text_output = tk.Text(self.frame_right, height=40, width=fenetre.winfo_screenwidth() // 5, relief=tk.GROOVE, wrap=tk.WORD, state=tk.DISABLED)  # Déplacé pour être un attribut de l'instance
+        self.text_output.pack(side=ctk.TOP,padx=20,pady=20)
 
         #self.frame_right.grid_rowconfigure(0, weight=1)  # Donne un poids à la ligne où se trouve la zone de texte
         self.frame_right.grid_columnconfigure(0, weight=1)
@@ -185,19 +192,20 @@ class InterfaceGenerale():
         # Frame pour les boutons
         self.frame_CTkButton = ctk.CTkFrame(self.frame_middle, fg_color='grey', height=50)
         self.frame_CTkButton.pack(side=ctk.BOTTOM, fill=ctk.BOTH)
-            # Boutons
-        self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="recule", command=self.lec_video.recule_progress,text_color='black',fg_color='navajo white')
+        
+        # Boutons
+        self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="recule", command=self.lec_video.recule_progress,text_color='black',fg_color='Plum4')
         self.bouton_reculer.pack(side=ctk.LEFT, padx=60)
 
-        self.bouton_pause_lecture = ctk.CTkButton(self.frame_CTkButton, text="Pause", command=self.lec_video.pause_lecture,text_color='black',fg_color='light salmon')
+        self.bouton_pause_lecture = ctk.CTkButton(self.frame_CTkButton, text="Pause", command=self.lec_video.pause_lecture,text_color='black',fg_color='Plum4')
         self.bouton_pause_lecture.pack(side=ctk.LEFT, padx=100)
 
-        self.bouton_avancer = ctk.CTkButton(self.frame_CTkButton, text="avace", command=self.lec_video.avance_progress,text_color='black',fg_color='navajo white')
+        self.bouton_avancer = ctk.CTkButton(self.frame_CTkButton, text="avance", command=self.lec_video.avance_progress,text_color='black',fg_color='Plum4')
         self.bouton_avancer.pack(side=ctk.LEFT, padx=50)
 
         # Bouton pour activer la frise chronologique des symptomes:
         self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color='black', fg_color='Plum3')
-        self.bouton_frise.grid(row=1, column=0, padx=10, pady=10)
+        self.bouton_frise.pack(side=ctk.BOTTOM,padx=20,pady=20)
     
         # Étiquettes pour afficher le temps écoulé et la durée totale
         self.label_temps = tk.Label(self.frame_middle, text="Temps écoulé: 0:00 / Durée totale: 0:00", bg='grey', fg='white')
@@ -207,6 +215,9 @@ class InterfaceGenerale():
         self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, orient="horizontal", command=self.lec_video.manual_update_progress)
         self.progress_slider.pack(side=tk.BOTTOM, fill=tk.X)
 
+        # Créer une zone de texte pour les commentaires:
+        self.zone_text = tk.Text(self.frame_right, height=40, width=fenetre.winfo_screenwidth() // 5, relief=tk.GROOVE, wrap=tk.WORD)
+        self.zone_text.pack(side=tk.BOTTOM, pady=20,padx=20)
 
         # Lire la vidéo avec OpenCV
         self.cap = None
@@ -220,8 +231,6 @@ class InterfaceGenerale():
 
         self.menu_symptomes = Menu_symptomes(self.frame_left, self, fenetre.winfo_screenwidth() // 5)
         self.menu_symptomes.pack(expand=True, fill=ctk.BOTH)
-
-
 
 
         self.fenetre.bind('<space>', lambda event: self.lec_video.pause_lecture())
