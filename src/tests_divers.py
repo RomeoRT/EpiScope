@@ -1,16 +1,24 @@
-import customtkinter
+import customtkinter as CTK
+import frise.ecriture_fichier as EF
+import annotation.class_symptome as SY
 
-app = customtkinter.CTk()
-def optionmenu_callback(choice):
-    print("optionmenu dropdown clicked:", choice)
+############################################################################################################################################
+if __name__=="__main__":
+# test des fonctions
+    
+    root = CTK.CTk()
 
-optionmenu = customtkinter.CTkOptionMenu(app, values=["option 1", "option 2"],
-                                         command=optionmenu_callback)
+   # test des fonctions 
+    L = []
+    for i in range(20) :
+        S = SY.Symptome(f"ID{i}", f"Nom{i}", f"Lateralisation{i}", f"SegCorporel{i}", f"Orientation{i}", f"AttributSuppl{i}", f"Tdeb{i}", f"Tfin{i}", f"Commentaire{i}")
+        L.append(S)
 
-optionmenu.set("option 2")
-progressbar = customtkinter.CTkProgressBar(app, orientation="horizontal")
+    meta = ["15h12", "M. Smith", "toto" ]
+    nomfichier = 'd:/Unfichiertest.txt'
 
-progressbar.pack()
-optionmenu.pack()
 
-app.mainloop()
+    EF.EcrireMetaData(meta, nomfichier)
+    EF.EcrireListeSymptome(L, nomfichier)
+
+    root.mainloop()

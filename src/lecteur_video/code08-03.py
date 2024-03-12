@@ -13,7 +13,7 @@ import tkinter.font as tkFont
 import random
 
 #utile pour la génération de la frise chronologique:
-from fonctions_frise import afficher_frise
+from annotation.fonctions_frise import afficher_frise
 from class_symptome import Symptome
 
 class Menu_symptomes(ctk.CTkFrame):
