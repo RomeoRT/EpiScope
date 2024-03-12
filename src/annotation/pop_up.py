@@ -60,15 +60,18 @@ class SymptomeEditor:
 
         
 
-        print("OK!")
+        #print("OK!")
 
-# Création d'une instance de la classe Symptome pour tester l'éditeur
-symptome = Symptome(ID="", Nom="", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
+############################################################################################################################################
+if __name__=="__main__":
+    # test des fonctions
+    # Création d'une instance de la classe Symptome pour tester l'éditeur
+    symptome = Symptome(ID="", Nom="", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
 
-# Création de la fenêtre principale de l'éditeur
-root = tk.Tk()
-editor = SymptomeEditor(root)
+    # Création de la fenêtre principale de l'éditeur
+    root = tk.Tk()
+    editor = SymptomeEditor(root)
 
-root.mainloop()
+    root.mainloop()
 
-print(symptome.Nom, symptome.Lateralisation)
+    print(symptome.Nom, symptome.Lateralisation)
