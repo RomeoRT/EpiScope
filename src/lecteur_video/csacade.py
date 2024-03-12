@@ -52,6 +52,6 @@ def display_symptoms(title, symptoms):
 
     root.mainloop()
 
-file_name = "Objective_Symptomes.txt"
+file_name = "./data/Objective_Symptomes.txt"
 title, symptoms = read_symptoms_from_file(file_name)
 display_symptoms(title, symptoms)
