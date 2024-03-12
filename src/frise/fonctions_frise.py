@@ -84,10 +84,10 @@ def afficher_frise(liste):
     '''
 
     plt.gca().get_yaxis().set_visible(False)
-    plt.xlabel("Temps (en secondes)")
-    plt.title("Chronologie de la crise")
+    plt.xlabel("Time (seconds)")
+    plt.title("Patient 1")
 
-    # Utilisation de mplcursors pour afficher les annotations au survol
+    '''# Utilisation de mplcursors pour afficher les annotations au survol
     cursor = mplcursors.cursor(hover=True)
 
     @cursor.connect("add")
@@ -99,5 +99,5 @@ def afficher_frise(liste):
             if symbole == annotation.get_text():
                 annotation.set_visible(True)
                 sel.annotation.set_text(annotation.get_text())
-
+'''
     plt.show()

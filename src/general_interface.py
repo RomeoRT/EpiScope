@@ -1,6 +1,7 @@
 #pour lancer ce code il faut avoir le fichier "Objective_Sympotomes.txt" dans le meme dossier qu ce fichier.
 #ce code genere les menus derouants indenté dans la partie gauche et affiche dan sla partie droite le schema complet.
-#le pb est que les menus indenté s'affiche dans une feetre à part
+#le pb est que les menus indentés s'affichent dans une feetre à part
+
 import tkinter as tk
 import customtkinter as ctk
 from tkinter import filedialog
@@ -16,7 +17,7 @@ from matplotlib.figure import Figure
 import re
 
 #utile pour la génération de la frise chronologique:
-from fonctions_frise import afficher_frise
+from frise.fonctions_frise import afficher_frise
 #from class_symptome import Symptome
 
 class Menu_symptomes(ctk.CTkFrame):
