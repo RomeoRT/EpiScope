@@ -22,6 +22,14 @@ from frise.fonctions_frise import afficher_frise
 
 class Menu_symptomes(ctk.CTkFrame):
     def __init__(self, master, interface_generale, largeur_totale):
+        """
+        constructeur créant un menu déroulant
+        arguments :
+            master : fenetre principale 
+            interface_generale : 
+            largeur_totale : largeur des menus 
+
+        """
         super().__init__(master, width=largeur_totale)
         self.interface_generale = interface_generale
         self.file_name = "Objective_Symptomes.txt"
@@ -90,6 +98,8 @@ class Menu_symptomes(ctk.CTkFrame):
 
 
     def read_symptoms_from_file(self, file_name):
+        """Lecture des fichiers pour créer les menus"""
+
         with open(file_name, 'r', encoding='utf-8') as file:
             title = file.readline().strip()
             symptoms = []
@@ -143,6 +153,7 @@ class FriseSymptomes:
 
         # Appelez la fonction afficher_frise avec la liste de symptômes formatés
         afficher_frise(symptomes_formattes)
+
 
 class InterfaceGenerale():
     def __init__(self, fenetre):
@@ -325,9 +336,6 @@ class InterfaceGenerale():
 
 
     #ecriture de la selection dans un box à  part
-
-
-
 
 
 class LecteurVideo():

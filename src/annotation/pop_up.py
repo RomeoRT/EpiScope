@@ -65,6 +65,7 @@ class SymptomeEditor:
 ############################################################################################################################################
 if __name__=="__main__":
     # test des fonctions
+    
     # Création d'une instance de la classe Symptome pour tester l'éditeur
     symptome = Symptome(ID="", Nom="", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
 
