@@ -1,0 +1,1 @@
+# fichier de l'interface générale
