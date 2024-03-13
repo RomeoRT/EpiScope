@@ -21,10 +21,10 @@ import functools #pour update right panel
 
 #utile pour la génération de la frise chronologique:
 #from fonctions_frise import chevauchement
-from fonctions_frise import afficher_frise
+from frise.fonctions_frise import afficher_frise
 #from fonctions_frise import chercherElt
-import save as sauvg
-from class_symptome import Symptome
+import frise.save as sauvg
+from annotation.class_symptome import Symptome
 
 
 class Menu_symptomes(ctk.CTkFrame):
@@ -164,7 +164,7 @@ class FriseSymptomes:
 class InterfaceGenerale():
     def __init__(self, fenetre):
         self.fenetre = fenetre
-        self.fenetre.title("Lecteur Vidéo")
+        self.fenetre.title("Episcope")
         self.cap = None
         self.lec_video=LecteurVideo(self)
         self.frise=FriseSymptomes(self,self)
