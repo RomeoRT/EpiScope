@@ -1,7 +1,19 @@
 """
-Dans ce code il ya les menus indenté à gauche avec subjective et objective symtomes.
-La selection s'affiche daan la partie droite avec temps debut etfin. la fris est généré correctement
-il y a le bouton save
+interface générale Episcope contenant :
+    lecteur vidéo :
+    - lecture video
+    - boutons play/pause, skip>>, skip<<, revoir
+    - son synchronisé
+
+    annotations :
+    - les menus en cascade a gauche
+    - recuperer les symptomes dans une liste
+    - recuperer les temps de debut et de fin
+    - afficher les symptomes a droite
+
+    fichiers :
+    - générer la frise
+    - generer le fichier texte
 """
 import tkinter as tk
 import customtkinter as ctk
