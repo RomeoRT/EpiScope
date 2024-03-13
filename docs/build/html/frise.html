@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>frise package &#8212; Episcope 0.1-alpha documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=737112c1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="frise-package">
+<h1>frise package<a class="headerlink" href="#frise-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-frise.ecriture_fichier">
+<span id="frise-ecriture-fichier-module"></span><h2>frise.ecriture_fichier module<a class="headerlink" href="#module-frise.ecriture_fichier" title="Link to this heading">¶</a></h2>
+<p>Ce module contient des fonctions pour créer et éditer les fichiers ‘.txt’ de sortie avec les symptomes</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.EcrireListeSymptome">
+<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireListeSymptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeSymptome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireListeSymptome" title="Link to this definition">¶</a></dt>
+<dd><p>Ecrit une liste de symptomes dans un fichier texte</p>
+<p>Chaque symptome est écrit sur une ligne
+Fait appel à la fonction EcrireSymptome</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symptome</strong> (<em>list</em>) – liste des symptomes</p></li>
+<li><p><strong>nomfichier</strong> (<em>string</em>) – chemin du fichier</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.EcrireMetaData">
+<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireMetaData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ListeMeta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireMetaData" title="Link to this definition">¶</a></dt>
+<dd><p>Ecrit les metadata d’une annotation dans un fichier texte sous la forme : heure réelle :    patient :       praticien :     date d’annotation :</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ListeMeta</strong> (<em>List</em>) – liste des métadatas</p></li>
+<li><p><strong>nomfichier</strong> (<em>string</em>) – chemin du fichier</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.EcrireSymptome">
+<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireSymptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symptome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireSymptome" title="Link to this definition">¶</a></dt>
+<dd><p>Ecrit un symptome dans un fichier texte dont on specifie le nom</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symptome</strong> (<a class="reference internal" href="#frise.ecriture_fichier.Symptome" title="frise.ecriture_fichier.Symptome"><em>Symptome</em></a>) – symptome à écrire</p></li>
+<li><p><strong>nomfichier</strong> (<em>string</em>) – chemin du fichier</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">Symptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lateralisation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SegCorporel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AttributSuppl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tdeb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tfin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Commentaire</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe permettant d’instancier un objet Symptome</p>
+<p>attributs : ID, nom, lateralisation, segment corporel, Tps debut, Tps fin, Orientation, Attributs suppl, Commentaire</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_AttributSuppl">
+<span class="sig-name descname"><span class="pre">get_AttributSuppl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_AttributSuppl" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_Commentaire">
+<span class="sig-name descname"><span class="pre">get_Commentaire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_Commentaire" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_ID">
+<span class="sig-name descname"><span class="pre">get_ID</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_Lateralisation">
+<span class="sig-name descname"><span class="pre">get_Lateralisation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_Lateralisation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_Nom">
+<span class="sig-name descname"><span class="pre">get_Nom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_Nom" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_Orientation">
+<span class="sig-name descname"><span class="pre">get_Orientation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_Orientation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_SegCorporel">
+<span class="sig-name descname"><span class="pre">get_SegCorporel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_SegCorporel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_Tdeb">
+<span class="sig-name descname"><span class="pre">get_Tdeb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_Tdeb" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_Tfin">
+<span class="sig-name descname"><span class="pre">get_Tfin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_Tfin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.get_attributs">
+<span class="sig-name descname"><span class="pre">get_attributs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.get_attributs" title="Link to this definition">¶</a></dt>
+<dd><p>Retourne une liste contenant les valeurs des attributs de l’objet</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_AttributSuppl">
+<span class="sig-name descname"><span class="pre">set_AttributSuppl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_AttributSuppl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_AttributSuppl" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_Commentaire">
+<span class="sig-name descname"><span class="pre">set_Commentaire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Commentaire</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_Commentaire" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_ID">
+<span class="sig-name descname"><span class="pre">set_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_Lateralisation">
+<span class="sig-name descname"><span class="pre">set_Lateralisation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Lateralisation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_Lateralisation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_Nom">
+<span class="sig-name descname"><span class="pre">set_Nom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Nom</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_Nom" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_Orientation">
+<span class="sig-name descname"><span class="pre">set_Orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Orientation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_Orientation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_SegCorporel">
+<span class="sig-name descname"><span class="pre">set_SegCorporel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_SegCorporel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_SegCorporel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_Tdeb">
+<span class="sig-name descname"><span class="pre">set_Tdeb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Tdeb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_Tdeb" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.Symptome.set_Tfin">
+<span class="sig-name descname"><span class="pre">set_Tfin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Tfin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.Symptome.set_Tfin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.format">
+<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caracteres</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.format" title="Link to this definition">¶</a></dt>
+<dd><p>supprime les caracteres speciaux d’une liste de string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>List</em>) – liste de strings a traiter</p></li>
+<li><p><strong>caracteres</strong> (<em>List</em>) – liste des caracteres et de leur remplacement, de la forme [(“C1”, “C2”)]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>liste de strings traitée</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>new_data (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-frise.fonctions_frise">
+<span id="frise-fonctions-frise-module"></span><h2>frise.fonctions_frise module<a class="headerlink" href="#module-frise.fonctions_frise" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.fonctions_frise.afficher_frise">
+<span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">afficher_frise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liste</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.afficher_frise" title="Link to this definition">¶</a></dt>
+<dd><p>Affiche une frise chronologique avec gestion du chevauchement
+liste: liste des symptomes où chaque élément est une liste [nom, début, fin]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.fonctions_frise.chercherElt">
+<span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">chercherElt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.chercherElt" title="Link to this definition">¶</a></dt>
+<dd><p>cherche s’il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,…
+return: l’élément manquant ou l’élément suivant le dernier le cas échéant</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.fonctions_frise.chevauchement">
+<span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">chevauchement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liste</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.chevauchement" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>liste: liste des symptomes avec début et fin</dt><dd><p>symp: symptome actuel
+current_index: indice du symp actuel dans la liste.</p>
+</dd>
+</dl>
+<p>Return: niveau y où afficher le rectangle</p>
+</dd></dl>
+
+</section>
+<section id="module-frise.save">
+<span id="frise-save-module"></span><h2>frise.save module<a class="headerlink" href="#module-frise.save" title="Link to this heading">¶</a></h2>
+<p>Ce fichier contient des classes et fonctions de base pour sauvegarder les fichiers ‘.txt’ et frise de sortie</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="frise.save.metadata">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">frise.save.</span></span><span class="sig-name descname"><span class="pre">metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.metadata" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CTkToplevel</span></code></p>
+<p>fenetre toplevel pour saisir les metadonnées</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="frise.save.metadata.liste">
+<span class="sig-name descname"><span class="pre">liste</span></span><a class="headerlink" href="#frise.save.metadata.liste" title="Link to this definition">¶</a></dt>
+<dd><p>liste de symptomes a sauvegarder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="frise.save.metadata.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><a class="headerlink" href="#frise.save.metadata.filename" title="Link to this definition">¶</a></dt>
+<dd><p>chemin du fichier dans lequel ecrire</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.save.metadata.get_metadata">
+<span class="sig-name descname"><span class="pre">get_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.metadata.get_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>ecrire une liste des metadonnées sous la forme [heure réelle, patient, praticien]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>any</em>) – correspont a l’ecriture dans les box de texte</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="frise.save.save">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">frise.save.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Liste_symptomes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>classe dédiée à la sauvegarde des fichiers</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="frise.save.save.symptomes">
+<span class="sig-name descname"><span class="pre">symptomes</span></span><a class="headerlink" href="#frise.save.save.symptomes" title="Link to this definition">¶</a></dt>
+<dd><p>liste des symptomes a sauvegarder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.save.save.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save.save" title="Link to this definition">¶</a></dt>
+<dd><p>Enregistre les symptomes dans un fichier et produit la frise chronologique</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – message d’erreur si echec de recuperation du chemin du fichier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.save.save.set_symptomes">
+<span class="sig-name descname"><span class="pre">set_symptomes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Liste_symptomes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save.set_symptomes" title="Link to this definition">¶</a></dt>
+<dd><p>Actualise les symptomes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Liste_symptomes</strong> (<em>list</em>) – Liste de symptomes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-frise">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-frise" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Episcope</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general_interface_V1.html">General Interface</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Roméo RAMOS--TANGHE, Yosra SAID, Annaelle SARRAZIN, Rachel TECHI, Chloé THIRIET.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/frise.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

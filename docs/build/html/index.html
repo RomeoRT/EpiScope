@@ -13,7 +13,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="next" title="API" href="api.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -34,21 +34,12 @@
 <h1>Welcome to Episcope’s documentation!<a class="headerlink" href="#welcome-to-episcope-s-documentation" title="Link to this heading">¶</a></h1>
 <p><strong>Episcope</strong> is a GUI featuring ergonomic tools for annotating epileptic seizure videos.
 These tools enable practitioners to note directly on their patients’ epileptic seizure videos the various symptoms that appear, thanks to a pre-configured symptom semiology. This interface generates a .txt text file listing all the symptoms occurring during the seizure in chronological order, as well as a timeline illustrating the patient’s epileptic seizure. The timeline follows a temporal axis (identical to that of the seizure video) and indicates the moment of onset and end of each symptom. Practitioners must also be able to modify the .txt file and the frieze in the event of an oversight or readjustment.</p>
-<p>Check out the <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a> section for further information.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This project is under active development.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#saving-symptoms">Saving symptoms</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="save.html">Save</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="save.html#title">Title</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general_interface_V1.html">General Interface</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="general_interface_V1.html#general_interface_V1.FriseSymptomes"><code class="docutils literal notranslate"><span class="pre">FriseSymptomes</span></code></a><ul>
@@ -95,6 +86,121 @@ These tools enable practitioners to note directly on their patients’ epileptic
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="frise.html">frise package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="frise.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frise.html#module-frise.ecriture_fichier">frise.ecriture_fichier module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.ecriture_fichier.EcrireListeSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireListeSymptome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.ecriture_fichier.EcrireMetaData"><code class="docutils literal notranslate"><span class="pre">EcrireMetaData()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.ecriture_fichier.EcrireSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireSymptome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome"><code class="docutils literal notranslate"><span class="pre">Symptome</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.get_AttributSuppl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_Commentaire"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Commentaire()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.get_ID()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_Lateralisation"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Lateralisation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_Nom"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Nom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Orientation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_SegCorporel"><code class="docutils literal notranslate"><span class="pre">Symptome.get_SegCorporel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tdeb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tfin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.get_attributs"><code class="docutils literal notranslate"><span class="pre">Symptome.get_attributs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.set_AttributSuppl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_Commentaire"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Commentaire()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.set_ID()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_Lateralisation"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Lateralisation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_Nom"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Nom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Orientation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_SegCorporel"><code class="docutils literal notranslate"><span class="pre">Symptome.set_SegCorporel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tdeb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.ecriture_fichier.Symptome.set_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tfin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.ecriture_fichier.format"><code class="docutils literal notranslate"><span class="pre">format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="frise.html#module-frise.fonctions_frise">frise.fonctions_frise module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.fonctions_frise.afficher_frise"><code class="docutils literal notranslate"><span class="pre">afficher_frise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.fonctions_frise.chercherElt"><code class="docutils literal notranslate"><span class="pre">chercherElt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.fonctions_frise.chevauchement"><code class="docutils literal notranslate"><span class="pre">chevauchement()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="frise.html#module-frise.save">frise.save module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.save.metadata"><code class="docutils literal notranslate"><span class="pre">metadata</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.save.metadata.liste"><code class="docutils literal notranslate"><span class="pre">metadata.liste</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.save.metadata.filename"><code class="docutils literal notranslate"><span class="pre">metadata.filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.save.metadata.get_metadata"><code class="docutils literal notranslate"><span class="pre">metadata.get_metadata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="frise.html#frise.save.save"><code class="docutils literal notranslate"><span class="pre">save</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.save.save.symptomes"><code class="docutils literal notranslate"><span class="pre">save.symptomes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.save.save.save"><code class="docutils literal notranslate"><span class="pre">save.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="frise.html#frise.save.save.set_symptomes"><code class="docutils literal notranslate"><span class="pre">save.set_symptomes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="frise.html#module-frise">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annotation.html">annotation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#module-annotation.class_Menu_symptomes">annotation.class_Menu_symptomes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="annotation.html#annotation.class_Menu_symptomes.MenuSymptomes"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_Menu_symptomes.MenuSymptomes.filtrer_options"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes.filtrer_options()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#module-annotation.class_symptome">annotation.class_symptome module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome"><code class="docutils literal notranslate"><span class="pre">Symptome</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.get_AttributSuppl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_Commentaire"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Commentaire()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.get_ID()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_Lateralisation"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Lateralisation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_Nom"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Nom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Orientation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_SegCorporel"><code class="docutils literal notranslate"><span class="pre">Symptome.get_SegCorporel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tdeb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tfin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.get_attributs"><code class="docutils literal notranslate"><span class="pre">Symptome.get_attributs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.set_AttributSuppl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_Commentaire"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Commentaire()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.set_ID()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_Lateralisation"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Lateralisation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_Nom"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Nom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Orientation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_SegCorporel"><code class="docutils literal notranslate"><span class="pre">Symptome.set_SegCorporel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tdeb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome.set_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tfin()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#annotation-menu-deroulant-anaelle-module">annotation.menu_deroulant_anaelle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#annotation-pop-up-module">annotation.pop_up module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#module-annotation.recherche_menu_deroulant">annotation.recherche_menu_déroulant module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="annotation.html#annotation.recherche_menu_deroulant.filtrer_options"><code class="docutils literal notranslate"><span class="pre">filtrer_options()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#annotation-symptom-label-module">annotation.symptom_label module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html#module-annotation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lecteur_video.html">lecteur_video package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-barre-progression-module">lecteur_video.barre_progression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-code01-01-module">lecteur_video.code01-01 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-code06-12-module">lecteur_video.code06-12 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-code07-02-module">lecteur_video.code07-02 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-code08-03-module">lecteur_video.code08-03 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-code11-03-module">lecteur_video.code11-03 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-code18-12-module">lecteur_video.code18-12 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-code26-02-module">lecteur_video.code26-02 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-csacade-module">lecteur_video.csacade module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-interface-menu-deroulants-module">lecteur_video.interface_menu_deroulants module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#lecteur-video-menu-indente-module">lecteur_video.menu_indente module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecteur_video.html#module-lecteur_video">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -125,17 +231,18 @@ These tools enable practitioners to note directly on their patients’ epileptic
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="save.html">Save</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general_interface_V1.html">General Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frise.html">frise package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotation.html">annotation package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecteur_video.html">lecteur_video package</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="usage.html" title="next chapter">Usage</a></li>
+      <li>Next: <a href="api.html" title="next chapter">API</a></li>
   </ul></li>
 </ul>
 </div>
