@@ -1,9 +1,5 @@
 """
-Projet Episcope
-
-Auteur : Roméo RAMOS--TANGHE
-
-Ce fichier contient des fonctions de base pour sauvegarder les fichiers '.txt' et frise de sortie
+Ce fichier contient des classes et fonctions de base pour sauvegarder les fichiers '.txt' et frise de sortie
 """
 from tkinter import filedialog
 from tkinter import messagebox
@@ -13,6 +9,9 @@ import frise.ecriture_fichier as EF
 class save :
     """
     classe dédiée à la sauvegarde des fichiers 
+
+    Attributes:
+       symptomes (Liste): liste des symptomes a sauvegarder 
     """
     def __init__(self, Liste_symptomes = []):
         self.symptomes = Liste_symptomes
@@ -21,6 +20,9 @@ class save :
     def save(self):
         """
         Enregistre les symptomes dans un fichier et produit la frise chronologique
+
+        Raises:
+            FileNotFoundError: message d'erreur si echec de recuperation du chemin du fichier.
         """
         # récuperer le nom et emplacement des fichiers
         filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")])
@@ -41,7 +43,12 @@ class save :
             messagebox.showinfo('Episcope Error', 'No file selected\nCannot save properly')
     
     def set_symptomes(self, Liste_symptomes):
-        """Actualise les symptomes"""
+        """
+        Actualise les symptomes
+
+        Args:
+            Liste_symptomes (list): Liste de symptomes
+        """
         self.symptomes = Liste_symptomes
 
 
@@ -51,8 +58,18 @@ class save :
 class metadata(CTK.CTkToplevel) :
     """
     fenetre toplevel pour saisir les metadonnées
+
+    Attributes:
+        liste (list): liste de symptomes a sauvegarder
+        filename (string): chemin du fichier dans lequel ecrire
     """
     def __init__(self,filename) :
+        """
+        constructeur de metadata
+
+        Args:
+            filename (string) : chemin du ficher dans lequel ecrire
+        """
         super().__init__()
 
         self.liste = []
@@ -91,6 +108,9 @@ class metadata(CTK.CTkToplevel) :
     def get_metadata(self, event):
         """
         ecrire une liste des metadonnées sous la forme [heure réelle, patient, praticien]
+
+        Args:
+            event (any): correspont a l'ecriture dans les box de texte
         """
         
         self.liste.append(self.hour_entry.get())

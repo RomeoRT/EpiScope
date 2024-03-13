@@ -1,11 +1,7 @@
 """
-Projet Episcope
-
-Auteur : Roméo RAMOS--TANGHE
-
-Ce fichier contient des fonctions pour créer et éditer les fichiers '.txt' de sortie avec les symptomes
+Ce module contient des fonctions pour créer et éditer les fichiers '.txt' de sortie avec les symptomes
 """
-#from class_symptome import *
+#from annotation.class_symptome import *
 import datetime
 ##########################################################################################################################
 class Symptome:
