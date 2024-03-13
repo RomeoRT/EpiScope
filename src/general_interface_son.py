@@ -1,7 +1,6 @@
 #pour lancer ce code il faut avoir le fichier "Objective_Sympotomes.txt" dans le meme dossier qu ce fichier.
 #ce code genere les menus derouants indenté dans la partie gauche et affiche dan sla partie droite le schema complet.
-#le pb est que les menus indentés s'affichent dans une feetre à part
-
+#le pb est que les menus indenté s'affiche dans une feetre à part
 import tkinter as tk
 import customtkinter as ctk
 from tkinter import filedialog
@@ -12,23 +11,17 @@ import tkinter.font as tkFont
 import os
 import tkinter.font as tkFont
 import random
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.figure import Figure
+from moviepy.editor import VideoFileClip
+import pygame
+from pygame.time import Clock
+
 
 #utile pour la génération de la frise chronologique:
-from frise.fonctions_frise import afficher_frise
+from fonctions_frise import afficher_frise
 #from class_symptome import Symptome
 
 class Menu_symptomes(ctk.CTkFrame):
     def __init__(self, master, interface_generale, largeur_totale):
-        """
-        constructeur créant un menu déroulant
-        arguments :
-            master : fenetre principale 
-            interface_generale : 
-            largeur_totale : largeur des menus 
-
-        """
         super().__init__(master, width=largeur_totale)
         self.interface_generale = interface_generale
         self.file_name = "Objective_Symptomes.txt"
@@ -97,8 +90,6 @@ class Menu_symptomes(ctk.CTkFrame):
 
 
     def read_symptoms_from_file(self, file_name):
-        """Lecture des fichiers pour créer les menus"""
-
         with open(file_name, 'r', encoding='utf-8') as file:
             title = file.readline().strip()
             symptoms = []
@@ -152,7 +143,6 @@ class FriseSymptomes:
 
         # Appelez la fonction afficher_frise avec la liste de symptômes formatés
         afficher_frise(symptomes_formattes)
-
 
 class InterfaceGenerale():
     def __init__(self, fenetre):
@@ -337,166 +327,178 @@ class InterfaceGenerale():
     #ecriture de la selection dans un box à  part
 
 
+
 class LecteurVideo():
-    
+
     def __init__(self, InterfaceGenerale):
-
         self.interface_generale = InterfaceGenerale
-        self.canvas = None  # Initialisation de la variable canvas
-
-
-
-    def ouvrir_video_noire(self):
-        # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
-        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_noire.mp4")
-        print("Chemin du fichier vidéo:", file_path)
-
-        if os.path.exists(file_path):
-            self.interface_generale.cap = cv2.VideoCapture(file_path)
-
-            largeur = int(self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-            hauteur = int(self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
-            # Mettre à jour la taille du canevas pour correspondre à la partie du milieu
-            largeur_partie_milieu = self.interface_generale.frame_middle.winfo_reqwidth()
-            hauteur_partie_milieu = self.interface_generale.frame_middle.winfo_reqheight()
-            hauteur_canevas = (largeur_partie_milieu / largeur) * hauteur
-
-            self.interface_generale.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
-
-            self.interface_generale.progress_slider.configure(to=self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
-            self.afficher_video()
-            self.interface_generale.bouton_pause_lecture.configure(state=ctk.NORMAL)
-        else:
-            print("La vidéo 'vidéo noire' n'a pas été trouvée dans le dossier courant.")
-
-
+        pygame.mixer.init()
+        self.video_paused = False
+        self.current_frame_time = 0
+        self.clock = Clock()  # Initialisez l'horloge pygame
 
     def ouvrir_video(self):
+        # Sélection du fichier vidéo et préparation de la vidéo et du son
         file_path = filedialog.askopenfilename(filetypes=[("Fichiers vidéo", "*.mp4 *.avi")])
         if file_path:
             self.interface_generale.cap = cv2.VideoCapture(file_path)
-
-            largeur = int(self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-            hauteur = int(self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
-            # Mettre à jour la taille du canevas pour correspondre à la partie du milieu
-            largeur_partie_milieu = self.interface_generale.frame_middle.winfo_reqwidth()
-            hauteur_partie_milieu = self.interface_generale.frame_middle.winfo_reqheight() - 50
-            hauteur_canevas = (largeur_partie_milieu / largeur) * hauteur
-
-            self.interface_generale.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
-
-
-
-            # Ajuster la taille du canevas pour occuper toute la partie du milieu
-            self.interface_generale.canvas.config(width=largeur_partie_milieu, height=hauteur_canevas)
-
-            self.interface_generale.progress_slider.configure(to=self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
+            if not self.interface_generale.cap.isOpened():
+                print("Erreur: Impossible d'ouvrir la vidéo.")
+                return
+            self.preparer_son_video(file_path)
             self.afficher_video()
-            self.interface_generale.bouton_pause_lecture.configure(state=ctk.NORMAL)
+
+    def preparer_son_video(self, file_path):
+        # Convertir la piste audio de la vidéo en fichier WAV
+        clip = VideoFileClip(file_path)
+        audio_path = "temp_audio.wav"  # Définissez le chemin de fichier pour l'audio temporaire
+        clip.audio.write_audiofile(audio_path)
+        clip.close()  # Fermez le clip pour libérer les ressources
+
+        # Utilisez pygame.mixer.music pour charger et jouer la piste audio
+        pygame.mixer.music.load(audio_path)
+        pygame.mixer.music.play(-1)  # Jouez en boucle
+
+
 
     def afficher_video(self):
-        if self.interface_generale.cap.isOpened():
-            ret, frame = self.interface_generale.cap.read()
-            if ret:
-                # Convertir BGR en RGB
-                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            if self.interface_generale.cap.isOpened():
+                ret, frame = self.interface_generale.cap.read()
+                if ret:
+                    # Convertir BGR en RGB
+                    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-                # Ajuster la taille du frame pour correspondre à la taille du canevas
-                largeur_canevas = self.interface_generale.canvas.winfo_width()
-                hauteur_canevas = self.interface_generale.canvas.winfo_height()
-                frame = cv2.resize(frame, (largeur_canevas, hauteur_canevas))
+                    # Ajuster la taille du frame pour correspondre à la taille du canevas
+                    largeur_canevas = self.interface_generale.canvas.winfo_width()
+                    hauteur_canevas = self.interface_generale.canvas.winfo_height()
+                    frame = cv2.resize(frame, (largeur_canevas, hauteur_canevas))
 
-                # Convertir l'image CV2 en image Tkinter
-                photo = ImageTk.PhotoImage(image=Image.fromarray(frame))
+                    # Convertir l'image CV2 en image Tkinter
+                    photo = ImageTk.PhotoImage(image=Image.fromarray(frame))
 
-                # Afficher l'image dans le canevas
-                self.interface_generale.canvas.create_image(0, 0, image=photo, anchor=tk.NW)
-                self.interface_generale.canvas.image = photo  # Empêcher l'image d'être effacée par le ramasse-miettes.
+                    # Afficher l'image dans le canevas
+                    self.interface_generale.canvas.create_image(0, 0, image=photo, anchor=tk.NW)
+                    self.interface_generale.canvas.image = photo  # Empêcher l'image d'être effacée par le ramasse-miettes.
 
-                # Mise à jour du temps écoulé et du temps total
-                frame_number = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
-                fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
-                total_frames = self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT)
+                    # Mise à jour du temps écoulé et du temps total
+                    frame_number = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
+                    fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
+                    total_frames = self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT)
 
-                temps_ecoule = int(frame_number / fps)
-                duree_totale = int(total_frames / fps)
-                self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(temps_ecoule)} / Durée totale: {self.format_duree(duree_totale)}")
+                    temps_ecoule = int(frame_number / fps)
+                    duree_totale = int(total_frames / fps)
+                    self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(temps_ecoule)} / Durée totale: {self.format_duree(duree_totale)}")
 
-                # S'assurer que la vidéo continue de jouer si elle n'est pas en pause
-                if not self.interface_generale.lec_video.video_paused:
-                    self.interface_generale.canvas.after(int(1000/fps), self.afficher_video)
-        if self.interface_generale.set_end_time_mode and self.interface_generale.current_symptom:
-            # Mettre à jour le panel de droite avec le temps de fin sans réécrire le symptôme
-            self.interface_generale.update_right_panel(self.interface_generale.current_symptom, is_start_time=False)
-            self.interface_generale.set_end_time_mode = False
-            self.interface_generale.current_symptom = ""
+                    # S'assurer que la vidéo continue de jouer si elle n'est pas en pause
+                    if not self.interface_generale.lec_video.video_paused:
+                        self.interface_generale.canvas.after(int(1000/fps), self.afficher_video)
+
+    def mettre_a_jour_frame_video(self, frame):
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = ImageTk.PhotoImage(image=Image.fromarray(frame))
+        self.interface_generale.canvas.create_image(0, 0, image=frame, anchor=tk.NW)
+        self.interface_generale.canvas.image = frame
+
+    def mettre_a_jour_temps_video(self):
+        self.current_frame_time = self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC)
+        if not self.video_paused:
+            self.interface_generale.fenetre.after(33, self.afficher_video)  # Continuez la lecture environ toutes les 33 ms
 
     def pause_lecture(self):
+        self.video_paused = not self.video_paused
         if self.video_paused:
-            self.interface_generale.bouton_pause_lecture.configure(text="Pause")
-            self.video_paused = False
-            self.afficher_video()
-        else:
+            pygame.mixer.music.pause()  # Pause le son
+            # Mettre à jour le texte du bouton ici, exemple :
             self.interface_generale.bouton_pause_lecture.configure(text="Reprendre")
-            self.video_paused = True
+        else:
+            pygame.mixer.music.unpause()  # Reprend le son
+            self.interface_generale.fenetre.after(0, self.afficher_video)  # Reprend la lecture vidéo immédiatement
+            # Mettre à jour le texte du bouton ici, exemple :
+            self.interface_generale.bouton_pause_lecture.configure(text="Pause")
 
+
+
+    def mettre_a_jour_progression_son(self):
+        if self.interface_generale.cap.isOpened():
+            # Synchroniser la position de lecture du son avec celle de la vidéo
+            position_video = self.current_frame_time / 1000.0  # Convertir en secondes
+            pygame.mixer.music.set_pos(position_video)
     def manual_update_progress(self, value):
         frame_number = int(value)
+        123
         self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
+        self.sound.set_pos(self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0)
         self.afficher_video()
 
     def avance_progress(self):
         if self.interface_generale.cap.isOpened():
-            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
-            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
-            new_frame = current_frame + fps * 2  # Avance de 2 secondes
+            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)  # Obtenez les FPS de la vidéo
+            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)  # Obtenez le numéro de frame actuel
+            # Calculez le nouveau numéro de frame en avançant de 2 secondes
+            new_frame = current_frame + fps * 2  
+            # Mettez à jour la position de la vidéo
             self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, new_frame)
-            # Ne pas appeler afficher_video ici pour éviter le dédoublement
+            
+            # Calculez la nouvelle position de la piste audio en secondes
+            new_time = new_frame / fps
+            # Ajustez la position de la piste audio
+            pygame.mixer.music.play(0, new_time)
+            self.afficher_video()  # Mettez à jour l'affichage vidéo
 
     def recule_progress(self):
         if self.interface_generale.cap.isOpened():
-            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
-            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
-            new_frame = max(0, current_frame - fps * 2)  # Recule de 2 secondes
+            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)  # Obtenez les FPS de la vidéo
+            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)  # Obtenez le numéro de frame actuel
+            # Calculez le nouveau numéro de frame en reculant de 2 secondes
+            new_frame = max(0, current_frame - fps * 2)  # S'assure que le nouveau frame n'est pas négatif
+            # Mettez à jour la position de la vidéo
             self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, new_frame)
-            # Ne pas appeler afficher_video ici pour éviter le dédoublement
+            
+            # Calculez la nouvelle position de la piste audio en secondes
+            new_time = new_frame / fps
+            # Ajustez la position de la piste audio
+            pygame.mixer.music.play(0, new_time)
+            self.afficher_video()  # Mettez à jour l'affichage vidéo
 
 
     def format_duree(self, seconds):
         return str(datetime.timedelta(seconds=seconds))
 
+    def charger_son_video(self, file_path):
+        # Assurez-vous que le son précédent est arrêté et supprimé
+        if self.sound:
+            self.sound.stop()
+
+        # Extraction et chargement du son de la vidéo
+        clip = VideoFileClip(file_path)
+        clip.audio.write_audiofile("temp_audio.wav")
+        self.sound = pygame.mixer.Sound("temp_audio.wav")
+        clip.close()  # Libérer les ressources
+
 
     def afficher_menu_annotations(self, event):
-        if self.interface_generale.set_end_time_mode:
-            # Le mode de définition du temps de fin est activé
-            self.afficher_video()  # Ceci va capturer le temps de fin
-        else:
-            # Coordonnées du clic
-            x = event.x
-            y = event.y
-            largeur_canevas = self.interface_generale.canvas.winfo_width()
-            hauteur_canevas = self.interface_generale.canvas.winfo_height()
-            # Calcul des dimensions d'une case
-            largeur_case = largeur_canevas // 2
-            hauteur_case = hauteur_canevas // 2
-            # Déterminer dans quelle case se trouve le clic
-            colonne = x // largeur_case
-            ligne = y // hauteur_case
-            taille_plus = 1/3  
+        # Coordonnées du clic
+        x = event.x
+        y = event.y
+        largeur_canevas = self.interface_generale.canvas.winfo_width()
+        hauteur_canevas = self.interface_generale.canvas.winfo_height()
+        # Calcul des dimensions d'une case
+        largeur_case = largeur_canevas // 2
+        hauteur_case = hauteur_canevas // 2
+        # Déterminer dans quelle case se trouve le clic
+        colonne = x // largeur_case
+        ligne = y // hauteur_case
+        taille_plus = 1/3  
 
-            self.ajouter_plus_rouge(self.canvas, x, y, taille_plus)
-            if colonne == 0 and ligne == 0:
-                print("la case 1 a été selectionnée")
-            elif colonne == 1 and ligne == 0:
-                print ("la case 2 a été sélectionnée")
-            elif colonne == 0 and ligne == 1:
-                print ("la case 3 a été sélectionnée")
-            elif colonne == 1 and ligne == 1:
-                print ("la case 4 a été sélectionnée")
+        self.ajouter_plus_rouge(self.interface_generale.canvas, x, y, taille_plus)
+        if colonne == 0 and ligne == 0:
+            print("la case 1 a été selectionnée")
+        elif colonne == 1 and ligne == 0:
+            print ("la case 2 a été sélectionnée")
+        elif colonne == 0 and ligne == 1:
+            print ("la case 3 a été sélectionnée")
+        elif colonne == 1 and ligne == 1:
+            print ("la case 4 a été sélectionnée")
         
     def ajouter_plus_rouge(self,canvas, x, y, taille):
         # Coordonnées pour créer un '+'

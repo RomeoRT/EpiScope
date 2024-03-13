@@ -73,7 +73,7 @@ if __name__=='__main__':
     maFenetre.title("Classe Menu Déroulant")
     maFenetre.geometry('300x200')
 
-    Menu = Menu_symptomes(maFenetre)
+    Menu = MenuSymptomes(maFenetre)
     Menu.grid()
 
     maFenetre.mainloop()

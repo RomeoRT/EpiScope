@@ -106,13 +106,18 @@ class Symptome:
 
 def EcrireSymptome(symptome, nomfichier) :
     """Ecrit un symptome dans un fichier texte dont on specifie le nom"""
-
+    
     data = symptome.get_attributs()
+    
+    # formattage : caracteres a supprimer
+    caract = [["\n",""],["\t"," "]]
+    
+    data = format(data, caract)
     with open(nomfichier, 'a') as fichier :
         for attribut in data :
             fichier.write(attribut)
             fichier.write("\t")
-        fichier.write("\n")
+        fichier.write("end \n") #pour le test
 
 
 def EcrireListeSymptome(listeSymptome, nomfichier) :
@@ -134,7 +139,19 @@ def EcrireMetaData(ListeMeta, nomfichier) :
          fichier.write("heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n")
          fichier.write(f"{ListeMeta[0]}\t{ListeMeta[1]}\t{ListeMeta[2]}\t{mydate}\n\n")
         
+def format(data, caracteres):
+    """
+    supprime les caracteres speciaux d'une liste de string
+    
+    arguments :
+        data : liste de strings a traiter
+        caracteres : liste des caracteres et de leur remplacement, de la forme [("C1", "C2")]
+    """
+    for element in caracteres :
+        new_data = [txt.replace(element[0],element[1]) for txt in data]
+        data = new_data
 
+    return new_data
 
 ##########################################################################################################
 if __name__ == "__main__" :
@@ -150,3 +167,10 @@ if __name__ == "__main__" :
 
     EcrireMetaData(meta, nomfichier)
     EcrireListeSymptome(L, nomfichier)
+
+    #test format
+    unicode = [("\n",""),("é","e"),("a","o")]
+    liste_nulle = ["coucou \n lés amis", "coucou més amis"]
+    list_cool = format(liste_nulle, unicode)
+
+    print(list_cool)

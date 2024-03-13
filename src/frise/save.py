@@ -27,9 +27,10 @@ class save :
         try :
             # ecrire les métadatas
             Meta_wd = metadata(filename)
+            Meta_wd.after(100, Meta_wd.lift)
 
             EF.EcrireListeSymptome(self.symptomes, filename)
-            print("ecriture")
+            #print("ecriture")
 
         except FileNotFoundError:
             Meta_wd.destroy()

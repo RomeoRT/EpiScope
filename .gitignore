@@ -1,0 +1,21 @@
+src/frise/__pycache__/ecriture_fichier.cpython-312.pyc
+src/frise/__pycache__/save.cpython-312.pyc
+src\annotation\__pycache__
+
+src/temp_audio.wav
+src\test_truc_2.py
+
+# fichiers a ignorer pour le git
+*__pycache__/
+
+*.moi*  # des fichiers inutiles, pour moi 
+
+# Fichiers d'environnement virtuel
+*venv/
+
+# Fichiers générés par VSCode
+.vscode/
+
+# Tests divers
+*test*
+
