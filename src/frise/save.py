@@ -8,7 +8,7 @@ Ce fichier contient des fonctions de base pour sauvegarder les fichiers '.txt' e
 from tkinter import filedialog
 from tkinter import messagebox
 import customtkinter as CTK
-import ecriture_fichier as EF
+import frise.ecriture_fichier as EF
 
 class save :
     """

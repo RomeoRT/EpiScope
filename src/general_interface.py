@@ -13,7 +13,6 @@ import tkinter.font as tkFont
 import random
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-import re
 
 #utile pour la génération de la frise chronologique:
 from fonctions_frise import afficher_frise
