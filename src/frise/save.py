@@ -25,12 +25,15 @@ class save :
         # récuperer le nom et emplacement des fichiers
         filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")])
         try :
-            # ecrire les métadatas
-            Meta_wd = metadata(filename)
-            Meta_wd.after(100, Meta_wd.lift)
+            if self.symptomes == [] :
+                messagebox.showinfo('Episcope Error', 'Empty symptom list\nCannot save properly')
+            else :
+                # ecrire les métadatas
+                Meta_wd = metadata(filename)
+                Meta_wd.after(100, Meta_wd.lift)
 
-            EF.EcrireListeSymptome(self.symptomes, filename)
-            #print("ecriture")
+                EF.EcrireListeSymptome(self.symptomes, filename)
+                #print("ecriture")
 
         except FileNotFoundError:
             Meta_wd.destroy()
