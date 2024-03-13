@@ -43,8 +43,10 @@ def chevauchement(liste, symp, current_index, levels):
 
 
 def afficher_frise(liste):
-    """ Affiche une frise chronologique avec gestion du chevauchement
-        liste: liste des symptomes où chaque élément est une liste [nom, début, fin] """
+    """ 
+    Affiche une frise chronologique avec gestion du chevauchement
+    liste: liste des symptomes où chaque élément est une liste [nom, début, fin] 
+    """
     
     liste = sorted(liste, key=lambda x: float(x[1]))
     levels = []

@@ -17,8 +17,8 @@ Check out the :doc:`usage` section for further information.
 .. toctree::
 
    usage
-   save
    api
+   general_interface_V1
    
 Indices and tables
 ==================
