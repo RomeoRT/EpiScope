@@ -140,7 +140,7 @@ class Menu_symptomes(ctk.CTkFrame):
             options_filtrees = [option for option in self.options_symptomes[i] if recherche in option.lower()]
             self.liste_MenuDeroulant[i].configure(values=options_filtrees) 
 
-# Classe frise de Chloé:
+
 class FriseSymptomes:
     def __init__(self,InterfaceGenerale,MenuDeroulant):
         self.menu_deroulant=MenuDeroulant
@@ -172,7 +172,6 @@ class FriseSymptomes:
 
         newL = sorted(newL, key=lambda x: float(x[1]))
         afficher_frise(newL)
-
 
 
 class InterfaceGenerale():
@@ -381,8 +380,6 @@ class InterfaceGenerale():
         """
         save = sauvg.save(self.ListeSymptomes)
         save.save()
-
-
 
 
 class LecteurVideo():
@@ -615,6 +612,7 @@ class LecteurVideo():
         ligne_verticale = self.interface_generale.canvas.create_line(x, y-taille*20, x, y+taille*20, fill="red", width=3)
                 
         self.interface_generale.canvas.after(1000, lambda: self.interface_generale.canvas.delete(ligne_horizontale, ligne_verticale))
+
 
 if __name__ == "__main__":
     root = ctk.CTk()
