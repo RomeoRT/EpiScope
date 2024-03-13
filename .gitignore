@@ -3,7 +3,8 @@ src/frise/__pycache__/save.cpython-312.pyc
 src\annotation\__pycache__
 
 src/temp_audio.wav
-src\test_truc_2.py
+audio.wav
+
 
 # fichiers a ignorer pour le git
 *__pycache__/

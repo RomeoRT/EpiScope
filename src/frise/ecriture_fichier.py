@@ -117,8 +117,6 @@ def EcrireSymptome(symptome, nomfichier) :
         for attribut in data :
             fichier.write(attribut)
             fichier.write("\t")
-        fichier.write("end \n") #pour le test
-
 
 def EcrireListeSymptome(listeSymptome, nomfichier) :
     """Ecrit une liste de symptomes dans un fichier texte
@@ -126,9 +124,11 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
     Chaque symptome est écrit sur une ligne
     Fait appel à la fonction EcrireSymptome
     """
+    with open(nomfichier, 'a') as fichier :
+        fichier.write("ID \tNom \tLateralisation \tSegment corporel \tDebut \tFin \tOrientation \tAttributs supplémentaires \tcommentaires \n")
+
     for symptome in listeSymptome :
         EcrireSymptome(symptome, nomfichier)
-
 
 def EcrireMetaData(ListeMeta, nomfichier) :
     """Ecrit les metadata d'une annotation dans un fichier texte sous la forme : heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n
