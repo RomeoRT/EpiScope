@@ -530,6 +530,7 @@ class LecteurVideo():
                 
         self.interface_generale.canvas.after(1000, lambda: self.interface_generale.canvas.delete(ligne_horizontale, ligne_verticale))
 
+
 if __name__ == "__main__":
     root = ctk.CTk()
     root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))  # Plein écran
