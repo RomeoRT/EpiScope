@@ -105,7 +105,17 @@ class Symptome:
     
 
 def EcrireSymptome(symptome, nomfichier) :
-    """Ecrit un symptome dans un fichier texte dont on specifie le nom"""
+    """
+    Ecrit un symptome dans un fichier texte dont on specifie le nom
+    
+    Args:
+        symptome (Symptome): symptome à écrire
+        nomfichier (string): chemin du fichier
+
+    Returns:
+        None 
+    
+    """
     
     data = symptome.get_attributs()
     
@@ -119,10 +129,18 @@ def EcrireSymptome(symptome, nomfichier) :
             fichier.write("\t")
 
 def EcrireListeSymptome(listeSymptome, nomfichier) :
-    """Ecrit une liste de symptomes dans un fichier texte
+    """
+    Ecrit une liste de symptomes dans un fichier texte
     
     Chaque symptome est écrit sur une ligne
     Fait appel à la fonction EcrireSymptome
+
+    Args:
+        symptome (list): liste des symptomes
+        nomfichier (string): chemin du fichier
+    
+    Returns:
+        None 
     """
     with open(nomfichier, 'a') as fichier :
         fichier.write("ID \tNom \tLateralisation \tSegment corporel \tDebut \tFin \tOrientation \tAttributs supplémentaires \tcommentaires \n")
@@ -131,7 +149,16 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
         EcrireSymptome(symptome, nomfichier)
 
 def EcrireMetaData(ListeMeta, nomfichier) :
-    """Ecrit les metadata d'une annotation dans un fichier texte sous la forme : heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n
+    """
+    Ecrit les metadata d'une annotation dans un fichier texte sous la forme : heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n
+
+    Args:
+        ListeMeta (List): liste des métadatas
+        nomfichier (string): chemin du fichier
+
+    Returns:
+        None
+
     """
     mydate = datetime.date.today()
     with open(nomfichier, 'a') as fichier :
@@ -143,9 +170,12 @@ def format(data, caracteres):
     """
     supprime les caracteres speciaux d'une liste de string
     
-    arguments :
-        data : liste de strings a traiter
-        caracteres : liste des caracteres et de leur remplacement, de la forme [("C1", "C2")]
+    Args:
+        data (List) : liste de strings a traiter
+        caracteres (List): liste des caracteres et de leur remplacement, de la forme [("C1", "C2")]
+
+    Returns:
+        new_data (list) : liste de strings traitée
     """
     for element in caracteres :
         new_data = [txt.replace(element[0],element[1]) for txt in data]
