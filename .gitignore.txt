@@ -8,3 +8,6 @@
 
 # Fichiers générés par VSCode
 .vscode/
+
+# Tests divers
+*test*
