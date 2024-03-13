@@ -14,6 +14,8 @@ interface générale Episcope contenant :
     fichiers :
     - générer la frise
     - generer le fichier texte
+
+version : 0.1
 """
 import tkinter as tk
 import customtkinter as ctk
