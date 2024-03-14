@@ -1,5 +1,0 @@
-Fruits Rouges; Fraise; Framboise; Cerise; Myrtille; Mûre
-Fruits Exotiques; Kiwi; Banane; Mangue; Papaye; Ananas; Fruit de la passion
-Fruits Estivaux; Abricot; pêche; melon; pastèque
-Fruits automnaux; poire; pomme; figue; orange
-Fruits Magiques; zblouf; trucmuche
