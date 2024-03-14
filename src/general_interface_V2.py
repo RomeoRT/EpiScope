@@ -313,9 +313,8 @@ class InterfaceGenerale():
         def open_editor_on_click(event, Symp):
             ''' Ouvre la fenêtre de modification d'un symptôme'''
             if event.widget.cget("text"):
-                # Instancier la fenêtre de modification
-                editor_window = tk.Toplevel()  # Utilisez Toplevel() pour créer une fenêtre enfant de l'interface principale
-                editor = SymptomeEditor(editor_window, Symp)
+                # Instancier la fenêtre de modification TopLevel
+                editor = SymptomeEditor(Symp)
                 # Afficher la fenêtre de modification
                 editor_window.transient(event.widget.master)  # Définissez la fenêtre de modification comme une fenêtre enfant de l'interface principale
                 editor_window.grab_set()  # Empêche l'interaction avec l'interface principale jusqu'à ce que la fenêtre de modification soit fermée
