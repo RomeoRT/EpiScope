@@ -4,6 +4,7 @@ Ce fichier contient des classes et fonctions de base pour sauvegarder les fichie
 from tkinter import filedialog
 from tkinter import messagebox
 import customtkinter as CTK
+
 import frise.ecriture_fichier as EF
 
 class save :
@@ -105,7 +106,7 @@ class metadata(CTK.CTkToplevel) :
         self.boutonOK.grid(row=4, column=1, padx=5, pady=5, sticky="ew")
 
         # Lier l'événement <Return> à la fonction get_metadata
-        self.bind('<Return>', lambda event: self.get_metadata)
+        self.bind('<Return>', lambda event: self.get_metadata(event))
     
 
     def get_metadata(self, event):
