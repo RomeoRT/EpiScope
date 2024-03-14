@@ -314,7 +314,7 @@ class InterfaceGenerale():
             ''' Ouvre la fenêtre de modification d'un symptôme'''
             if event.widget.cget("text"):
                 # Instancier la fenêtre de modification TopLevel
-                editor = SymptomeEditor(Symp)
+                editor_window = SymptomeEditor(Symp)
                 # Afficher la fenêtre de modification
                 editor_window.transient(event.widget.master)  # Définissez la fenêtre de modification comme une fenêtre enfant de l'interface principale
                 editor_window.grab_set()  # Empêche l'interaction avec l'interface principale jusqu'à ce que la fenêtre de modification soit fermée
