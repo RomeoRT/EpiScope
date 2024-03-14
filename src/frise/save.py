@@ -103,6 +103,9 @@ class metadata(CTK.CTkToplevel) :
         self.boutonOK = CTK.CTkButton(self, text="OK",fg_color='green', hover_color= ('darkgreen'))
         self.boutonOK.bind("<Button-1>", self.get_metadata)
         self.boutonOK.grid(row=4, column=1, padx=5, pady=5, sticky="ew")
+
+        # Lier l'événement <Return> à la fonction get_metadata
+        self.bind('<Return>', lambda event: self.get_metadata)
     
 
     def get_metadata(self, event):
