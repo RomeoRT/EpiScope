@@ -39,6 +39,7 @@ from frise.fonctions_frise import afficher_frise
 #from fonctions_frise import chercherElt
 import frise.save as sauvg
 from annotation.class_symptome import Symptome
+from annotation.pop_up import SymptomeEditor
 
 
 class Menu_symptomes(ctk.CTkFrame):
@@ -413,7 +414,7 @@ class LecteurVideo():
 
     def ouvrir_video(self):
         # Sélection du fichier vidéo et préparation de la vidéo et du son
-        file_path = filedialog.askopenfilename(filetypes=[("Fichiers vidéo", "*.mp4 *.avi")])
+        file_path = filedialog.askopenfilename(filetypes=[("Fichiers vidéo", "*.mp4 *.avi *mpg")])
         if file_path:
             self.interface_generale.cap = cv2.VideoCapture(file_path)
             if not self.interface_generale.cap.isOpened():
