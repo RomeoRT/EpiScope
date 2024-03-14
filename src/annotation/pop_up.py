@@ -1,43 +1,46 @@
 from annotation.class_symptome import Symptome
 import tkinter as tk
+import customtkinter as CTK
 
-class SymptomeEditor:
+class SymptomeEditor(CTK.CTkToplevel):
 
-    def __init__(self, master, Symp):
-        self.master = master
+    def __init__(self, Symp):
+        
+        super().__init__()
         self.Symp = Symp
-        self.master.title("Éditeur de Symptômes")
-        self.master.geometry("500x350")  # taille initiale de la fenêtre
+        self.title("Symptom Editor")
+        self.geometry("400x400")  # taille initiale de la fenêtre
 
         # champs de saisie pour chaque attribut
-        self.id_entry = self.create_entry("ID :", self.Symp.ID)
-        self.nom_entry = self.create_entry("Nom :", self.Symp.Nom)
-        self.lat_entry = self.create_entry("Latéralisation :", self.Symp.Lateralisation)
-        self.seg_entry = self.create_entry("Segment Corporel :", self.Symp.SegCorporel)
-        self.ori_entry = self.create_entry("Orientation :", self.Symp.Orientation)
-        self.attr_entry = self.create_entry("Attribut Supplémentaire :", self.Symp.AttributSuppl)
-        self.tdeb_entry = self.create_entry("Temps début:", self.Symp.Tdeb)
-        self.tfin_entry = self.create_entry("Temps fin :", self.Symp.Tfin)
-        self.comment_entry = self.create_entry("Commentaire :", self.Symp.Commentaire)
+        self.id_entry = self.create_entry("ID :", self.Symp.ID, 1)
+        self.nom_entry = self.create_entry("Nom :", self.Symp.Nom, 2)
+        self.lat_entry = self.create_entry("Latéralisation :", self.Symp.Lateralisation, 3)
+        self.seg_entry = self.create_entry("Segment Corporel :", self.Symp.SegCorporel, 4)
+        self.ori_entry = self.create_entry("Orientation :", self.Symp.Orientation, 5)
+        self.attr_entry = self.create_entry("Attribut Supplémentaire :", self.Symp.AttributSuppl, 6)
+        self.tdeb_entry = self.create_entry("Temps début:", self.Symp.Tdeb, 7)
+        self.tfin_entry = self.create_entry("Temps fin :", self.Symp.Tfin, 8)
+        self.comment_entry = self.create_entry("Commentaire :", self.Symp.Commentaire, 9)
 
         # Bouton pour appliquer les modifications
-        self.apply_button = tk.Button(master, text="Confirmer", command= lambda: self.apply_changes(Symp), bg="#FFFFFF", fg="black")
-        self.apply_button.pack(pady=10)
+        self.boutonOK = CTK.CTkButton(self, text="OK",fg_color='green', hover_color= ('darkgreen'))
+        self.boutonOK.bind("<Button-1>", lambda event: self.apply_changes(Symp))
+        self.boutonOK.grid(row=10, column=1, padx=5, pady=5, sticky="ew")
 
         # Lier l'événement <Return> à la fonction apply_changes
-        master.bind('<Return>', lambda event: self.apply_changes(Symp))
+        self.bind('<Return>', lambda event: self.apply_changes(Symp))
 
-    def create_entry(self, label_text, initial_value):
+    def create_entry(self, label_text, initial_value, i):
         # label et un champ de saisie pour un attribut
-        frame = tk.Frame(self.master, pady=5)
-        frame.pack()
+        #frame = tk.Frame(self.master, pady=5)
+        #frame.pack()
 
-        label = tk.Label(frame, text=label_text, width=20, anchor='e')
-        label.pack(side=tk.LEFT, padx=5)
+        label = CTK.CTkLabel(self, text=label_text)
+        label.grid(row=i, column=0, padx=5, pady=5)
 
-        entry = tk.Entry(frame, width=30)
-        entry.insert(tk.END, initial_value)
-        entry.pack(side=tk.RIGHT)
+        entry = CTK.CTkEntry(self,placeholder_text=initial_value)
+        #entry.insert(tk.END, initial_value)
+        entry.grid(row=i, column=1, padx=5, pady=5, sticky="ew")
 
         return entry
 
@@ -62,4 +65,18 @@ class SymptomeEditor:
         if self.comment_entry.get():
             self.Symp.Commentaire = self.comment_entry.get()
 
-        self.master.destroy()
+        self.destroy()
+
+        
+if __name__=="__main__":
+    # Création d'une instance de la classe Symptome pour tester l'éditeur
+    Symp = Symptome(ID="", Nom="cuhecbe s", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
+
+    # Création de la fenêtre principale de l'éditeur
+    root = CTK.CTk()
+    root.title("coucou")
+    editor= SymptomeEditor(Symp)
+    root.mainloop()
+
+
+    print(Symp.Nom, Symp.Lateralisation)
