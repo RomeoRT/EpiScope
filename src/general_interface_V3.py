@@ -638,6 +638,7 @@ class LecteurVideo():
 
 if __name__ == "__main__":
     root = ctk.CTk()
-    root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))  # Plein écran
+    #root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))  # Plein écran
+    root.after(0, lambda:root.state('zoomed'))
     lecteur = InterfaceGenerale(root)
     root.mainloop()
