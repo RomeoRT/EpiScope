@@ -33,7 +33,8 @@ import pygame
 from pygame.time import Clock
 from tkinter import Menu
 import functools #pour update right panel
-
+"""
+# import pas git
 #utile pour la génération de la frise chronologique:
 #from fonctions_frise import chevauchement
 from fonctions_frise import afficher_frise
@@ -41,11 +42,19 @@ from fonctions_frise import afficher_frise
 import save as sauvg
 from class_symptome import Symptome
 from pop_up import SymptomeEditor
-
+"""
+#import git
+from frise.fonctions_frise import afficher_frise
+import frise.save as sauvg
+from annotation.class_symptome import Symptome
+from annotation.pop_up import SymptomeEditor
 
 class Menu_symptomes(ctk.CTkFrame):
-    def __init__(self, master, interface_generale, largeur_totale):
-        super().__init__(master, width=largeur_totale)
+    def __init__(self, master, interface_generale, couleur, bordure, largeur):
+        super().__init__(master, fg_color=couleur, border_width=bordure, width=largeur)
+        
+        
+        
         self.interface_generale = interface_generale
         self.file_name = "Objective_Symptomes.txt"
         title, symptoms = self.read_symptoms_from_file(self.file_name)
@@ -54,40 +63,37 @@ class Menu_symptomes(ctk.CTkFrame):
         title2, symptoms2 = self.read_symptoms_from_file(self.file_name2)
         self.symptoms2 = symptoms2
 
-        self.create_dropdown_menus(master,largeur_totale)  # Crée et affiche les menus déroulants
 
-    def create_dropdown_menus(self,master,largeur_totale):
-        # Crée une nouvelle fenêtre
-        fenetre = tk.Toplevel(master,width=largeur_totale+40,height=30,bg="white")
-        fenetre.title("")
-        fenetre.protocol("WM_DELETE_WINDOW", lambda: None)
+       
+        self.create_dropdown_menus(master)  # Crée et affiche les menus déroulants
 
-        fenetre.transient(master) 
-        # Positionne le Toplevel
-        fenetre.geometry(f"+{0}+{100}")       
-            
-        # Crée une barre de menus pour la fenêtre
-        menu_bar = Menu(fenetre)
-        fenetre.config(menu=menu_bar)
-
-        # Crée un menu principal dans la barre de menus
-        my_font = tkFont.Font(size=12)
-        main_menu = Menu(menu_bar, tearoff=0, bg="white", fg="black", font=my_font)
-        menu_bar.add_cascade(label="        Symptômes objectifs        ", menu=main_menu)
-        main_menu.add_separator()
-        main_menu2 = Menu(menu_bar, tearoff=0, bg="white", fg="black", font=my_font)
-        menu_bar.add_cascade(label="        Symptômes subjectifs       ", menu=main_menu2)
+    def create_dropdown_menus(self,master):
+        my_font = tkFont.Font(size=12)    
+        # Création du Menubutton
+        menubutton_objective = tk.Menubutton(self, text="Objective/Motor Symptoms", relief=tk.RAISED, font=my_font)
+        menubutton_objective.pack(padx=5, pady=15, expand=True)
+        # Création du Menubutton
+        menubutton_subjective = tk.Menubutton(self, text="Subjective Symptoms", relief=tk.RAISED, font=my_font)
+        menubutton_subjective.pack(padx=5, pady=5, expand=True)
         
+
+        # Création du menu principal
+        menu_objective = tk.Menu(menubutton_objective, tearoff=0, font=my_font)
+        menubutton_objective.config(menu=menu_objective)
+
+        menu_subjective = tk.Menu(menubutton_subjective, tearoff=0, font=my_font)
+        menubutton_subjective.config(menu=menu_subjective)
+
         # Ajoute les sous-menus avec les symptômes et sous-symptômes
         for symptom, sub_symptoms in self.symptoms:
-            self.create_submenu(main_menu, symptom, sub_symptoms)
+            self.create_submenu(menu_objective, symptom, sub_symptoms, my_font)
 
         for symptom2, sub_symptoms2 in self.symptoms2:
-            self.create_submenu(main_menu2, symptom2, sub_symptoms2)
+            self.create_submenu(menu_subjective, symptom2, sub_symptoms2, my_font)
 
-    def create_submenu(self, parent_menu, symptom, sub_symptoms):
-        my_font = tkFont.Font(size=12)
-        symptom_menu = Menu(parent_menu, tearoff=0, font=my_font)
+    def create_submenu(self, parent_menu, symptom, sub_symptoms, my_font):
+        #my_font = tkFont.Font(size=15)
+        symptom_menu = tk.Menu(parent_menu, tearoff=0, font=my_font)
         has_sub_items = False
 
         # Parcourt chaque sous-symptôme pour créer des sous-menus si nécessaire
@@ -113,13 +119,10 @@ class Menu_symptomes(ctk.CTkFrame):
             full_path = symptom
             parent_menu.add_command(label=symptom, command=lambda path=full_path: self.on_select(path))
 
-    def on_select(self, selection):
-        # Appel à une nouvelle fonction dans InterfaceGenerale pour obtenir le temps actuel de la vidéo
-        current_video_time = self.interface_generale.get_current_video_time() 
-        display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
-        self.interface_generale.update_right_panel(display_text)
-
     def read_symptoms_from_file(self, file_name):
+        """
+        lit les fichiers textes pour récuper les symptomes
+        """
         with open(file_name, 'r', encoding='utf-8') as file:
             title = file.readline().strip()
             symptoms = []
@@ -130,17 +133,14 @@ class Menu_symptomes(ctk.CTkFrame):
                     symptom = symptom.strip()
                     sub_symptoms = sub_symptoms[0].replace(')', '').split(';') if sub_symptoms else []
                     symptoms.append((symptom, [sub.strip() for sub in sub_symptoms]))
+
         return title, symptoms
-
-
-    def filtrer_options(self, event): 
-        """
-        filtre les options d'un menu déroulant en fonction d'une recherche textuelle
-        """
-        recherche = self.entry.get().lower()
-        for i in range(self.nb_menus) :
-            options_filtrees = [option for option in self.options_symptomes[i] if recherche in option.lower()]
-            self.liste_MenuDeroulant[i].configure(values=options_filtrees) 
+    
+    def on_select(self, selection):
+        # Appel à une nouvelle fonction dans InterfaceGenerale pour obtenir le temps actuel de la vidéo
+        current_video_time = self.interface_generale.get_current_video_time() 
+        display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
+        self.interface_generale.update_right_panel(display_text)
 
 
 class FriseSymptomes:
@@ -212,7 +212,7 @@ class InterfaceGenerale():
 
         # Cadres pour la partie de gauche, milieu et droite
         # Modify the frame initialization in the __init__ method of LecteurVideo class
-        self.frame_left = ctk.CTkFrame(fenetre, fg_color='gray97',corner_radius=0, border_width=0,width=fenetre.winfo_screenwidth() // 5)
+        self.frame_left = Menu_symptomes(fenetre, self, 'grey', 5, ((fenetre.winfo_screenwidth()) // 5))
         self.frame_middle = ctk.CTkFrame(fenetre, fg_color='gray97',corner_radius=0,border_width=0 ,width=3 * (fenetre.winfo_screenwidth()) // 5, height=fenetre.winfo_screenheight()  )  # Ajustement ici
         self.frame_right = ctk.CTkFrame(fenetre, fg_color='gray97',corner_radius=0,border_width=0 ,width=fenetre.winfo_screenwidth() // 5)
 
@@ -283,12 +283,6 @@ class InterfaceGenerale():
 
         # Binding du clic gauche à l'affichage du menu
         self.canvas.bind("<Button-1>", self.lec_video.afficher_menu_annotations)
-
-        self.menu_symptomes = Menu_symptomes(self.frame_left, self, fenetre.winfo_screenwidth() // 5)
-        self.menu_symptomes.pack(expand=True, fill=ctk.BOTH)
-
-
-
 
         self.fenetre.bind('<space>', lambda event: self.lec_video.pause_lecture())
         self.fenetre.bind('<Right>', lambda event: self.lec_video.avance_progress())
