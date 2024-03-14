@@ -1,4 +1,4 @@
-from class_symptome import Symptome
+from annotation.class_symptome import Symptome
 import tkinter as tk
 
 class SymptomeEditor:
