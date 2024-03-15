@@ -3,12 +3,13 @@ interface générale Episcope contenant :
     lecteur vidéo :
     - lecture video
     - boutons play/pause, skip>>, skip<<, revoir
-    -avance et recule de 1s et mets en pause 
+    - avance et recule de 1s et mets en pause 
     - son synchronisé
-    -bonne vitesse
+    - bonne vitesse
 
     annotations :
     - les menus en cascade a gauche
+    - initialisation correcte des symptomes
     - recuperer les symptomes dans une liste
     - recuperer les temps de debut et de fin
     - afficher les symptomes a droite
