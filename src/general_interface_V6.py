@@ -1,5 +1,5 @@
 """
-**interface générale Episcope**
+interface générale Episcope
 
 Ce module contient les fonctionnalités suivantes : 
 
