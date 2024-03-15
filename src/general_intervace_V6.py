@@ -468,20 +468,33 @@ class InterfaceGenerale():
         Symp.set_Tdeb(splited[1][4:])
         symptom_with_time = f"{Symp.get_Nom()} - TD: {Symp.get_Tdeb()}"
 
-        symptom_label = tk.Label(self.text_output, text=symptom_with_time, bg="gray89", fg=self.theme[0])
+        container = tk.Frame(self.text_output)  # Créer un conteneur pour le label et le bouton
+        container.pack(side=tk.TOP, fill=tk.X)
+
+        symptom_label = tk.Label(container, text=symptom_with_time, bg="gray89", fg=self.theme[0])
         # Changement de la taille de la police
         symptom_label.config(font=("Arial",12))
+        symptom_label.pack(side=tk.LEFT)
+
+        delete_button = ctk.CTkButton(container, text="X", command=lambda symp=Symp, cont=container: self.supprimer(symp, cont), text_color='white', fg_color='FireBrick', width=len('X')*15)
+        delete_button.pack(side=ctk.LEFT,padx=10,pady=10)
 
         # Associe l'événement de clic pour ajouter le temps de fin
         set_end_time_partial = functools.partial(set_end_time, Symp=Symp)
         symptom_label.bind('<Button-1>', set_end_time_partial)
 
-        self.text_output.window_create(tk.END, window=symptom_label)  # Ajoute le symptôme à la zone de texte
         self.text_output.insert(tk.END, '\n')  # Nouvelle ligne après chaque symptôme
         self.text_output.config(state=tk.DISABLED)  # Désactive l'édition de la zone de texte après la mise à jour
 
         self.ListeSymptomes.append(Symp)
-        
+
+
+    def supprimer(self, selection, container):
+        for symp in self.ListeSymptomes:
+            if symp.get_Nom() == selection.get_Nom():
+                self.ListeSymptomes.remove(symp)
+                container.destroy()  # Supprime le conteneur entier, y compris le label et le bouton
+                break       
 
     def get_current_video_time(self):
         """
