@@ -19,7 +19,7 @@ interface générale Episcope contenant :
     - generer le fichier texte
 
 modification design general et boutons de menus deroulants et de gestion avancement video gestion 
-
+La document des fonctions est faite
 version : 0.4
 """
 import tkinter as tk
@@ -37,7 +37,7 @@ import pygame
 from pygame.time import Clock
 from tkinter import Menu
 import functools #pour update right panel
-"""
+
 # import pas git
 #utile pour la génération de la frise chronologique:
 #from fonctions_frise import chevauchement
@@ -47,14 +47,20 @@ import save as sauvg
 from class_symptome import Symptome
 from pop_up import SymptomeEditor
 """
-#import git
+import git
 from frise.fonctions_frise import afficher_frise
 import frise.save as sauvg
+
 from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
-
+"""
 
 class Menu_symptomes(ctk.CTkFrame):
+    """
+        Classe permettant d'instancier les menus déroulants rassemblant les symptomes dans une frame qui se situe sur la gauche de l'interface
+
+        attributs: master(fenetre), interface generale, couleur, bordure, largeur
+    """        
     def __init__(self, master, interface_generale, couleur, bordure, largeur):
         super().__init__(master, fg_color=couleur, corner_radius=0, border_width=bordure, width=largeur)
         
@@ -73,6 +79,12 @@ class Menu_symptomes(ctk.CTkFrame):
         self.create_dropdown_menus(master, largeur)  # Crée et affiche les menus déroulants
 
     def create_dropdown_menus(self,master,largeur):
+        """
+        Crée un menu déroulants contenant les différents symptomes classé selon s'ils sont objectifs ou subjectifs.
+
+        Args:
+            master(fenetre): fenetre dans laquelle on veut afficher le sous menu déroulant
+        """
         my_font = tkFont.Font(size=12)    
         # Création du Menubutton
         menubutton_objective = tk.Menubutton(self, text="Objective/Motor Symptoms", width=largeur//9, direction='flush', relief="flat", font=my_font)
@@ -97,6 +109,16 @@ class Menu_symptomes(ctk.CTkFrame):
             self.create_submenu(menu_subjective, symptom2, sub_symptoms2, my_font)
 
     def create_submenu(self, parent_menu, symptom, sub_symptoms, my_font):
+        """
+        Crée les sous menus déroulants après avoir sélectionné un symptome.
+        Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
+
+        Args:
+            parent_menu (Menu): Menu déroulant lié au symptome sélectionné
+            symptom (symptome): Symptome sélectionné
+            sub_symptoms (list): liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
+            my_font (Font): indique la taille de la police d'écriture
+        """
         #my_font = tkFont.Font(size=15)
         symptom_menu = tk.Menu(parent_menu, tearoff=0, font=my_font)
         has_sub_items = False
@@ -126,7 +148,14 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def read_symptoms_from_file(self, file_name):
         """
-        lit les fichiers textes pour récuper les symptomes
+        Crée les sous menus déroulants après avoir sélectionné un symptome.
+        Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
+
+        Args:
+            parent_menu (Menu): Menu déroulant lié au symptome sélectionné
+            symptom (symptome): Symptome sélectionné
+            sub_symptoms (list): liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
+            my_font (Font): indique la taille de la police d'écriture
         """
         with open(file_name, 'r', encoding='utf-8') as file:
             title = file.readline().strip()
@@ -142,6 +171,12 @@ class Menu_symptomes(ctk.CTkFrame):
         return title, symptoms
     
     def on_select(self, selection):
+        """
+        Récupère des données lié à la video pour obtenir le temps actuel
+
+        Args:
+            selection (path): Symptome sélectionné 
+        """
         # Appel à une nouvelle fonction dans InterfaceGenerale pour obtenir le temps actuel de la vidéo
         current_video_time = self.interface_generale.get_current_video_time() 
         display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
@@ -149,13 +184,20 @@ class Menu_symptomes(ctk.CTkFrame):
 
 
 class FriseSymptomes:
+    """
+    Classe permettant de généré une frise chronologique récapitulant l'ensemble des symptomes présent lors de la crise épileptique
+
+    Attributs: interfaceGenerale, MenuDeroulant (class Menu_symptomes)
+    """
     def __init__(self,InterfaceGenerale,MenuDeroulant):
         self.menu_deroulant=MenuDeroulant
         self.interface_generale=InterfaceGenerale
         
 
     def afficher(self):
-        # Recuperation de la liste de symptomes instanciée dans class interface generale fonction update right panel
+        """
+        Récuperation de la liste de symptomes instanciée dans class interface generale fonction update right panel
+        """
         Lsymp = self.interface_generale.ListeSymptomes
         newL=[]
 
@@ -182,6 +224,10 @@ class FriseSymptomes:
 
 
 class InterfaceGenerale():
+    """
+    Classe interface Générale qui donne le visuel global de l'interface graphique. Elle est représenter sous forme de fenetre et permet aux autres classes de s'intégrer dedans.
+    Elle appel la classe Lecteur_video, FriseSymptomes et Menu_symptomes 
+    """
     def __init__(self, fenetre):
         self.fenetre = fenetre
         self.fenetre.title("Episcope")
@@ -303,9 +349,19 @@ class InterfaceGenerale():
         self.zone_text.pack(side=tk.BOTTOM, pady=20,padx=20)
 
     def update_right_panel(self, text, is_start_time=False):
-        
+        """
+        Permet de gerer l'affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop-up pour modifier un symptome.
+
+        Args:
+            text (text): texte décrivant le symptomes sélectionné avec les temps de début et de fin
+        """
         def set_end_time(event, Symp):
-            ''' Ajoute le temps de fin à un symptôme existant'''
+            """
+            Ajoute le temps de fin à un symptôme existant
+            
+            Args:
+                event (None): correspond à l'appuie sur la zone ou s'affiche le symptome
+            """
             current_text = event.widget.cget("text")
             if Symp.Tfin=="": # On vérifie si le temps de fin est déjà présent pour ne pas l'ajouter plusieurs fois
                 Symp.set_Tfin(f"{self.get_current_video_time()}")
@@ -321,7 +377,12 @@ class InterfaceGenerale():
                     symptom_label.bind('<Button-1>', open_editor_partial) # Lier le button1 au popup après Tfin
         
         def open_editor_on_click(event, Symp):
-            ''' Ouvre la fenêtre de modification d'un symptôme'''
+            """
+            Ouvre la fenêtre de modification d'un symptôme
+
+            Args:
+                event (None): correspond à l'appuie sur la fenetre pour modifier le symptome
+            """
             if event.widget.cget("text"):
                 # Instancier la fenêtre de modification TopLevel
                 editor_window = SymptomeEditor(Symp)
@@ -361,6 +422,9 @@ class InterfaceGenerale():
         
 
     def get_current_video_time(self):
+        """
+        Permet d'avoir le temps actuel de la vidéo
+        """
         if self.cap is not None and self.cap.isOpened():
             current_frame = self.cap.get(cv2.CAP_PROP_POS_FRAMES)
             fps = self.cap.get(cv2.CAP_PROP_FPS)
@@ -370,6 +434,9 @@ class InterfaceGenerale():
         return "00:00:00"  # Retournez une valeur par défaut si la vidéo n'est pas ouverte
 
     def get_video_duration(self):
+        """
+        Permet d'avoir le temps total de la vidéo
+        """
         if self.cap is not None and self.cap.isOpened():
             total_frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
             fps = self.cap.get(cv2.CAP_PROP_FPS)
@@ -378,13 +445,22 @@ class InterfaceGenerale():
 
 
     def ouvrir_video(self):
+        """
+        Ouvre la vidéo en appelant la class Lecteur_video
+        """
         self.lec_video.ouvrir_video()
     
     def ouvrir_video_noire(self):
+        """
+        Ouvre la vidéo noire en appelant la class Lecteur_video
+        """
         self.lec_video.ouvrir_video_noire()
 
 
     def menu_action( self,selection):
+        """
+        Mini menu déroulant qui permet de choisir différent mode d'ouverture de la vidéo
+        """
         if selection == "Ouvrir":
             self.ouvrir_video()
         else:
@@ -395,6 +471,9 @@ class InterfaceGenerale():
 
     
     def lire_fichier(self,nom_fichier):
+        """
+        Ouvre un fichier texte le lit et sauvegarde les informations dans une liste
+        """
         try:
             # Ouvre le fichier en mode lecture
             with open(nom_fichier, 'r') as fichier:
@@ -417,7 +496,17 @@ class InterfaceGenerale():
 
 class LecteurVideo():
 
+    """
+    Classe du lecteur video qui gére les diiferentes fonctionnalité de la video:
+    l'ouverture de la vidéo, de la vidéo noire,l'affichage de la vidéo,la synchroisation du son
+    et la gestion des boutons
+    Elle appel la classe InterfaceGenerale 
+    """
     def __init__(self, InterfaceGenerale):
+        """
+        Constructeur de la class Lecteur_video
+        """
+
         self.interface_generale = InterfaceGenerale
         pygame.mixer.init()
         self.video_paused = False
@@ -426,6 +515,10 @@ class LecteurVideo():
         self.vitesse_lecture = 3
 
     def ouvrir_video(self):
+        """
+        Ouvre une vidéo depuis l'explorateur du fichier
+        une fois choisie, elle se met en lecture dans middle_frame
+        """
         # Sélection du fichier vidéo et préparation de la vidéo et du son
         file_path = filedialog.askopenfilename(filetypes=[("Fichiers vidéo", "*.mp4 *.avi *mpg")])
         if file_path:
@@ -438,6 +531,9 @@ class LecteurVideo():
 
 
     def ouvrir_video_noire(self):
+        """
+        Ouvre la vidéo noire directement qui doit étre dans le meme dossier que le code
+        """
         # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
         file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_noire.mp4")
         print("Chemin du fichier vidéo:", file_path)
@@ -462,8 +558,11 @@ class LecteurVideo():
         else:
             print("La vidéo 'vidéo noire' n'a pas été trouvée dans le dossier courant.")
     def preparer_son_video(self, file_path):
-        # Convertir la piste audio de la vidéo en fichier WAV
-        clip = VideoFileClip(file_path)
+        """
+        Prépare le son de la vidéo à partir de la vidéo originale.
+        """
+        
+        clip = VideoFileClip(file_path)# Convertir la piste audio de la vidéo en fichier WAV
         audio_path = "temp_audio.wav"  # Définissez le chemin de fichier pour l'audio temporaire
         clip.audio.write_audiofile(audio_path)
         clip.close()  # Fermez le clip pour libérer les ressources
@@ -475,8 +574,12 @@ class LecteurVideo():
 
 
     def afficher_video(self):
-        # Vérifie si la vidéo est ouverte
-        if self.interface_generale.cap.isOpened():
+        """
+        permet l'affichage et la lecture de la video:
+        redimensionnement des frames de la video pour correspondre les dimensions de middle frame
+        Calcule et affiche le temps totale et le temps écoulé
+        """
+        if self.interface_generale.cap.isOpened():# Vérifie si la vidéo est ouverte
             ret, frame = self.interface_generale.cap.read()  # Lit la prochaine frame de la vidéo
             if ret:
                 # Convertir BGR en RGB puisque OpenCV utilise BGR par défaut
@@ -511,17 +614,29 @@ class LecteurVideo():
 
 
     def mettre_a_jour_frame_video(self, frame):
+        """
+        permet de s'assurer que chaque frame de la vidéo est correctement traitée,
+        redimensionnée et affichée dans l'interface utilisateur
+        """
+        
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         frame = ImageTk.PhotoImage(image=Image.fromarray(frame))
         self.interface_generale.canvas.create_image(0, 0, image=frame, anchor=tk.NW)
         self.interface_generale.canvas.image = frame
 
     def mettre_a_jour_temps_video(self):
+        """
+        Assure que le temps de la vidéo affichée est régulièrement mis à jour et que la lecture de la vidéo continue 
+        de manière fluide. Elle assure la sychronisation de  l'avancement de la vidéo avec le temps réel
+        """
         self.current_frame_time = self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC)
         if not self.video_paused:
             self.interface_generale.fenetre.after(33, self.afficher_video)  # Continuez la lecture environ toutes les 33 ms
 
     def pause_lecture(self):
+        """
+        Cette fonction gère l'état de pause et reprise de la vidéo 
+        """
         self.video_paused = not self.video_paused
         if self.video_paused:
             pygame.mixer.music.pause()  # Pause le son
@@ -537,18 +652,29 @@ class LecteurVideo():
 
 
     def mettre_a_jour_progression_son(self):
+        """
+        Synchroniser la position de lecture du son avec celle de la vidéo
+        """
         if self.interface_generale.cap.isOpened():
-            # Synchroniser la position de lecture du son avec celle de la vidéo
             position_video = self.current_frame_time / 1000.0  # Convertir en secondes
             pygame.mixer.music.set_pos(position_video)
     def manual_update_progress(self, value):
+        """
+        Permettre de sauter à un point différent dans la vidéo
+
+        Args:
+            value: qui représente la nouvelle position  où l'utilisateur 
+            souhaite déplacer la lecture de la vidéo
+        """
         frame_number = int(value)
-        123
         self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
         self.sound.set_pos(self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0)
         self.afficher_video()
 
     def avance_progress(self):
+        """
+        permet d'avancer la video d'une seonde et assure l'avancement du son aussi
+        """
         if self.interface_generale.cap.isOpened():
             self.video_paused = True  # Assumer que la vidéo est en pause
             self.pause_lecture()  # Pause la vidéo et l'audio
@@ -565,6 +691,10 @@ class LecteurVideo():
             self.pause_lecture()  # Reprendre la lecture de la vidéo et l'audio
 
     def recule_progress(self):
+        
+        """
+        Permet de reculer de 1 seconde dans la video en assurant la synchronisation du son avec la video
+        """
         if self.interface_generale.cap.isOpened():
             self.video_paused = True  # Assumer que la vidéo est en pause
             self.pause_lecture()  # Pause la vidéo et l'audio
@@ -580,6 +710,9 @@ class LecteurVideo():
             self.pause_lecture()
 
     def revoir_video(self):
+        """
+        Permet de revoir la video depuis le début
+        """
         if self.interface_generale.cap.isOpened():
             # Réinitialiser la vidéo au début
             self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
@@ -593,9 +726,18 @@ class LecteurVideo():
 
 
     def format_duree(self, seconds):
+        """
+        convertir une durée en secondes en un format de temps plus lisible, 
+        sous la forme de minutes et secondes.
+        """
         return str(datetime.timedelta(seconds=seconds))
 
     def charger_son_video(self, file_path):
+        """
+         Arrête le son précédent, et fait l'extraction et le chargement 
+         de la nouvelle piste audio associée à la vidéo sélectionnée
+         Elle fait aussi le nettoyage des ressources utilisées pendant le processus. 
+        """
         # Assurez-vous que le son précédent est arrêté et supprimé
         if self.sound:
             self.sound.stop()
@@ -608,6 +750,11 @@ class LecteurVideo():
 
 
     def afficher_menu_annotations(self, event):
+        """
+        Récupére les coordonnées d'un clic sur la vidéo. Pour l'intant elle affiche une croix rouge
+        Mais il ya possibilté d'utiliser cette croix roug pour afficher le symtoms en la survolant 
+        par le curseur
+        """
         # Coordonnées du clic
         x = event.x
         y = event.y
@@ -646,6 +793,9 @@ class LecteurVideo():
             print ("la case 4 a été sélectionnée")
         
     def ajouter_plus_rouge(self,canvas, x, y, taille):
+        """
+        Ajoute la croix rouge durat 1 seconde là où on appuie
+        """
         # Coordonnées pour créer un '+'
         ligne_horizontale = self.interface_generale.canvas.create_line(x-taille*20, y, x+taille*20, y, fill="red", width=3)
         ligne_verticale = self.interface_generale.canvas.create_line(x, y-taille*20, x, y+taille*20, fill="red", width=3)
