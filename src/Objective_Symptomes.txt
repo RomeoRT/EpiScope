@@ -25,7 +25,7 @@ Hypersalivation
 Sialorrhea
 Spitting
 Vomiting
-Cutaneous Ictal Phenomena(Flushing;Pallor;Sweating;Piloerection)
+Cutaneous Ictal Phenomena (Flushing;Pallor;Sweating;Piloerection)
 Cardiovascular manifestations (Tachycardia;Bradycardia;Ictal asystolia)
 Hypoventilation
 Apnea
