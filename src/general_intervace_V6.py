@@ -48,18 +48,23 @@ from class_symptome import Symptome
 from pop_up import SymptomeEditor
 """
 # import git
-from fonctions_frise import afficher_frise
-import save as sauvg
+from frise.fonctions_frise import afficher_frise
+import frise.save as sauvg
 
-from class_symptome import Symptome
-from pop_up import SymptomeEditor
+from annotation.class_symptome import Symptome
+from annotation.pop_up import SymptomeEditor
 
 
 class Menu_symptomes(ctk.CTkFrame):
     """
         Classe permettant d'instancier les menus déroulants rassemblant les symptomes dans une frame qui se situe sur la gauche de l'interface
 
-        attributs: master(fenetre), interface generale, couleur, bordure, largeur
+        Attributes: 
+            master (any):  
+            interface generale (InterfaceGenerale): 
+            couleur (str): couleur du fond
+            bordure (int):
+            largeur (int):
     """        
     def __init__(self, master, interface_generale, couleur, bordure, largeur):
         super().__init__(master, fg_color=couleur, corner_radius=0, border_width=bordure, width=largeur)
@@ -102,13 +107,14 @@ class Menu_symptomes(ctk.CTkFrame):
         menubutton_subjective.config(menu=menu_subjective)
 
         # Ajoute les sous-menus avec les symptômes et sous-symptômes
+                # Ajoute les sous-menus avec les symptômes et sous-symptômes
         for symptom, sub_symptoms in self.symptoms:
-            self.create_submenu(menu_objective, symptom, sub_symptoms, my_font)
+            self.create_submenu(menu_objective, symptom, sub_symptoms, my_font, self.on_select_obj)
 
         for symptom2, sub_symptoms2 in self.symptoms2:
-            self.create_submenu(menu_subjective, symptom2, sub_symptoms2, my_font)
+            self.create_submenu(menu_subjective, symptom2, sub_symptoms2, my_font, self.on_select_subj)
 
-    def create_submenu(self, parent_menu, symptom, sub_symptoms, my_font):
+    def create_submenu(self, parent_menu, symptom, sub_symptoms, my_font, on_select):
         """
         Crée les sous menus déroulants après avoir sélectionné un symptome.
         Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
@@ -118,6 +124,7 @@ class Menu_symptomes(ctk.CTkFrame):
             symptom (symptome): Symptome sélectionné
             sub_symptoms (list): liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
             my_font (Font): indique la taille de la police d'écriture
+            on_select (function): commande de selection des symptomes
         """
         #my_font = tkFont.Font(size=15)
         symptom_menu = tk.Menu(parent_menu, tearoff=0, font=my_font)
@@ -134,17 +141,17 @@ class Menu_symptomes(ctk.CTkFrame):
                 sub_menu = Menu(symptom_menu, tearoff=0, font=my_font)
                 for sub_sub_symptom in sub_sub_symptoms:
                     full_path = f"{symptom} > {main_part} > {sub_sub_symptom.strip()}"
-                    sub_menu.add_command(label=sub_sub_symptom.strip(), command=lambda path=full_path: self.on_select(path))
+                    sub_menu.add_command(label=sub_sub_symptom.strip(), command=lambda path=full_path: on_select(path))
                 symptom_menu.add_cascade(label=main_part, menu=sub_menu)
             else:
                 full_path = f"{symptom} > {main_part}"
-                symptom_menu.add_command(label=main_part, command=lambda path=full_path: self.on_select(path))
+                symptom_menu.add_command(label=main_part, command=lambda path=full_path: on_select(path))
 
         if has_sub_items:
             parent_menu.add_cascade(label=symptom, menu=symptom_menu)
         else:
             full_path = symptom
-            parent_menu.add_command(label=symptom, command=lambda path=full_path: self.on_select(path))
+            parent_menu.add_command(label=symptom, command=lambda path=full_path: on_select(path))
 
     def read_symptoms_from_file(self, file_name):
         """
@@ -152,7 +159,7 @@ class Menu_symptomes(ctk.CTkFrame):
         Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
 
         Args:
-            parent_menu (Menu): Menu déroulant lié au symptome sélectionné
+            parent_menu (tk.Menu): Menu déroulant lié au symptome sélectionné
             symptom (symptome): Symptome sélectionné
             sub_symptoms (list): liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
             my_font (Font): indique la taille de la police d'écriture
@@ -170,7 +177,39 @@ class Menu_symptomes(ctk.CTkFrame):
 
         return title, symptoms
     
-    def on_select(self, selection):
+    def on_select_obj(self, selection):
+        """
+        Récupère des données lié à la video pour obtenir le temps actuel
+
+        Args:
+            selection (path): Symptome sélectionné 
+        """
+        current_video_time = self.interface_generale.get_current_video_time() 
+        display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
+
+        buffer_attributs = selection.split(">")
+
+        attributs = ["","","","","","","","",""]
+        match len(buffer_attributs):
+            case 0:
+                pass
+            case 1:
+                attributs[1]=buffer_attributs[0]
+
+            case 2:
+                attributs[1], attributs[3] = buffer_attributs[0],buffer_attributs[-1]
+            
+            case 3:
+                attributs[1], attributs[3], attributs[2] = buffer_attributs[0], buffer_attributs[1], buffer_attributs[2]
+            
+            case _ :
+                attributs[1], attributs[3], attributs[2] = buffer_attributs[0], buffer_attributs[1], buffer_attributs[-1]
+                attributs[5] = f"{buffer_attributs[2:-2]}"
+
+
+        self.interface_generale.update_right_panel(display_text, attributs)
+
+    def on_select_subj(self, selection):
         """
         Récupère des données lié à la video pour obtenir le temps actuel
 
@@ -180,7 +219,11 @@ class Menu_symptomes(ctk.CTkFrame):
         # Appel à une nouvelle fonction dans InterfaceGenerale pour obtenir le temps actuel de la vidéo
         current_video_time = self.interface_generale.get_current_video_time() 
         display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
-        self.interface_generale.update_right_panel(display_text)
+
+        attributs = ["","","","","","","","",""]
+        attributs[1]  = selection
+
+        self.interface_generale.update_right_panel(display_text, attributs)
 
 
 class FriseSymptomes:
@@ -348,12 +391,13 @@ class InterfaceGenerale():
         self.zone_text = tk.Text(self.frame_right, height=20, width=fenetre.winfo_screenwidth() // 5, relief=tk.GROOVE, wrap=tk.WORD)
         self.zone_text.pack(side=tk.BOTTOM, pady=20,padx=20)
 
-    def update_right_panel(self, text, is_start_time=False):
+    def update_right_panel(self, text, attributs=[], is_start_time=False):
         """
         Permet de gerer l'affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop-up pour modifier un symptome.
 
         Args:
             text (text): texte décrivant le symptomes sélectionné avec les temps de début et de fin
+            attributs (list): liste d'initialisation du symptome | defaut = [] 
         """
         def set_end_time(event, Symp):
             """
@@ -399,7 +443,11 @@ class InterfaceGenerale():
 
         self.text_output.config(state=tk.NORMAL)  # Activez l'état normal pour permettre la mise à jour
 
-        Symp = Symptome(ID="", Nom="", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
+        ## initialisation du symptome
+        if attributs == []:
+            Symp = Symptome(ID="", Nom="", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
+        else:
+            Symp = Symptome(attributs[0], attributs[1], attributs[2], attributs[3], attributs[4], attributs[5], attributs[6], attributs[7], attributs[8])
 
         splited = text.split(" - ")
         Symp.set_Nom(splited[0])
