@@ -353,7 +353,7 @@ class InterfaceGenerale():
         Permet de gerer l'affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop-up pour modifier un symptome.
 
         Args:
-            text (text): texte décrivant le symptomes sélectionné avec les temps de début et de fin
+            text (string): texte décrivant le symptomes sélectionné avec les temps de début et de fin
         """
         def set_end_time(event, Symp):
             """
@@ -403,7 +403,7 @@ class InterfaceGenerale():
 
         splited = text.split(" - ")
         Symp.set_Nom(splited[0])
-        Symp.set_Tdeb(splited[1][4:])
+        Symp.set_Tdeb(splited[1][4:]) 
         symptom_with_time = f"{Symp.get_Nom()} - TD: {Symp.get_Tdeb()}"
 
         symptom_label = tk.Label(self.text_output, text=symptom_with_time, bg="gray89", fg=self.theme[0])
