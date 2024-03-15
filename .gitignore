@@ -24,3 +24,9 @@ audio.wav
 # Tests divers
 *test*
 
+src/annotation/CTkScrollableDropdown/example.py
+src/annotation/CTkScrollableDropdown/LICENSE
+src/annotation/CTkScrollableDropdown/README.md
+src/annotation/CTkScrollableDropdown/CTkScrollableDropdown/__init__.py
+src/annotation/CTkScrollableDropdown/CTkScrollableDropdown/ctk_scrollable_dropdown_frame.py
+src/annotation/CTkScrollableDropdown/CTkScrollableDropdown/ctk_scrollable_dropdown.py
