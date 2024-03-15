@@ -346,6 +346,8 @@ class InterfaceGenerale():
         symptom_with_time = f"{Symp.get_Nom()} - TD: {Symp.get_Tdeb()}"
 
         symptom_label = tk.Label(self.text_output, text=symptom_with_time, bg="gray89", fg=self.theme[0])
+        # Changement de la taille de la police
+        symptom_label.config(font=("Arial",12))
 
         # Associe l'événement de clic pour ajouter le temps de fin
         set_end_time_partial = functools.partial(set_end_time, Symp=Symp)
