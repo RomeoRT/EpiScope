@@ -20,7 +20,7 @@ interface générale Episcope contenant :
 
 modification design general et boutons de menus deroulants et de gestion avancement video gestion 
 La document des fonctions est faite
-version : 0.4
+version : 0.6
 """
 import tkinter as tk
 import customtkinter as ctk
