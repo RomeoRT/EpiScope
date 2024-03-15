@@ -86,7 +86,7 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def create_dropdown_menus(self,master,largeur):
         """
-        Crée un menu déroulants contenant les différents symptomes classé selon s'ils sont objectifs ou subjectifs.
+        Crée un menu déroulants contenant les différents symptomes classés selon s'ils sont objectifs ou subjectifs.
 
         Args:
             master(fenetre): fenetre dans laquelle on veut afficher le sous menu déroulant
@@ -156,14 +156,17 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def read_symptoms_from_file(self, file_name):
         """
-        Crée les sous menus déroulants après avoir sélectionné un symptome.
-        Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
+        Lit les fichiers textes contenant la liste des symptomes pour remplir les menus
+
+        Les symptomes doivent etre ecrits avec des séparateurs spécifiques 
+        *example :  Negative myoclonus[Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb]* 
 
         Args:
-            parent_menu (tk.Menu): Menu déroulant lié au symptome sélectionné
-            symptom (symptome): Symptome sélectionné
-            sub_symptoms (list): liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
-            my_font (Font): indique la taille de la police d'écriture
+            file_name (string): chemin du fichier
+
+        Returns:
+            title (string): titre du menu
+            symptoms (list): liste contenant les symptomes pour remplir les menus 
         """
         with open(file_name, 'r', encoding='utf-8') as file:
             title = file.readline().strip()
@@ -231,7 +234,9 @@ class FriseSymptomes:
     """
     Classe permettant de généré une frise chronologique récapitulant l'ensemble des symptomes présent lors de la crise épileptique
 
-    Attributs: interfaceGenerale, MenuDeroulant (class Menu_symptomes)
+    Attributes: 
+        interfaceGenerale (InterfaceGenerale): 
+        MenuDeroulant (Menu_symptomes):
     """
     def __init__(self,InterfaceGenerale,MenuDeroulant):
         self.menu_deroulant=MenuDeroulant
@@ -269,8 +274,16 @@ class FriseSymptomes:
 
 class InterfaceGenerale():
     """
-    Classe interface Générale qui donne le visuel global de l'interface graphique. Elle est représenter sous forme de fenetre et permet aux autres classes de s'intégrer dedans.
+    Classe interface Générale qui donne le visuel global de l'interface graphique. 
+    
+    Elle est représenter sous forme de fenetre et permet aux autres classes de s'intégrer dedans.
     Elle appel la classe Lecteur_video, FriseSymptomes et Menu_symptomes 
+
+    Atributes:
+        ListeSymptomes (list): liste des symptomes s'actualisant au fur et a mesure
+
+        **A completer !!!**
+
     """
     def __init__(self, fenetre):
         self.fenetre = fenetre
@@ -546,10 +559,13 @@ class InterfaceGenerale():
 class LecteurVideo():
 
     """
-    Classe du lecteur video qui gére les diiferentes fonctionnalité de la video:
-    l'ouverture de la vidéo, de la vidéo noire,l'affichage de la vidéo,la synchroisation du son
-    et la gestion des boutons
-    Elle appel la classe InterfaceGenerale 
+    Classe du lecteur video qui gére les differentes fonctionnalités de la video.
+
+    fonctionnalités l'ouverture de la vidéo, de la vidéo noire,l'affichage de la vidéo,la synchroisation du son et la gestion des boutons
+    Elle appelle la classe InterfaceGenerale 
+
+    Attributes:
+        **A completer**
     """
     def __init__(self, InterfaceGenerale):
         """
