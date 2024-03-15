@@ -16,7 +16,7 @@ These tools enable practitioners to note directly on their patients' epileptic s
 .. toctree::
 
    api
-   general_interface_V1
+   general_interface_V4
    frise
    annotation
    lecteur_video
