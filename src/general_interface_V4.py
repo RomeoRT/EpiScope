@@ -197,8 +197,12 @@ class InterfaceGenerale():
         # Liste symptomes vide
         self.ListeSymptomes = []
 
+        # self.theme couleurs
+        # L= = [text, frames, frame menu, menu, bouton revoir, bouton pause, boutons <<>>, boutons frise/texte  ]
+        self.theme = ['black', 'gray97', 'whitesmoke', 'lightsteelblue1', 'navajo white', 'gray60', 'gray80', 'cornflowerblue']
+
         # Cadre pour le menu déroulant en haut
-        self.frame_menu = ctk.CTkFrame(fenetre, corner_radius=0, fg_color='lightsteelblue1',border_width=0.5, height=40)
+        self.frame_menu = ctk.CTkFrame(fenetre, corner_radius=0, fg_color=self.theme[3],border_width=0.5, height=40)
         self.frame_menu.pack(side=ctk.TOP, fill=ctk.X)
         police_label_m = tkFont.Font(size=12)
         # Menu déroulant
@@ -206,8 +210,8 @@ class InterfaceGenerale():
         self.menu_deroulant = ctk.StringVar()
         self.menu_deroulant.set('Menu')
         self.menu = tk.OptionMenu(self.frame_menu, self.menu_deroulant, *options, command=self.menu_action)
-        self.menu.config(bg='lightsteelblue1',fg='black',font=police_label_m)
-        self.menu["menu"].config(bg='whitesmoke', fg='black',font=10)
+        self.menu.config(bg=self.theme[3],fg=self.theme[0], font=police_label_m)
+        self.menu["menu"].config(bg=self.theme[2], fg=self.theme[0],font=10)
         self.menu.pack(side=ctk.LEFT, padx=10, pady=10)
 
         # Variable pour stocker les coordonnées du clic
@@ -217,9 +221,9 @@ class InterfaceGenerale():
 
         # Cadres pour la partie de gauche, milieu et droite
         # Modify the frame initialization in the __init__ method of LecteurVideo class
-        self.frame_left = Menu_symptomes(fenetre, self, 'gray97', 0, ((fenetre.winfo_screenwidth()) // 5))
-        self.frame_middle = ctk.CTkFrame(fenetre, fg_color='gray97',corner_radius=0,border_width=0 ,width=3 * (fenetre.winfo_screenwidth()) // 5, height=fenetre.winfo_screenheight()  )  # Ajustement ici
-        self.frame_right = ctk.CTkFrame(fenetre, fg_color='gray97',corner_radius=0,border_width=0 ,width=fenetre.winfo_screenwidth() // 5)
+        self.frame_left = Menu_symptomes(fenetre, self, self.theme[1], 0, ((fenetre.winfo_screenwidth()) // 5))
+        self.frame_middle = ctk.CTkFrame(fenetre, fg_color=self.theme[1],corner_radius=0,border_width=0 ,width=3 * (fenetre.winfo_screenwidth()) // 5, height=fenetre.winfo_screenheight()  )  # Ajustement ici
+        self.frame_right = ctk.CTkFrame(fenetre, fg_color=self.theme[1],corner_radius=0,border_width=0 ,width=fenetre.winfo_screenwidth() // 5)
 
 
         # Placer les cadres dans la fenêtre
@@ -235,47 +239,47 @@ class InterfaceGenerale():
         self.frame_right.grid_rowconfigure(1, weight=1)  # Donne un poids à la ligne où se trouve le bouton
         self.frame_right.grid_columnconfigure(0, weight=1)  # Assure que la colonne s'étend correctement
         # Frame pour les boutons
-        self.frame_CTkButton = ctk.CTkFrame(self.frame_middle, fg_color='gray97', height=50)
+        self.frame_CTkButton = ctk.CTkFrame(self.frame_middle, fg_color=self.theme[1], height=50)
         self.frame_CTkButton.pack(side=ctk.BOTTOM, fill=ctk.BOTH)
         
         #####################################################
         ####################### Boutons
         #####################################################
 
-        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Revoir", command=self.lec_video.revoir_video, width=100, text_color='black', fg_color='navajo white')
+        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Revoir", command=self.lec_video.revoir_video, width=100, text_color=self.theme[0], fg_color=self.theme[4])
         self.bouton_revoir.pack(side=ctk.LEFT, padx=100, pady=10)
 
-        self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="<<", command=self.lec_video.recule_progress, width=50, text_color='black',fg_color='gray80')
+        self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="<<", command=self.lec_video.recule_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6])
         self.bouton_reculer.pack(side=ctk.LEFT, padx=5, pady=10)
 
-        self.bouton_play_pause = ctk.CTkButton(self.frame_CTkButton, text="Pause", command=self.lec_video.pause_lecture,text_color='black',fg_color='gray60')
+        self.bouton_play_pause = ctk.CTkButton(self.frame_CTkButton, text="Pause", command=self.lec_video.pause_lecture,text_color=self.theme[0],fg_color=self.theme[5])
         self.bouton_play_pause.pack(side=ctk.LEFT, padx=5, pady=10)
 
-        self.bouton_avancer = ctk.CTkButton(self.frame_CTkButton, text=">>", command=self.lec_video.avance_progress, width=50, text_color='black',fg_color='gray80')
+        self.bouton_avancer = ctk.CTkButton(self.frame_CTkButton, text=">>", command=self.lec_video.avance_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6])
         self.bouton_avancer.pack(side=ctk.LEFT, padx=5, pady=10)
 
-        self.bouton_nul = ctk.CTkButton(self.frame_CTkButton, text="", width=100, fg_color='gray97', hover_color='gray97')
+        self.bouton_nul = ctk.CTkButton(self.frame_CTkButton, text="", width=100, fg_color=self.theme[1], hover_color=self.theme[1])
         self.bouton_nul.pack(side=ctk.LEFT, padx=100, pady=10)
         self.bouton_nul.configure(state="disabled")       
 
-        self.frame_frise = ctk.CTkFrame(self.fenetre, fg_color='gray97', border_width=5)  # Vous pouvez ajuster la couleur et les autres paramètres selon vos préférences
+        self.frame_frise = ctk.CTkFrame(self.fenetre, fg_color=self.theme[1], border_width=5)  # Vous pouvez ajuster la couleur et les autres paramètres selon vos préférences
         self.frame_frise.pack(side=ctk.LEFT, fill=ctk.BOTH, expand=True)  # Changez `side=ctk.LEFT` en fonction de l'endroit où vous souhaitez placer le cadre
 
 
         # Bouton pour activer la frise chronologique des symptomes:
-        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color='black', fg_color='cornflowerblue')
+        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color=self.theme[0], fg_color=self.theme[7])
         self.bouton_frise.pack(side=ctk.BOTTOM,padx=20,pady=20)
         
         # gros bouton save (primitif)
-        self.bouton_save = ctk.CTkButton(self.frame_right, text="générer texte", command=self.sauvegarde, text_color='black', fg_color='cornflowerblue')
+        self.bouton_save = ctk.CTkButton(self.frame_right, text="générer texte", command=self.sauvegarde, text_color=self.theme[0], fg_color=self.theme[7])
         self.bouton_save.pack(side=ctk.BOTTOM,padx=20,pady=20)
     
         # Étiquettes pour afficher le temps écoulé et la durée totale
-        self.label_temps = tk.Label(self.frame_middle, text="Temps écoulé: 0:00 / Durée totale: 0:00", bg='gray97', fg='black')
+        self.label_temps = tk.Label(self.frame_middle, text="Temps écoulé: 0:00 / Durée totale: 0:00", bg=self.theme[1], fg=self.theme[0])
         self.label_temps.pack(side=tk.BOTTOM, padx=20)
 
         # Barre de progression manuelle
-        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, orient="horizontal", command=self.lec_video.manual_update_progress, bg='gray97')
+        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, orient="horizontal", command=self.lec_video.manual_update_progress, bg=self.theme[1])
         self.progress_slider.pack(side=tk.BOTTOM, fill=tk.X)
 
 
@@ -341,7 +345,7 @@ class InterfaceGenerale():
         Symp.set_Tdeb(splited[1][4:])
         symptom_with_time = f"{Symp.get_Nom()} - TD: {Symp.get_Tdeb()}"
 
-        symptom_label = tk.Label(self.text_output, text=symptom_with_time, bg="gray89", fg="black")
+        symptom_label = tk.Label(self.text_output, text=symptom_with_time, bg="gray89", fg=self.theme[0])
 
         # Associe l'événement de clic pour ajouter le temps de fin
         set_end_time_partial = functools.partial(set_end_time, Symp=Symp)
