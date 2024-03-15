@@ -50,6 +50,11 @@ from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
 
 class Menu_symptomes(ctk.CTkFrame):
+    """
+        Classe permettant d'instancier les menus déroulants rassemblant les symptomes dans une frame qui se situe sur la gauche de l'interface
+
+        attributs: master(fenetre), interface generale, couleur, bordure, largeur
+    """
     def __init__(self, master, interface_generale, couleur, bordure, largeur):
         super().__init__(master, fg_color=couleur, border_width=bordure, width=largeur)
         
@@ -63,20 +68,24 @@ class Menu_symptomes(ctk.CTkFrame):
         title2, symptoms2 = self.read_symptoms_from_file(self.file_name2)
         self.symptoms2 = symptoms2
 
-
-       
         self.create_dropdown_menus(master)  # Crée et affiche les menus déroulants
 
     def create_dropdown_menus(self,master):
+        """
+        Crée un menu déroulants contenant les différents symptomes classé selon s'ils sont objectifs ou subjectifs.
+
+        Args:
+            master(fenetre): fenetre dans laquelle on veut afficher le sous menu déroulant
+        """
         my_font = tkFont.Font(size=12)    
         # Création du Menubutton
         menubutton_objective = tk.Menubutton(self, text="Objective/Motor Symptoms", relief=tk.RAISED, font=my_font)
         menubutton_objective.pack(padx=5, pady=15, expand=True)
+
         # Création du Menubutton
         menubutton_subjective = tk.Menubutton(self, text="Subjective Symptoms", relief=tk.RAISED, font=my_font)
         menubutton_subjective.pack(padx=5, pady=5, expand=True)
         
-
         # Création du menu principal
         menu_objective = tk.Menu(menubutton_objective, tearoff=0, font=my_font)
         menubutton_objective.config(menu=menu_objective)
@@ -92,6 +101,16 @@ class Menu_symptomes(ctk.CTkFrame):
             self.create_submenu(menu_subjective, symptom2, sub_symptoms2, my_font)
 
     def create_submenu(self, parent_menu, symptom, sub_symptoms, my_font):
+        """
+        Crée les sous menus déroulants après avoir sélectionné un symptome.
+        Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
+
+        Args:
+            parent_menu (Menu): Menu déroulant lié au symptome sélectionné
+            symptom (symptome): Symptome sélectionné
+            sub_symptoms (list): liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
+            my_font (Font): indique la taille de la police d'écriture
+        """
         #my_font = tkFont.Font(size=15)
         symptom_menu = tk.Menu(parent_menu, tearoff=0, font=my_font)
         has_sub_items = False
@@ -121,7 +140,10 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def read_symptoms_from_file(self, file_name):
         """
-        lit les fichiers textes pour récuper les symptomes
+        Lit les fichiers textes pour récuper les symptomes
+
+        Args:
+            file_name (fichier texte): fichier textes regroupant les symptomes
         """
         with open(file_name, 'r', encoding='utf-8') as file:
             title = file.readline().strip()
@@ -137,6 +159,12 @@ class Menu_symptomes(ctk.CTkFrame):
         return title, symptoms
     
     def on_select(self, selection):
+        """
+        Récupère des données lié à la video pour obtenir le temps actuel
+
+        Args:
+            selection (path): Symptome sélectionné 
+        """
         # Appel à une nouvelle fonction dans InterfaceGenerale pour obtenir le temps actuel de la vidéo
         current_video_time = self.interface_generale.get_current_video_time() 
         display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
