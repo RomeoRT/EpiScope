@@ -37,7 +37,7 @@ import pygame
 from pygame.time import Clock
 from tkinter import Menu
 import functools #pour update right panel
-
+"""
 # import pas git
 #utile pour la génération de la frise chronologique:
 #from fonctions_frise import chevauchement
@@ -52,7 +52,7 @@ from frise.fonctions_frise import afficher_frise
 import frise.save as sauvg
 from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
-"""
+
 
 class Menu_symptomes(ctk.CTkFrame):
     def __init__(self, master, interface_generale, couleur, bordure, largeur):
