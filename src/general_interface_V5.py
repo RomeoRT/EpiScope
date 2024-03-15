@@ -218,7 +218,16 @@ class FriseSymptomes:
             mf = int(mf)
             sf = int(sf)
             fin = hf * 3600 + mf * 60 + sf
-            newL.append([nom, debut, fin])
+            
+            id = symp.get_ID()
+            lat = symp.get_Lateralisation()
+            segcor = symp.get_SegCorporel()
+            orient = symp.get_Orientation()
+            attsup = symp.get_AttributSuppl()
+            comm = symp.get_Commentaire()
+
+            newL.append([nom, debut, fin, id, lat, segcor, orient, attsup, comm])
+
 
         newL = sorted(newL, key=lambda x: float(x[1]))
         afficher_frise(newL)
@@ -244,6 +253,9 @@ class InterfaceGenerale():
         # Liste symptomes vide
         self.ListeSymptomes = []
 
+        # Font
+        police = ("Arial", 12)
+
         # self.theme couleurs
         # L= = [text, frames, frame menu, menu, bouton revoir, bouton pause, boutons <<>>, boutons frise/texte  ]
         self.theme = ['black', 'gray97', 'whitesmoke', 'lightsteelblue1', 'navajo white', 'gray60', 'gray80', 'cornflowerblue']
@@ -257,8 +269,8 @@ class InterfaceGenerale():
         self.menu_deroulant = ctk.StringVar()
         self.menu_deroulant.set('Menu')
         self.menu = tk.OptionMenu(self.frame_menu, self.menu_deroulant, *options, command=self.menu_action)
-        self.menu.config(bg=self.theme[3],fg=self.theme[0], font=police_label_m)
-        self.menu["menu"].config(bg=self.theme[2], fg=self.theme[0],font=10)
+        self.menu.config(bg=self.theme[3],fg=self.theme[0], font=police)
+        self.menu["menu"].config(bg=self.theme[2], fg=self.theme[0],font=police)
         self.menu.pack(side=ctk.LEFT, padx=10, pady=10)
 
         # Variable pour stocker les coordonnées du clic
@@ -293,16 +305,16 @@ class InterfaceGenerale():
         ####################### Boutons
         #####################################################
 
-        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Revoir", command=self.lec_video.revoir_video, width=100, text_color=self.theme[0], fg_color=self.theme[4])
+        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Revoir", command=self.lec_video.revoir_video, width=100, text_color=self.theme[0], fg_color=self.theme[4], font=police)
         self.bouton_revoir.pack(side=ctk.LEFT, padx=100, pady=10)
 
-        self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="<<", command=self.lec_video.recule_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6])
+        self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="<<", command=self.lec_video.recule_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6], font=police)
         self.bouton_reculer.pack(side=ctk.LEFT, padx=5, pady=10)
 
-        self.bouton_play_pause = ctk.CTkButton(self.frame_CTkButton, text="Pause", command=self.lec_video.pause_lecture,text_color=self.theme[0],fg_color=self.theme[5])
+        self.bouton_play_pause = ctk.CTkButton(self.frame_CTkButton, text="Pause", command=self.lec_video.pause_lecture,text_color=self.theme[0],fg_color=self.theme[5], font=police)
         self.bouton_play_pause.pack(side=ctk.LEFT, padx=5, pady=10)
 
-        self.bouton_avancer = ctk.CTkButton(self.frame_CTkButton, text=">>", command=self.lec_video.avance_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6])
+        self.bouton_avancer = ctk.CTkButton(self.frame_CTkButton, text=">>", command=self.lec_video.avance_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6], font=police)
         self.bouton_avancer.pack(side=ctk.LEFT, padx=5, pady=10)
 
         self.bouton_nul = ctk.CTkButton(self.frame_CTkButton, text="", width=100, fg_color=self.theme[1], hover_color=self.theme[1])
@@ -314,15 +326,15 @@ class InterfaceGenerale():
 
 
         # Bouton pour activer la frise chronologique des symptomes:
-        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color=self.theme[0], fg_color=self.theme[7])
-        self.bouton_frise.pack(side=ctk.BOTTOM,padx=20,pady=20)
+        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color=self.theme[0], fg_color=self.theme[7], font=police)
+        self.bouton_frise.pack(side=ctk.BOTTOM,padx=20,pady=10)
         
         # gros bouton save (primitif)
-        self.bouton_save = ctk.CTkButton(self.frame_right, text="générer texte", command=self.sauvegarde, text_color=self.theme[0], fg_color=self.theme[7])
-        self.bouton_save.pack(side=ctk.BOTTOM,padx=20,pady=20)
+        self.bouton_save = ctk.CTkButton(self.frame_right, text="générer texte", command=self.sauvegarde, text_color=self.theme[0], fg_color=self.theme[7], font=police)
+        self.bouton_save.pack(side=ctk.BOTTOM,padx=20,pady=10)
     
         # Étiquettes pour afficher le temps écoulé et la durée totale
-        self.label_temps = tk.Label(self.frame_middle, text="Temps écoulé: 0:00 / Durée totale: 0:00", bg=self.theme[1], fg=self.theme[0])
+        self.label_temps = tk.Label(self.frame_middle, text="Temps écoulé: 0:00 / Durée totale: 0:00", bg=self.theme[1], fg=self.theme[0], font=("Arial", 10))
         self.label_temps.pack(side=tk.BOTTOM, padx=20)
 
         # Barre de progression manuelle
