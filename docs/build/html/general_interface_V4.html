@@ -13,6 +13,8 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="frise package" href="frise.html" />
+    <link rel="prev" title="API" href="api.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -335,8 +337,52 @@ Les éléments de ce menu precisent la localisation du symptome sur le corps et 
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general_interface_V4.FriseSymptomes"><code class="docutils literal notranslate"><span class="pre">FriseSymptomes</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.FriseSymptomes.afficher"><code class="docutils literal notranslate"><span class="pre">FriseSymptomes.afficher()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.get_current_video_time"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.get_current_video_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.get_video_duration"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.get_video_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.lire_fichier"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.lire_fichier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.menu_action"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.menu_action()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.ouvrir_video"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.ouvrir_video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.ouvrir_video_noire"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.ouvrir_video_noire()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.sauvegarde"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.sauvegarde()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.InterfaceGenerale.update_right_panel"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.update_right_panel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general_interface_V4.LecteurVideo"><code class="docutils literal notranslate"><span class="pre">LecteurVideo</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.afficher_menu_annotations"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.afficher_menu_annotations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.afficher_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.afficher_video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.ajouter_plus_rouge"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.ajouter_plus_rouge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.avance_progress"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.avance_progress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.charger_son_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.charger_son_video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.format_duree"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.format_duree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.manual_update_progress"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.manual_update_progress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.mettre_a_jour_frame_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.mettre_a_jour_frame_video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.mettre_a_jour_progression_son"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.mettre_a_jour_progression_son()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.mettre_a_jour_temps_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.mettre_a_jour_temps_video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.ouvrir_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.ouvrir_video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.ouvrir_video_noire"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.ouvrir_video_noire()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.pause_lecture"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.pause_lecture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.preparer_son_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.preparer_son_video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.recule_progress"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.recule_progress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.LecteurVideo.revoir_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.revoir_video()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general_interface_V4.Menu_symptomes"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.Menu_symptomes.create_dropdown_menus"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.create_dropdown_menus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.Menu_symptomes.create_submenu"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.create_submenu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.Menu_symptomes.on_select"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.on_select()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V4.Menu_symptomes.read_symptoms_from_file"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.read_symptoms_from_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="frise.html">frise package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="annotation.html">annotation package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecteur_video.html">lecteur_video package</a></li>
@@ -346,6 +392,8 @@ Les éléments de ce menu precisent la localisation du symptome sur le corps et 
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="api.html" title="previous chapter">API</a></li>
+      <li>Next: <a href="frise.html" title="next chapter">frise package</a></li>
   </ul></li>
 </ul>
 </div>

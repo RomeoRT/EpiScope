@@ -8,7 +8,9 @@ from annotation.class_symptome import Symptome
 #from class_symptome import Symptome
 
 def chercherElt(list):
-    """Cherche s'il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,..."""
+    """
+    Cherche s'il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,... 
+    """
     if len(list) != 0 :
         list = sorted(list)
         last = list[-1]
@@ -20,11 +22,16 @@ def chercherElt(list):
         return 0
 
 def chevauchement(liste, symp, current_index, levels):
-    """ Gère le problème de superposition visuelle des symptômes.
-    liste: liste des symptomes avec début et fin
-    symp: symptome actuel.
-    current_index: indice du symp actuel dans la liste.
-    Return: niveau y où afficher le rectangle. """
+    """ 
+    Gère le problème de superposition visuelle des symptômes.
+    ARGS:
+        liste: liste des symptomes avec début et fin
+        symp: symptome actuel.
+        current_index: indice du symp actuel dans la liste.
+
+    Returns: 
+        level : niveau y où afficher le rectangle. 
+        """
     level = 0
     list = []
     for i in range(len(levels)):
@@ -36,7 +43,9 @@ def chevauchement(liste, symp, current_index, levels):
     return level
 
 def on_text_click(event):
-    """Affiche l'annotation lorsque le texte est cliqué."""
+    """
+    Affiche l'annotation lorsque le texte est cliqué.
+    """
     for annotation, rect in zip(annotations, rects):
         if rect.contains(event)[0]:
             annotation.set_visible(True)
@@ -45,8 +54,13 @@ def on_text_click(event):
     plt.draw()
 
 def afficher_frise(liste):
-    """ Affiche la frise chronologique des symptômes.
-    liste: liste des symptomes où chaque élément est une liste [nom, début, fin]. """
+    """ 
+    Affiche la frise chronologique des symptômes.
+
+    Args:
+    liste (list): liste des symptomes où chaque élément est une liste [nom, début, fin]. 
+
+    """
     liste = sorted(liste, key=lambda x: float(x[1]))
     levels = []
     fig, ax = plt.subplots()
