@@ -62,8 +62,7 @@ class Menu_symptomes(ctk.CTkFrame):
         self.file_name2 = "Subjective_Symptomes.txt"
         title2, symptoms2 = self.read_symptoms_from_file(self.file_name2)
         self.symptoms2 = symptoms2
-
-
+        
        
         self.create_dropdown_menus(master)  # Crée et affiche les menus déroulants
 
