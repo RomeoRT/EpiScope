@@ -3,7 +3,9 @@ interface générale Episcope contenant :
     lecteur vidéo :
     - lecture video
     - boutons play/pause, skip>>, skip<<, revoir
+    -avance et recule de 1s et mets en pause 
     - son synchronisé
+    -bonne vitesse
 
     annotations :
     - les menus en cascade a gauche
@@ -35,7 +37,7 @@ import pygame
 from pygame.time import Clock
 from tkinter import Menu
 import functools #pour update right panel
-"""
+
 # import pas git
 #utile pour la génération de la frise chronologique:
 #from fonctions_frise import chevauchement
@@ -50,6 +52,7 @@ from frise.fonctions_frise import afficher_frise
 import frise.save as sauvg
 from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
+"""
 
 class Menu_symptomes(ctk.CTkFrame):
     def __init__(self, master, interface_generale, couleur, bordure, largeur):
@@ -414,6 +417,7 @@ class LecteurVideo():
         self.video_paused = False
         self.current_frame_time = 0
         self.clock = Clock()  # Initialisez l'horloge pygame
+        self.vitesse_lecture = 3
 
     def ouvrir_video(self):
         # Sélection du fichier vidéo et préparation de la vidéo et du son
@@ -465,36 +469,40 @@ class LecteurVideo():
 
 
     def afficher_video(self):
-            if self.interface_generale.cap.isOpened():
-                ret, frame = self.interface_generale.cap.read()
-                if ret:
-                    # Convertir BGR en RGB
-                    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        # Vérifie si la vidéo est ouverte
+        if self.interface_generale.cap.isOpened():
+            ret, frame = self.interface_generale.cap.read()  # Lit la prochaine frame de la vidéo
+            if ret:
+                # Convertir BGR en RGB puisque OpenCV utilise BGR par défaut
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-                    # Ajuster la taille du frame pour correspondre à la taille du canevas
-                    largeur_canevas = self.interface_generale.canvas.winfo_width()
-                    hauteur_canevas = self.interface_generale.canvas.winfo_height()
-                    frame = cv2.resize(frame, (largeur_canevas, hauteur_canevas))
+                # Ajuster la taille de la frame pour qu'elle corresponde à la taille du canevas
+                largeur_canevas = self.interface_generale.canvas.winfo_width()
+                hauteur_canevas = self.interface_generale.canvas.winfo_height()
+                frame = cv2.resize(frame, (largeur_canevas, hauteur_canevas))
 
-                    # Convertir l'image CV2 en image Tkinter
-                    photo = ImageTk.PhotoImage(image=Image.fromarray(frame))
+                # Convertir l'image CV2 en image Tkinter pour l'affichage
+                photo = ImageTk.PhotoImage(image=Image.fromarray(frame))
 
-                    # Afficher l'image dans le canevas
-                    self.interface_generale.canvas.create_image(0, 0, image=photo, anchor=tk.NW)
-                    self.interface_generale.canvas.image = photo  # Empêcher l'image d'être effacée par le ramasse-miettes.
+                # Afficher l'image dans le canevas
+                self.interface_generale.canvas.create_image(0, 0, image=photo, anchor=tk.NW)
+                # Garde une référence de l'image pour éviter le ramasse-miettes
+                self.interface_generale.canvas.image = photo
 
-                    # Mise à jour du temps écoulé et du temps total
-                    frame_number = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
-                    fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
-                    total_frames = self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT)
+                # Mise à jour du temps écoulé et du temps total de la vidéo
+                frame_number = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
+                fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
+                total_frames = self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT)
 
-                    temps_ecoule = int(frame_number / fps)
-                    duree_totale = int(total_frames / fps)
-                    self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(temps_ecoule)} / Durée totale: {self.format_duree(duree_totale)}")
+                temps_ecoule = int(frame_number / fps)
+                duree_totale = int(total_frames / fps)
+                self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(temps_ecoule)} / Durée totale: {self.format_duree(duree_totale)}")
 
-                    # S'assurer que la vidéo continue de jouer si elle n'est pas en pause
-                    if not self.interface_generale.lec_video.video_paused:
-                        self.interface_generale.canvas.after(int(1000/fps), self.afficher_video)
+                # Continuez la lecture si la vidéo n'est pas en pause
+                if not self.video_paused:
+                    # Ajustez le délai pour la vitesse de lecture (vitesse normale = 1.0)
+                    self.interface_generale.canvas.after(int(1000 / fps / self.vitesse_lecture), self.afficher_video)
+
 
     def mettre_a_jour_frame_video(self, frame):
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -521,6 +529,7 @@ class LecteurVideo():
 
 
 
+
     def mettre_a_jour_progression_son(self):
         if self.interface_generale.cap.isOpened():
             # Synchroniser la position de lecture du son avec celle de la vidéo
@@ -535,34 +544,34 @@ class LecteurVideo():
 
     def avance_progress(self):
         if self.interface_generale.cap.isOpened():
-            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)  # Obtenez les FPS de la vidéo
-            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)  # Obtenez le numéro de frame actuel
-            # Calculez le nouveau numéro de frame en avançant de 2 secondes
-            new_frame = current_frame + fps * 2  
-            # Mettez à jour la position de la vidéo
+            self.video_paused = True  # Assumer que la vidéo est en pause
+            self.pause_lecture()  # Pause la vidéo et l'audio
+
+            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
+            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
+            new_frame = current_frame + fps * 1  # Avance de 1 seconde
             self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, new_frame)
-            
+           
             # Calculez la nouvelle position de la piste audio en secondes
             new_time = new_frame / fps
             # Ajustez la position de la piste audio
             pygame.mixer.music.play(0, new_time)
-            self.afficher_video()  # Mettez à jour l'affichage vidéo
+            self.pause_lecture()  # Reprendre la lecture de la vidéo et l'audio
 
     def recule_progress(self):
         if self.interface_generale.cap.isOpened():
-            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)  # Obtenez les FPS de la vidéo
-            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)  # Obtenez le numéro de frame actuel
-            # Calculez le nouveau numéro de frame en reculant de 2 secondes
-            new_frame = max(0, current_frame - fps * 2)  # S'assure que le nouveau frame n'est pas négatif
-            # Mettez à jour la position de la vidéo
+            self.video_paused = True  # Assumer que la vidéo est en pause
+            self.pause_lecture()  # Pause la vidéo et l'audio
+
+            current_frame = self.interface_generale.cap.get(cv2.CAP_PROP_POS_FRAMES)
+            fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
+            new_frame = max(0, current_frame - fps * 1)  # Recule de 1 seconde
             self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, new_frame)
-            
             # Calculez la nouvelle position de la piste audio en secondes
             new_time = new_frame / fps
             # Ajustez la position de la piste audio
             pygame.mixer.music.play(0, new_time)
-            self.afficher_video()  # Mettez à jour l'affichage vidéo
-
+            self.pause_lecture()
 
     def revoir_video(self):
         if self.interface_generale.cap.isOpened():
