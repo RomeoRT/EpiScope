@@ -13,6 +13,7 @@ interface générale Episcope contenant :
     - recuperer les symptomes dans une liste
     - recuperer les temps de debut et de fin
     - afficher les symptomes a droite
+    - symptomes scrollables
     - pop-up pour modifier les symptomes 
 
     fichiers :
