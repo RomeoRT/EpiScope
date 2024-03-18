@@ -267,7 +267,14 @@ class FriseSymptomes:
             mf = int(mf)
             sf = int(sf)
             fin = hf * 3600 + mf * 60 + sf
-            newL.append([nom, debut, fin])
+
+            id = symp.get_ID()
+            lat = symp.get_Lateralisation()
+            segcor = symp.get_SegCorporel()
+            orient = symp.get_Orientation()
+            attsup = symp.get_AttributSuppl()
+            comm = symp.get_Commentaire()
+            newL.append([nom, debut, fin, id, lat, segcor, orient, attsup, comm, tdeb_str, tfin_str])
 
         newL = sorted(newL, key=lambda x: float(x[1]))
         afficher_frise(newL)
@@ -431,7 +438,7 @@ class InterfaceGenerale():
                 if len(parts) >= 2:  # Assurez-vous qu'il y a bien un temps de début pour insérer le temps de fin
                     deb=Symp.get_Tdeb()
                     splitdeb=deb.rstrip("\n")
-                    new_text = f"{Symp.get_Nom()}   -   TD: {splitdeb}  -   TF: {Symp.get_Tfin()}"
+                    new_text = f"{Symp.get_Nom()}   -   Starting Time: {splitdeb}  -   End Time: {Symp.get_Tfin()}"
                     event.widget.config(text=new_text)  # Met à jour le texte du label avec le temps de fin
 
                     open_editor_partial = functools.partial(open_editor_on_click, Symp=Symp)
@@ -469,7 +476,7 @@ class InterfaceGenerale():
         splited = text.split(" - ")
         Symp.set_Nom(splited[0])
         Symp.set_Tdeb(splited[1][4:])
-        symptom_with_time = f"{Symp.get_Nom()} - TD: {Symp.get_Tdeb()}"
+        symptom_with_time = f"{Symp.get_Nom()} - Starting Time: {Symp.get_Tdeb()}        SET END TIME"
 
         container = tk.Frame(self.text_output)  # Créer un conteneur pour le label et le bouton
         container.pack(side=tk.TOP, fill=tk.X)
