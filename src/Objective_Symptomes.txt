@@ -1,23 +1,24 @@
 Objective/Motor symptoms
-Dystonia,posturing (Distal;Proximal[Left,Right,Bilateral]; Hand/Superior limb; Foot/Inferior limb)
-Fencing posture (Left arm extenxion;right arm extension)
-Ataxia (Hand/Superior limb[Left,Right,Bilateral];Foot/Inferior limb[Left,Right,Bilateral])
-Hyperkinetic behaviors (Goal-targeted;Unoriented;Oriented[Left,Right,Bilateral];Upper limb;Lower limb;Axial)
 Astasia
 Atonic, paresis(Hand/Superior limb[Left,Right,Bilateral];Foot/Inferior limb[Left,Right,Bilateral])
-Negative myoclonu(Oriented[Left,Right,Bilateral];Hand/Superior limb;Foot/Inferior limb)
-Positive Myoclonus(Hand/Superior limb[Left,Right,Bilateral];Foot/Inferior limb[Left,Right,Bilateral];Mouth;Eyelids;Eyes)
+Dystonia,posturing (Distal[Left,Right,Bilateral];Proximal[Left,Right,Bilateral]; Hand/Superior limb; Foot/Inferior limb)
+Apnea
+Ataxia (Hand/Superior limb[Left,Right,Bilateral];Foot/Inferior limb[Left,Right,Bilateral])
+Fencing posture (Left arm extenxion;right arm extension)
+Hyperkinetic behaviors (Goal-targeted;Unoriented;Oriented[Left,Right,Bilateral];Upper limb[Left,Right,Bilateral];Lower limb[Left,Right,Bilateral];Axial)
+Negative myoclonu(Oriented[Left,Right,Bilateral];Hand/Superior limb[Left,Right,Bilateral];Foot/Inferior limb[Left,Right,Bilateral])
+Positive Myoclonus(Hand/Superior limb[Left,Right,Bilateral];Foot/Inferior limb[Left,Right,Bilateral];Mouth[Left,Right,Bilateral];Eyelids[Left,Right,Bilateral];Eyes[Left,Right,Bilateral])
 Epileptic nystagmus(Left;Right)
 Eye blinking(Left;Right;Bilateral)
 Version(Head;eyes;Gyration;Left;Right)
-Orientation(Body;Head;eyes;Left;Right)
+Orientation(Body[Left,Right];Head[Left,Right];eyes[Left,Right])
 Epileptic spasm(Bilateral;Left;Right)
 Postictal somato-sensory deficits
 Nose wiping(Left;Right)
 Mimic automatisms
 Chapeau de gendarme 
 Oroalimentary automatisms 
-Gestural automatisms(Distal;Proximal;Genital;Grasping[Goal-targeted,Unoriented,Left,Right,Bilateral])
+Gestural automatisms(Distal[Left,Right,Bilateral];Proximal[Left,Right,Bilateral];Genital;Grasping[Goal-targeted,Unoriented,Left,Right,Bilateral])
 Vocal automatisms (Vocal automatisms;Verbal automatisms;Humming;Singing)
 Laughter
 Crying
@@ -25,12 +26,11 @@ Hypersalivation
 Sialorrhea
 Spitting
 Vomiting
-Cutaneous Ictal Phenomena (Flushing;Pallor;Sweating;Piloerection)
+Cutaneous Ictal Phenomena(Flushing;Pallor;Sweating;Piloerection)
 Cardiovascular manifestations (Tachycardia;Bradycardia;Ictal asystolia)
 Hypoventilation
-Apnea
 Choking
-Hyperventilation
-Miosis
+Hyperventilation(Left;Right;Bilateral)
+Miosis(Left;Right;Bilateral)
 Mydriasis
 
