@@ -317,7 +317,7 @@ class InterfaceGenerale():
         self.frame_menu.pack(side=ctk.TOP, fill=ctk.X)
         police_label_m = tkFont.Font(size=12)
         # Menu déroulant
-        options = ["Ouvrir","Ouvrir sans video","Save"]
+        options = ["Ouvrir","Ouvrir sans video","save"]
         self.menu_deroulant = ctk.StringVar()
         self.menu_deroulant.set('Menu')
         self.menu = tk.OptionMenu(self.frame_menu, self.menu_deroulant, *options, command=self.menu_action)
@@ -384,7 +384,7 @@ class InterfaceGenerale():
         self.bouton_frise.pack(side=ctk.BOTTOM,padx=20,pady=20)
         
         # gros bouton save (primitif)
-        self.bouton_save = ctk.CTkButton(self.frame_right, text="générer texte", command=self.sauvegarde, text_color=self.theme[0], fg_color=self.theme[7])
+        self.bouton_save = ctk.CTkButton(self.frame_right, text="ecrire rapport", command=self.rapport, text_color=self.theme[0], fg_color=self.theme[7])
         self.bouton_save.pack(side=ctk.BOTTOM,padx=20,pady=20)
     
         # Étiquettes pour afficher le temps écoulé et la durée totale
@@ -493,7 +493,7 @@ class InterfaceGenerale():
         set_end_time_partial = functools.partial(set_end_time, Symp=Symp)
         symptom_label.bind('<Button-1>', set_end_time_partial)
 
-        self.text_output.insert(tk.END, '\n')  # Nouvelle ligne après chaque symptôme
+        #self.text_output.insert(tk.END, '\n')  # Nouvelle ligne après chaque symptôme
         #self.text_output.config(state=tk.DISABLED)  # Désactive l'édition de la zone de texte après la mise à jour
 
         self.ListeSymptomes.append(Symp)
@@ -547,12 +547,14 @@ class InterfaceGenerale():
         """
         Mini menu déroulant qui permet de choisir différent mode d'ouverture de la vidéo
         """
-        if selection == "Ouvrir":
-            self.ouvrir_video()
-        else:
-            if (selection == "Ouvrir sans video"):
-                
+        match selection :
+            case "Ouvrir":
+                self.ouvrir_video()
+            case "Ouvrir sans video":
                 self.ouvrir_video_noire()
+            case "save":
+                self.sauvegarde()
+
     
 
     
@@ -578,7 +580,13 @@ class InterfaceGenerale():
         """
         save = sauvg.save(self.ListeSymptomes)
         save.save()
-
+    
+    def rapport(self):
+        """
+        ecrit le rapport de la crise
+        """
+        save = sauvg.save(self.ListeSymptomes)
+        save.write_report()
 
 class LecteurVideo():
 

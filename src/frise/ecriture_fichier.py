@@ -2,7 +2,7 @@
 Ce module contient des fonctions pour créer et éditer les fichiers '.txt' de sortie avec les symptomes
 """
 from annotation.class_symptome import *
-from frise.save import MetaData
+from frise.class_metadata import MetaData
 
     
 
@@ -104,9 +104,9 @@ def ecrire_rapport(Symptom_list, filename):
          for symptom in Symptom_list:
             tdeb = symptom.get_Tdeb().strip(":")
             tfin = symptom.get_Tfin().strip(":")
-            duree = 60*( tfin[-2]-tdeb[-2])+( tfin[-1]-tdeb[-1])
+            duree = 60 #*( int(tfin[-2])-int(tdeb[-2]))+( int(tfin[-1])-int(tdeb[-1]))
         
-            fichier.write(f"{k} - {symptom.get_Nom()}, {symptom.get_SegCorporel()}, {symptom.get_Lateralisation()} : debut a {symptom.get_Tdeb}, duree : {duree} sec (fin : {symptom.get_Tfin()})\n")
+            fichier.write(f"{k} - {symptom.get_Nom()}, {symptom.get_SegCorporel()}, {symptom.get_Lateralisation()} : debut a {symptom.get_Tdeb()}, duree : {duree} sec (fin : {symptom.get_Tfin()})\n")
             
             k+=1
 

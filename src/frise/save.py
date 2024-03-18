@@ -8,6 +8,7 @@ import customtkinter as CTK
 import datetime
 
 import frise.ecriture_fichier as EF
+from frise.class_metadata import MetaData
 
 class save :
     """
@@ -133,7 +134,7 @@ class MetaData_WD(CTK.CTkToplevel) :
         # Bouton
         self.boutonOK = CTK.CTkButton(self, text="OK",fg_color='green', hover_color= ('darkgreen'))
         self.boutonOK.bind("<Button-1>", self.get_metadata)
-        self.boutonOK.grid(row=4, column=1, padx=5, pady=5, sticky="ew")
+        self.boutonOK.grid(row=5, column=1, padx=5, pady=5, sticky="ew")
 
         # Lier l'événement <Return> à la fonction get_metadata
         self.bind('<Return>', lambda event: self.get_metadata(event))
@@ -159,44 +160,6 @@ class MetaData_WD(CTK.CTkToplevel) :
         self.update()
 
         return 1
-
-class MetaData():
-    def __init__(self, Nom="", prenom="", dateC="", doc="", dateA=""):
-        self.nom = Nom
-        self.prenom = prenom
-        self.docteur = doc
-        self.dateCrise = dateC
-        self.dateAnnotation = dateA
-    
-    def get_nom(self):
-        return self.nom
-    
-    def get_prenom(self):
-        return self.prenom
-    
-    def get_docteur(self):
-        return self.docteur
-    
-    def get_dateCrise(self):
-        return self.dateCrise
-    
-    def get_dateAnnotation(self):
-        return self.dateAnnotation
-
-    def set_nom(self, value):
-        self.nom = value
-
-    def set_prenom(self, value):
-        self.prenom = value
-
-    def set_docteur(self, value):
-        self.docteur = value
-    
-    def set_dateCrise(self, value):
-        self.dateCrise = value
-
-    def set_dateAnnotation(self, value):
-        self.dateAnnotation = value              
 
 
 ############################################################################################################################################
