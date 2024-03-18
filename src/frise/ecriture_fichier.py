@@ -2,7 +2,7 @@
 Ce module contient des fonctions pour créer et éditer les fichiers '.txt' de sortie avec les symptomes
 """
 from annotation.class_symptome import *
-import datetime
+
     
 
 def EcrireSymptome(symptome, nomfichier) :
@@ -53,23 +53,27 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
     with open(nomfichier, 'a') as fichier :  
         fichier.write("\n\n")  
 
-def EcrireMetaData(ListeMeta, nomfichier) :
+def EcrireMetaData(Meta, nomfichier) :
     """
     Ecrit les metadata d'une annotation dans un fichier texte sous la forme : heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n
 
     Args:
-        ListeMeta (List): liste des métadatas
+        Meta (MetaData): lLes métadatas
         nomfichier (string): chemin du fichier
 
     Returns:
         None
 
     """
-    mydate = datetime.date.today()
     with open(nomfichier, 'a') as fichier :
-         fichier.write("Metadonnées :\n")
-         fichier.write("heure réelle :\tpraticien :\tpatient :\tdate d'annotation : \n")
-         fichier.write(f"{ListeMeta[0]}\t{ListeMeta[1]}\t{ListeMeta[2]}\t{mydate}\n\n")
+         fichier.write("patient :\n")
+         fichier.write(f"Nom : {Meta.get_nom()}\n")
+         fichier.write(f"Prenom : {Meta.get_prenom()}\n")
+         fichier.write(f"Date et heure de la crise : {Meta.get_dateCrise()}\n")
+         fichier.write(f"Annotation réalisée par : {Meta.get_docteur()}\n")
+         fichier.write(f"Annotation réalisée le : {Meta.get_dateAnnotation()}\n")
+         fichier.write("\n")
+
         
 def format(data, caracteres):
     """
@@ -87,6 +91,9 @@ def format(data, caracteres):
         data = new_data
 
     return new_data
+
+def ecrire_rapport():
+    pass
 
 ##########################################################################################################
 if __name__ == "__main__" :

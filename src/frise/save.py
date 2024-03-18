@@ -3,7 +3,9 @@ Ce fichier contient des classes et fonctions de base pour sauvegarder les fichie
 """
 from tkinter import filedialog
 from tkinter import messagebox
+from typing import Any
 import customtkinter as CTK
+import datetime
 
 import frise.ecriture_fichier as EF
 
@@ -56,7 +58,7 @@ class save :
 
         
         
-class metadata(CTK.CTkToplevel) :
+class metadata_WD(CTK.CTkToplevel) :
     """
     fenetre toplevel pour saisir les metadonnées
 
@@ -73,7 +75,7 @@ class metadata(CTK.CTkToplevel) :
         """
         super().__init__()
 
-        self.liste = []
+        self.data = MetaData()
         self.filename = filename
 
 
@@ -84,21 +86,29 @@ class metadata(CTK.CTkToplevel) :
         self.meta_label = CTK.CTkLabel(self, text="enter MetaData")
         self.meta_label.grid(row=0, column=1, padx=5, pady=5)
 
-        # metadatas
-        self.patient_entry = CTK.CTkEntry(self, placeholder_text="Patient name")
-        self.patient_entry.grid(row=1, column=1, padx=5, pady=5, sticky="ew")
-        self.patient_label = CTK.CTkLabel(self, text="Patient's name : ")
-        self.patient_label.grid(row=1, column=0, padx=5, pady=5)
+        # metadata_entries 
+        #patient
+        self.patientName_entry = CTK.CTkEntry(self, placeholder_text="Patient Name")
+        self.patientName_entry.grid(row=1, column=1, padx=5, pady=5, sticky="ew")
+        self.patientName_label = CTK.CTkLabel(self, text="Patient's Name : ")
+        self.patientName_label.grid(row=1, column=0, padx=5, pady=5)
 
-        self.doctor_entry = CTK.CTkEntry(self, placeholder_text="Doctor name")
-        self.doctor_entry.grid(row=2, column=1, padx=5, pady=5, sticky="ew")
-        self.doctor_label = CTK.CTkLabel(self, text="Doctor's name : ")
-        self.doctor_label.grid(row=2, column=0, padx=5, pady=5)
+        self.patientSurname_entry = CTK.CTkEntry(self, placeholder_text="Patient surname")
+        self.patientSurname_entry.grid(row=2, column=1, padx=5, pady=5, sticky="ew")
+        self.patient_label = CTK.CTkLabel(self, text="Patient's surname : ")
+        self.patient_label.grid(row=2, column=0, padx=5, pady=5)
 
+        #doctor
+        self.doctor_entry = CTK.CTkEntry(self, placeholder_text="Doctor")
+        self.doctor_entry.grid(row=3, column=1, padx=5, pady=5, sticky="ew")
+        self.doctor_label = CTK.CTkLabel(self, text="Doctor : ")
+        self.doctor_label.grid(row=3, column=0, padx=5, pady=5)
+
+        #date crise
         self.hour_entry = CTK.CTkEntry(self, placeholder_text="Time of seizure")
-        self.hour_entry.grid(row=3, column=1, padx=5, pady=5, sticky="ew")
+        self.hour_entry.grid(row=4, column=1, padx=5, pady=5, sticky="ew")
         self.hour_label = CTK.CTkLabel(self, text="Time of seizure : ")
-        self.hour_label.grid(row=3, column=0, padx=5, pady=5)
+        self.hour_label.grid(row=4, column=0, padx=5, pady=5)
 
         # Bouton
         self.boutonOK = CTK.CTkButton(self, text="OK",fg_color='green', hover_color= ('darkgreen'))
@@ -117,15 +127,54 @@ class metadata(CTK.CTkToplevel) :
             event (any): correspont a l'ecriture dans les box de texte
         """
         
-        self.liste.append(self.hour_entry.get())
-        self.liste.append(self.doctor_entry.get())
-        self.liste.append(self.patient_entry.get())
+        self.data.set_dateCrise(self.hour_entry.get())
+        self.data.set_docteur(self.doctor_entry.get())
+        self.data.set_nom(self.patientName_entry.get())
+        self.data.set_prenom(self.patientSurname_entry.get())
+        self.data.set_dateAnnotation(datetime.date.today())
         
-        EF.EcrireMetaData(self.liste, self.filename)
+        EF.EcrireMetaData(self.data, self.filename)
 
         self.destroy()
         self.update()
-        
+
+class MetaData():
+    def __init__(Nom="", prenom="", dateC="", doc="", dateA=""):
+        self.nom = Nom
+        self.prenom = prenom
+        self.docteur = doc
+        self.dateCrise = dateC
+        self.dateAnnotation = dateA
+    
+    def get_nom():
+        return self.nom
+    
+    def get_prenom():
+        return self.prenom
+    
+    def get_docteur():
+        return self.docteur
+    
+    def get_dateCrise():
+        return self.dateCrise
+    
+    def get_dateAnnotation():
+        return self.dateAnnotation
+
+    def set_nom(value):
+        self.nom = value
+
+    def set_prenom(value):
+        self.prenom = value
+
+    def set_docteur(value):
+        self.docteur = value
+    
+    def set_dateCrise(value):
+        self.dateCrise = value
+
+    def set_dateAnnotation(value):
+        self.dateAnnotation = value              
 
 
 ############################################################################################################################################
