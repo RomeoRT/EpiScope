@@ -382,9 +382,8 @@ class InterfaceGenerale():
         self.label_temps.pack(side=tk.BOTTOM, padx=20)
 
         # Barre de progression manuelle
-        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, orient="horizontal", command=self.lec_video.manual_update_progress, bg=self.theme[1])
+        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, command=self.lec_video.manual_update_progress, orient="horizontal", bg=self.theme[1])
         self.progress_slider.pack(side=tk.BOTTOM, fill=tk.X)
-
 
         # Lire la vidéo avec OpenCV
         self.cap = None
@@ -574,7 +573,7 @@ class LecteurVideo():
     """
     Classe du lecteur video qui gére les differentes fonctionnalités de la video.
 
-    fonctionnalités l'ouverture de la vidéo, de la vidéo noire,l'affichage de la vidéo,la synchroisation du son et la gestion des boutons
+    fonctionnalités : ouverture de la vidéo, de la vidéo noire,l'affichage de la vidéo,la synchroisation du son et la gestion des boutons
     Elle appelle la classe InterfaceGenerale 
 
     Attributes:
@@ -590,7 +589,10 @@ class LecteurVideo():
         self.video_paused = False
         self.current_frame_time = 0
         self.clock = Clock()  # Initialisez l'horloge pygame
-        self.vitesse_lecture = 3
+        self.vitesse_lecture = 2
+        self.valeur=-1
+        self.temps_ecoule=0
+        self.duree_totale=0
 
     def ouvrir_video(self):
         """
@@ -605,6 +607,7 @@ class LecteurVideo():
                 print("Erreur: Impossible d'ouvrir la vidéo.")
                 return
             self.preparer_son_video(file_path)
+            self.avancer()
             self.afficher_video()
 
 
@@ -629,7 +632,7 @@ class LecteurVideo():
 
             self.interface_generale.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
 
-            self.interface_generale.progress_slider.configure(to=self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT))
+            #self.interface_generale.progress_slider.configure(to=self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
             self.afficher_video()
             self.interface_generale.bouton_play_pause.configure(state=ctk.NORMAL)
@@ -656,6 +659,7 @@ class LecteurVideo():
         redimensionnement des frames de la video pour correspondre les dimensions de middle frame
         Calcule et affiche le temps totale et le temps écoulé
         """
+        
         if self.interface_generale.cap.isOpened():# Vérifie si la vidéo est ouverte
             ret, frame = self.interface_generale.cap.read()  # Lit la prochaine frame de la vidéo
             if ret:
@@ -680,14 +684,15 @@ class LecteurVideo():
                 fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
                 total_frames = self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT)
 
-                temps_ecoule = int(frame_number / fps)
-                duree_totale = int(total_frames / fps)
-                self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(temps_ecoule)} / Durée totale: {self.format_duree(duree_totale)}")
+                self.temps_ecoule = int(frame_number / fps)
+                self.duree_totale = int(total_frames / fps)
+                self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(self.temps_ecoule)} / Durée totale: {self.format_duree(self.duree_totale)}")
 
                 # Continuez la lecture si la vidéo n'est pas en pause
                 if not self.video_paused:
                     # Ajustez le délai pour la vitesse de lecture (vitesse normale = 1.0)
                     self.interface_generale.canvas.after(int(1000 / fps / self.vitesse_lecture), self.afficher_video)
+                
 
 
     def mettre_a_jour_frame_video(self, frame):
@@ -725,26 +730,23 @@ class LecteurVideo():
             # Mettre à jour le texte du bouton ici, exemple :
             self.interface_generale.bouton_play_pause.configure(text="Pause")
 
-    def mettre_a_jour_progression_son(self):
-        """
-        Synchroniser la position de lecture du son avec celle de la vidéo
-        """
-        if self.interface_generale.cap.isOpened():
-            position_video = self.current_frame_time / 1000.0  # Convertir en secondes
-            pygame.mixer.music.set_pos(position_video)
 
-    def manual_update_progress(self, value):
-        """
-        Permettre de sauter à un point différent dans la vidéo
 
-        Args:
-            value: qui représente la nouvelle position  où l'utilisateur 
-            souhaite déplacer la lecture de la vidéo
-        """
-        frame_number = int(value)
-        self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
-        self.sound.set_pos(self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0)
-        self.afficher_video()
+    def avancer(self):
+        self.interface_generale.progress_slider.set(self.temps_ecoule)
+        self.interface_generale.fenetre.after(1, self.avancer)
+        
+
+            
+            
+    def manual_update_progress(self,value):
+        self.temps_ecoule=float(value)
+        fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
+        frame_number=self.temps_ecoule*fps
+        self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES,int(frame_number))
+        new_frame = float(value) + fps
+        new_time = new_frame / fps
+        pygame.mixer.music.play(0,new_time)
 
     def avance_progress(self):
         """
@@ -766,7 +768,6 @@ class LecteurVideo():
             self.pause_lecture()  # Reprendre la lecture de la vidéo et l'audio
 
     def recule_progress(self):
-        
         """
         Permet de reculer de 1 seconde dans la video en assurant la synchronisation du son avec la video
         """
