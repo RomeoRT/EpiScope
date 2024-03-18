@@ -27,7 +27,7 @@ def EcrireSymptome(symptome, nomfichier) :
     with open(nomfichier, 'a') as fichier :
         for attribut in data :
             fichier.write(attribut)
-            fichier.write("\t")
+            fichier.write(" \t")
         fichier.write("\n")
 
 def EcrireListeSymptome(listeSymptome, nomfichier) :
@@ -49,7 +49,9 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
 
     for symptome in listeSymptome :
         EcrireSymptome(symptome, nomfichier)
-        
+    
+    with open(nomfichier, 'a') as fichier :  
+        fichier.write("\n\n")  
 
 def EcrireMetaData(ListeMeta, nomfichier) :
     """

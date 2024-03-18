@@ -41,13 +41,19 @@ import functools #pour update right panel
 
 
 
-# import git
+"""
+# import pas git
 from fonctions_frise import afficher_frise
 import save as sauvg
-
 from class_symptome import Symptome
 from pop_up import SymptomeEditor
+"""
+# import git
+from frise.fonctions_frise import afficher_frise
+import frise.save as sauvg
 
+from annotation.class_symptome import Symptome
+from annotation.pop_up import SymptomeEditor
 
 
 class Menu_symptomes(ctk.CTkFrame):
@@ -328,8 +334,10 @@ class InterfaceGenerale():
         self.frame_middle.pack(side=ctk.LEFT, fill=ctk.BOTH, expand=True)
         self.frame_right.pack(side=ctk.RIGHT, fill=ctk.BOTH, expand=True)
 
-        self.text_output = tk.Text(self.frame_right, height=40, width=(fenetre.winfo_screenwidth() // 5), relief=tk.GROOVE, wrap=tk.WORD, state=tk.DISABLED)  # Déplacé pour être un attribut de l'instance
-        self.text_output.pack(side=ctk.TOP,padx=20,pady=20)
+        self.scrollable1 = ctk.CTkScrollableFrame(self.frame_right, border_width=0, height=400, fg_color=self.theme[1], width=(fenetre.winfo_screenwidth() // 5), orientation='vertical')
+        self.text_output = ctk.CTkScrollableFrame(self.scrollable1, border_width=0, height=400, fg_color=self.theme[1], width=(fenetre.winfo_screenwidth() // 5), orientation='horizontal')
+        self.scrollable1.pack(side=ctk.TOP,padx=20,pady=20)
+        self.text_output.pack()
 
         #self.frame_right.grid_rowconfigure(0, weight=1)  # Donne un poids à la ligne où se trouve la zone de texte
         self.frame_right.grid_columnconfigure(0, weight=1)
@@ -449,7 +457,7 @@ class InterfaceGenerale():
                 new_text = f"{Symp.get_Nom()}   -   TD: {splitdeb}  -   TF: {Symp.get_Tfin()}"
                 event.widget.config(text=new_text)  # Met à jour le texte du label avec le temps de fin
 
-        self.text_output.config(state=tk.NORMAL)  # Activez l'état normal pour permettre la mise à jour
+        #self.text_output.config(state=tk.NORMAL)  # Activez l'état normal pour permettre la mise à jour
 
         ## initialisation du symptome
         if attributs == []:
@@ -478,7 +486,7 @@ class InterfaceGenerale():
         symptom_label.bind('<Button-1>', set_end_time_partial)
 
         self.text_output.insert(tk.END, '\n')  # Nouvelle ligne après chaque symptôme
-        self.text_output.config(state=tk.DISABLED)  # Désactive l'édition de la zone de texte après la mise à jour
+        #self.text_output.config(state=tk.DISABLED)  # Désactive l'édition de la zone de texte après la mise à jour
 
         self.ListeSymptomes.append(Symp)
 

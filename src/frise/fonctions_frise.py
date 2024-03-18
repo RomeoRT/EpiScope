@@ -1,7 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
+"""
+#pas git
 from class_symptome import Symptome
+"""
+# git
+from annotation.class_symptome import Symptome
 
 def chercherElt(list):
     """Cherche s'il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,..."""
