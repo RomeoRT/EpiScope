@@ -1,16 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# import git
-from annotation.class_symptome import Symptome
-
-#import pas git
-#from class_symptome import Symptome
+from class_symptome import Symptome
 
 def chercherElt(list):
-    """
-    Cherche s'il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,... 
-    """
+    """Cherche s'il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,..."""
     if len(list) != 0 :
         list = sorted(list)
         last = list[-1]
@@ -22,16 +16,11 @@ def chercherElt(list):
         return 0
 
 def chevauchement(liste, symp, current_index, levels):
-    """ 
-    Gère le problème de superposition visuelle des symptômes.
-    ARGS:
-        liste: liste des symptomes avec début et fin
-        symp: symptome actuel.
-        current_index: indice du symp actuel dans la liste.
-
-    Returns: 
-        level : niveau y où afficher le rectangle. 
-        """
+    """ Gère le problème de superposition visuelle des symptômes.
+    liste: liste des symptomes avec début et fin
+    symp: symptome actuel.
+    current_index: indice du symp actuel dans la liste.
+    Return: niveau y où afficher le rectangle. """
     level = 0
     list = []
     for i in range(len(levels)):
@@ -43,9 +32,7 @@ def chevauchement(liste, symp, current_index, levels):
     return level
 
 def on_text_click(event):
-    """
-    Affiche l'annotation lorsque le texte est cliqué.
-    """
+    """Affiche l'annotation lorsque le texte est cliqué."""
     for annotation, rect in zip(annotations, rects):
         if rect.contains(event)[0]:
             annotation.set_visible(True)
@@ -54,13 +41,8 @@ def on_text_click(event):
     plt.draw()
 
 def afficher_frise(liste):
-    """ 
-    Affiche la frise chronologique des symptômes.
-
-    Args:
-    liste (list): liste des symptomes où chaque élément est une liste [nom, début, fin]. 
-
-    """
+    """ Affiche la frise chronologique des symptômes.
+    liste: liste des symptomes où chaque élément est une liste [nom, début, fin, lateralisation, seg corporel, orientation, attribut suppl, commentaire, tdeb_str, tfin_str]. """
     liste = sorted(liste, key=lambda x: float(x[1]))
     levels = []
     fig, ax = plt.subplots()
@@ -75,12 +57,25 @@ def afficher_frise(liste):
         ax.add_patch(rect)
         rects.append(rect)
         
-        text = plt.text(float(symp[1]) + (float(symp[2]) - float(symp[1])) / 2, y + 0.15, symp[0], va='center', ha='center')
+        text = plt.text(float(symp[1]) + (float(symp[2]) - float(symp[1])) / 2, y + 0.15, symp[0], va='center', ha='center', zorder=2)
 
         # Ajouter les informations du symptôme comme une annotation sur le texte
-        annotation = ax.annotate(f"{symp[0]}\nDébut: {symp[1]}\nFin: {symp[2]}", 
+        if symp[3] != "":
+            symp[3] = f"\nID: {symp[3]}"
+        if symp[4] != "":
+            symp[4] = f"\nLatéralisation: {symp[4]}"
+        if symp[5] != "":
+            symp[5] = f"\nSegment Corporel: {symp[5]}"
+        if symp[6] != "":
+            symp[6] = f"\nOrientation: {symp[6]}"        
+        if symp[7] != "":
+            symp[7] = f"\nAttribut Suppl: {symp[7]}"
+        if symp[8] != "":
+            symp[8] = f"\nCommentaire: {symp[8]}"
+        
+        annotation = ax.annotate(f"{symp[0]}\nDébut: {symp[9]}\nFin: {symp[10]}{symp[3]}{symp[4]}{symp[5]}{symp[6]}{symp[7]}{symp[8]}", 
                                 xy=(float(symp[1]) + (float(symp[2]) - float(symp[1])) / 2, y + 0.15),
-                                bbox=dict(boxstyle="round", fc="w"), arrowprops=dict(arrowstyle="->"))
+                                bbox=dict(boxstyle="round", fc="w"), arrowprops=dict(arrowstyle="->"), zorder=3)
         annotation.set_visible(False)  # Rendre l'annotation initialement invisible
         annotations.append(annotation)
 
@@ -97,9 +92,9 @@ def afficher_frise(liste):
 
 if __name__=="__main__":
     # Création d'instances de la classe Symptome pour tester l'éditeur
-    Symp1 = Symptome(ID="", Nom="symp1", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="00:00:01", Tfin="00:00:05", Commentaire="")
-    Symp2 = Symptome(ID="", Nom="symp2", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="00:00:06", Tfin="00:00:08", Commentaire="")
-    Symp3 = Symptome(ID="", Nom="symp3", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="00:00:03", Tfin="00:00:09", Commentaire="")
+    Symp1 = Symptome(ID="", Nom="symp1", Lateralisation="droite", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="00:00:01", Tfin="00:00:05", Commentaire="")
+    Symp2 = Symptome(ID="", Nom="symp2", Lateralisation="", SegCorporel="segment cor", Orientation="", AttributSuppl="", Tdeb="00:00:06", Tfin="00:00:08", Commentaire="")
+    Symp3 = Symptome(ID="", Nom="symp3", Lateralisation="gauche", SegCorporel="", Orientation="orietation", AttributSuppl="", Tdeb="00:00:03", Tfin="00:00:09", Commentaire="")
     Symp4 = Symptome(ID="", Nom="symp4", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="00:00:09", Tfin="00:00:12", Commentaire="")
 
     L = [Symp1, Symp2, Symp3, Symp4]
@@ -130,7 +125,9 @@ if __name__=="__main__":
         comm = symp.get_Commentaire()
 
 
-        newL.append([nom, debut, fin, id, lat, segcor, orient, attsup, comm])
+        newL.append([nom, debut, fin, id, lat, segcor, orient, attsup, comm, tdeb_str, tfin_str])
 
     newL = sorted(newL, key=lambda x: float(x[1]))
     afficher_frise(newL)
+
+
