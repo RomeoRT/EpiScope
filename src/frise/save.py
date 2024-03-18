@@ -19,10 +19,9 @@ class save :
     def __init__(self, Liste_symptomes = []):
         self.symptomes = Liste_symptomes
         
-
     def save(self):
         """
-        Enregistre les symptomes dans un fichier et produit la frise chronologique
+        Enregistre les symptomes dans un fichier pour etre rechargés
 
         Raises:
             FileNotFoundError: message d'erreur si echec de recuperation du chemin du fichier.
@@ -34,11 +33,32 @@ class save :
                 messagebox.showinfo('Episcope Error', 'Empty symptom list\nCannot save properly')
             else :
                 # ecrire les métadatas
-                Meta_wd = metadata(filename)
-                Meta_wd.after(100, Meta_wd.lift)
 
                 EF.EcrireListeSymptome(self.symptomes, filename)
-                #print("ecriture")
+
+        except FileNotFoundError:
+            messagebox.showinfo('Episcope Error', 'No file selected\nCannot save properly')
+
+
+    def write_report(self):
+        """
+        Ecrit un fichier lisible par un humain
+
+        Raises:
+            FileNotFoundError: message d'erreur si echec de recuperation du chemin du fichier.
+        """
+        # récuperer le nom et emplacement des fichiers
+        filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")])
+        try :
+            if self.symptomes == [] :
+                messagebox.showinfo('Episcope Error', 'Empty symptom list\nCannot save properly')
+            else :
+                # ecrire les métadatas
+                Meta_wd = MetaData_WD(filename)
+                Meta_wd.after(100, Meta_wd.lift)
+
+                # Ecrire le rapport
+                EF.ecrire_rapport(self.symptomes, filename)
 
         except FileNotFoundError:
             Meta_wd.destroy()
@@ -58,7 +78,7 @@ class save :
 
         
         
-class metadata_WD(CTK.CTkToplevel) :
+class MetaData_WD(CTK.CTkToplevel) :
     """
     fenetre toplevel pour saisir les metadonnées
 
@@ -138,42 +158,44 @@ class metadata_WD(CTK.CTkToplevel) :
         self.destroy()
         self.update()
 
+        return 1
+
 class MetaData():
-    def __init__(Nom="", prenom="", dateC="", doc="", dateA=""):
+    def __init__(self, Nom="", prenom="", dateC="", doc="", dateA=""):
         self.nom = Nom
         self.prenom = prenom
         self.docteur = doc
         self.dateCrise = dateC
         self.dateAnnotation = dateA
     
-    def get_nom():
+    def get_nom(self):
         return self.nom
     
-    def get_prenom():
+    def get_prenom(self):
         return self.prenom
     
-    def get_docteur():
+    def get_docteur(self):
         return self.docteur
     
-    def get_dateCrise():
+    def get_dateCrise(self):
         return self.dateCrise
     
-    def get_dateAnnotation():
+    def get_dateAnnotation(self):
         return self.dateAnnotation
 
-    def set_nom(value):
+    def set_nom(self, value):
         self.nom = value
 
-    def set_prenom(value):
+    def set_prenom(self, value):
         self.prenom = value
 
-    def set_docteur(value):
+    def set_docteur(self, value):
         self.docteur = value
     
-    def set_dateCrise(value):
+    def set_dateCrise(self, value):
         self.dateCrise = value
 
-    def set_dateAnnotation(value):
+    def set_dateAnnotation(self, value):
         self.dateAnnotation = value              
 
 

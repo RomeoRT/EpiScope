@@ -2,6 +2,7 @@
 Ce module contient des fonctions pour créer et éditer les fichiers '.txt' de sortie avec les symptomes
 """
 from annotation.class_symptome import *
+from frise.save import MetaData
 
     
 
@@ -49,9 +50,7 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
 
     for symptome in listeSymptome :
         EcrireSymptome(symptome, nomfichier)
-    
-    with open(nomfichier, 'a') as fichier :  
-        fichier.write("\n\n")  
+
 
 def EcrireMetaData(Meta, nomfichier) :
     """
@@ -92,8 +91,24 @@ def format(data, caracteres):
 
     return new_data
 
-def ecrire_rapport():
-    pass
+def ecrire_rapport(Symptom_list, filename):
+    """
+    Ecrit les symptomes dans le rapport lisible par les médecins
+
+    Args:
+        Symptom_list (list): liste des symptomes a écrire
+        filename (string): chemein du fichier a ecrire
+    """
+    k = 1
+    with open(filename, 'a') as fichier :
+         for symptom in Symptom_list:
+            tdeb = symptom.get_Tdeb().strip(":")
+            tfin = symptom.get_Tfin().strip(":")
+            duree = 60*( tfin[-2]-tdeb[-2])+( tfin[-1]-tdeb[-1])
+        
+            fichier.write(f"{k} - {symptom.get_Nom()}, {symptom.get_SegCorporel()}, {symptom.get_Lateralisation()} : debut a {symptom.get_Tdeb}, duree : {duree} sec (fin : {symptom.get_Tfin()})\n")
+            
+            k+=1
 
 ##########################################################################################################
 if __name__ == "__main__" :
