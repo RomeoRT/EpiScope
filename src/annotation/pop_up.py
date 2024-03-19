@@ -1,7 +1,12 @@
 
-from class_symptome import Symptome
 import tkinter as tk
 import customtkinter as CTK
+
+"""
+#pas git import 
+from class_symptome import Symptome
+"""
+from annotation.class_symptome import Symptome
 
 class SymptomeEditor(CTK.CTkToplevel):
 

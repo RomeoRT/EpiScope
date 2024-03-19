@@ -21,6 +21,7 @@ interface générale Episcope contenant :
     - generer le fichier texte
 
 modification design general et boutons de menus deroulants et de gestion avancement video gestion 
+tout est en anglais
 La document des fonctions est faite
 version : 0.7
 """
@@ -42,7 +43,7 @@ import functools #pour update right panel
 
 
 
-
+"""
 # import pas git
 from fonctions_frise import afficher_frise
 import save as sauvg
@@ -55,7 +56,7 @@ import frise.save as sauvg
 
 from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
-"""
+
 
 class Menu_symptomes(ctk.CTkFrame):
     """

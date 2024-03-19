@@ -1,7 +1,7 @@
 """
 fonctions pour charger des symptomes
 """
-from class_symptome import Symptome
+from annotation.class_symptome import Symptome
 from frise.ecriture_fichier import format
 
 def read_symptoms(filename):
@@ -14,7 +14,7 @@ def read_symptoms(filename):
         buffer = file.readlines() 
 
         buffer.pop(0)                      # first line = titles (useless)
-        buffer = format(buffer, ["\n",""]) # remove '\n' at the end of line
+        #buffer = format(buffer, ["\n",""]) # remove '\n' at the end of line
 
         for elt in buffer :
           symp_init = elt.split("\t")
@@ -25,7 +25,7 @@ def read_symptoms(filename):
     return symptom_list
 
 if __name__ == "__main__":
-    
+
     myfile= "../../../../txt_episcope/save_sympt1.txt"
     list = read_symptoms(myfile)
 
