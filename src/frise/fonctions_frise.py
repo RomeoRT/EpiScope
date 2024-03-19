@@ -1,11 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
-"""
-#pas git
+
 from class_symptome import Symptome
-"""
-# git
-from annotation.class_symptome import Symptome
 
 def chercherElt(list):
     """Cherche s'il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,..."""
@@ -46,7 +42,7 @@ def on_text_click(event):
 
 def afficher_frise(liste):
     """ Affiche la frise chronologique des symptômes.
-    liste: liste des symptomes où chaque élément est une liste [nom, début, fin, lateralisation, seg corporel, orientation, attribut suppl, commentaire, tdeb_str, tfin_str]. """
+    liste: liste des symptomes où chaque élément est une liste [Name, début, fin, Lateralization, seg corporel, orientation, attribut suppl, Comment, tdeb_str, tfin_str]. """
     liste = sorted(liste, key=lambda x: float(x[1]))
     levels = []
     fig, ax = plt.subplots()
@@ -67,17 +63,17 @@ def afficher_frise(liste):
         if symp[3] != "":
             symp[3] = f"\nID: {symp[3]}"
         if symp[4] != "":
-            symp[4] = f"\nLatéralisation: {symp[4]}"
+            symp[4] = f"\nLateralization: {symp[4]}"
         if symp[5] != "":
-            symp[5] = f"\nSegment Corporel: {symp[5]}"
+            symp[5] = f"\nTopography: {symp[5]}"
         if symp[6] != "":
             symp[6] = f"\nOrientation: {symp[6]}"        
         if symp[7] != "":
-            symp[7] = f"\nAttribut Suppl: {symp[7]}"
+            symp[7] = f"\nAdditionnal Attribute: {symp[7]}"
         if symp[8] != "":
-            symp[8] = f"\nCommentaire: {symp[8]}"
+            symp[8] = f"\nComment: {symp[8]}"
         
-        annotation = ax.annotate(f"{symp[0]}\nDébut: {symp[9]}\nFin: {symp[10]}{symp[3]}{symp[4]}{symp[5]}{symp[6]}{symp[7]}{symp[8]}", 
+        annotation = ax.annotate(f"{symp[0]}\nStart: {symp[9]}End: {symp[10]}{symp[3]}{symp[4]}{symp[5]}{symp[6]}{symp[7]}{symp[8]}", 
                                 xy=(float(symp[1]) + (float(symp[2]) - float(symp[1])) / 2, y + 0.15),
                                 bbox=dict(boxstyle="round", fc="w"), arrowprops=dict(arrowstyle="->"), zorder=3)
         annotation.set_visible(False)  # Rendre l'annotation initialement invisible
@@ -96,16 +92,16 @@ def afficher_frise(liste):
 
 if __name__=="__main__":
     # Création d'instances de la classe Symptome pour tester l'éditeur
-    Symp1 = Symptome(ID="", Nom="symp1", Lateralisation="droite", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="00:00:01", Tfin="00:00:05", Commentaire="")
-    Symp2 = Symptome(ID="", Nom="symp2", Lateralisation="", SegCorporel="segment cor", Orientation="", AttributSuppl="", Tdeb="00:00:06", Tfin="00:00:08", Commentaire="")
-    Symp3 = Symptome(ID="", Nom="symp3", Lateralisation="gauche", SegCorporel="", Orientation="orietation", AttributSuppl="", Tdeb="00:00:03", Tfin="00:00:09", Commentaire="")
-    Symp4 = Symptome(ID="", Nom="symp4", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="00:00:09", Tfin="00:00:12", Commentaire="")
+    Symp1 = Symptome(ID="", Name="symp1", Lateralization="droite", Topography="", Orientation="", AttributSuppl="", Tdeb="00:00:01", Tfin="00:00:05", Comment="")
+    Symp2 = Symptome(ID="", Name="symp2", Lateralization="", Topography="segment cor", Orientation="", AttributSuppl="", Tdeb="00:00:06", Tfin="00:00:08", Comment="")
+    Symp3 = Symptome(ID="", Name="symp3", Lateralization="gauche", Topography="", Orientation="orietation", AttributSuppl="", Tdeb="00:00:03", Tfin="00:00:09", Comment="")
+    Symp4 = Symptome(ID="", Name="symp4", Lateralization="", Topography="", Orientation="", AttributSuppl="", Tdeb="00:00:09", Tfin="00:00:12", Comment="")
 
     L = [Symp1, Symp2, Symp3, Symp4]
     newL=[]
 
     for symp in L:
-        nom = symp.get_Nom()
+        Name = symp.get_Name()
         # Transformer la chaine str du temps de début en float
         tdeb_str = symp.get_Tdeb()
         hd, md, sd = tdeb_str.split(":")
@@ -122,14 +118,14 @@ if __name__=="__main__":
         fin = hf * 3600 + mf * 60 + sf
 
         id = symp.get_ID()
-        lat = symp.get_Lateralisation()
-        segcor = symp.get_SegCorporel()
+        lat = symp.get_Lateralization()
+        segcor = symp.get_Topography()
         orient = symp.get_Orientation()
         attsup = symp.get_AttributSuppl()
-        comm = symp.get_Commentaire()
+        comm = symp.get_Comment()
 
 
-        newL.append([nom, debut, fin, id, lat, segcor, orient, attsup, comm, tdeb_str, tfin_str])
+        newL.append([Name, debut, fin, id, lat, segcor, orient, attsup, comm, tdeb_str, tfin_str])
 
     newL = sorted(newL, key=lambda x: float(x[1]))
     afficher_frise(newL)
