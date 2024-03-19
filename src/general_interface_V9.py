@@ -8,20 +8,24 @@ interface générale Episcope contenant :
     - bonne vitesse
 
     annotations :
+    - pré-charger des symptomes
     - les menus en cascade a gauche
     - initialisation correcte des symptomes
     - recuperer les symptomes dans une liste
     - recuperer les temps de debut et de fin
     - afficher les symptomes a droite
+    - symptomes scrollables
     - pop-up pour modifier les symptomes 
 
     fichiers :
     - générer la frise
-    - generer le fichier texte
+    - generer un rapport
+    - générer un fichiers de symptomes
 
 modification design general et boutons de menus deroulants et de gestion avancement video gestion 
+tout est en anglais
 La document des fonctions est faite
-version : 0.7
+version : 0.9
 """
 import tkinter as tk
 import customtkinter as ctk
@@ -38,12 +42,12 @@ import pygame
 from pygame.time import Clock
 from tkinter import Menu
 import functools #pour update right panel
+
+
+
 """
 # import pas git
-#utile pour la génération de la frise chronologique:
-#from fonctions_frise import chevauchement
 from fonctions_frise import afficher_frise
-#from fonctions_frise import chercherElt
 import save as sauvg
 from class_symptome import Symptome
 from pop_up import SymptomeEditor
@@ -54,6 +58,7 @@ import frise.save as sauvg
 
 from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
+import annotation.load_symptomes as load
 
 
 class Menu_symptomes(ctk.CTkFrame):
@@ -251,7 +256,7 @@ class FriseSymptomes:
         newL=[]
 
         for symp in Lsymp:
-            nom = symp.get_Nom()
+            nom = symp.get_Name()
             # Transformer la chaine str du temps de début en float
             tdeb_str = symp.get_Tdeb()
             hd, md, sd = tdeb_str.split(":")
@@ -266,7 +271,14 @@ class FriseSymptomes:
             mf = int(mf)
             sf = int(sf)
             fin = hf * 3600 + mf * 60 + sf
-            newL.append([nom, debut, fin])
+
+            id = symp.get_ID()
+            lat = symp.get_Lateralization()
+            segcor = symp.get_Topography()
+            orient = symp.get_Orientation()
+            attsup = symp.get_AttributSuppl()
+            comm = symp.get_Comment()
+            newL.append([nom, debut, fin, id, lat, segcor, orient, attsup, comm, tdeb_str, tfin_str])
 
         newL = sorted(newL, key=lambda x: float(x[1]))
         afficher_frise(newL)
@@ -304,18 +316,30 @@ class InterfaceGenerale():
         # L= = [text, frames, frame menu, menu, bouton revoir, bouton pause, boutons <<>>, boutons frise/texte  ]
         self.theme = ['black', 'gray97', 'whitesmoke', 'lightsteelblue1', 'navajo white', 'gray60', 'gray80', 'cornflowerblue']
 
-        # Cadre pour le menu déroulant en haut
-        self.frame_menu = ctk.CTkFrame(fenetre, corner_radius=0, fg_color=self.theme[3],border_width=0.5, height=40)
-        self.frame_menu.pack(side=ctk.TOP, fill=ctk.X)
-        police_label_m = tkFont.Font(size=12)
-        # Menu déroulant
-        options = ["Ouvrir","Ouvrir sans video","Save"]
-        self.menu_deroulant = ctk.StringVar()
-        self.menu_deroulant.set('Menu')
-        self.menu = tk.OptionMenu(self.frame_menu, self.menu_deroulant, *options, command=self.menu_action)
-        self.menu.config(bg=self.theme[3],fg=self.theme[0], font=police_label_m)
-        self.menu["menu"].config(bg=self.theme[2], fg=self.theme[0],font=10)
-        self.menu.pack(side=ctk.LEFT, padx=10, pady=10)
+        #####################################
+        ###     barre de menus
+        #####################################
+
+        police_label_m = tkFont.Font(size=15)
+
+        # Menu 
+        menu_bar = Menu(self.fenetre)
+        menu_open = Menu(menu_bar, tearoff=0)
+        menu_open.add_command(label="Open Video", command=self.ouvrir_video)
+        menu_open.add_command(label="Launch Without Video", command=self.ouvrir_video_noire)
+        menu_open.add_separator()
+        menu_open.add_command(label ="Open Symptoms", command=self.load_symptoms)
+        menu_bar.add_cascade(label="Open", menu=menu_open)
+
+        menu_save = Menu(menu_bar, tearoff=0)
+        menu_save.add_command(label="Save Symptoms", command=self.sauvegarde)
+        menu_save.add_command(label="Save Report", command=self.rapport)
+        menu_save.add_command(label="Save Timeline", command=self.frise.afficher)
+        menu_bar.add_cascade(label="Save", menu=menu_save)
+
+        menu_bar.config(bg=self.theme[3],fg=self.theme[0], font=police_label_m)
+    
+        root.config(menu=menu_bar)
 
         # Variable pour stocker les coordonnées du clic
         self.clic_x = 0
@@ -334,8 +358,10 @@ class InterfaceGenerale():
         self.frame_middle.pack(side=ctk.LEFT, fill=ctk.BOTH, expand=True)
         self.frame_right.pack(side=ctk.RIGHT, fill=ctk.BOTH, expand=True)
 
-        self.text_output = tk.Text(self.frame_right, height=40, width=(fenetre.winfo_screenwidth() // 5), relief=tk.GROOVE, wrap=tk.WORD, state=tk.DISABLED)  # Déplacé pour être un attribut de l'instance
-        self.text_output.pack(side=ctk.TOP,padx=20,pady=20)
+        self.scrollable1 = ctk.CTkScrollableFrame(self.frame_right, border_width=0, height=400, fg_color=self.theme[1], width=(fenetre.winfo_screenwidth() // 5), orientation='vertical')
+        self.text_output = ctk.CTkScrollableFrame(self.scrollable1, border_width=0, height=400, fg_color=self.theme[1], width=(fenetre.winfo_screenwidth() // 5), orientation='horizontal')
+        self.scrollable1.pack(side=ctk.TOP,padx=20,pady=20)
+        self.text_output.pack()
 
         #self.frame_right.grid_rowconfigure(0, weight=1)  # Donne un poids à la ligne où se trouve la zone de texte
         self.frame_right.grid_columnconfigure(0, weight=1)
@@ -349,7 +375,7 @@ class InterfaceGenerale():
         ####################### Boutons
         #####################################################
 
-        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Revoir", command=self.lec_video.revoir_video, width=100, text_color=self.theme[0], fg_color=self.theme[4])
+        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Rewatch", command=self.lec_video.revoir_video, width=100, text_color=self.theme[0], fg_color=self.theme[4])
         self.bouton_revoir.pack(side=ctk.LEFT, padx=100, pady=10)
 
         self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="<<", command=self.lec_video.recule_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6])
@@ -370,19 +396,20 @@ class InterfaceGenerale():
 
 
         # Bouton pour activer la frise chronologique des symptomes:
-        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color=self.theme[0], fg_color=self.theme[7])
+        self.bouton_frise = ctk.CTkButton(self.frame_right, text="Timeline", command=self.frise.afficher, text_color=self.theme[0], fg_color=self.theme[7])
         self.bouton_frise.pack(side=ctk.BOTTOM,padx=20,pady=20)
         
         # gros bouton save (primitif)
-        self.bouton_save = ctk.CTkButton(self.frame_right, text="générer texte", command=self.sauvegarde, text_color=self.theme[0], fg_color=self.theme[7])
+        self.bouton_save = ctk.CTkButton(self.frame_right, text="Report", command=self.rapport, text_color=self.theme[0], fg_color=self.theme[7])
         self.bouton_save.pack(side=ctk.BOTTOM,padx=20,pady=20)
     
         # Étiquettes pour afficher le temps écoulé et la durée totale
-        self.label_temps = tk.Label(self.frame_middle, text="Temps écoulé: 0:00 / Durée totale: 0:00", bg=self.theme[1], fg=self.theme[0])
+        self.label_temps = tk.Label(self.frame_middle, text="Elapsed Time: 0:00 / Total Time: 0:00", bg=self.theme[1], fg=self.theme[0])
         self.label_temps.pack(side=tk.BOTTOM, padx=20)
 
+        total_duration = self.get_video_duration()
         # Barre de progression manuelle
-        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=100, command=self.lec_video.manual_update_progress, orient="horizontal", bg=self.theme[1])
+        self.progress_slider =tk.Scale(self.frame_middle, from_=0, to=total_duration, command=self.lec_video.manual_update_progress, orient="horizontal", bg=self.theme[1])
         self.progress_slider.pack(side=tk.BOTTOM, fill=tk.X)
 
         # Lire la vidéo avec OpenCV
@@ -404,7 +431,7 @@ class InterfaceGenerale():
         self.zone_text = tk.Text(self.frame_right, height=20, width=fenetre.winfo_screenwidth() // 5, relief=tk.GROOVE, wrap=tk.WORD)
         self.zone_text.pack(side=tk.BOTTOM, pady=20,padx=20)
 
-    def update_right_panel(self, text, attributs=[], is_start_time=False):
+    def update_right_panel(self, attributs=[], is_start_time=False):
         """
         Permet de gerer l'affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop-up pour modifier un symptome.
 
@@ -419,19 +446,23 @@ class InterfaceGenerale():
             Args:
                 event (None): correspond à l'appuie sur la zone ou s'affiche le symptome
             """
-            current_text = event.widget.cget("text")
+            #current_text = event.widget.cget("text")
             if Symp.Tfin=="": # On vérifie si le temps de fin est déjà présent pour ne pas l'ajouter plusieurs fois
                 Symp.set_Tfin(f"{self.get_current_video_time()}")
-                # On découpe le texte actuel pour insérer le temps de fin juste après le temps de début
-                parts = current_text.split(" - ")
-                if len(parts) >= 2:  # Assurez-vous qu'il y a bien un temps de début pour insérer le temps de fin
-                    deb=Symp.get_Tdeb()
-                    splitdeb=deb.rstrip("\n")
-                    new_text = f"{Symp.get_Nom()}   -   TD: {splitdeb}  -   TF: {Symp.get_Tfin()}"
+                
+                if Symp.Tdeb != "":  # Assurez-vous qu'il y a bien un temps de début pour insérer le temps de fin
+                    new_text = self.text_sympt(Symp)
                     event.widget.config(text=new_text)  # Met à jour le texte du label avec le temps de fin
-
                     open_editor_partial = functools.partial(open_editor_on_click, Symp=Symp)
                     symptom_label.bind('<Button-1>', open_editor_partial) # Lier le button1 au popup après Tfin
+                else:
+                    open_editor_partial = functools.partial(open_editor_on_click, Symp=Symp)
+                    symptom_label.bind('<Button-1>', open_editor_partial) # Lier le button1 au popup après Tfin
+                    open_editor_on_click(event, Symp)
+            else :
+                open_editor_partial = functools.partial(open_editor_on_click, Symp=Symp)
+                symptom_label.bind('<Button-1>', open_editor_partial) # Lier le button1 au popup après Tfin
+                open_editor_on_click(event, Symp)
         
         def open_editor_on_click(event, Symp):
             """
@@ -449,23 +480,24 @@ class InterfaceGenerale():
                 editor_window.focus_set()  # Définissez le focus sur la fenêtre de modification
                 editor_window.wait_window()  # Attendre jusqu'à ce que la fenêtre de modification soit fermée avant de reprendre l'exécution
 
-                deb=Symp.get_Tdeb()
-                splitdeb=deb.rstrip("\n")
-                new_text = f"{Symp.get_Nom()}   -   TD: {splitdeb}  -   TF: {Symp.get_Tfin()}"
+                #deb=Symp.get_Tdeb()
+                #splitdeb=deb.rstrip("\n")
+                new_text = self.text_sympt(Symp)
                 event.widget.config(text=new_text)  # Met à jour le texte du label avec le temps de fin
 
-        self.text_output.config(state=tk.NORMAL)  # Activez l'état normal pour permettre la mise à jour
+        #self.text_output.config(state=tk.NORMAL)  # Activez l'état normal pour permettre la mise à jour
 
         ## initialisation du symptome
         if attributs == []:
-            Symp = Symptome(ID="", Nom="", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
+            Symp = Symptome(ID="", Name="", Lateralization="", Topography="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Comment="")
         else:
             Symp = Symptome(attributs[0], attributs[1], attributs[2], attributs[3], attributs[4], attributs[5], attributs[6], attributs[7], attributs[8])
-
-        splited = text.split(" - ")
-        Symp.set_Nom(splited[0])
-        Symp.set_Tdeb(splited[1][4:])
-        symptom_with_time = f"{Symp.get_Nom()} - TD: {Symp.get_Tdeb()}"
+            
+        #splited = text.split(" - ")
+        #Symp.set_Name(splited[0])
+        #Symp.set_Tdeb(splited[1][4:])
+        #symptom_with_time = f"{Symp.get_Name()} - Starting Time: {Symp.get_Tdeb()}        SET END TIME"
+        symptom_with_time = self.text_sympt(Symp)
 
         container = tk.Frame(self.text_output)  # Créer un conteneur pour le label et le bouton
         container.pack(side=tk.TOP, fill=tk.X)
@@ -482,15 +514,14 @@ class InterfaceGenerale():
         set_end_time_partial = functools.partial(set_end_time, Symp=Symp)
         symptom_label.bind('<Button-1>', set_end_time_partial)
 
-        self.text_output.insert(tk.END, '\n')  # Nouvelle ligne après chaque symptôme
-        self.text_output.config(state=tk.DISABLED)  # Désactive l'édition de la zone de texte après la mise à jour
+        #self.text_output.insert(tk.END, '\n')  # Nouvelle ligne après chaque symptôme
+        #self.text_output.config(state=tk.DISABLED)  # Désactive l'édition de la zone de texte après la mise à jour
 
         self.ListeSymptomes.append(Symp)
 
-
     def supprimer(self, selection, container):
         for symp in self.ListeSymptomes:
-            if symp.get_Nom() == selection.get_Nom():
+            if symp.get_Name() == selection.get_Name():
                 self.ListeSymptomes.remove(symp)
                 container.destroy()  # Supprime le conteneur entier, y compris le label et le bouton
                 break       
@@ -507,6 +538,7 @@ class InterfaceGenerale():
             return current_time_formatted
         return "00:00:00"  # Retournez une valeur par défaut si la vidéo n'est pas ouverte
 
+
     def get_video_duration(self):
         """
         Permet d'avoir le temps total de la vidéo
@@ -515,7 +547,6 @@ class InterfaceGenerale():
             total_frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
             fps = self.cap.get(cv2.CAP_PROP_FPS)
             return int(total_frames / fps)
-        return 0
 
 
     def ouvrir_video(self):
@@ -524,24 +555,12 @@ class InterfaceGenerale():
         """
         self.lec_video.ouvrir_video()
     
+
     def ouvrir_video_noire(self):
         """
         Ouvre la vidéo noire en appelant la class Lecteur_video
         """
         self.lec_video.ouvrir_video_noire()
-
-
-    def menu_action( self,selection):
-        """
-        Mini menu déroulant qui permet de choisir différent mode d'ouverture de la vidéo
-        """
-        if selection == "Ouvrir":
-            self.ouvrir_video()
-        else:
-            if (selection == "Ouvrir sans video"):
-                
-                self.ouvrir_video_noire()
-    
 
     
     def lire_fichier(self,nom_fichier):
@@ -555,7 +574,7 @@ class InterfaceGenerale():
                 lignes = fichier.read().splitlines()
                 return lignes
         except FileNotFoundError:
-            print(f"Le fichier {nom_fichier} n'a pas été trouvé.")
+            print(f"File not found : {nom_fichier}")
             return 
 
 
@@ -566,6 +585,57 @@ class InterfaceGenerale():
         """
         save = sauvg.save(self.ListeSymptomes)
         save.save()
+    
+
+    def rapport(self):
+        """
+        ecrit le rapport de la crise
+        """
+        save = sauvg.save(self.ListeSymptomes)
+        save.write_report()
+
+
+    def text_sympt(self, sympt):
+        """
+        crée le texta a afficher dans le right_pannel
+
+        Args:
+            sympt (Symptome): symptome dont on crée le texte
+
+        Returns:
+            text (string): texte a afficher contenant les bonnes infos
+        """
+        time = ""
+
+        if sympt.get_Tfin()!="":
+            time = f" - Start : {sympt.get_Tdeb()}  -  End :  {sympt.get_Tfin()}"
+        else :
+            time = f" - Start : {sympt.get_Tdeb()} \n SET END TIME"
+
+        if sympt.get_Lateralization() != "" and sympt.get_Topography()!="":
+            return f"{sympt.get_Name()} > {sympt.get_Lateralization()} > {sympt.get_Topography()} " + time
+        
+        elif sympt.get_Lateralization() != "" and sympt.get_Topography()=="":
+            return f"{sympt.get_Name()} > {sympt.get_Lateralization()} " + time
+        
+        elif ((sympt.get_Lateralization() == "") and (sympt.get_Topography()!="")):
+            return f"{sympt.get_Name()} > {sympt.get_Topography()}" + time
+        
+        else :
+            return f"{sympt.get_Name()}" + time
+  
+    
+    def load_symptoms(self):
+      """
+      charge une liste de symptomes a partir d'un fichier
+      """  
+      file_path = filedialog.askopenfilename(filetypes=[("Fichiers textes", "*.txt")])
+      list_S = load.read_symptoms(file_path)
+      for s in list_S:
+          text = self.text_sympt(s)
+          attr = s.get_attributs()
+          self.update_right_panel(attr)
+     
 
 
 class LecteurVideo():
@@ -594,6 +664,7 @@ class LecteurVideo():
         self.temps_ecoule=0
         self.duree_totale=0
 
+
     def ouvrir_video(self):
         """
         Ouvre une vidéo depuis l'explorateur du fichier
@@ -604,11 +675,13 @@ class LecteurVideo():
         if file_path:
             self.interface_generale.cap = cv2.VideoCapture(file_path)
             if not self.interface_generale.cap.isOpened():
-                print("Erreur: Impossible d'ouvrir la vidéo.")
+                print("Error: Impossible to open.")
                 return
             self.preparer_son_video(file_path)
             self.avancer()
+            self.configurer_barre_progression()
             self.afficher_video()
+            self.mettre_a_jour_temps_video()  # Démarre la mise à jour de la progression et du temps.
 
 
     def ouvrir_video_noire(self):
@@ -617,7 +690,7 @@ class LecteurVideo():
         """
         # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
         file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_noire.mp4")
-        print("Chemin du fichier vidéo:", file_path)
+        print("Video file path:", file_path)
 
         if os.path.exists(file_path):
             self.interface_generale.cap = cv2.VideoCapture(file_path)
@@ -633,11 +706,13 @@ class LecteurVideo():
             self.interface_generale.canvas.configure(width=largeur_partie_milieu, height=hauteur_canevas)
 
             #self.interface_generale.progress_slider.configure(to=self.interface_generale.cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
+            self.configurer_barre_progression()
             self.afficher_video()
+            self.mettre_a_jour_temps_video()
             self.interface_generale.bouton_play_pause.configure(state=ctk.NORMAL)
         else:
-            print("La vidéo 'vidéo noire' n'a pas été trouvée dans le dossier courant.")
+            print("'Black Video' not found in the current folder.")
+
 
     def preparer_son_video(self, file_path):
         """
@@ -652,6 +727,7 @@ class LecteurVideo():
         # Utilisez pygame.mixer.music pour charger et jouer la piste audio
         pygame.mixer.music.load(audio_path)
         pygame.mixer.music.play(-1)  # Jouez en boucle
+
 
     def afficher_video(self):
         """
@@ -686,14 +762,13 @@ class LecteurVideo():
 
                 self.temps_ecoule = int(frame_number / fps)
                 self.duree_totale = int(total_frames / fps)
-                self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(self.temps_ecoule)} / Durée totale: {self.format_duree(self.duree_totale)}")
+                self.interface_generale.label_temps.config(text=f"Elapsed Time: {self.format_duree(self.temps_ecoule)} / Total Time: {self.format_duree(self.duree_totale)}")
 
                 # Continuez la lecture si la vidéo n'est pas en pause
                 if not self.video_paused:
                     # Ajustez le délai pour la vitesse de lecture (vitesse normale = 1.0)
                     self.interface_generale.canvas.after(int(1000 / fps / self.vitesse_lecture), self.afficher_video)
                 
-
 
     def mettre_a_jour_frame_video(self, frame):
         """
@@ -706,14 +781,24 @@ class LecteurVideo():
         self.interface_generale.canvas.create_image(0, 0, image=frame, anchor=tk.NW)
         self.interface_generale.canvas.image = frame
 
+
     def mettre_a_jour_temps_video(self):
         """
-        Assure que le temps de la vidéo affichée est régulièrement mis à jour et que la lecture de la vidéo continue 
-        de manière fluide. Elle assure la sychronisation de  l'avancement de la vidéo avec le temps réel
+            Assure que le temps de la vidéo affichée est régulièrement mis à jour et que la lecture de la vidéo continue 
+            de manière fluide. Elle assure la sychronisation de  l'avancement de la vidéo avec le temps réel
         """
-        self.current_frame_time = self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC)
-        if not self.video_paused:
-            self.interface_generale.fenetre.after(33, self.afficher_video)  # Continuez la lecture environ toutes les 33 ms
+        if self.interface_generale.cap.isOpened() and not self.video_paused:
+            temps_actuel_ms = self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC)
+            temps_actuel = int(temps_actuel_ms / 1000)  # Convertis en secondes
+            self.interface_generale.progress_slider.set(temps_actuel)  # Mise à jour de la position du curseur de la barre de progression
+            
+            # Mise à jour de l'affichage du temps écoulé (facultatif, si tu veux aussi mettre à jour le label du temps)
+            duree_totale = self.interface_generale.get_video_duration()  # Assure-toi que cette méthode retourne la durée totale en secondes
+            self.interface_generale.label_temps.config(text=f"Elapsed Time: {self.format_duree(temps_actuel)} / Total Time: {self.format_duree(duree_totale)}")
+            
+            # Planifiez la prochaine mise à jour
+            self.interface_generale.fenetre.after(500, self.mettre_a_jour_temps_video)
+
 
     def pause_lecture(self):
         """
@@ -723,20 +808,23 @@ class LecteurVideo():
         if self.video_paused:
             pygame.mixer.music.pause()  # Pause le son
             # Mettre à jour le texte du bouton ici, exemple :
-            self.interface_generale.bouton_play_pause.configure(text="Reprendre")
+            self.interface_generale.bouton_play_pause.configure(text="Play")
         else:
             pygame.mixer.music.unpause()  # Reprend le son
             self.interface_generale.fenetre.after(0, self.afficher_video)  # Reprend la lecture vidéo immédiatement
             # Mettre à jour le texte du bouton ici, exemple :
             self.interface_generale.bouton_play_pause.configure(text="Pause")
-
+            self.mettre_a_jour_temps_video()  # Démarre la mise à jour de la progression et du temps.
 
 
     def avancer(self):
         self.interface_generale.progress_slider.set(self.temps_ecoule)
         self.interface_generale.fenetre.after(1, self.avancer)
-        
 
+
+    def configurer_barre_progression(self):
+        total_duration = self.interface_generale.get_video_duration()
+        self.interface_generale.progress_slider.config(to=total_duration)
             
             
     def manual_update_progress(self,value):
@@ -744,9 +832,8 @@ class LecteurVideo():
         fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
         frame_number=self.temps_ecoule*fps
         self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES,int(frame_number))
-        new_frame = float(value) + fps
-        new_time = new_frame / fps
-        pygame.mixer.music.play(0,new_time)
+        pygame.mixer.music.play(start=self.temps_ecoule)
+
 
     def avance_progress(self):
         """
@@ -767,6 +854,7 @@ class LecteurVideo():
             pygame.mixer.music.play(0, new_time)
             self.pause_lecture()  # Reprendre la lecture de la vidéo et l'audio
 
+
     def recule_progress(self):
         """
         Permet de reculer de 1 seconde dans la video en assurant la synchronisation du son avec la video
@@ -784,6 +872,7 @@ class LecteurVideo():
             # Ajustez la position de la piste audio
             pygame.mixer.music.play(0, new_time)
             self.pause_lecture()
+
 
     def revoir_video(self):
         """
@@ -809,6 +898,7 @@ class LecteurVideo():
         sous la forme de minutes et secondes.
         """
         return str(datetime.timedelta(seconds=seconds))
+
 
     def charger_son_video(self, file_path):
         """
@@ -842,13 +932,13 @@ class LecteurVideo():
             # Pause the video and the sound
             pygame.mixer.music.pause()  # Pause the sound
             # Update the play/pause button text, if you have one
-            self.interface_generale.bouton_play_pause.configure(text="Reprendre")
+            self.interface_generale.bouton_play_pause.configure(text="Play")
         else:
             # Resume video and sound playback
             pygame.mixer.music.unpause()  # Resume the sound
             self.interface_generale.fenetre.after(0, self.afficher_video)  # Resume video playback immediately
             # Update the play/pause button text
-        self.interface_generale.bouton_play_pause.configure(text="Pause")
+            self.interface_generale.bouton_play_pause.configure(text="Pause")
         
         largeur_canevas = self.interface_generale.canvas.winfo_width()
         hauteur_canevas = self.interface_generale.canvas.winfo_height()
@@ -869,7 +959,8 @@ class LecteurVideo():
             print ("la case 3 a été sélectionnée")
         elif colonne == 1 and ligne == 1:
             print ("la case 4 a été sélectionnée")
-        
+
+
     def ajouter_plus_rouge(self,canvas, x, y, taille):
         """
         Ajoute la croix rouge durat 1 seconde là où on appuie

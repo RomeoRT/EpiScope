@@ -2,7 +2,7 @@
 fonctions pour charger des symptomes
 """
 from annotation.class_symptome import Symptome
-from frise.ecriture_fichier import format
+
 
 def read_symptoms(filename):
     """
@@ -14,8 +14,7 @@ def read_symptoms(filename):
         buffer = file.readlines() 
 
         buffer.pop(0)                      # first line = titles (useless)
-        #buffer = format(buffer, ["\n",""]) # remove '\n' at the end of line
-
+        
         for elt in buffer :
           symp_init = elt.split("\t")
 
@@ -29,16 +28,16 @@ if __name__ == "__main__":
     myfile= "../../../../txt_episcope/save_sympt1.txt"
     list = read_symptoms(myfile)
 
-    for s in list: 
-        print(f"{s.get_ID()} \n")
-        print(f"{s.get_Nom()} \n")
-        print(f"{s.get_Lateralisation()} \n")
-        print(f"{s.get_SegCorporel()} \n")
-        print(f"{s.get_Orientation()} \n")
-        print(f"{s.get_AttributSuppl()} \n")
-        print(f"{s.get_Tdeb()} \n")
-        print(f"{s.get_Tfin()} \n")
-        print(f"{s.get_Commentaire()} \n")
+    for Symp in list: 
+        print(f"{Symp.get_ID()} \n")
+        print(f"{Symp.get_Name()} \n")
+        print(f"{Symp.get_Lateralization()} \n")
+        print(f"{Symp.get_Topography()} \n")
+        print(f"{Symp.get_Orientation()} \n")
+        print(f"{Symp.get_AttributSuppl()} \n")
+        print(f"{Symp.get_Tdeb()} \n")
+        print(f"{Symp.get_Tfin()} \n")
+        print(f"{Symp.get_Comment()} \n")
 
         print("---------------\n")
         
