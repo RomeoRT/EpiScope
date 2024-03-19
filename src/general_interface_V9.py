@@ -194,7 +194,7 @@ class Menu_symptomes(ctk.CTkFrame):
             selection (path): Symptome sélectionné 
         """
         current_video_time = self.interface_generale.get_current_video_time() 
-        display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
+        #display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
 
         buffer_attributs = selection.split(">")
 
@@ -215,8 +215,8 @@ class Menu_symptomes(ctk.CTkFrame):
                 attributs[1], attributs[3], attributs[2] = buffer_attributs[0], buffer_attributs[1], buffer_attributs[-1]
                 attributs[5] = f"{buffer_attributs[2:-2]}"
 
-
-        self.interface_generale.update_right_panel(display_text, attributs)
+        attributs[6] = current_video_time
+        self.interface_generale.update_right_panel(attributs)
 
     def on_select_subj(self, selection):
         """
@@ -231,7 +231,7 @@ class Menu_symptomes(ctk.CTkFrame):
 
         attributs = ["","","","","","","","",""]
         attributs[1]  = selection
-
+        attributs[6] = current_video_time
         self.interface_generale.update_right_panel(attributs)
 
 
