@@ -20,7 +20,7 @@ interface générale Episcope contenant :
     fichiers :
     - générer la frise
     - generer un rapport
-    - générer un fichiers de symptomes
+    - générer un fichiers de s ymptomes
 
 modification design general et boutons de menus deroulants et de gestion avancement video gestion 
 tout est en anglais
@@ -227,12 +227,12 @@ class Menu_symptomes(ctk.CTkFrame):
         """
         # Appel à une nouvelle fonction dans InterfaceGenerale pour obtenir le temps actuel de la vidéo
         current_video_time = self.interface_generale.get_current_video_time() 
-        display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
+        #display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
 
         attributs = ["","","","","","","","",""]
         attributs[1]  = selection
 
-        self.interface_generale.update_right_panel(display_text, attributs)
+        self.interface_generale.update_right_panel(attributs)
 
 
 class FriseSymptomes:
