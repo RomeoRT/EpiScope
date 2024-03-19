@@ -42,7 +42,7 @@ import functools #pour update right panel
 
 
 
-"""
+
 # import pas git
 from fonctions_frise import afficher_frise
 import save as sauvg
@@ -55,7 +55,7 @@ import frise.save as sauvg
 
 from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
-
+"""
 
 class Menu_symptomes(ctk.CTkFrame):
     """
@@ -252,7 +252,7 @@ class FriseSymptomes:
         newL=[]
 
         for symp in Lsymp:
-            nom = symp.get_Nom()
+            nom = symp.get_Name()
             # Transformer la chaine str du temps de début en float
             tdeb_str = symp.get_Tdeb()
             hd, md, sd = tdeb_str.split(":")
@@ -269,11 +269,11 @@ class FriseSymptomes:
             fin = hf * 3600 + mf * 60 + sf
 
             id = symp.get_ID()
-            lat = symp.get_Lateralisation()
-            segcor = symp.get_SegCorporel()
+            lat = symp.get_Lateralization()
+            segcor = symp.get_Topography()
             orient = symp.get_Orientation()
             attsup = symp.get_AttributSuppl()
-            comm = symp.get_Commentaire()
+            comm = symp.get_Comment()
             newL.append([nom, debut, fin, id, lat, segcor, orient, attsup, comm, tdeb_str, tfin_str])
 
         newL = sorted(newL, key=lambda x: float(x[1]))
@@ -317,7 +317,7 @@ class InterfaceGenerale():
         self.frame_menu.pack(side=ctk.TOP, fill=ctk.X)
         police_label_m = tkFont.Font(size=12)
         # Menu déroulant
-        options = ["Ouvrir","Ouvrir sans video","save"]
+        options = ["Open","Open None","Save"]
         self.menu_deroulant = ctk.StringVar()
         self.menu_deroulant.set('Menu')
         self.menu = tk.OptionMenu(self.frame_menu, self.menu_deroulant, *options, command=self.menu_action)
@@ -359,7 +359,7 @@ class InterfaceGenerale():
         ####################### Boutons
         #####################################################
 
-        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Revoir", command=self.lec_video.revoir_video, width=100, text_color=self.theme[0], fg_color=self.theme[4])
+        self.bouton_revoir = ctk.CTkButton(self.frame_CTkButton, text="Rewatch", command=self.lec_video.revoir_video, width=100, text_color=self.theme[0], fg_color=self.theme[4])
         self.bouton_revoir.pack(side=ctk.LEFT, padx=100, pady=10)
 
         self.bouton_reculer = ctk.CTkButton(self.frame_CTkButton, text="<<", command=self.lec_video.recule_progress, width=50, text_color=self.theme[0],fg_color=self.theme[6])
@@ -380,15 +380,15 @@ class InterfaceGenerale():
 
 
         # Bouton pour activer la frise chronologique des symptomes:
-        self.bouton_frise = ctk.CTkButton(self.frame_right, text="frise", command=self.frise.afficher, text_color=self.theme[0], fg_color=self.theme[7])
+        self.bouton_frise = ctk.CTkButton(self.frame_right, text="Timeline", command=self.frise.afficher, text_color=self.theme[0], fg_color=self.theme[7])
         self.bouton_frise.pack(side=ctk.BOTTOM,padx=20,pady=20)
         
         # gros bouton save (primitif)
-        self.bouton_save = ctk.CTkButton(self.frame_right, text="ecrire rapport", command=self.rapport, text_color=self.theme[0], fg_color=self.theme[7])
+        self.bouton_save = ctk.CTkButton(self.frame_right, text="Report", command=self.rapport, text_color=self.theme[0], fg_color=self.theme[7])
         self.bouton_save.pack(side=ctk.BOTTOM,padx=20,pady=20)
     
         # Étiquettes pour afficher le temps écoulé et la durée totale
-        self.label_temps = tk.Label(self.frame_middle, text="Temps écoulé: 0:00 / Durée totale: 0:00", bg=self.theme[1], fg=self.theme[0])
+        self.label_temps = tk.Label(self.frame_middle, text="Elapsed Time: 0:00 / Total Time: 0:00", bg=self.theme[1], fg=self.theme[0])
         self.label_temps.pack(side=tk.BOTTOM, padx=20)
 
         total_duration = self.get_video_duration()
@@ -438,7 +438,7 @@ class InterfaceGenerale():
                 if len(parts) >= 2:  # Assurez-vous qu'il y a bien un temps de début pour insérer le temps de fin
                     deb=Symp.get_Tdeb()
                     splitdeb=deb.rstrip("\n")
-                    new_text = f"{Symp.get_Nom()}   -   Starting Time: {splitdeb}  -   End Time: {Symp.get_Tfin()}"
+                    new_text = f"{Symp.get_Name()}   -   Start: {splitdeb}  -   End: {Symp.get_Tfin()}"
                     event.widget.config(text=new_text)  # Met à jour le texte du label avec le temps de fin
 
                     open_editor_partial = functools.partial(open_editor_on_click, Symp=Symp)
@@ -462,21 +462,21 @@ class InterfaceGenerale():
 
                 deb=Symp.get_Tdeb()
                 splitdeb=deb.rstrip("\n")
-                new_text = f"{Symp.get_Nom()}   -   TD: {splitdeb}  -   TF: {Symp.get_Tfin()}"
+                new_text = f"{Symp.get_Name()}   -   Start: {splitdeb}  -   End: {Symp.get_Tfin()}"
                 event.widget.config(text=new_text)  # Met à jour le texte du label avec le temps de fin
 
         #self.text_output.config(state=tk.NORMAL)  # Activez l'état normal pour permettre la mise à jour
 
         ## initialisation du symptome
         if attributs == []:
-            Symp = Symptome(ID="", Nom="", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
+            Symp = Symptome(ID="", Name="", Lateralization="", Topography="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Comment="")
         else:
             Symp = Symptome(attributs[0], attributs[1], attributs[2], attributs[3], attributs[4], attributs[5], attributs[6], attributs[7], attributs[8])
 
         splited = text.split(" - ")
-        Symp.set_Nom(splited[0])
+        Symp.set_Name(splited[0])
         Symp.set_Tdeb(splited[1][4:])
-        symptom_with_time = f"{Symp.get_Nom()} - Starting Time: {Symp.get_Tdeb()}        SET END TIME"
+        symptom_with_time = f"{Symp.get_Name()} - Starting Time: {Symp.get_Tdeb()}        SET END TIME"
 
         container = tk.Frame(self.text_output)  # Créer un conteneur pour le label et le bouton
         container.pack(side=tk.TOP, fill=tk.X)
@@ -501,7 +501,7 @@ class InterfaceGenerale():
 
     def supprimer(self, selection, container):
         for symp in self.ListeSymptomes:
-            if symp.get_Nom() == selection.get_Nom():
+            if symp.get_Name() == selection.get_Name():
                 self.ListeSymptomes.remove(symp)
                 container.destroy()  # Supprime le conteneur entier, y compris le label et le bouton
                 break       
@@ -548,11 +548,11 @@ class InterfaceGenerale():
         Mini menu déroulant qui permet de choisir différent mode d'ouverture de la vidéo
         """
         match selection :
-            case "Ouvrir":
+            case "Open":
                 self.ouvrir_video()
-            case "Ouvrir sans video":
+            case "Open None":
                 self.ouvrir_video_noire()
-            case "save":
+            case "Save":
                 self.sauvegarde()
 
     
@@ -569,7 +569,7 @@ class InterfaceGenerale():
                 lignes = fichier.read().splitlines()
                 return lignes
         except FileNotFoundError:
-            print(f"Le fichier {nom_fichier} n'a pas été trouvé.")
+            print(f"File not found : {nom_fichier}")
             return 
 
 
@@ -624,7 +624,7 @@ class LecteurVideo():
         if file_path:
             self.interface_generale.cap = cv2.VideoCapture(file_path)
             if not self.interface_generale.cap.isOpened():
-                print("Erreur: Impossible d'ouvrir la vidéo.")
+                print("Error: Impossible to open.")
                 return
             self.preparer_son_video(file_path)
             self.avancer()
@@ -639,7 +639,7 @@ class LecteurVideo():
         """
         # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
         file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_noire.mp4")
-        print("Chemin du fichier vidéo:", file_path)
+        print("Video file path:", file_path)
 
         if os.path.exists(file_path):
             self.interface_generale.cap = cv2.VideoCapture(file_path)
@@ -660,7 +660,7 @@ class LecteurVideo():
             self.mettre_a_jour_temps_video()
             self.interface_generale.bouton_play_pause.configure(state=ctk.NORMAL)
         else:
-            print("La vidéo 'vidéo noire' n'a pas été trouvée dans le dossier courant.")
+            print("'Black Video' not found in the current folder.")
 
     def preparer_son_video(self, file_path):
         """
@@ -709,7 +709,7 @@ class LecteurVideo():
 
                 self.temps_ecoule = int(frame_number / fps)
                 self.duree_totale = int(total_frames / fps)
-                self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(self.temps_ecoule)} / Durée totale: {self.format_duree(self.duree_totale)}")
+                self.interface_generale.label_temps.config(text=f"Elapsed Time: {self.format_duree(self.temps_ecoule)} / Total Time: {self.format_duree(self.duree_totale)}")
 
                 # Continuez la lecture si la vidéo n'est pas en pause
                 if not self.video_paused:
@@ -741,7 +741,7 @@ class LecteurVideo():
             
             # Mise à jour de l'affichage du temps écoulé (facultatif, si tu veux aussi mettre à jour le label du temps)
             duree_totale = self.interface_generale.get_video_duration()  # Assure-toi que cette méthode retourne la durée totale en secondes
-            self.interface_generale.label_temps.config(text=f"Temps écoulé: {self.format_duree(temps_actuel)} / Durée totale: {self.format_duree(duree_totale)}")
+            self.interface_generale.label_temps.config(text=f"Elapsed Time: {self.format_duree(temps_actuel)} / Total Time: {self.format_duree(duree_totale)}")
             
             # Planifiez la prochaine mise à jour
             self.interface_generale.fenetre.after(500, self.mettre_a_jour_temps_video)
@@ -754,7 +754,7 @@ class LecteurVideo():
         if self.video_paused:
             pygame.mixer.music.pause()  # Pause le son
             # Mettre à jour le texte du bouton ici, exemple :
-            self.interface_generale.bouton_play_pause.configure(text="Reprendre")
+            self.interface_generale.bouton_play_pause.configure(text="Play")
         else:
             pygame.mixer.music.unpause()  # Reprend le son
             self.interface_generale.fenetre.after(0, self.afficher_video)  # Reprend la lecture vidéo immédiatement
@@ -874,7 +874,7 @@ class LecteurVideo():
             # Pause the video and the sound
             pygame.mixer.music.pause()  # Pause the sound
             # Update the play/pause button text, if you have one
-            self.interface_generale.bouton_play_pause.configure(text="Reprendre")
+            self.interface_generale.bouton_play_pause.configure(text="Play")
         else:
             # Resume video and sound playback
             pygame.mixer.music.unpause()  # Resume the sound
