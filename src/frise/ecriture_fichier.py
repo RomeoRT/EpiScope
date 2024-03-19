@@ -46,7 +46,7 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
         None 
     """
     with open(nomfichier, 'a') as fichier :
-        fichier.write("ID \tNom \tLateralisation \tSegment corporel \tDebut \tFin \tOrientation \tAttributs supplémentaires \tcommentaires \n")
+        fichier.write("ID \tName \tLateralization \tTopography \tOrientation \tAttributs supplémentaires \tStart \tEnd   \tcomment \n")
 
     for symptome in listeSymptome :
         EcrireSymptome(symptome, nomfichier)
@@ -106,7 +106,7 @@ def ecrire_rapport(Symptom_list, filename):
             tfin = symptom.get_Tfin().strip(":")
             duree = 60 #*( int(tfin[-2])-int(tdeb[-2]))+( int(tfin[-1])-int(tdeb[-1]))
         
-            fichier.write(f"{k} - {symptom.get_Nom()}, {symptom.get_SegCorporel()}, {symptom.get_Lateralisation()} : debut a {symptom.get_Tdeb()}, duree : {duree} sec (fin : {symptom.get_Tfin()})\n")
+            fichier.write(f"{k} - {symptom.get_Name()}, {symptom.get_Topography()}, {symptom.get_Lateralization()} : debut a {symptom.get_Tdeb()}, duree : {duree} sec (fin : {symptom.get_Tfin()})\n")
             
             k+=1
 
