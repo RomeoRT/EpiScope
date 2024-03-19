@@ -320,7 +320,7 @@ class InterfaceGenerale():
         ###     barre de menus
         #####################################
 
-        police_label_m = tkFont.Font(size=15)
+        police_label_m = tkFont.Font(size=12)
 
         # Menu 
         menu_bar = Menu(self.fenetre)
@@ -337,7 +337,9 @@ class InterfaceGenerale():
         menu_save.add_command(label="Save Timeline", command=self.frise.afficher)
         menu_bar.add_cascade(label="Save", menu=menu_save)
 
-        menu_bar.config(bg=self.theme[3],fg=self.theme[0], font=police_label_m)
+        menu_bar.config(bg=self.theme[3],fg=self.theme[3], font=police_label_m)
+        menu_save.config(font=police_label_m)
+        menu_open.config(font=police_label_m)
     
         root.config(menu=menu_bar)
 
@@ -436,7 +438,6 @@ class InterfaceGenerale():
         Permet de gerer l'affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop-up pour modifier un symptome.
 
         Args:
-            text (text): texte décrivant le symptomes sélectionné avec les temps de début et de fin
             attributs (list): liste d'initialisation du symptome | defaut = [] 
         """
         def set_end_time(event, Symp):
@@ -525,6 +526,7 @@ class InterfaceGenerale():
                 self.ListeSymptomes.remove(symp)
                 container.destroy()  # Supprime le conteneur entier, y compris le label et le bouton
                 break       
+
 
     def get_current_video_time(self):
         """
