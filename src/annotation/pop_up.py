@@ -1,4 +1,5 @@
-from annotation.class_symptome import Symptome
+
+from class_symptome import Symptome
 import tkinter as tk
 import customtkinter as CTK
 
@@ -12,15 +13,15 @@ class SymptomeEditor(CTK.CTkToplevel):
         self.geometry("400x400")  # taille initiale de la fenêtre
 
         # champs de saisie pour chaque attribut
-        self.id_entry = self.create_entry("ID :", self.Symp.ID, 1)
-        self.nom_entry = self.create_entry("Nom :", self.Symp.Nom, 2)
-        self.lat_entry = self.create_entry("Latéralisation :", self.Symp.Lateralisation, 3)
-        self.seg_entry = self.create_entry("Segment Corporel :", self.Symp.SegCorporel, 4)
-        self.ori_entry = self.create_entry("Orientation :", self.Symp.Orientation, 5)
-        self.attr_entry = self.create_entry("Attribut Supplémentaire :", self.Symp.AttributSuppl, 6)
-        self.tdeb_entry = self.create_entry("Temps début:", self.Symp.Tdeb, 7)
-        self.tfin_entry = self.create_entry("Temps fin :", self.Symp.Tfin, 8)
-        self.comment_entry = self.create_entry("Commentaire :", self.Symp.Commentaire, 9)
+        self.id_entry = self.create_entry("ID:", self.Symp.ID, 1)
+        self.Name_entry = self.create_entry("Name:", self.Symp.Name, 2)
+        self.lat_entry = self.create_entry("Lateralization:", self.Symp.Lateralization, 3)
+        self.seg_entry = self.create_entry("Topography:", self.Symp.Topography, 4)
+        self.ori_entry = self.create_entry("Orientation:", self.Symp.Orientation, 5)
+        self.attr_entry = self.create_entry("Additionnal Attribute:", self.Symp.AttributSuppl, 6)
+        self.tdeb_entry = self.create_entry("Start Time:", self.Symp.Tdeb, 7)
+        self.tfin_entry = self.create_entry("End Time:", self.Symp.Tfin, 8)
+        self.comment_entry = self.create_entry("Comment:", self.Symp.Comment, 9)
 
         # Bouton pour appliquer les modifications
         self.boutonOK = CTK.CTkButton(self, text="OK",fg_color='green', hover_color= ('darkgreen'))
@@ -48,12 +49,12 @@ class SymptomeEditor(CTK.CTkToplevel):
         # Récupère les valeurs saisies et met à jour les attributs de la classe Symp
         if self.id_entry.get():
             self.Symp.ID = self.id_entry.get()
-        if self.nom_entry.get():
-            self.Symp.Nom = self.nom_entry.get()
+        if self.Name_entry.get():
+            self.Symp.Name = self.Name_entry.get()
         if self.lat_entry.get():
-            self.Symp.Lateralisation = self.lat_entry.get()
+            self.Symp.Lateralization = self.lat_entry.get()
         if self.seg_entry.get():
-            self.Symp.SegCorporel = self.seg_entry.get()
+            self.Symp.Topography = self.seg_entry.get()
         if self.ori_entry.get():
             self.Symp.Orientation = self.ori_entry.get()
         if self.attr_entry.get():
@@ -63,14 +64,14 @@ class SymptomeEditor(CTK.CTkToplevel):
         if self.tfin_entry.get():
             self.Symp.Tfin = self.tfin_entry.get()
         if self.comment_entry.get():
-            self.Symp.Commentaire = self.comment_entry.get()
+            self.Symp.Comment = self.comment_entry.get()
 
         self.destroy()
 
         
 if __name__=="__main__":
     # Création d'une instance de la classe Symptome pour tester l'éditeur
-    Symp = Symptome(ID="", Nom="cuhecbe s", Lateralisation="", SegCorporel="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Commentaire="")
+    Symp = Symptome(ID="", Name="cuhecbe s", Lateralization="", Topography="", Orientation="", AttributSuppl="", Tdeb="", Tfin="", Comment="")
 
     # Création de la fenêtre principale de l'éditeur
     root = CTK.CTk()
@@ -79,4 +80,4 @@ if __name__=="__main__":
     root.mainloop()
 
 
-    print(Symp.Nom, Symp.Lateralisation)
+    print(Symp.Name, Symp.Lateralization)
