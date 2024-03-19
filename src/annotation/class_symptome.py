@@ -1,39 +1,39 @@
 
+'''Classe permettant d instancier un objet Symptome avec tous ses attributs
+Par exemple ID, Name, Lateralization, segment corporel, Tps debut, Tps fin, Orientation, Attributs suppl, Comment'''
 
-# voir comment utiliser les méthodes
+# voir comment utiliser les methodes
 
 
 class Symptome:
-    """Classe permettant d'instancier un objet Symptome
 
-    attributs : ID, nom, lateralisation, segment corporel, Tps debut, Tps fin, Orientation, Attributs suppl, Commentaire
-    """
 
-    def __init__(self, ID, Nom, Lateralisation, SegCorporel, Orientation, AttributSuppl, Tdeb, Tfin, Commentaire):
+
+    def __init__(self, ID=None, Name=None, Lateralization=None, Topography=None, Orientation=None, AttributSuppl=None, Tdeb=None, Tfin=None, Comment=None):
         self.ID = ID
-        self.Nom = Nom
-        self.Lateralisation = Lateralisation
-        self.SegCorporel = SegCorporel
+        self.Name = Name
+        self.Lateralization = Lateralization
+        self.Topography = Topography
         self.Orientation = Orientation
         self.AttributSuppl = AttributSuppl
         self.Tdeb = Tdeb
         self.Tfin = Tfin
-        self.Commentaire = Commentaire
+        self.Comment = Comment
 
 
 
     def get_attributs(self):
-        """Retourne une liste contenant les valeurs des attributs de l'objet"""
+        ''' Retourne une liste contenant les valeurs des attributs de l'objet'''
         attributs = [
             self.ID,
-            self.Nom,
-            self.Lateralisation,
-            self.SegCorporel,
+            self.Name,
+            self.Lateralization,
+            self.Topography,
             self.Orientation,
             self.AttributSuppl,
             self.Tdeb,
             self.Tfin,
-            self.Commentaire
+            self.Comment
         ]
         return attributs    
 
@@ -44,14 +44,14 @@ class Symptome:
     def get_ID(self):
         return self.ID
 
-    def get_Nom(self):
-        return self.Nom
+    def get_Name(self):
+        return self.Name
 
-    def get_Lateralisation(self):
-        return self.Lateralisation
+    def get_Lateralization(self):
+        return self.Lateralization
 
-    def get_SegCorporel(self):
-        return self.SegCorporel
+    def get_Topography(self):
+        return self.Topography
 
     def get_Orientation(self):
         return self.Orientation
@@ -65,22 +65,24 @@ class Symptome:
     def get_Tfin(self):
         return self.Tfin
 
-    def get_Commentaire(self):
-        return self.Commentaire
+    def get_Comment(self):
+        return self.Comment
+
+
 
     # fonctions qui permettent de donner une valeur(str) a chaque attribut
 
     def set_ID(self, new_ID):
         self.ID = new_ID
 
-    def set_Nom(self, new_Nom):
-        self.Nom = new_Nom
+    def set_Name(self, new_Name):
+        self.Name = new_Name
 
-    def set_Lateralisation(self, new_Lateralisation):
-        self.Lateralisation = new_Lateralisation
+    def set_Lateralization(self, new_Lateralization):
+        self.Lateralization = new_Lateralization
 
-    def set_SegCorporel(self, new_SegCorporel):
-        self.SegCorporel = new_SegCorporel
+    def set_Topography(self, new_Topography):
+        self.Topography = new_Topography
 
     def set_Orientation(self, new_Orientation):
         self.Orientation = new_Orientation
@@ -94,8 +96,8 @@ class Symptome:
     def set_Tfin(self, new_Tfin):
         self.Tfin = new_Tfin
 
-    def set_Commentaire(self, new_Commentaire):
-        self.Commentaire = new_Commentaire
+    def set_Comment(self, new_Comment):
+        self.Comment = new_Comment
 
 
     
