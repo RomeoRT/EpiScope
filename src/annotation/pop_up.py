@@ -9,7 +9,9 @@ from class_symptome import Symptome
 from annotation.class_symptome import Symptome
 
 class SymptomeEditor(CTK.CTkToplevel):
-
+    """
+    Permet l'edition de symptomes au travers d'une fenetre
+    """
     def __init__(self, Symp):
         
         super().__init__()
@@ -37,6 +39,14 @@ class SymptomeEditor(CTK.CTkToplevel):
         self.bind('<Return>', lambda event: self.apply_changes(Symp))
 
     def create_entry(self, label_text, initial_value, i):
+        """
+        crée et place des zones de texte (entrées) sur la fenêtre
+
+        Args:
+            label_text (str): label de l'entrée
+            initial_value (str): valeur actuelle de l'entrée
+            i (int): indice de la ligne de l'entrée 
+        """
         # label et un champ de saisie pour un attribut
         #frame = tk.Frame(self.master, pady=5)
         #frame.pack()
@@ -51,7 +61,7 @@ class SymptomeEditor(CTK.CTkToplevel):
         return entry
 
     def apply_changes(self,Symp):
-        # Récupère les valeurs saisies et met à jour les attributs de la classe Symp
+        """ Récupère les valeurs saisies et met à jour les attributs de la classe Symp"""
         if self.id_entry.get():
             self.Symp.ID = self.id_entry.get()
         if self.Name_entry.get():

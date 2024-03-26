@@ -6,28 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>frise package &#8212; Episcope 0.1-alpha documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    
     <script src="_static/documentation_options.js?v=737112c1"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="annotation package" href="annotation.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="prev" title="General Interface" href="general_interface.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="annotation.html" title="annotation package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="general_interface.html" title="General Interface"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Episcope 0.1-alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">frise package</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <section id="frise-package">
@@ -47,8 +60,8 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>symptome</strong> (<em>list</em>) – liste des symptomes</p></li>
-<li><p><strong>nomfichier</strong> (<em>string</em>) – chemin du fichier</p></li>
+<li><p><strong>symptome</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – liste des symptomes</p></li>
+<li><p><strong>nomfichier</strong> (<em>str</em>) – chemin du fichier</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -59,13 +72,13 @@ Fait appel à la fonction EcrireSymptome</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.ecriture_fichier.EcrireMetaData">
-<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireMetaData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ListeMeta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireMetaData" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireMetaData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireMetaData" title="Link to this definition">¶</a></dt>
 <dd><p>Ecrit les metadata d’une annotation dans un fichier texte sous la forme : heure réelle :    patient :       praticien :     date d’annotation :</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ListeMeta</strong> (<em>List</em>) – liste des métadatas</p></li>
-<li><p><strong>nomfichier</strong> (<em>string</em>) – chemin du fichier</p></li>
+<li><p><strong>(</strong> (<em>Meta</em>) – obj: MetaData): Les métadatas</p></li>
+<li><p><strong>nomfichier</strong> (<em>str</em>) – chemin du fichier</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -81,12 +94,26 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>symptome</strong> (<a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome" title="annotation.class_symptome.Symptome"><em>Symptome</em></a>) – symptome à écrire</p></li>
-<li><p><strong>nomfichier</strong> (<em>string</em>) – chemin du fichier</p></li>
+<li><p><strong>symptome</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – symptome à écrire</p></li>
+<li><p><strong>nomfichier</strong> (<em>str</em>) – chemin du fichier</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.ecrire_rapport">
+<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">ecrire_rapport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Symptom_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.ecrire_rapport" title="Link to this definition">¶</a></dt>
+<dd><p>Ecrit les symptomes dans le rapport lisible par les médecins</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Symptom_list</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – liste des symptomes a écrire</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – chemein du fichier a ecrire</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -98,7 +125,7 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>List</em>) – liste de strings a traiter</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – liste de strings a traiter</p></li>
 <li><p><strong>caracteres</strong> (<em>List</em>) – liste des caracteres et de leur remplacement, de la forme [(“C1”, “C2”)]</p></li>
 </ul>
 </dd>
@@ -106,7 +133,7 @@ Fait appel à la fonction EcrireSymptome</p>
 <dd class="field-even"><p>liste de strings traitée</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>new_data (list)</p>
+<dd class="field-odd"><p>new_data (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -117,9 +144,8 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.fonctions_frise.afficher_frise">
 <span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">afficher_frise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liste</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.afficher_frise" title="Link to this definition">¶</a></dt>
-<dd><p>Affiche la frise chronologique des symptômes.</p>
-<p>Args:
-liste (list): liste des symptomes où chaque élément est une liste [nom, début, fin].</p>
+<dd><p>Affiche la frise chronologique des symptômes.
+:param liste (: obj:list of :obj:list): liste des symptomes où chaque élément est une liste [Name, début, fin, Lateralization, seg corporel, orientation, attribut suppl, Comment, tdeb_str, tfin_str].</p>
 </dd></dl>
 
 <dl class="py function">
@@ -131,16 +157,20 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.fonctions_frise.chevauchement">
 <span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">chevauchement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liste</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.chevauchement" title="Link to this definition">¶</a></dt>
-<dd><p>Gère le problème de superposition visuelle des symptômes.
-:param liste: liste des symptomes avec début et fin
-:param symp: symptome actuel.
-:param current_index: indice du symp actuel dans la liste.</p>
+<dd><p>Gère le problème de superposition visuelle des symptômes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>niveau y où afficher le rectangle.</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>liste</strong> (<em>list</em>) – liste des symptomes avec début et fin</p></li>
+<li><p><strong>symp</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – symptome actuel.</p></li>
+<li><p><strong>current_index</strong> (<em>int</em>) – indice du symp actuel dans la liste.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>level</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>niveau y où afficher le rectangle.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -156,13 +186,13 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
 <span id="frise-save-module"></span><h2>frise.save module<a class="headerlink" href="#module-frise.save" title="Link to this heading">¶</a></h2>
 <p>Ce fichier contient des classes et fonctions de base pour sauvegarder les fichiers ‘.txt’ et frise de sortie</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="frise.save.metadata">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">frise.save.</span></span><span class="sig-name descname"><span class="pre">metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.metadata" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="frise.save.MetaData_WD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">frise.save.</span></span><span class="sig-name descname"><span class="pre">MetaData_WD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.MetaData_WD" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CTkToplevel</span></code></p>
 <p>fenetre toplevel pour saisir les metadonnées</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="frise.save.metadata.liste">
-<span class="sig-name descname"><span class="pre">liste</span></span><a class="headerlink" href="#frise.save.metadata.liste" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="frise.save.MetaData_WD.liste">
+<span class="sig-name descname"><span class="pre">liste</span></span><a class="headerlink" href="#frise.save.MetaData_WD.liste" title="Link to this definition">¶</a></dt>
 <dd><p>liste de symptomes a sauvegarder</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -172,8 +202,8 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="frise.save.metadata.filename">
-<span class="sig-name descname"><span class="pre">filename</span></span><a class="headerlink" href="#frise.save.metadata.filename" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="frise.save.MetaData_WD.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><a class="headerlink" href="#frise.save.MetaData_WD.filename" title="Link to this definition">¶</a></dt>
 <dd><p>chemin du fichier dans lequel ecrire</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -183,8 +213,8 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="frise.save.metadata.get_metadata">
-<span class="sig-name descname"><span class="pre">get_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.metadata.get_metadata" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="frise.save.MetaData_WD.get_metadata">
+<span class="sig-name descname"><span class="pre">get_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.MetaData_WD.get_metadata" title="Link to this definition">¶</a></dt>
 <dd><p>ecrire une liste des metadonnées sous la forme [heure réelle, patient, praticien]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -214,7 +244,7 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
 <dl class="py method">
 <dt class="sig sig-object py" id="frise.save.save.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save.save" title="Link to this definition">¶</a></dt>
-<dd><p>Enregistre les symptomes dans un fichier et produit la frise chronologique</p>
+<dd><p>Enregistre les symptomes dans un fichier pour etre rechargés</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>FileNotFoundError</strong> – message d’erreur si echec de recuperation du chemin du fichier.</p>
@@ -233,6 +263,17 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="frise.save.save.write_report">
+<span class="sig-name descname"><span class="pre">write_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save.write_report" title="Link to this definition">¶</a></dt>
+<dd><p>Ecrit un fichier lisible par un humain</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – message d’erreur si echec de recuperation du chemin du fichier.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -242,70 +283,71 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
 </section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Episcope</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">frise package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-frise.ecriture_fichier">frise.ecriture_fichier module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.EcrireListeSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireListeSymptome()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.EcrireMetaData"><code class="docutils literal notranslate"><span class="pre">EcrireMetaData()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.EcrireSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireSymptome()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.format"><code class="docutils literal notranslate"><span class="pre">format()</span></code></a></li>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">frise package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-frise.ecriture_fichier">frise.ecriture_fichier module</a><ul>
+<li><a class="reference internal" href="#frise.ecriture_fichier.EcrireListeSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireListeSymptome()</span></code></a></li>
+<li><a class="reference internal" href="#frise.ecriture_fichier.EcrireMetaData"><code class="docutils literal notranslate"><span class="pre">EcrireMetaData()</span></code></a></li>
+<li><a class="reference internal" href="#frise.ecriture_fichier.EcrireSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireSymptome()</span></code></a></li>
+<li><a class="reference internal" href="#frise.ecriture_fichier.ecrire_rapport"><code class="docutils literal notranslate"><span class="pre">ecrire_rapport()</span></code></a></li>
+<li><a class="reference internal" href="#frise.ecriture_fichier.format"><code class="docutils literal notranslate"><span class="pre">format()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-frise.fonctions_frise">frise.fonctions_frise module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#frise.fonctions_frise.afficher_frise"><code class="docutils literal notranslate"><span class="pre">afficher_frise()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#frise.fonctions_frise.chercherElt"><code class="docutils literal notranslate"><span class="pre">chercherElt()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#frise.fonctions_frise.chevauchement"><code class="docutils literal notranslate"><span class="pre">chevauchement()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#frise.fonctions_frise.on_text_click"><code class="docutils literal notranslate"><span class="pre">on_text_click()</span></code></a></li>
+<li><a class="reference internal" href="#module-frise.fonctions_frise">frise.fonctions_frise module</a><ul>
+<li><a class="reference internal" href="#frise.fonctions_frise.afficher_frise"><code class="docutils literal notranslate"><span class="pre">afficher_frise()</span></code></a></li>
+<li><a class="reference internal" href="#frise.fonctions_frise.chercherElt"><code class="docutils literal notranslate"><span class="pre">chercherElt()</span></code></a></li>
+<li><a class="reference internal" href="#frise.fonctions_frise.chevauchement"><code class="docutils literal notranslate"><span class="pre">chevauchement()</span></code></a></li>
+<li><a class="reference internal" href="#frise.fonctions_frise.on_text_click"><code class="docutils literal notranslate"><span class="pre">on_text_click()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-frise.save">frise.save module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#frise.save.metadata"><code class="docutils literal notranslate"><span class="pre">metadata</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#frise.save.metadata.liste"><code class="docutils literal notranslate"><span class="pre">metadata.liste</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#frise.save.metadata.filename"><code class="docutils literal notranslate"><span class="pre">metadata.filename</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#frise.save.metadata.get_metadata"><code class="docutils literal notranslate"><span class="pre">metadata.get_metadata()</span></code></a></li>
+<li><a class="reference internal" href="#module-frise.save">frise.save module</a><ul>
+<li><a class="reference internal" href="#frise.save.MetaData_WD"><code class="docutils literal notranslate"><span class="pre">MetaData_WD</span></code></a><ul>
+<li><a class="reference internal" href="#frise.save.MetaData_WD.liste"><code class="docutils literal notranslate"><span class="pre">MetaData_WD.liste</span></code></a></li>
+<li><a class="reference internal" href="#frise.save.MetaData_WD.filename"><code class="docutils literal notranslate"><span class="pre">MetaData_WD.filename</span></code></a></li>
+<li><a class="reference internal" href="#frise.save.MetaData_WD.get_metadata"><code class="docutils literal notranslate"><span class="pre">MetaData_WD.get_metadata()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#frise.save.save"><code class="docutils literal notranslate"><span class="pre">save</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#frise.save.save.symptomes"><code class="docutils literal notranslate"><span class="pre">save.symptomes</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#frise.save.save.save"><code class="docutils literal notranslate"><span class="pre">save.save()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#frise.save.save.set_symptomes"><code class="docutils literal notranslate"><span class="pre">save.set_symptomes()</span></code></a></li>
+<li><a class="reference internal" href="#frise.save.save"><code class="docutils literal notranslate"><span class="pre">save</span></code></a><ul>
+<li><a class="reference internal" href="#frise.save.save.symptomes"><code class="docutils literal notranslate"><span class="pre">save.symptomes</span></code></a></li>
+<li><a class="reference internal" href="#frise.save.save.save"><code class="docutils literal notranslate"><span class="pre">save.save()</span></code></a></li>
+<li><a class="reference internal" href="#frise.save.save.set_symptomes"><code class="docutils literal notranslate"><span class="pre">save.set_symptomes()</span></code></a></li>
+<li><a class="reference internal" href="#frise.save.save.write_report"><code class="docutils literal notranslate"><span class="pre">save.write_report()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-frise">Module contents</a></li>
+<li><a class="reference internal" href="#module-frise">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="annotation.html">annotation package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecteur_video.html">lecteur_video package</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Next: <a href="annotation.html" title="next chapter">annotation package</a></li>
-  </ul></li>
-</ul>
-</div>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="general_interface.html"
+                          title="previous chapter">General Interface</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="annotation.html"
+                          title="next chapter">annotation package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/frise.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -316,32 +358,32 @@ liste (list): liste des symptomes où chaque élément est une liste [nom, débu
     </div>
 </div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2023, Roméo RAMOS--TANGHE, Yosra SAID, Annaelle SARRAZIN, Rachel TECHI, Chloé THIRIET.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
-      
-      |
-      <a href="_sources/frise.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="annotation.html" title="annotation package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="general_interface.html" title="General Interface"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Episcope 0.1-alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">frise package</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Roméo RAMOS--TANGHE, Yosra SAID, Annaelle SARRAZIN, Rachel TECHI, Chloé THIRIET.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
   </body>
 </html>
