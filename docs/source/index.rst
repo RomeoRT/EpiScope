@@ -26,7 +26,6 @@ These tools enable practitioners to note directly on their patients' epileptic s
    general_interface
    frise
    annotation
-   lecteur_video
    
 Indices and tables
 ==================
