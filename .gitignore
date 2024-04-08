@@ -1,6 +1,6 @@
 src/frise/__pycache__/ecriture_fichier.cpython-312.pyc
 src/frise/__pycache__/save.cpython-312.pyc
-src\annotation\__pycache__
+src\annotation\__pycache__*
 src\test_interface.py
 
 
@@ -11,7 +11,7 @@ audio.wav
 
 
 # fichiers a ignorer pour le git
-*__pycache__/
+*__pycache__/*
 
 *.moi*  # des fichiers inutiles, pour moi 
 
@@ -30,3 +30,14 @@ src/annotation/CTkScrollableDropdown/README.md
 src/annotation/CTkScrollableDropdown/CTkScrollableDropdown/__init__.py
 src/annotation/CTkScrollableDropdown/CTkScrollableDropdown/ctk_scrollable_dropdown_frame.py
 src/annotation/CTkScrollableDropdown/CTkScrollableDropdown/ctk_scrollable_dropdown.py
+src/annotation/__pycache__/class_symptome.cpython-311.pyc
+src/annotation/__pycache__/class_symptome.cpython-311.pyc
+src/frise/__pycache__/ecriture_fichier.cpython-311.pyc
+src/frise/__pycache__/fonctions_frise.cpython-311.pyc
+src/frise/__pycache__/save.cpython-311.pyc
+src/frise/__pycache__/fonctions_frise.cpython-311.pyc
+src/annotation/__pycache__/class_symptome.cpython-311.pyc
+src/frise/__pycache__/fonctions_frise.cpython-311.pyc
+src/frise/__pycache__/class_metadata.cpython-311.pyc
+src/annotation/__pycache__/pop_up.cpython-311.pyc
+src/annotation/__pycache__/load_symptomes.cpython-311.pyc
