@@ -173,7 +173,9 @@ class Menu_symptomes(ctk.CTkFrame):
         Reads the text files containing the list of symptoms to fill the menus
 
         Symptoms must be written with specific separators 
-        *example : Negative myoclonus[Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb]* 
+        
+        Example : 
+            Negative myoclonus[Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb]
 
         Args:
             file_name (string): file path
