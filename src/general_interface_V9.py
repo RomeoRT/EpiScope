@@ -30,6 +30,7 @@ version : 0.9
 import tkinter as tk
 import customtkinter as ctk
 from tkinter import filedialog
+from tkinter import messagebox as error
 import cv2
 from PIL import Image, ImageTk
 import datetime
@@ -639,21 +640,28 @@ class InterfaceGenerale():
           self.update_right_panel(attr)
      
 
-
 class LecteurVideo():
 
     """
-    Classe du lecteur video qui gére les differentes fonctionnalités de la video.
+    Video player class that manages the different functionalities of the video.
 
-    fonctionnalités : ouverture de la vidéo, de la vidéo noire,l'affichage de la vidéo,la synchroisation du son et la gestion des boutons
-    Elle appelle la classe InterfaceGenerale 
+    Functionalities supported :
+        * opening a video using the file explorer
+        * opening a dark video - in case there is no video to actually open 
+        * sychronizing sound and video
+        * buttons gestion
+
+    This class calls the InterfaceGenerale class
 
     Attributes:
         **A completer**
     """
     def __init__(self, InterfaceGenerale):
         """
-        Constructeur de la class Lecteur_video
+        Constructor of the LecteurVideo class
+
+        Arguements: 
+            InterfaceGenerale(:obj: 'InterfaceGenerale') : the main interface in which to open the video player
         """
 
         self.interface_generale = InterfaceGenerale
@@ -669,8 +677,8 @@ class LecteurVideo():
 
     def ouvrir_video(self):
         """
-        Ouvre une vidéo depuis l'explorateur du fichier
-        une fois choisie, elle se met en lecture dans middle_frame
+        Opens a video with the file explorer.
+        Once chosen, it plays the video in the middle_frame
         """
         # Sélection du fichier vidéo et préparation de la vidéo et du son
         file_path = filedialog.askopenfilename(filetypes=[("Fichiers vidéo", "*.mp4 *.avi *mpg")])
@@ -688,7 +696,8 @@ class LecteurVideo():
 
     def ouvrir_video_noire(self):
         """
-        Ouvre la vidéo noire directement qui doit étre dans le meme dossier que le code
+        Opens the black video.
+        The black video must be in the same folder as the code : "video_noire.mp4"
         """
         # Chemin du fichier vidéo "ma vidéo noire" dans le dossier courant
         file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_noire.mp4")
@@ -713,12 +722,13 @@ class LecteurVideo():
             self.mettre_a_jour_temps_video()
             self.interface_generale.bouton_play_pause.configure(state=ctk.NORMAL)
         else:
+            error.showerror('Episcope Error', "'Black Video' not found in the current folder.")
             print("'Black Video' not found in the current folder.")
 
 
     def preparer_son_video(self, file_path):
         """
-        Prépare le son de la vidéo à partir de la vidéo originale.
+        Prepares the sound of the video from the original video
         """
         
         clip = VideoFileClip(file_path)# Convertir la piste audio de la vidéo en fichier WAV
@@ -733,9 +743,10 @@ class LecteurVideo():
 
     def afficher_video(self):
         """
-        permet l'affichage et la lecture de la video:
-        redimensionnement des frames de la video pour correspondre les dimensions de middle frame
-        Calcule et affiche le temps totale et le temps écoulé
+        Allows to display and play the video.
+
+        Resizes the frames of the video to match thoses  of the middle frame
+        computes and displays the total and elapsed time of the video 
         """
         
         if self.interface_generale.cap.isOpened():# Vérifie si la vidéo est ouverte
@@ -774,8 +785,7 @@ class LecteurVideo():
 
     def mettre_a_jour_frame_video(self, frame):
         """
-        permet de s'assurer que chaque frame de la vidéo est correctement traitée,
-        redimensionnée et affichée dans l'interface utilisateur
+        Checks if each frame of the video is correctly processed, resized and displayed in the GUI
         """
         
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -786,8 +796,8 @@ class LecteurVideo():
 
     def mettre_a_jour_temps_video(self):
         """
-            Assure que le temps de la vidéo affichée est régulièrement mis à jour et que la lecture de la vidéo continue 
-            de manière fluide. Elle assure la sychronisation de  l'avancement de la vidéo avec le temps réel
+        Ensures that the displayed time of the video is regularly updated and that the video plays smoothly. 
+        It also ensures the sinchronization between the video advancement and the real time
         """
         if self.interface_generale.cap.isOpened() and not self.video_paused:
             temps_actuel_ms = self.interface_generale.cap.get(cv2.CAP_PROP_POS_MSEC)
@@ -804,7 +814,7 @@ class LecteurVideo():
 
     def pause_lecture(self):
         """
-        Cette fonction gère l'état de pause et reprise de la vidéo 
+        Manage the play/pause state of the video 
         """
         self.video_paused = not self.video_paused
         if self.video_paused:
@@ -820,6 +830,9 @@ class LecteurVideo():
 
 
     def avancer(self):
+        """
+        
+        """
         self.interface_generale.progress_slider.set(self.temps_ecoule)
         self.interface_generale.fenetre.after(1, self.avancer)
 
@@ -878,7 +891,7 @@ class LecteurVideo():
 
     def revoir_video(self):
         """
-        Permet de revoir la video depuis le début
+        Allows to play the video again 
         """
         if self.interface_generale.cap.isOpened():
         # Réinitialiser la vidéo au début
@@ -896,17 +909,15 @@ class LecteurVideo():
 
     def format_duree(self, seconds):
         """
-        convertir une durée en secondes en un format de temps plus lisible, 
-        sous la forme de minutes et secondes.
+        Converts the time in seconds in a more readable format : minutes and secondes
         """
         return str(datetime.timedelta(seconds=seconds))
 
 
     def charger_son_video(self, file_path):
         """
-         Arrête le son précédent, et fait l'extraction et le chargement 
-         de la nouvelle piste audio associée à la vidéo sélectionnée
-         Elle fait aussi le nettoyage des ressources utilisées pendant le processus. 
+        Stops the previous audio, and extracts and loads the new audio track associated with the selected video. 
+        It also cleans up the resources used during the process. 
         """
         # Assurez-vous que le son précédent est arrêté et supprimé
         if self.sound:
@@ -921,9 +932,10 @@ class LecteurVideo():
 
     def afficher_menu_annotations(self, event):
         """
-        Récupére les coordonnées d'un clic sur la vidéo. Pour l'intant elle affiche une croix rouge
-        Mais il ya possibilté d'utiliser cette croix roug pour afficher le symtoms en la survolant 
-        par le curseur
+        Retrieve the coordinates by clicking on the video. 
+        
+        It currently displays a red cross.
+        But you can use this red cross to display the symtoms by hovering over it with the cursor.
         """
         # Coordonnées du clic
         x = event.x
@@ -965,7 +977,14 @@ class LecteurVideo():
 
     def ajouter_plus_rouge(self,canvas, x, y, taille):
         """
-        Ajoute la croix rouge durat 1 seconde là où on appuie
+        Displays the red cross for 1 second where one clicks on the video
+
+        Arguments:
+            canvas (tk.Canvas): the canvas of the video
+            x (int): x-coordinate of the cross
+            y (int): y-coordinate of the cross
+            taille (int): size of **????**
+
         """
         # Coordonnées pour créer un '+'
         ligne_horizontale = self.interface_generale.canvas.create_line(x-taille*20, y, x+taille*20, y, fill="red", width=3)
@@ -976,7 +995,7 @@ class LecteurVideo():
 
 if __name__ == "__main__":
     root = ctk.CTk()
-    #root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))  # Plein écran
+
     root.after(0, lambda:root.state('zoomed'))
     
     # photo ?
