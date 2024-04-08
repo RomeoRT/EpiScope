@@ -204,9 +204,17 @@ fait appel a la classe save</p>
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_interface_V9.</span></span><span class="sig-name descname"><span class="pre">LecteurVideo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InterfaceGenerale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Classe du lecteur video qui gére les differentes fonctionnalités de la video.</p>
-<p>fonctionnalités : ouverture de la vidéo, de la vidéo noire,l’affichage de la vidéo,la synchroisation du son et la gestion des boutons
-Elle appelle la classe InterfaceGenerale</p>
+<p>Video player class that manages the different functionalities of the video.</p>
+<dl class="simple">
+<dt>Functionalities supported :</dt><dd><ul class="simple">
+<li><p>opening a video using the file explorer</p></li>
+<li><p>opening a dark video - in case there is no video to actually open</p></li>
+<li><p>sychronizing sound and video</p></li>
+<li><p>buttons gestion</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class calls the InterfaceGenerale class</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">\*\*A</span> <span class="pre">completer**</span></span></dt>
@@ -215,110 +223,121 @@ Elle appelle la classe InterfaceGenerale</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.afficher_menu_annotations">
 <span class="sig-name descname"><span class="pre">afficher_menu_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.afficher_menu_annotations" title="Link to this definition">¶</a></dt>
-<dd><p>Récupére les coordonnées d’un clic sur la vidéo. Pour l’intant elle affiche une croix rouge
-Mais il ya possibilté d’utiliser cette croix roug pour afficher le symtoms en la survolant
-par le curseur</p>
+<dd><p>Retrieve the coordinates by clicking on the video.</p>
+<p>It currently displays a red cross.
+But you can use this red cross to display the symtoms by hovering over it with the cursor.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.afficher_video">
 <span class="sig-name descname"><span class="pre">afficher_video</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.afficher_video" title="Link to this definition">¶</a></dt>
-<dd><p>permet l’affichage et la lecture de la video:
-redimensionnement des frames de la video pour correspondre les dimensions de middle frame
-Calcule et affiche le temps totale et le temps écoulé</p>
+<dd><p>Allows to display and play the video.</p>
+<p>Resizes the frames of the video to match thoses  of the middle frame
+computes and displays the total and elapsed time of the video</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.ajouter_plus_rouge">
 <span class="sig-name descname"><span class="pre">ajouter_plus_rouge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taille</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.ajouter_plus_rouge" title="Link to this definition">¶</a></dt>
-<dd><p>Ajoute la croix rouge durat 1 seconde là où on appuie</p>
+<dd><p>Displays the red cross for 1 second where one clicks on the video</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>canvas</strong> (<em>tk.Canvas</em>) – the canvas of the video</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – x-coordinate of the cross</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – y-coordinate of the cross</p></li>
+<li><p><strong>taille</strong> (<em>int</em>) – size of <strong>????</strong></p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.avance_progress">
 <span class="sig-name descname"><span class="pre">avance_progress</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.avance_progress" title="Link to this definition">¶</a></dt>
-<dd><p>permet d’avancer la video d’une seonde et assure l’avancement du son aussi</p>
+<dd><p>advances the video by one wave and ensures that the sound also advances</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.avancer">
 <span class="sig-name descname"><span class="pre">avancer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.avancer" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><strong>??</strong></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.charger_son_video">
 <span class="sig-name descname"><span class="pre">charger_son_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.charger_son_video" title="Link to this definition">¶</a></dt>
-<dd><p>Arrête le son précédent, et fait l’extraction et le chargement
-de la nouvelle piste audio associée à la vidéo sélectionnée
-Elle fait aussi le nettoyage des ressources utilisées pendant le processus.</p>
+<dd><p>Stops the previous audio, and extracts and loads the new audio track associated with the selected video.
+It also cleans up the resources used during the process.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.configurer_barre_progression">
 <span class="sig-name descname"><span class="pre">configurer_barre_progression</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.configurer_barre_progression" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><strong>??</strong></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.format_duree">
 <span class="sig-name descname"><span class="pre">format_duree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seconds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.format_duree" title="Link to this definition">¶</a></dt>
-<dd><p>convertir une durée en secondes en un format de temps plus lisible,
-sous la forme de minutes et secondes.</p>
+<dd><p>Converts the time in seconds in a more readable format : minutes and secondes</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.manual_update_progress">
 <span class="sig-name descname"><span class="pre">manual_update_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.manual_update_progress" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><strong>??</strong></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.mettre_a_jour_frame_video">
 <span class="sig-name descname"><span class="pre">mettre_a_jour_frame_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.mettre_a_jour_frame_video" title="Link to this definition">¶</a></dt>
-<dd><p>permet de s’assurer que chaque frame de la vidéo est correctement traitée,
-redimensionnée et affichée dans l’interface utilisateur</p>
+<dd><p>Checks if each frame of the video is correctly processed, resized and displayed in the GUI</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.mettre_a_jour_temps_video">
 <span class="sig-name descname"><span class="pre">mettre_a_jour_temps_video</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.mettre_a_jour_temps_video" title="Link to this definition">¶</a></dt>
-<dd><p>Assure que le temps de la vidéo affichée est régulièrement mis à jour et que la lecture de la vidéo continue
-de manière fluide. Elle assure la sychronisation de  l’avancement de la vidéo avec le temps réel</p>
+<dd><p>Ensures that the displayed time of the video is regularly updated and that the video plays smoothly.
+It also ensures the sinchronization between the video advancement and the real time</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.ouvrir_video">
 <span class="sig-name descname"><span class="pre">ouvrir_video</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.ouvrir_video" title="Link to this definition">¶</a></dt>
-<dd><p>Ouvre une vidéo depuis l’explorateur du fichier
-une fois choisie, elle se met en lecture dans middle_frame</p>
+<dd><p>Opens a video with the file explorer.
+Once chosen, it plays the video in the middle_frame</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.ouvrir_video_noire">
 <span class="sig-name descname"><span class="pre">ouvrir_video_noire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.ouvrir_video_noire" title="Link to this definition">¶</a></dt>
-<dd><p>Ouvre la vidéo noire directement qui doit étre dans le meme dossier que le code</p>
+<dd><p>Opens the black video.
+The black video must be in the same folder as the code : “video_noire.mp4”</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.pause_lecture">
 <span class="sig-name descname"><span class="pre">pause_lecture</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.pause_lecture" title="Link to this definition">¶</a></dt>
-<dd><p>Cette fonction gère l’état de pause et reprise de la vidéo</p>
+<dd><p>Manage the play/pause state of the video</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.preparer_son_video">
 <span class="sig-name descname"><span class="pre">preparer_son_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.preparer_son_video" title="Link to this definition">¶</a></dt>
-<dd><p>Prépare le son de la vidéo à partir de la vidéo originale.</p>
+<dd><p>Prepares the sound of the video from the original video</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.recule_progress">
 <span class="sig-name descname"><span class="pre">recule_progress</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.recule_progress" title="Link to this definition">¶</a></dt>
-<dd><p>Permet de reculer de 1 seconde dans la video en assurant la synchronisation du son avec la video</p>
+<dd><p>Rewinds the video by 1 second, ensuring that the sound is synchronised with the video.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.revoir_video">
 <span class="sig-name descname"><span class="pre">revoir_video</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.revoir_video" title="Link to this definition">¶</a></dt>
-<dd><p>Permet de revoir la video depuis le début</p>
+<dd><p>Allows to play the video again</p>
 </dd></dl>
 
 </dd></dl>
