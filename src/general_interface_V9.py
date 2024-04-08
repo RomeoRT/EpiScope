@@ -831,18 +831,24 @@ class LecteurVideo():
 
     def avancer(self):
         """
-        
+        **??**
         """
         self.interface_generale.progress_slider.set(self.temps_ecoule)
         self.interface_generale.fenetre.after(1, self.avancer)
 
 
     def configurer_barre_progression(self):
+        """ 
+        **??**
+        """
         total_duration = self.interface_generale.get_video_duration()
         self.interface_generale.progress_slider.config(to=total_duration)
             
             
     def manual_update_progress(self,value):
+        """ 
+        **??**
+        """
         self.temps_ecoule=float(value)
         fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
         frame_number=self.temps_ecoule*fps
@@ -852,7 +858,7 @@ class LecteurVideo():
 
     def avance_progress(self):
         """
-        permet d'avancer la video d'une seonde et assure l'avancement du son aussi
+        advances the video by one wave and ensures that the sound also advances
         """
         if self.interface_generale.cap.isOpened():
             self.video_paused = True  # Assumer que la vidéo est en pause
@@ -872,7 +878,7 @@ class LecteurVideo():
 
     def recule_progress(self):
         """
-        Permet de reculer de 1 seconde dans la video en assurant la synchronisation du son avec la video
+        Rewinds the video by 1 second, ensuring that the sound is synchronised with the video.        
         """
         if self.interface_generale.cap.isOpened():
             self.video_paused = True  # Assumer que la vidéo est en pause
