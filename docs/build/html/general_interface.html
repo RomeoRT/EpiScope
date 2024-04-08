@@ -346,65 +346,17 @@ The black video must be in the same folder as the code : “video_noire.mp4”</
 <dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_interface_V9.</span></span><span class="sig-name descname"><span class="pre">Menu_symptomes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_generale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">couleur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bordure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">largeur</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.Menu_symptomes" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CTkFrame</span></code></p>
-<p>Classe permettant d’instancier les menus déroulants rassemblant les symptomes dans une frame qui se situe sur la gauche de l’interface</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.master">
-<span class="sig-name descname"><span class="pre">master</span></span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.master" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>any</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">interface</span> <span class="pre">generale</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#general_interface_V9.InterfaceGenerale" title="general_interface_V9.InterfaceGenerale">InterfaceGenerale</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.couleur">
-<span class="sig-name descname"><span class="pre">couleur</span></span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.couleur" title="Link to this definition">¶</a></dt>
-<dd><p>couleur du fond</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.bordure">
-<span class="sig-name descname"><span class="pre">bordure</span></span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.bordure" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.largeur">
-<span class="sig-name descname"><span class="pre">largeur</span></span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.largeur" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
+<p>Class used to instantiate drop-down menus displaying symptoms in a frame on the left of the interface.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.create_dropdown_menus">
 <span class="sig-name descname"><span class="pre">create_dropdown_menus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">largeur</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.create_dropdown_menus" title="Link to this definition">¶</a></dt>
-<dd><p>Crée un menu déroulants contenant les différents symptomes classés selon s’ils sont objectifs ou subjectifs.</p>
+<dd><p>Creates a drop-down menu containing the various symptoms classified according to whether they are objective or subjective.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>master</strong> (<em>fenetre</em>) – fenetre dans laquelle on veut afficher le sous menu déroulant</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>master</strong> (<em>any</em>) – widget in which to display the menus</p></li>
+<li><p><strong>largeur</strong> (<em>int</em>) – width of the frame of the menus</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -412,16 +364,16 @@ The black video must be in the same folder as the code : “video_noire.mp4”</
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.create_submenu">
 <span class="sig-name descname"><span class="pre">create_submenu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_menu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symptom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_symptoms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">my_font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_select</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.create_submenu" title="Link to this definition">¶</a></dt>
-<dd><p>Crée les sous menus déroulants après avoir sélectionné un symptome.
-Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.</p>
+<dd><p>Creates drop-down sub-menus after selecting a symptom.
+The items in this menu specify the location of the symptom on the body and its laterality.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent_menu</strong> (<em>Menu</em>) – Menu déroulant lié au symptome sélectionné</p></li>
-<li><p><strong>symptom</strong> (<em>symptome</em>) – Symptome sélectionné</p></li>
-<li><p><strong>sub_symptoms</strong> (<em>list</em>) – liste complémantaire au symptôme sélectionné (indique la position/latéralisation)</p></li>
-<li><p><strong>my_font</strong> (<em>Font</em>) – indique la taille de la police d’écriture</p></li>
-<li><p><strong>on_select</strong> (<em>function</em>) – commande de selection des symptomes</p></li>
+<li><p><strong>parent_menu</strong> (<em>Menu</em>) – Drop down menu associated to the selected symptom</p></li>
+<li><p><strong>symptom</strong> (<em>symptome</em>) – Selected symptom</p></li>
+<li><p><strong>sub_symptoms</strong> (<em>list</em>) – Complementary list to the selected symptom (indicates position/lateralisation)</p></li>
+<li><p><strong>my_font</strong> (<em>Font</em>) – font size</p></li>
+<li><p><strong>on_select</strong> (<em>function</em>) – symptoms command selection</p></li>
 </ul>
 </dd>
 </dl>
@@ -430,10 +382,12 @@ Les éléments de ce menu precisent la localisation du symptome sur le corps et 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.on_select_obj">
 <span class="sig-name descname"><span class="pre">on_select_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.on_select_obj" title="Link to this definition">¶</a></dt>
-<dd><p>Récupère des données lié à la video pour obtenir le temps actuel</p>
+<dd><p>Objective symptoms selector</p>
+<p>Sets the right attributes depending on the menu selection to update the symptom list
+Recovers data linked to the video to obtain the current time</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>selection</strong> (<em>path</em>) – Symptome sélectionné</p>
+<dd class="field-odd"><p><strong>selection</strong> (<em>path</em>) – selected symptom</p>
 </dd>
 </dl>
 </dd></dl>
@@ -441,10 +395,12 @@ Les éléments de ce menu precisent la localisation du symptome sur le corps et 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.on_select_subj">
 <span class="sig-name descname"><span class="pre">on_select_subj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.on_select_subj" title="Link to this definition">¶</a></dt>
-<dd><p>Récupère des données lié à la video pour obtenir le temps actuel</p>
+<dd><p>subjective symptoms selector</p>
+<p>Sets the right attributes depending on the menu selection to update the symptom list
+Recovers data linked to the video to obtain the current time</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>selection</strong> (<em>path</em>) – Symptome sélectionné</p>
+<dd class="field-odd"><p><strong>selection</strong> (<em>path</em>) – selected symptom</p>
 </dd>
 </dl>
 </dd></dl>
@@ -452,16 +408,16 @@ Les éléments de ce menu precisent la localisation du symptome sur le corps et 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.Menu_symptomes.read_symptoms_from_file">
 <span class="sig-name descname"><span class="pre">read_symptoms_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.Menu_symptomes.read_symptoms_from_file" title="Link to this definition">¶</a></dt>
-<dd><p>Lit les fichiers textes contenant la liste des symptomes pour remplir les menus</p>
-<p>Les symptomes doivent etre ecrits avec des séparateurs spécifiques
-<em>example :  Negative myoclonus[Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb]</em></p>
+<dd><p>Reads the text files containing the list of symptoms to fill the menus</p>
+<p>Symptoms must be written with specific separators
+<em>example : Negative myoclonus[Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb]</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>file_name</strong> (<em>string</em>) – chemin du fichier</p>
+<dd class="field-odd"><p><strong>file_name</strong> (<em>string</em>) – file path</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>titre du menu
-symptoms (list): liste contenant les symptomes pour remplir les menus</p>
+<dd class="field-even"><p>menu title
+symptoms (list): list of symptoms to fill in the menus</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>title (string)</p>
@@ -525,10 +481,6 @@ symptoms (list): liste contenant les symptomes pour remplir les menus</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#general_interface_V9.Menu_symptomes"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes</span></code></a><ul>
-<li><a class="reference internal" href="#general_interface_V9.Menu_symptomes.master"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.master</span></code></a></li>
-<li><a class="reference internal" href="#general_interface_V9.Menu_symptomes.couleur"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.couleur</span></code></a></li>
-<li><a class="reference internal" href="#general_interface_V9.Menu_symptomes.bordure"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.bordure</span></code></a></li>
-<li><a class="reference internal" href="#general_interface_V9.Menu_symptomes.largeur"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.largeur</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.Menu_symptomes.create_dropdown_menus"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.create_dropdown_menus()</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.Menu_symptomes.create_submenu"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.create_submenu()</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.Menu_symptomes.on_select_obj"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.on_select_obj()</span></code></a></li>
