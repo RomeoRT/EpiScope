@@ -1,32 +1,32 @@
 """
-interface générale Episcope contenant :
-    lecteur vidéo :
-    - lecture video
-    - boutons play/pause, skip>>, skip<<, revoir
-    - avance et recule de 1s et mets en pause 
-    - son synchronisé
-    - bonne vitesse
+Episcope general interface containing :
+    video player :
+    - video playback
+    - play/pause, skip>>, skip<<, review buttons
+    - advance and rewind by 1s and pause 
+    - synchronised sound
+    - good speed
 
     annotations :
-    - pré-charger des symptomes
-    - les menus en cascade a gauche
-    - initialisation correcte des symptomes
-    - recuperer les symptomes dans une liste
-    - recuperer les temps de debut et de fin
-    - afficher les symptomes a droite
-    - symptomes scrollables
-    - pop-up pour modifier les symptomes 
+    - pre-load symptoms
+    - cascading menus on left
+    - correct initialization of symptoms
+    - retrieve symptoms from a list
+    - retrieve start and end times
+    - display symptoms on the right
+    - scrollable symptoms
+    - pop-up to modify symptoms 
+    
+    files :
+    - generate frieze
+    - generate a report
+    - generate a symptom file
+modification of the general design and buttons of the drop-down menus and the video progress management buttons 
+everything is in english
 
-    fichiers :
-    - générer la frise
-    - generer un rapport
-    - générer un fichiers de symptomes
-
-modification design general et boutons de menus deroulants et de gestion avancement video gestion 
-tout est en anglais
-La document des fonctions est faite
 version : 0.9
 """
+ 
 import tkinter as tk
 import customtkinter as ctk
 from tkinter import filedialog
