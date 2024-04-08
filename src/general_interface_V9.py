@@ -1,26 +1,26 @@
 """
 Episcope general interface containing :
     video player :
-    * video playback
-    * play/pause, skip>>, skip<<, review buttons
-    * advance and rewind by 1s and pause 
-    * synchronised sound
-    * good speed
+    *video playback
+    *play/pause, skip>>, skip<<, review buttons
+    *advance and rewind by 1s and pause 
+    *synchronised sound
+    *good speed
 
     annotations :
-    * pre-load symptoms
-    * cascading menus on left
-    * correct initialization of symptoms
-    * retrieve symptoms from a list
-    * retrieve start and end times
-    * display symptoms on the right
-    * scrollable symptoms
-    * pop-up to modify symptoms 
+    *pre-load symptoms
+    *cascading menus on left
+    *correct initialization of symptoms
+    *retrieve symptoms from a list
+    *retrieve start and end times
+    *display symptoms on the right
+    *scrollable symptoms
+    *pop-up to modify symptoms 
 
     files :
-    * generate frieze
-    * generate a report
-    * generate a symptom file
+    *generate frieze
+    *generate a report
+    *generate a symptom file
 
 modification of the general design and buttons of the drop-down menus and the video progress management buttons 
 everything is in english
