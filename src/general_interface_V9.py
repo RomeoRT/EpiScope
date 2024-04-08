@@ -64,16 +64,23 @@ import annotation.load_symptomes as load
 
 class Menu_symptomes(ctk.CTkFrame):
     """
-        Classe permettant d'instancier les menus déroulants rassemblant les symptomes dans une frame qui se situe sur la gauche de l'interface
+    Class used to instantiate drop-down menus displaying symptoms in a frame on the left of the interface.
 
-        Attributes: 
-            master (any):  
-            interface generale (InterfaceGenerale): 
-            couleur (str): couleur du fond
-            bordure (int):
-            largeur (int):
     """        
     def __init__(self, master, interface_generale, couleur, bordure, largeur):
+        """
+        The constructor of the :obj:'Menu_symptomes' class.
+
+        The files containing the symptoms must be in the same folder as the source file
+        **Note**
+
+        Attributes: 
+            master (any): the master widget in which to display the menus
+            interface generale (InterfaceGenerale): the general interface in which to display the menus
+            couleur (str): background color of the frame
+            bordure (int): border width of the frame
+            largeur (int): width of the frame
+        """
         super().__init__(master, fg_color=couleur, corner_radius=0, border_width=bordure, width=largeur)
         
         
@@ -92,10 +99,11 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def create_dropdown_menus(self,master,largeur):
         """
-        Crée un menu déroulants contenant les différents symptomes classés selon s'ils sont objectifs ou subjectifs.
+        Creates a drop-down menu containing the various symptoms classified according to whether they are objective or subjective.
 
         Args:
-            master(fenetre): fenetre dans laquelle on veut afficher le sous menu déroulant
+            master (any): widget in which to display the menus
+            largeur (int): width of the frame of the menus
         """
         my_font = tkFont.Font(size=12)    
         # Création du Menubutton
@@ -123,15 +131,15 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def create_submenu(self, parent_menu, symptom, sub_symptoms, my_font, on_select):
         """
-        Crée les sous menus déroulants après avoir sélectionné un symptome.
-        Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
+        Creates drop-down sub-menus after selecting a symptom.
+        The items in this menu specify the location of the symptom on the body and its laterality.
 
         Args:
-            parent_menu (Menu): Menu déroulant lié au symptome sélectionné
-            symptom (symptome): Symptome sélectionné
-            sub_symptoms (list): liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
-            my_font (Font): indique la taille de la police d'écriture
-            on_select (function): commande de selection des symptomes
+            parent_menu (Menu): Drop down menu associated to the selected symptom
+            symptom (symptome): Selected symptom
+            sub_symptoms (list): Complementary list to the selected symptom (indicates position/lateralisation)
+            my_font (Font): font size
+            on_select (function): symptoms command selection
         """
         #my_font = tkFont.Font(size=15)
         symptom_menu = tk.Menu(parent_menu, tearoff=0, font=my_font)
@@ -162,17 +170,17 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def read_symptoms_from_file(self, file_name):
         """
-        Lit les fichiers textes contenant la liste des symptomes pour remplir les menus
+        Reads the text files containing the list of symptoms to fill the menus
 
-        Les symptomes doivent etre ecrits avec des séparateurs spécifiques 
-        *example :  Negative myoclonus[Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb]* 
+        Symptoms must be written with specific separators 
+        *example : Negative myoclonus[Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb]* 
 
         Args:
-            file_name (string): chemin du fichier
+            file_name (string): file path
 
         Returns:
-            title (string): titre du menu
-            symptoms (list): liste contenant les symptomes pour remplir les menus 
+            title (string): menu title
+            symptoms (list): list of symptoms to fill in the menus 
         """
         with open(file_name, 'r', encoding='utf-8') as file:
             title = file.readline().strip()
@@ -189,10 +197,13 @@ class Menu_symptomes(ctk.CTkFrame):
     
     def on_select_obj(self, selection):
         """
-        Récupère des données lié à la video pour obtenir le temps actuel
+        Objective symptoms selector
+
+        Sets the right attributes depending on the menu selection to update the symptom list 
+        Recovers data linked to the video to obtain the current time
 
         Args:
-            selection (path): Symptome sélectionné 
+            selection (path): selected symptom
         """
         current_video_time = self.interface_generale.get_current_video_time() 
         #display_text = f"{selection} - TD: {current_video_time}\n" # Ajoutez le temps actuel ici
@@ -221,10 +232,13 @@ class Menu_symptomes(ctk.CTkFrame):
 
     def on_select_subj(self, selection):
         """
-        Récupère des données lié à la video pour obtenir le temps actuel
+        subjective symptoms selector
+
+        Sets the right attributes depending on the menu selection to update the symptom list 
+        Recovers data linked to the video to obtain the current time
 
         Args:
-            selection (path): Symptome sélectionné 
+            selection (path): selected symptom
         """
         # Appel à une nouvelle fonction dans InterfaceGenerale pour obtenir le temps actuel de la vidéo
         current_video_time = self.interface_generale.get_current_video_time() 
