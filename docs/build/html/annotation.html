@@ -6,29 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>annotation package &#8212; Episcope 0.1-alpha documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    
     <script src="_static/documentation_options.js?v=737112c1"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="lecteur_video package" href="lecteur_video.html" />
-    <link rel="prev" title="frise package" href="frise.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="prev" title="frise package" href="frise.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="frise.html" title="frise package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Episcope 0.1-alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">annotation package</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <section id="annotation-package">
@@ -58,18 +66,107 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <span id="annotation-class-symptome-module"></span><h2>annotation.class_symptome module<a class="headerlink" href="#module-annotation.class_symptome" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">annotation.class_symptome.</span></span><span class="sig-name descname"><span class="pre">Symptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lateralisation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SegCorporel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AttributSuppl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tdeb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tfin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Commentaire</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">annotation.class_symptome.</span></span><span class="sig-name descname"><span class="pre">Symptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lateralization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Topography</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AttributSuppl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tdeb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tfin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Classe permettant d’instancier un objet Symptome</p>
-<p>attributs : ID, nom, lateralisation, segment corporel, Tps debut, Tps fin, Orientation, Attributs suppl, Commentaire</p>
+<p>Classe permettant d’instancier un objet Symptome avec tous ses attributs</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.ID">
+<span class="sig-name descname"><span class="pre">ID</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.ID" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Name">
+<span class="sig-name descname"><span class="pre">Name</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Name" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Lateralization">
+<span class="sig-name descname"><span class="pre">Lateralization</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Lateralization" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">segment</span> <span class="pre">corporel</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Tps</span> <span class="pre">debut</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Tps</span> <span class="pre">fin</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Orientation">
+<span class="sig-name descname"><span class="pre">Orientation</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Orientation" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Attributs</span> <span class="pre">suppl</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Comment">
+<span class="sig-name descname"><span class="pre">Comment</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Comment" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_AttributSuppl">
 <span class="sig-name descname"><span class="pre">get_AttributSuppl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_AttributSuppl" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Commentaire">
-<span class="sig-name descname"><span class="pre">get_Commentaire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Commentaire" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Comment">
+<span class="sig-name descname"><span class="pre">get_Comment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Comment" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -78,23 +175,18 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Lateralisation">
-<span class="sig-name descname"><span class="pre">get_Lateralisation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Lateralisation" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Lateralization">
+<span class="sig-name descname"><span class="pre">get_Lateralization</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Lateralization" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Nom">
-<span class="sig-name descname"><span class="pre">get_Nom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Nom" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Name">
+<span class="sig-name descname"><span class="pre">get_Name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Orientation">
 <span class="sig-name descname"><span class="pre">get_Orientation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Orientation" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_SegCorporel">
-<span class="sig-name descname"><span class="pre">get_SegCorporel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_SegCorporel" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -108,9 +200,33 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Topography">
+<span class="sig-name descname"><span class="pre">get_Topography</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Topography" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_attributs">
 <span class="sig-name descname"><span class="pre">get_attributs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_attributs" title="Link to this definition">¶</a></dt>
 <dd><p>Retourne une liste contenant les valeurs des attributs de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>[
+ID,
+Name,
+Lateralization,
+Topography,
+Orientation,
+AttributSuppl,
+Tdeb,
+Tfin,
+Comment
+]</p>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -119,8 +235,8 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Commentaire">
-<span class="sig-name descname"><span class="pre">set_Commentaire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Commentaire</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Commentaire" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Comment">
+<span class="sig-name descname"><span class="pre">set_Comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Comment</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Comment" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -129,23 +245,18 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Lateralisation">
-<span class="sig-name descname"><span class="pre">set_Lateralisation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Lateralisation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Lateralisation" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Lateralization">
+<span class="sig-name descname"><span class="pre">set_Lateralization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Lateralization</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Lateralization" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Nom">
-<span class="sig-name descname"><span class="pre">set_Nom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Nom</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Nom" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Name">
+<span class="sig-name descname"><span class="pre">set_Name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Orientation">
 <span class="sig-name descname"><span class="pre">set_Orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Orientation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Orientation" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_SegCorporel">
-<span class="sig-name descname"><span class="pre">set_SegCorporel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_SegCorporel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_SegCorporel" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -156,6 +267,11 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Tfin">
 <span class="sig-name descname"><span class="pre">set_Tfin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Tfin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Tfin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Topography">
+<span class="sig-name descname"><span class="pre">set_Topography</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Topography</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Topography" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -170,15 +286,27 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dt class="sig sig-object py" id="annotation.pop_up.SymptomeEditor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">annotation.pop_up.</span></span><span class="sig-name descname"><span class="pre">SymptomeEditor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Symp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.pop_up.SymptomeEditor" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CTkToplevel</span></code></p>
+<p>Permet l’edition de symptomes au travers d’une fenetre</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.pop_up.SymptomeEditor.apply_changes">
 <span class="sig-name descname"><span class="pre">apply_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Symp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.pop_up.SymptomeEditor.apply_changes" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Récupère les valeurs saisies et met à jour les attributs de la classe Symp</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.pop_up.SymptomeEditor.create_entry">
 <span class="sig-name descname"><span class="pre">create_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.pop_up.SymptomeEditor.create_entry" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>crée et place des zones de texte (entrées) sur la fenêtre</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_text</strong> (<em>str</em>) – label de l’entrée</p></li>
+<li><p><strong>initial_value</strong> (<em>str</em>) – valeur actuelle de l’entrée</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – indice de la ligne de l’entrée</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -201,89 +329,86 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 </section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Episcope</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="general_interface_V6.html">General Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="frise.html">frise package</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">annotation package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-annotation.class_Menu_symptomes">annotation.class_Menu_symptomes module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#annotation.class_Menu_symptomes.MenuSymptomes"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_Menu_symptomes.MenuSymptomes.filtrer_options"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes.filtrer_options()</span></code></a></li>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">annotation package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-annotation.class_Menu_symptomes">annotation.class_Menu_symptomes module</a><ul>
+<li><a class="reference internal" href="#annotation.class_Menu_symptomes.MenuSymptomes"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes</span></code></a><ul>
+<li><a class="reference internal" href="#annotation.class_Menu_symptomes.MenuSymptomes.filtrer_options"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes.filtrer_options()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-annotation.class_symptome">annotation.class_symptome module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#annotation.class_symptome.Symptome"><code class="docutils literal notranslate"><span class="pre">Symptome</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.get_AttributSuppl()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Commentaire"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Commentaire()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.get_ID()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Lateralisation"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Lateralisation()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Nom"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Nom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Orientation()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_SegCorporel"><code class="docutils literal notranslate"><span class="pre">Symptome.get_SegCorporel()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tdeb()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tfin()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.get_attributs"><code class="docutils literal notranslate"><span class="pre">Symptome.get_attributs()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.set_AttributSuppl()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Commentaire"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Commentaire()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.set_ID()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Lateralisation"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Lateralisation()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Nom"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Nom()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Orientation()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_SegCorporel"><code class="docutils literal notranslate"><span class="pre">Symptome.set_SegCorporel()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tdeb()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tfin()</span></code></a></li>
+<li><a class="reference internal" href="#module-annotation.class_symptome">annotation.class_symptome module</a><ul>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome"><code class="docutils literal notranslate"><span class="pre">Symptome</span></code></a><ul>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.ID"><code class="docutils literal notranslate"><span class="pre">Symptome.ID</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.Name"><code class="docutils literal notranslate"><span class="pre">Symptome.Name</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.Lateralization"><code class="docutils literal notranslate"><span class="pre">Symptome.Lateralization</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.Orientation</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.Comment"><code class="docutils literal notranslate"><span class="pre">Symptome.Comment</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.get_AttributSuppl()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Comment"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Comment()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.get_ID()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Lateralization"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Lateralization()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Name"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Name()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Orientation()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tdeb()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Tfin()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Topography"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Topography()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_attributs"><code class="docutils literal notranslate"><span class="pre">Symptome.get_attributs()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.set_AttributSuppl()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Comment"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Comment()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_ID"><code class="docutils literal notranslate"><span class="pre">Symptome.set_ID()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Lateralization"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Lateralization()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Name"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Name()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Orientation()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tdeb()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Tfin()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.set_Topography"><code class="docutils literal notranslate"><span class="pre">Symptome.set_Topography()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#annotation-menu-deroulant-anaelle-module">annotation.menu_deroulant_anaelle module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-annotation.pop_up">annotation.pop_up module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#annotation.pop_up.SymptomeEditor"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.apply_changes"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.apply_changes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.create_entry"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.create_entry()</span></code></a></li>
+<li><a class="reference internal" href="#annotation-menu-deroulant-anaelle-module">annotation.menu_deroulant_anaelle module</a></li>
+<li><a class="reference internal" href="#module-annotation.pop_up">annotation.pop_up module</a><ul>
+<li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor</span></code></a><ul>
+<li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.apply_changes"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.apply_changes()</span></code></a></li>
+<li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.create_entry"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.create_entry()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-annotation.recherche_menu_deroulant">annotation.recherche_menu_déroulant module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#annotation.recherche_menu_deroulant.filtrer_options"><code class="docutils literal notranslate"><span class="pre">filtrer_options()</span></code></a></li>
+<li><a class="reference internal" href="#module-annotation.recherche_menu_deroulant">annotation.recherche_menu_déroulant module</a><ul>
+<li><a class="reference internal" href="#annotation.recherche_menu_deroulant.filtrer_options"><code class="docutils literal notranslate"><span class="pre">filtrer_options()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#annotation-symptom-label-module">annotation.symptom_label module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-annotation">Module contents</a></li>
+<li><a class="reference internal" href="#annotation-symptom-label-module">annotation.symptom_label module</a></li>
+<li><a class="reference internal" href="#module-annotation">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lecteur_video.html">lecteur_video package</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="frise.html" title="previous chapter">frise package</a></li>
-      <li>Next: <a href="lecteur_video.html" title="next chapter">lecteur_video package</a></li>
-  </ul></li>
-</ul>
-</div>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="frise.html"
+                          title="previous chapter">frise package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/annotation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -294,32 +419,29 @@ affiche dans le menu déroulant la premiere option correspondante</p>
     </div>
 </div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2023, Roméo RAMOS--TANGHE, Yosra SAID, Annaelle SARRAZIN, Rachel TECHI, Chloé THIRIET.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
-      
-      |
-      <a href="_sources/annotation.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="frise.html" title="frise package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Episcope 0.1-alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">annotation package</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Roméo RAMOS--TANGHE, Yosra SAID, Annaelle SARRAZIN, Rachel TECHI, Chloé THIRIET.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
   </body>
 </html>

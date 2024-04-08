@@ -11,8 +11,8 @@ def EcrireSymptome(symptome, nomfichier) :
     Ecrit un symptome dans un fichier texte dont on specifie le nom
     
     Args:
-        symptome (Symptome): symptome à écrire
-        nomfichier (string): chemin du fichier
+        symptome (:obj:`Symptome`): symptome à écrire
+        nomfichier (str): chemin du fichier
 
     Returns:
         None 
@@ -39,8 +39,8 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
     Fait appel à la fonction EcrireSymptome
 
     Args:
-        symptome (list): liste des symptomes
-        nomfichier (string): chemin du fichier
+        symptome (:obj:`list` of :obj:`str`): liste des symptomes
+        nomfichier (str): chemin du fichier
     
     Returns:
         None 
@@ -57,8 +57,8 @@ def EcrireMetaData(Meta, nomfichier) :
     Ecrit les metadata d'une annotation dans un fichier texte sous la forme : heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n
 
     Args:
-        Meta (MetaData): lLes métadatas
-        nomfichier (string): chemin du fichier
+        Meta (:obj: MetaData): Les métadatas
+        nomfichier (str): chemin du fichier
 
     Returns:
         None
@@ -79,11 +79,11 @@ def format(data, caracteres):
     supprime les caracteres speciaux d'une liste de string
     
     Args:
-        data (List) : liste de strings a traiter
+        data (:obj:`list` of :obj:`str`) : liste de strings a traiter
         caracteres (List): liste des caracteres et de leur remplacement, de la forme [("C1", "C2")]
 
     Returns:
-        new_data (list) : liste de strings traitée
+        new_data (:obj:`list` of :obj:`str`) : liste de strings traitée
     """
     for element in caracteres :
         new_data = [txt.replace(element[0],element[1]) for txt in data]
@@ -96,8 +96,8 @@ def ecrire_rapport(Symptom_list, filename):
     Ecrit les symptomes dans le rapport lisible par les médecins
 
     Args:
-        Symptom_list (list): liste des symptomes a écrire
-        filename (string): chemein du fichier a ecrire
+        Symptom_list (:obj:`list` of :obj:`Symptome`): liste des symptomes a écrire
+        filename (str): chemein du fichier a ecrire
     """
     k = 1
     with open(filename, 'a') as fichier :

@@ -12,3 +12,5 @@ These tools enable practitioners to note directly on their patients' epileptic s
 **Note :**
 
    This project is under active development.
+
+*Documentation :* https://episcope.readthedocs.io/en/latest/

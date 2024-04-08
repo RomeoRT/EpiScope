@@ -21,10 +21,15 @@ def chercherElt(list):
 
 def chevauchement(liste, symp, current_index, levels):
     """ Gère le problème de superposition visuelle des symptômes.
-    liste: liste des symptomes avec début et fin
-    symp: symptome actuel.
-    current_index: indice du symp actuel dans la liste.
-    Return: niveau y où afficher le rectangle. """
+
+    Args:
+        liste (list): liste des symptomes avec début et fin
+        symp (:obj:`Symptome`): symptome actuel.
+        current_index (int): indice du symp actuel dans la liste.
+    
+    Return: 
+        int: niveau y où afficher le rectangle. 
+        """
     level = 0
     list = []
     for i in range(len(levels)):
@@ -46,7 +51,9 @@ def on_text_click(event):
 
 def afficher_frise(liste):
     """ Affiche la frise chronologique des symptômes.
-    liste: liste des symptomes où chaque élément est une liste [Name, début, fin, Lateralization, seg corporel, orientation, attribut suppl, Comment, tdeb_str, tfin_str]. """
+    Args:
+        liste (:obj:list of :obj:list): liste des symptomes où chaque élément est une liste [Name, début, fin, Lateralization, seg corporel, orientation, attribut suppl, Comment, tdeb_str, tfin_str]. 
+    """
     liste = sorted(liste, key=lambda x: float(x[1]))
     levels = []
     fig, ax = plt.subplots()

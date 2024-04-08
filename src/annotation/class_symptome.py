@@ -1,12 +1,21 @@
-
-'''Classe permettant d instancier un objet Symptome avec tous ses attributs
-Par exemple ID, Name, Lateralization, segment corporel, Tps debut, Tps fin, Orientation, Attributs suppl, Comment'''
-
 # voir comment utiliser les methodes
 
 
 class Symptome:
-
+    """
+    Classe permettant d'instancier un objet Symptome avec tous ses attributs
+    
+    Attributes:
+        ID (str):
+        Name (str):
+        Lateralization (str):
+        segment corporel (str):
+        Tps debut (str):
+        Tps fin (str):
+        Orientation (str):
+        Attributs suppl (str):
+        Comment (str):
+    """
 
 
     def __init__(self, ID=None, Name=None, Lateralization=None, Topography=None, Orientation=None, AttributSuppl=None, Tdeb=None, Tfin=None, Comment=None):
@@ -23,7 +32,22 @@ class Symptome:
 
 
     def get_attributs(self):
-        ''' Retourne une liste contenant les valeurs des attributs de l'objet'''
+        ''' Retourne une liste contenant les valeurs des attributs de l'objet
+            
+            Returns:
+                :obj:`list` of :obj:`str`: 
+                [ 
+                ID,
+                Name,
+                Lateralization,
+                Topography,
+                Orientation,
+                AttributSuppl,
+                Tdeb,
+                Tfin,
+                Comment  
+                ]
+        '''
         attributs = [
             self.ID,
             self.Name,
