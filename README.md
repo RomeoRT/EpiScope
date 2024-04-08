@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="./docs/source/image/Logo_final.png" alt="Logo" width="1000" height="220">
+  <img src="./docs/source/images/Logo_final.png" alt="Logo" width="1000" height="220">
   <h1 align="center">EpiScope</h1>
 </div>
 
