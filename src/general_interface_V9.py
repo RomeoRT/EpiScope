@@ -20,7 +20,7 @@ interface générale Episcope contenant :
     fichiers :
     - générer la frise
     - generer un rapport
-    - générer un fichiers de s ymptomes
+    - générer un fichiers de symptomes
 
 modification design general et boutons de menus deroulants et de gestion avancement video gestion 
 tout est en anglais
