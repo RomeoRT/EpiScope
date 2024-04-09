@@ -4,7 +4,6 @@ annotation package
 Submodules
 ----------
 
-
 annotation.class\_symptome module
 ---------------------------------
 
