@@ -89,25 +89,17 @@ everything is in english</p>
 <dt class="sig sig-object py" id="general_interface_V9.FriseSymptomes">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_interface_V9.</span></span><span class="sig-name descname"><span class="pre">FriseSymptomes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InterfaceGenerale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MenuDeroulant</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.FriseSymptomes" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Classe permettant de généré une frise chronologique récapitulant l’ensemble des symptomes présent lors de la crise épileptique</p>
+<p>Class used to generate a timeline summarising all the symptoms present during an epileptic seizure.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="general_interface_V9.FriseSymptomes.interfaceGenerale">
-<span class="sig-name descname"><span class="pre">interfaceGenerale</span></span><a class="headerlink" href="#general_interface_V9.FriseSymptomes.interfaceGenerale" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#general_interface_V9.InterfaceGenerale" title="general_interface_V9.InterfaceGenerale">InterfaceGenerale</a></p>
-</dd>
-</dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interfaceGenerale</span> <span class="pre">(</span></span></dt>
+<dd><p>obj:’InterfaceGenerale’):</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="general_interface_V9.FriseSymptomes.MenuDeroulant">
-<span class="sig-name descname"><span class="pre">MenuDeroulant</span></span><a class="headerlink" href="#general_interface_V9.FriseSymptomes.MenuDeroulant" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#general_interface_V9.Menu_symptomes" title="general_interface_V9.Menu_symptomes">Menu_symptomes</a></p>
-</dd>
-</dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">MenuDeroulant</span> <span class="pre">(</span></span></dt>
+<dd><p>obj:’Menu_symptomes’):</p>
 </dd></dl>
 
 <dl class="py method">
@@ -122,48 +114,115 @@ everything is in english</p>
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_interface_V9.</span></span><span class="sig-name descname"><span class="pre">InterfaceGenerale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fenetre</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Classe interface Générale qui donne le visuel global de l’interface graphique.</p>
-<p>Elle est représenter sous forme de fenetre et permet aux autres classes de s’intégrer dedans.
-Elle appel la classe Lecteur_video, FriseSymptomes et Menu_symptomes</p>
-<dl>
-<dt>Atributes:</dt><dd><p>ListeSymptomes (list): liste des symptomes s’actualisant au fur et a mesure</p>
-<p><strong>A completer !!!</strong></p>
+<p>General interface class, which provides the overall look and feel of the graphical interface.</p>
+<p>It is represented in the form of a window and allows the other classes to be integrated into it.
+It calls the LecteurVideo, FriseSymptomes and Menu_symptoms classes.</p>
+<dl class="simple">
+<dt>Atributes:</dt><dd><p>fenetre: Represents the main window of the graphical interface.
+cap: Represents the video capture object.
+lec_video: An instance of the LecteurVideo class.
+frise: An instance of the FriseSymptomes class.
+set_end_time_mode: A boolean variable indicating whether the end time mode is set.
+current_symptom: Represents the current symptom being processed.
+ListeSymptomes: A list containing symptom objects, initially empty.
+theme: A list containing color theme values.
+menu_bar: A menu bar for the interface.
+menu_open: A menu for opening different options like video and symptoms.
+menu_save: A menu for saving options like symptoms, report, and timeline.
+clic_x: The x-coordinate of the click event.
+clic_y: The y-coordinate of the click event.
+frame_left: Represents the left frame of the interface.
+frame_middle: Represents the middle frame of the interface.
+frame_right: Represents the right frame of the interface.
+scrollable1: A scrollable frame for the right panel.
+text_output: A scrollable frame for displaying text output.
+frame_CTkButton: A frame for buttons in the middle frame.
+bouton_revoir: Button for rewinding the video.
+bouton_reculer: Button for moving the video backward.
+bouton_play_pause: Button for playing or pausing the video.
+bouton_avancer: Button for moving the video forward.
+bouton_nul: A dummy button.
+frame_frise: A frame for displaying the symptom timeline.
+bouton_frise: Button for displaying the timeline.
+bouton_save: Button for saving the report.
+label_temps: Label for displaying elapsed time and total time.
+progress_slider: A slider for manual video progress.
+canvas: Canvas for displaying the video.
+zone_text: A text area for comments.</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.get_current_video_time">
 <span class="sig-name descname"><span class="pre">get_current_video_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.get_current_video_time" title="Link to this definition">¶</a></dt>
-<dd><p>Permet d’avoir le temps actuel de la vidéo</p>
+<dd><p>Get the current time of the video.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A string representing the current time of the video in the format “HH:MM:SS”.</dt><dd><p>Returns “00:00:00” if the video is not opened.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.get_video_duration">
 <span class="sig-name descname"><span class="pre">get_video_duration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.get_video_duration" title="Link to this definition">¶</a></dt>
-<dd><p>Permet d’avoir le temps total de la vidéo</p>
+<dd><p>Get the total duration of the video.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>The total duration of the video in seconds.</dt><dd><p>Returns 0 if the video is not opened.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.lire_fichier">
 <span class="sig-name descname"><span class="pre">lire_fichier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nom_fichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.lire_fichier" title="Link to this definition">¶</a></dt>
-<dd><p>Ouvre un fichier texte le lit et sauvegarde les informations dans une liste</p>
+<dd><p>Opens a text file, reads it, and saves the information in a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nom_fichier</strong> (<em>str</em>) – The path to the text file to be read.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing all the lines read from the file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the specified file is not found.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.load_symptoms">
 <span class="sig-name descname"><span class="pre">load_symptoms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.load_symptoms" title="Link to this definition">¶</a></dt>
-<dd><p>charge une liste de symptomes a partir d’un fichier</p>
+<dd><p>Loads a symptoms list from a text file</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.ouvrir_video">
 <span class="sig-name descname"><span class="pre">ouvrir_video</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.ouvrir_video" title="Link to this definition">¶</a></dt>
-<dd><p>Ouvre la vidéo en appelant la class Lecteur_video</p>
+<dd><p>Opens the video by calling the Lecteur_video class</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.ouvrir_video_noire">
 <span class="sig-name descname"><span class="pre">ouvrir_video_noire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.ouvrir_video_noire" title="Link to this definition">¶</a></dt>
-<dd><p>Ouvre la vidéo noire en appelant la class Lecteur_video</p>
+<dd><p>Opens the black_video by calling the Lecteur_video class</p>
 </dd></dl>
 
 <dl class="py method">
@@ -175,28 +234,40 @@ Elle appel la classe Lecteur_video, FriseSymptomes et Menu_symptomes</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.sauvegarde">
 <span class="sig-name descname"><span class="pre">sauvegarde</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.sauvegarde" title="Link to this definition">¶</a></dt>
-<dd><p>sauvegarde de la liste de symtptomes dans un fichier texte
-fait appel a la classe save</p>
+<dd><p>Saves the list of symptoms to a text file.
+It calls the save class for this purpose.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.supprimer">
 <span class="sig-name descname"><span class="pre">supprimer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.supprimer" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Remove a symptom from the list of symptoms and destroy its display container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selection</strong> – The symptom object to be removed.</p></li>
+<li><p><strong>container</strong> – The container containing the display elements of the symptom.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.text_sympt">
 <span class="sig-name descname"><span class="pre">text_sympt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sympt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.text_sympt" title="Link to this definition">¶</a></dt>
-<dd><p>crée le texta a afficher dans le right_pannel</p>
+<dd><p>Creates the text to display in the right panel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>sympt</strong> (<a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome" title="annotation.class_symptome.Symptome"><em>Symptome</em></a>) – symptome dont on crée le texte</p>
+<dd class="field-odd"><p><strong>sympt</strong> (<a class="reference internal" href="annotation.html#annotation.class_symptome.Symptome" title="annotation.class_symptome.Symptome"><em>Symptome</em></a>) – The symptom for which to create the text.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>texte a afficher contenant les bonnes infos</p>
+<dd class="field-even"><p>The text to display containing the relevant information.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>text (string)</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -204,10 +275,10 @@ fait appel a la classe save</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.update_right_panel">
 <span class="sig-name descname"><span class="pre">update_right_panel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attributs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_start_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.update_right_panel" title="Link to this definition">¶</a></dt>
-<dd><p>Permet de gerer l’affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop-up pour modifier un symptome.</p>
+<dd><p>manage the display of symptom start/end times on the right-hand side and pop-up management to modify a symptom.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>attributs</strong> (<em>list</em>) – liste d’initialisation du symptome | defaut = []</p>
+<dd class="field-odd"><p><strong>attributs</strong> (<em>list</em>) – symptom initialisation list | default = []</p>
 </dd>
 </dl>
 </dd></dl>
@@ -458,8 +529,6 @@ symptoms (list): list of symptoms to fill in the menus</p>
     <ul>
 <li><a class="reference internal" href="#">General Interface</a><ul>
 <li><a class="reference internal" href="#general_interface_V9.FriseSymptomes"><code class="docutils literal notranslate"><span class="pre">FriseSymptomes</span></code></a><ul>
-<li><a class="reference internal" href="#general_interface_V9.FriseSymptomes.interfaceGenerale"><code class="docutils literal notranslate"><span class="pre">FriseSymptomes.interfaceGenerale</span></code></a></li>
-<li><a class="reference internal" href="#general_interface_V9.FriseSymptomes.MenuDeroulant"><code class="docutils literal notranslate"><span class="pre">FriseSymptomes.MenuDeroulant</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.FriseSymptomes.afficher"><code class="docutils literal notranslate"><span class="pre">FriseSymptomes.afficher()</span></code></a></li>
 </ul>
 </li>

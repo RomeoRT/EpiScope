@@ -256,11 +256,11 @@ class Menu_symptomes(ctk.CTkFrame):
 
 class FriseSymptomes:
     """
-    Classe permettant de généré une frise chronologique récapitulant l'ensemble des symptomes présent lors de la crise épileptique
+    Class used to generate a timeline summarising all the symptoms present during an epileptic seizure.
 
     Attributes: 
-        interfaceGenerale (InterfaceGenerale): 
-        MenuDeroulant (Menu_symptomes):
+        interfaceGenerale (:obj:'InterfaceGenerale'): 
+        MenuDeroulant (:obj:'Menu_symptomes'):
     """
     def __init__(self,InterfaceGenerale,MenuDeroulant):
         self.menu_deroulant=MenuDeroulant
@@ -305,18 +305,54 @@ class FriseSymptomes:
 
 class InterfaceGenerale():
     """
-    Classe interface Générale qui donne le visuel global de l'interface graphique. 
+    General interface class, which provides the overall look and feel of the graphical interface. 
     
-    Elle est représenter sous forme de fenetre et permet aux autres classes de s'intégrer dedans.
-    Elle appel la classe Lecteur_video, FriseSymptomes et Menu_symptomes 
+    It is represented in the form of a window and allows the other classes to be integrated into it.
+    It calls the LecteurVideo, FriseSymptomes and Menu_symptoms classes. 
 
     Atributes:
-        ListeSymptomes (list): liste des symptomes s'actualisant au fur et a mesure
-
-        **A completer !!!**
+        fenetre: Represents the main window of the graphical interface.
+        cap: Represents the video capture object.
+        lec_video: An instance of the LecteurVideo class.
+        frise: An instance of the FriseSymptomes class.
+        set_end_time_mode: A boolean variable indicating whether the end time mode is set.
+        current_symptom: Represents the current symptom being processed.
+        ListeSymptomes: A list containing symptom objects, initially empty.
+        theme: A list containing color theme values.
+        menu_bar: A menu bar for the interface.
+        menu_open: A menu for opening different options like video and symptoms.
+        menu_save: A menu for saving options like symptoms, report, and timeline.
+        clic_x: The x-coordinate of the click event.
+        clic_y: The y-coordinate of the click event.
+        frame_left: Represents the left frame of the interface.
+        frame_middle: Represents the middle frame of the interface.
+        frame_right: Represents the right frame of the interface.
+        scrollable1: A scrollable frame for the right panel.
+        text_output: A scrollable frame for displaying text output.
+        frame_CTkButton: A frame for buttons in the middle frame.
+        bouton_revoir: Button for rewinding the video.
+        bouton_reculer: Button for moving the video backward.
+        bouton_play_pause: Button for playing or pausing the video.
+        bouton_avancer: Button for moving the video forward.
+        bouton_nul: A dummy button.
+        frame_frise: A frame for displaying the symptom timeline.
+        bouton_frise: Button for displaying the timeline.
+        bouton_save: Button for saving the report.
+        label_temps: Label for displaying elapsed time and total time.
+        progress_slider: A slider for manual video progress.
+        canvas: Canvas for displaying the video.
+        zone_text: A text area for comments.
 
     """
     def __init__(self, fenetre):
+        """
+        the constructor of the InterfaceGenerale class
+
+        Set the overall look and places all the frames, butons and canvases.
+
+        Arguments:
+            fenetre(any): the widget in witch to create the general interface (a window normally)
+        """
         self.fenetre = fenetre
         self.fenetre.title("Episcope")
         self.cap = None
@@ -454,17 +490,19 @@ class InterfaceGenerale():
 
     def update_right_panel(self, attributs=[], is_start_time=False):
         """
-        Permet de gerer l'affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop-up pour modifier un symptome.
+        
+        manage the display of symptom start/end times on the right-hand side and pop-up management to modify a symptom.
+ 
 
         Args:
-            attributs (list): liste d'initialisation du symptome | defaut = [] 
+            attributs (list): symptom initialisation list | default = [] 
         """
         def set_end_time(event, Symp):
             """
-            Ajoute le temps de fin à un symptôme existant
+            Adds the end time to an existing symptom
             
             Args:
-                event (None): correspond à l'appuie sur la zone ou s'affiche le symptome
+                event (None): corresponds to pressing on the area where the symptom is displayed
             """
             #current_text = event.widget.cget("text")
             if Symp.Tfin=="": # On vérifie si le temps de fin est déjà présent pour ne pas l'ajouter plusieurs fois
@@ -486,10 +524,10 @@ class InterfaceGenerale():
         
         def open_editor_on_click(event, Symp):
             """
-            Ouvre la fenêtre de modification d'un symptôme
+            Opens the symptom editing window
 
             Args:
-                event (None): correspond à l'appuie sur la fenetre pour modifier le symptome
+                event (None): corresponds to pressing on the window to modify the symptom
             """
             if event.widget.cget("text"):
                 # Instancier la fenêtre de modification TopLevel
@@ -540,6 +578,16 @@ class InterfaceGenerale():
         self.ListeSymptomes.append(Symp)
 
     def supprimer(self, selection, container):
+        """
+        Remove a symptom from the list of symptoms and destroy its display container.
+
+        Args:
+            selection: The symptom object to be removed.
+            container: The container containing the display elements of the symptom.
+
+        Returns:
+            None
+        """
         for symp in self.ListeSymptomes:
             if symp.get_Name() == selection.get_Name():
                 self.ListeSymptomes.remove(symp)
@@ -549,7 +597,11 @@ class InterfaceGenerale():
 
     def get_current_video_time(self):
         """
-        Permet d'avoir le temps actuel de la vidéo
+        Get the current time of the video.
+
+        Returns:
+            str: A string representing the current time of the video in the format "HH:MM:SS".
+                Returns "00:00:00" if the video is not opened.
         """
         if self.cap is not None and self.cap.isOpened():
             current_frame = self.cap.get(cv2.CAP_PROP_POS_FRAMES)
@@ -562,7 +614,11 @@ class InterfaceGenerale():
 
     def get_video_duration(self):
         """
-        Permet d'avoir le temps total de la vidéo
+        Get the total duration of the video.
+
+        Returns:
+            int: The total duration of the video in seconds.
+                Returns 0 if the video is not opened.
         """
         if self.cap is not None and self.cap.isOpened():
             total_frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
@@ -572,21 +628,30 @@ class InterfaceGenerale():
 
     def ouvrir_video(self):
         """
-        Ouvre la vidéo en appelant la class Lecteur_video
+        Opens the video by calling the Lecteur_video class
         """
         self.lec_video.ouvrir_video()
     
 
     def ouvrir_video_noire(self):
         """
-        Ouvre la vidéo noire en appelant la class Lecteur_video
+        Opens the black_video by calling the Lecteur_video class
         """
         self.lec_video.ouvrir_video_noire()
 
     
     def lire_fichier(self,nom_fichier):
         """
-        Ouvre un fichier texte le lit et sauvegarde les informations dans une liste
+        Opens a text file, reads it, and saves the information in a list.
+
+        Args:
+            nom_fichier (str): The path to the text file to be read.
+
+        Returns:
+            list: A list containing all the lines read from the file.
+
+        Raises:
+            FileNotFoundError: If the specified file is not found.
         """
         try:
             # Ouvre le fichier en mode lecture
@@ -601,8 +666,8 @@ class InterfaceGenerale():
 
     def sauvegarde(self):
         """
-        sauvegarde de la liste de symtptomes dans un fichier texte
-        fait appel a la classe save 
+        Saves the list of symptoms to a text file.
+        It calls the save class for this purpose. 
         """
         save = sauvg.save(self.ListeSymptomes)
         save.save()
@@ -618,13 +683,13 @@ class InterfaceGenerale():
 
     def text_sympt(self, sympt):
         """
-        crée le texta a afficher dans le right_pannel
+        Creates the text to display in the right panel.
 
         Args:
-            sympt (Symptome): symptome dont on crée le texte
+            sympt (Symptome): The symptom for which to create the text.
 
         Returns:
-            text (string): texte a afficher contenant les bonnes infos
+            str: The text to display containing the relevant information.
         """
         time = ""
 
@@ -648,7 +713,7 @@ class InterfaceGenerale():
     
     def load_symptoms(self):
       """
-      charge une liste de symptomes a partir d'un fichier
+      Loads a symptoms list from a text file
       """  
       file_path = filedialog.askopenfilename(filetypes=[("Fichiers textes", "*.txt")])
       list_S = load.read_symptoms(file_path)
