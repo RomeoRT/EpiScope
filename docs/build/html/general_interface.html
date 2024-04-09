@@ -210,7 +210,18 @@ zone_text: A text area for comments.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.load_symptoms">
 <span class="sig-name descname"><span class="pre">load_symptoms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.load_symptoms" title="Link to this definition">¶</a></dt>
-<dd><p>Loads a symptoms list from a text file</p>
+<dd><p>Loads a list of symptoms from a text file.</p>
+<p>This function prompts the user to select a text file containing symptom data. It then reads the symptom data from the file
+using the read_symptoms function from the load module. For each symptom read from the file, it updates the right panel of
+the interface with the symptom attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If the selected file is not found.</p></li>
+<li><p><strong>Exception</strong> – If an unexpected error occurs during the file reading process.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
