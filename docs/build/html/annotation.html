@@ -64,15 +64,17 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 </section>
 <section id="module-annotation.class_symptome">
 <span id="annotation-class-symptome-module"></span><h2>annotation.class_symptome module<a class="headerlink" href="#module-annotation.class_symptome" title="Link to this heading">¶</a></h2>
+<p>This module defines a Symptome class used for instantiating symptom objects.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">annotation.class_symptome.</span></span><span class="sig-name descname"><span class="pre">Symptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lateralization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Topography</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AttributSuppl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tdeb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tfin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Classe permettant d’instancier un objet Symptome avec tous ses attributs</p>
+<p>A class used to instantiate a Symptome object with all its attributes.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.ID">
 <span class="sig-name descname"><span class="pre">ID</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.ID" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>The ID of the symptom.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -82,7 +84,8 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Name">
 <span class="sig-name descname"><span class="pre">Name</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Name" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>The name of the symptom.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -92,7 +95,8 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Lateralization">
 <span class="sig-name descname"><span class="pre">Lateralization</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Lateralization" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>The lateralization of the symptom.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -100,29 +104,10 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">segment</span> <span class="pre">corporel</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Tps</span> <span class="pre">debut</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Tps</span> <span class="pre">fin</span></span></dt>
-<dd><dl class="field-list simple">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Topography">
+<span class="sig-name descname"><span class="pre">Topography</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Topography" title="Link to this definition">¶</a></dt>
+<dd><p>The topography of the symptom.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -132,7 +117,8 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Orientation">
 <span class="sig-name descname"><span class="pre">Orientation</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Orientation" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>The orientation of the symptom.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -140,9 +126,32 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Attributs</span> <span class="pre">suppl</span></span></dt>
-<dd><dl class="field-list simple">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.AttributSuppl">
+<span class="sig-name descname"><span class="pre">AttributSuppl</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.AttributSuppl" title="Link to this definition">¶</a></dt>
+<dd><p>Additional attributes of the symptom.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Tdeb">
+<span class="sig-name descname"><span class="pre">Tdeb</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Tdeb" title="Link to this definition">¶</a></dt>
+<dd><p>The start time of the symptom.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Tfin">
+<span class="sig-name descname"><span class="pre">Tfin</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Tfin" title="Link to this definition">¶</a></dt>
+<dd><p>The end time of the symptom.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -152,7 +161,8 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.Comment">
 <span class="sig-name descname"><span class="pre">Comment</span></span><a class="headerlink" href="#annotation.class_symptome.Symptome.Comment" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Any additional comments related to the symptom.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -162,7 +172,8 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_AttributSuppl">
 <span class="sig-name descname"><span class="pre">get_AttributSuppl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_AttributSuppl" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the additional attributes of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Comment">
@@ -172,45 +183,53 @@ affiche dans le menu déroulant la premiere option correspondante</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_ID">
 <span class="sig-name descname"><span class="pre">get_ID</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_ID" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the ID of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Lateralization">
 <span class="sig-name descname"><span class="pre">get_Lateralization</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Lateralization" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the lateralization of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Name">
 <span class="sig-name descname"><span class="pre">get_Name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the name of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Orientation">
 <span class="sig-name descname"><span class="pre">get_Orientation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Orientation" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the orientation of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Tdeb">
 <span class="sig-name descname"><span class="pre">get_Tdeb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Tdeb" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the start time of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Tfin">
 <span class="sig-name descname"><span class="pre">get_Tfin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Tfin" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the end time of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_Topography">
 <span class="sig-name descname"><span class="pre">get_Topography</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_Topography" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the topography of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.get_attributs">
 <span class="sig-name descname"><span class="pre">get_attributs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.get_attributs" title="Link to this definition">¶</a></dt>
-<dd><p>Retourne une liste contenant les valeurs des attributs de l’objet</p>
+<dd><p>Returns a list containing the values of the object’s attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><p>[
+<dd class="field-odd"><p><dl class="simple">
+<dt>A list containing the values of all attributes.</dt><dd><p>[
 ID,
 Name,
 Lateralization,
@@ -221,6 +240,8 @@ Tdeb,
 Tfin,
 Comment
 ]</p>
+</dd>
+</dl>
 </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -232,47 +253,56 @@ Comment
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_AttributSuppl">
 <span class="sig-name descname"><span class="pre">set_AttributSuppl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_AttributSuppl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_AttributSuppl" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the additional attributes of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Comment">
 <span class="sig-name descname"><span class="pre">set_Comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Comment</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Comment" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets any additional comments related to the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_ID">
 <span class="sig-name descname"><span class="pre">set_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_ID" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the ID of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Lateralization">
 <span class="sig-name descname"><span class="pre">set_Lateralization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Lateralization</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Lateralization" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the lateralization of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Name">
 <span class="sig-name descname"><span class="pre">set_Name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the name of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Orientation">
 <span class="sig-name descname"><span class="pre">set_Orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Orientation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Orientation" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the orientation of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Tdeb">
 <span class="sig-name descname"><span class="pre">set_Tdeb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Tdeb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Tdeb" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the start time of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Tfin">
 <span class="sig-name descname"><span class="pre">set_Tfin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Tfin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Tfin" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the end time of the symptom.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.class_symptome.Symptome.set_Topography">
 <span class="sig-name descname"><span class="pre">set_Topography</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_Topography</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_symptome.Symptome.set_Topography" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the topography of the symptom.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -282,27 +312,45 @@ Comment
 </section>
 <section id="module-annotation.pop_up">
 <span id="annotation-pop-up-module"></span><h2>annotation.pop_up module<a class="headerlink" href="#module-annotation.pop_up" title="Link to this heading">¶</a></h2>
+<p>This module defines a SymptomeEditor class for editing symptom attributes via a graphical user interface.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="annotation.pop_up.SymptomeEditor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">annotation.pop_up.</span></span><span class="sig-name descname"><span class="pre">SymptomeEditor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Symp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.pop_up.SymptomeEditor" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CTkToplevel</span></code></p>
-<p>Permet l’edition de symptomes au travers d’une fenetre</p>
+<p>SymptomeEditor class for editing symptom attributes via a graphical user interface.
+Allows editing of symptoms through a window.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.pop_up.SymptomeEditor.Symp">
+<span class="sig-name descname"><span class="pre">Symp</span></span><a class="headerlink" href="#annotation.pop_up.SymptomeEditor.Symp" title="Link to this definition">¶</a></dt>
+<dd><p>An instance of the Symptome class representing the symptom to be edited.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.pop_up.SymptomeEditor.apply_changes">
 <span class="sig-name descname"><span class="pre">apply_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Symp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.pop_up.SymptomeEditor.apply_changes" title="Link to this definition">¶</a></dt>
-<dd><p>Récupère les valeurs saisies et met à jour les attributs de la classe Symp</p>
+<dd><p>Retrieves the entered values and updates the attributes of the Symp class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Symp</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – The Symptome object to be updated.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.pop_up.SymptomeEditor.create_entry">
 <span class="sig-name descname"><span class="pre">create_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.pop_up.SymptomeEditor.create_entry" title="Link to this definition">¶</a></dt>
-<dd><p>crée et place des zones de texte (entrées) sur la fenêtre</p>
+<dd><p>Creates and places text entry fields (entries) on the window.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>label_text</strong> (<em>str</em>) – label de l’entrée</p></li>
-<li><p><strong>initial_value</strong> (<em>str</em>) – valeur actuelle de l’entrée</p></li>
-<li><p><strong>i</strong> (<em>int</em>) – indice de la ligne de l’entrée</p></li>
+<li><p><strong>label_text</strong> (<em>str</em>) – The label for the entry.</p></li>
+<li><p><strong>initial_value</strong> (<em>str</em>) – The current value of the entry.</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – The index of the entry row.</p></li>
 </ul>
 </dd>
 </dl>
@@ -352,7 +400,11 @@ Comment
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.ID"><code class="docutils literal notranslate"><span class="pre">Symptome.ID</span></code></a></li>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.Name"><code class="docutils literal notranslate"><span class="pre">Symptome.Name</span></code></a></li>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.Lateralization"><code class="docutils literal notranslate"><span class="pre">Symptome.Lateralization</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.Topography"><code class="docutils literal notranslate"><span class="pre">Symptome.Topography</span></code></a></li>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.Orientation"><code class="docutils literal notranslate"><span class="pre">Symptome.Orientation</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.AttributSuppl</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.Tdeb"><code class="docutils literal notranslate"><span class="pre">Symptome.Tdeb</span></code></a></li>
+<li><a class="reference internal" href="#annotation.class_symptome.Symptome.Tfin"><code class="docutils literal notranslate"><span class="pre">Symptome.Tfin</span></code></a></li>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.Comment"><code class="docutils literal notranslate"><span class="pre">Symptome.Comment</span></code></a></li>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_AttributSuppl"><code class="docutils literal notranslate"><span class="pre">Symptome.get_AttributSuppl()</span></code></a></li>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.get_Comment"><code class="docutils literal notranslate"><span class="pre">Symptome.get_Comment()</span></code></a></li>
@@ -380,6 +432,7 @@ Comment
 <li><a class="reference internal" href="#annotation-menu-deroulant-anaelle-module">annotation.menu_deroulant_anaelle module</a></li>
 <li><a class="reference internal" href="#module-annotation.pop_up">annotation.pop_up module</a><ul>
 <li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor</span></code></a><ul>
+<li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.Symp"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.Symp</span></code></a></li>
 <li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.apply_changes"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.apply_changes()</span></code></a></li>
 <li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.create_entry"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.create_entry()</span></code></a></li>
 </ul>

@@ -1,19 +1,27 @@
-
+"""
+This module defines a SymptomeEditor class for editing symptom attributes via a graphical user interface.
+"""
 import tkinter as tk
 import customtkinter as CTK
 
-"""
-#pas git import 
-from class_symptome import Symptome
-"""
+
 from annotation.class_symptome import Symptome
 
 class SymptomeEditor(CTK.CTkToplevel):
     """
-    Permet l'edition de symptomes au travers d'une fenetre
+    SymptomeEditor class for editing symptom attributes via a graphical user interface.
+    Allows editing of symptoms through a window.
+
+    Attributes:
+        Symp (:obj:`Symptome`): An instance of the Symptome class representing the symptom to be edited.
     """
     def __init__(self, Symp):
-        
+        """
+        Initializes the SymptomeEditor object.
+
+        Args:
+            Symp (:obj:`Symptome`): The Symptome object to be edited.
+        """
         super().__init__()
         self.Symp = Symp
         self.title("Symptom Editor")
@@ -40,12 +48,12 @@ class SymptomeEditor(CTK.CTkToplevel):
 
     def create_entry(self, label_text, initial_value, i):
         """
-        crée et place des zones de texte (entrées) sur la fenêtre
+        Creates and places text entry fields (entries) on the window.
 
         Args:
-            label_text (str): label de l'entrée
-            initial_value (str): valeur actuelle de l'entrée
-            i (int): indice de la ligne de l'entrée 
+            label_text (str): The label for the entry.
+            initial_value (str): The current value of the entry.
+            i (int): The index of the entry row.
         """
         # label et un champ de saisie pour un attribut
         #frame = tk.Frame(self.master, pady=5)
@@ -61,7 +69,12 @@ class SymptomeEditor(CTK.CTkToplevel):
         return entry
 
     def apply_changes(self,Symp):
-        """ Récupère les valeurs saisies et met à jour les attributs de la classe Symp"""
+        """
+        Retrieves the entered values and updates the attributes of the Symp class.
+
+        Args:
+            Symp (:obj:`Symptome`): The Symptome object to be updated.
+        """
         if self.id_entry.get():
             self.Symp.ID = self.id_entry.get()
         if self.Name_entry.get():
