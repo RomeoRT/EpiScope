@@ -115,7 +115,16 @@ everything is in english</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.FriseSymptomes.afficher">
 <span class="sig-name descname"><span class="pre">afficher</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.FriseSymptomes.afficher" title="Link to this definition">¶</a></dt>
-<dd><p>Récuperation de la liste de symptomes instanciée dans class interface generale fonction update right panel</p>
+<dd><p>Retrieves the list of symptoms instantiated in the InterfaceGenerale class’s update_right_panel function.</p>
+<p>This method retrieves the list of symptoms stored in the InterfaceGenerale class instance’s ListeSymptomes attribute.
+It then processes each symptom in the list, extracting relevant information such as name, start time, end time,
+ID, lateralization, topography, orientation, additional attributes, and comments. This information is then formatted
+and sorted based on the start time of each symptom.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -473,11 +482,19 @@ It calls the save class for this purpose.</p>
 </dd>
 </dl>
 <p>This class calls the InterfaceGenerale class</p>
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">\*\*A</span> <span class="pre">completer**</span></span></dt>
-<dd></dd></dl>
-
+<blockquote>
+<div><dl class="simple">
+<dt>Attributes:</dt><dd><p>interface_generale (InterfaceGenerale): The main interface in which to open the video player.
+video_paused (bool): Indicates whether the video is currently paused.
+current_frame_time (int): Current time of the video frame being displayed.
+clock (Clock): Pygame clock to manage time-related operations.
+vitesse_lecture (int): Speed factor for video playback.
+valeur (int): A value indicating something, not clearly specified in the docstring.
+temps_ecoule (int): Elapsed time of the video playback.
+duree_totale (int): Total duration of the loaded video.</p>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.afficher_menu_annotations">
 <span class="sig-name descname"><span class="pre">afficher_menu_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.afficher_menu_annotations" title="Link to this definition">¶</a></dt>

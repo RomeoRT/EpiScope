@@ -74,7 +74,6 @@ class Menu_symptomes(ctk.CTkFrame):
         The constructor of the :obj:'Menu_symptomes' class.
 
         The files containing the symptoms must be in the same folder as the source file
-        **Note**
 
         Attributes: 
             master (any): the master widget in which to display the menus
@@ -269,7 +268,16 @@ class FriseSymptomes:
 
     def afficher(self):
         """
-        Récuperation de la liste de symptomes instanciée dans class interface generale fonction update right panel
+        Retrieves the list of symptoms instantiated in the InterfaceGenerale class's update_right_panel function.
+
+        This method retrieves the list of symptoms stored in the InterfaceGenerale class instance's ListeSymptomes attribute.
+        It then processes each symptom in the list, extracting relevant information such as name, start time, end time,
+        ID, lateralization, topography, orientation, additional attributes, and comments. This information is then formatted
+        and sorted based on the start time of each symptom.
+
+        Returns:
+            None
+
         """
         Lsymp = self.interface_generale.ListeSymptomes
         newL=[]
@@ -761,8 +769,15 @@ class LecteurVideo():
 
     This class calls the InterfaceGenerale class
 
-    Attributes:
-        **A completer**
+        Attributes:
+            interface_generale (InterfaceGenerale): The main interface in which to open the video player.
+            video_paused (bool): Indicates whether the video is currently paused.
+            current_frame_time (int): Current time of the video frame being displayed.
+            clock (Clock): Pygame clock to manage time-related operations.
+            vitesse_lecture (int): Speed factor for video playback.
+            valeur (int): A value indicating something, not clearly specified in the docstring.
+            temps_ecoule (int): Elapsed time of the video playback.
+            duree_totale (int): Total duration of the loaded video.
     """
     def __init__(self, InterfaceGenerale):
         """
