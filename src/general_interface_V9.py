@@ -310,7 +310,7 @@ class InterfaceGenerale():
     It is represented in the form of a window and allows the other classes to be integrated into it.
     It calls the LecteurVideo, FriseSymptomes and Menu_symptoms classes. 
 
-    Atributes:
+    Attributes:
         fenetre: Represents the main window of the graphical interface.
         cap: Represents the video capture object.
         lec_video: An instance of the LecteurVideo class.
@@ -716,7 +716,7 @@ class InterfaceGenerale():
         Loads a list of symptoms from a text file.
 
         This function prompts the user to select a text file containing symptom data. It then reads the symptom data from the file 
-        using the read_symptoms function from the load module. For each symptom read from the file, it updates the right panel of 
+        using the read_symptoms function from the load_symptomes module. For each symptom read from the file, it updates the right panel of 
         the interface with the symptom attributes.
 
         Raises:

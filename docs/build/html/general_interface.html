@@ -117,40 +117,192 @@ everything is in english</p>
 <p>General interface class, which provides the overall look and feel of the graphical interface.</p>
 <p>It is represented in the form of a window and allows the other classes to be integrated into it.
 It calls the LecteurVideo, FriseSymptomes and Menu_symptoms classes.</p>
-<dl class="simple">
-<dt>Atributes:</dt><dd><p>fenetre: Represents the main window of the graphical interface.
-cap: Represents the video capture object.
-lec_video: An instance of the LecteurVideo class.
-frise: An instance of the FriseSymptomes class.
-set_end_time_mode: A boolean variable indicating whether the end time mode is set.
-current_symptom: Represents the current symptom being processed.
-ListeSymptomes: A list containing symptom objects, initially empty.
-theme: A list containing color theme values.
-menu_bar: A menu bar for the interface.
-menu_open: A menu for opening different options like video and symptoms.
-menu_save: A menu for saving options like symptoms, report, and timeline.
-clic_x: The x-coordinate of the click event.
-clic_y: The y-coordinate of the click event.
-frame_left: Represents the left frame of the interface.
-frame_middle: Represents the middle frame of the interface.
-frame_right: Represents the right frame of the interface.
-scrollable1: A scrollable frame for the right panel.
-text_output: A scrollable frame for displaying text output.
-frame_CTkButton: A frame for buttons in the middle frame.
-bouton_revoir: Button for rewinding the video.
-bouton_reculer: Button for moving the video backward.
-bouton_play_pause: Button for playing or pausing the video.
-bouton_avancer: Button for moving the video forward.
-bouton_nul: A dummy button.
-frame_frise: A frame for displaying the symptom timeline.
-bouton_frise: Button for displaying the timeline.
-bouton_save: Button for saving the report.
-label_temps: Label for displaying elapsed time and total time.
-progress_slider: A slider for manual video progress.
-canvas: Canvas for displaying the video.
-zone_text: A text area for comments.</p>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.fenetre">
+<span class="sig-name descname"><span class="pre">fenetre</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.fenetre" title="Link to this definition">¶</a></dt>
+<dd><p>Represents the main window of the graphical interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.cap">
+<span class="sig-name descname"><span class="pre">cap</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.cap" title="Link to this definition">¶</a></dt>
+<dd><p>Represents the video capture object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.lec_video">
+<span class="sig-name descname"><span class="pre">lec_video</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.lec_video" title="Link to this definition">¶</a></dt>
+<dd><p>An instance of the LecteurVideo class.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.frise">
+<span class="sig-name descname"><span class="pre">frise</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.frise" title="Link to this definition">¶</a></dt>
+<dd><p>An instance of the FriseSymptomes class.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.set_end_time_mode">
+<span class="sig-name descname"><span class="pre">set_end_time_mode</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.set_end_time_mode" title="Link to this definition">¶</a></dt>
+<dd><p>A boolean variable indicating whether the end time mode is set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.current_symptom">
+<span class="sig-name descname"><span class="pre">current_symptom</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.current_symptom" title="Link to this definition">¶</a></dt>
+<dd><p>Represents the current symptom being processed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.ListeSymptomes">
+<span class="sig-name descname"><span class="pre">ListeSymptomes</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.ListeSymptomes" title="Link to this definition">¶</a></dt>
+<dd><p>A list containing symptom objects, initially empty.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.theme">
+<span class="sig-name descname"><span class="pre">theme</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.theme" title="Link to this definition">¶</a></dt>
+<dd><p>A list containing color theme values.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.menu_bar">
+<span class="sig-name descname"><span class="pre">menu_bar</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.menu_bar" title="Link to this definition">¶</a></dt>
+<dd><p>A menu bar for the interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.menu_open">
+<span class="sig-name descname"><span class="pre">menu_open</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.menu_open" title="Link to this definition">¶</a></dt>
+<dd><p>A menu for opening different options like video and symptoms.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.menu_save">
+<span class="sig-name descname"><span class="pre">menu_save</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.menu_save" title="Link to this definition">¶</a></dt>
+<dd><p>A menu for saving options like symptoms, report, and timeline.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.clic_x">
+<span class="sig-name descname"><span class="pre">clic_x</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.clic_x" title="Link to this definition">¶</a></dt>
+<dd><p>The x-coordinate of the click event.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.clic_y">
+<span class="sig-name descname"><span class="pre">clic_y</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.clic_y" title="Link to this definition">¶</a></dt>
+<dd><p>The y-coordinate of the click event.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.frame_left">
+<span class="sig-name descname"><span class="pre">frame_left</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.frame_left" title="Link to this definition">¶</a></dt>
+<dd><p>Represents the left frame of the interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.frame_middle">
+<span class="sig-name descname"><span class="pre">frame_middle</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.frame_middle" title="Link to this definition">¶</a></dt>
+<dd><p>Represents the middle frame of the interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.frame_right">
+<span class="sig-name descname"><span class="pre">frame_right</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.frame_right" title="Link to this definition">¶</a></dt>
+<dd><p>Represents the right frame of the interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.scrollable1">
+<span class="sig-name descname"><span class="pre">scrollable1</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.scrollable1" title="Link to this definition">¶</a></dt>
+<dd><p>A scrollable frame for the right panel.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.text_output">
+<span class="sig-name descname"><span class="pre">text_output</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.text_output" title="Link to this definition">¶</a></dt>
+<dd><p>A scrollable frame for displaying text output.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.frame_CTkButton">
+<span class="sig-name descname"><span class="pre">frame_CTkButton</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.frame_CTkButton" title="Link to this definition">¶</a></dt>
+<dd><p>A frame for buttons in the middle frame.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.bouton_revoir">
+<span class="sig-name descname"><span class="pre">bouton_revoir</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.bouton_revoir" title="Link to this definition">¶</a></dt>
+<dd><p>Button for rewinding the video.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.bouton_reculer">
+<span class="sig-name descname"><span class="pre">bouton_reculer</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.bouton_reculer" title="Link to this definition">¶</a></dt>
+<dd><p>Button for moving the video backward.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.bouton_play_pause">
+<span class="sig-name descname"><span class="pre">bouton_play_pause</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.bouton_play_pause" title="Link to this definition">¶</a></dt>
+<dd><p>Button for playing or pausing the video.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.bouton_avancer">
+<span class="sig-name descname"><span class="pre">bouton_avancer</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.bouton_avancer" title="Link to this definition">¶</a></dt>
+<dd><p>Button for moving the video forward.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.bouton_nul">
+<span class="sig-name descname"><span class="pre">bouton_nul</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.bouton_nul" title="Link to this definition">¶</a></dt>
+<dd><p>A dummy button.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.frame_frise">
+<span class="sig-name descname"><span class="pre">frame_frise</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.frame_frise" title="Link to this definition">¶</a></dt>
+<dd><p>A frame for displaying the symptom timeline.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.bouton_frise">
+<span class="sig-name descname"><span class="pre">bouton_frise</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.bouton_frise" title="Link to this definition">¶</a></dt>
+<dd><p>Button for displaying the timeline.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.bouton_save">
+<span class="sig-name descname"><span class="pre">bouton_save</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.bouton_save" title="Link to this definition">¶</a></dt>
+<dd><p>Button for saving the report.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.label_temps">
+<span class="sig-name descname"><span class="pre">label_temps</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.label_temps" title="Link to this definition">¶</a></dt>
+<dd><p>Label for displaying elapsed time and total time.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.progress_slider">
+<span class="sig-name descname"><span class="pre">progress_slider</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.progress_slider" title="Link to this definition">¶</a></dt>
+<dd><p>A slider for manual video progress.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.canvas">
+<span class="sig-name descname"><span class="pre">canvas</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.canvas" title="Link to this definition">¶</a></dt>
+<dd><p>Canvas for displaying the video.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.zone_text">
+<span class="sig-name descname"><span class="pre">zone_text</span></span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.zone_text" title="Link to this definition">¶</a></dt>
+<dd><p>A text area for comments.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.InterfaceGenerale.get_current_video_time">
 <span class="sig-name descname"><span class="pre">get_current_video_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.get_current_video_time" title="Link to this definition">¶</a></dt>
@@ -212,7 +364,7 @@ zone_text: A text area for comments.</p>
 <span class="sig-name descname"><span class="pre">load_symptoms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.InterfaceGenerale.load_symptoms" title="Link to this definition">¶</a></dt>
 <dd><p>Loads a list of symptoms from a text file.</p>
 <p>This function prompts the user to select a text file containing symptom data. It then reads the symptom data from the file
-using the read_symptoms function from the load module. For each symptom read from the file, it updates the right panel of
+using the read_symptoms function from the load_symptomes module. For each symptom read from the file, it updates the right panel of
 the interface with the symptom attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
@@ -544,6 +696,37 @@ symptoms (list): list of symptoms to fill in the menus</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale</span></code></a><ul>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.fenetre"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.fenetre</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.cap"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.cap</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.lec_video"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.lec_video</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.frise"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.frise</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.set_end_time_mode"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.set_end_time_mode</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.current_symptom"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.current_symptom</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.ListeSymptomes"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.ListeSymptomes</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.theme"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.theme</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.menu_bar"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.menu_bar</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.menu_open"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.menu_open</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.menu_save"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.menu_save</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.clic_x"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.clic_x</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.clic_y"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.clic_y</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.frame_left"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.frame_left</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.frame_middle"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.frame_middle</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.frame_right"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.frame_right</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.scrollable1"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.scrollable1</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.text_output"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.text_output</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.frame_CTkButton"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.frame_CTkButton</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.bouton_revoir"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.bouton_revoir</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.bouton_reculer"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.bouton_reculer</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.bouton_play_pause"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.bouton_play_pause</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.bouton_avancer"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.bouton_avancer</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.bouton_nul"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.bouton_nul</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.frame_frise"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.frame_frise</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.bouton_frise"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.bouton_frise</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.bouton_save"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.bouton_save</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.label_temps"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.label_temps</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.progress_slider"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.progress_slider</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.canvas"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.canvas</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.zone_text"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.zone_text</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.get_current_video_time"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.get_current_video_time()</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.get_video_duration"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.get_video_duration()</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.InterfaceGenerale.lire_fichier"><code class="docutils literal notranslate"><span class="pre">InterfaceGenerale.lire_fichier()</span></code></a></li>
