@@ -27,11 +27,3 @@ frise.save module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: frise
-   :members:
-   :undoc-members:
-   :show-inheritance:

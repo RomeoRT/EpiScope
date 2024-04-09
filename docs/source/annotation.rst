@@ -30,10 +30,3 @@ annotation.load\_symptomes module
    :show-inheritance:
 
 
-Module contents
----------------
-
-.. automodule:: annotation
-   :members:
-   :undoc-members:
-   :show-inheritance:
