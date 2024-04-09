@@ -12,3 +12,6 @@ These tools enable practitioners to note directly on their patients' epileptic s
 
 **Documentation :** 
   You can find the official Episcope documentation here : https://episcope.readthedocs.io/en/latest/
+
+installation :
+$\EpiScope> pyinstaller --onefile --icon=.\docs\source\images\logo_cerveau.png  -w ./src/general_interface_V9.py
