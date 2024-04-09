@@ -482,19 +482,94 @@ It calls the save class for this purpose.</p>
 </dd>
 </dl>
 <p>This class calls the InterfaceGenerale class</p>
-<blockquote>
-<div><dl class="simple">
-<dt>Attributes:</dt><dd><p>interface_generale (InterfaceGenerale): The main interface in which to open the video player.
-video_paused (bool): Indicates whether the video is currently paused.
-current_frame_time (int): Current time of the video frame being displayed.
-clock (Clock): Pygame clock to manage time-related operations.
-vitesse_lecture (int): Speed factor for video playback.
-valeur (int): A value indicating something, not clearly specified in the docstring.
-temps_ecoule (int): Elapsed time of the video playback.
-duree_totale (int): Total duration of the loaded video.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.interface_generale">
+<span class="sig-name descname"><span class="pre">interface_generale</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.interface_generale" title="Link to this definition">¶</a></dt>
+<dd><p>The main interface in which to open the video player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#general_interface_V9.InterfaceGenerale" title="general_interface_V9.InterfaceGenerale">InterfaceGenerale</a></p>
 </dd>
 </dl>
-</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.video_paused">
+<span class="sig-name descname"><span class="pre">video_paused</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.video_paused" title="Link to this definition">¶</a></dt>
+<dd><p>Indicates whether the video is currently paused.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.current_frame_time">
+<span class="sig-name descname"><span class="pre">current_frame_time</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.current_frame_time" title="Link to this definition">¶</a></dt>
+<dd><p>Current time of the video frame being displayed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.clock">
+<span class="sig-name descname"><span class="pre">clock</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.clock" title="Link to this definition">¶</a></dt>
+<dd><p>Pygame clock to manage time-related operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Clock</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.vitesse_lecture">
+<span class="sig-name descname"><span class="pre">vitesse_lecture</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.vitesse_lecture" title="Link to this definition">¶</a></dt>
+<dd><p>Speed factor for video playback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.valeur">
+<span class="sig-name descname"><span class="pre">valeur</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.valeur" title="Link to this definition">¶</a></dt>
+<dd><p>A value indicating something, not clearly specified in the docstring.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.temps_ecoule">
+<span class="sig-name descname"><span class="pre">temps_ecoule</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.temps_ecoule" title="Link to this definition">¶</a></dt>
+<dd><p>Elapsed time of the video playback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.duree_totale">
+<span class="sig-name descname"><span class="pre">duree_totale</span></span><a class="headerlink" href="#general_interface_V9.LecteurVideo.duree_totale" title="Link to this definition">¶</a></dt>
+<dd><p>Total duration of the loaded video.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="general_interface_V9.LecteurVideo.afficher_menu_annotations">
 <span class="sig-name descname"><span class="pre">afficher_menu_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V9.LecteurVideo.afficher_menu_annotations" title="Link to this definition">¶</a></dt>
@@ -770,6 +845,14 @@ symptoms (list): list of symptoms to fill in the menus</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#general_interface_V9.LecteurVideo"><code class="docutils literal notranslate"><span class="pre">LecteurVideo</span></code></a><ul>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.interface_generale"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.interface_generale</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.video_paused"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.video_paused</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.current_frame_time"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.current_frame_time</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.clock"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.clock</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.vitesse_lecture"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.vitesse_lecture</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.valeur"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.valeur</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.temps_ecoule"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.temps_ecoule</span></code></a></li>
+<li><a class="reference internal" href="#general_interface_V9.LecteurVideo.duree_totale"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.duree_totale</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.LecteurVideo.afficher_menu_annotations"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.afficher_menu_annotations()</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.LecteurVideo.afficher_video"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.afficher_video()</span></code></a></li>
 <li><a class="reference internal" href="#general_interface_V9.LecteurVideo.ajouter_plus_rouge"><code class="docutils literal notranslate"><span class="pre">LecteurVideo.ajouter_plus_rouge()</span></code></a></li>

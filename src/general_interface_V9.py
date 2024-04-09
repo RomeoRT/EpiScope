@@ -769,15 +769,15 @@ class LecteurVideo():
 
     This class calls the InterfaceGenerale class
 
-        Attributes:
-            interface_generale (InterfaceGenerale): The main interface in which to open the video player.
-            video_paused (bool): Indicates whether the video is currently paused.
-            current_frame_time (int): Current time of the video frame being displayed.
-            clock (Clock): Pygame clock to manage time-related operations.
-            vitesse_lecture (int): Speed factor for video playback.
-            valeur (int): A value indicating something, not clearly specified in the docstring.
-            temps_ecoule (int): Elapsed time of the video playback.
-            duree_totale (int): Total duration of the loaded video.
+    Attributes:
+        interface_generale (InterfaceGenerale): The main interface in which to open the video player.
+        video_paused (bool): Indicates whether the video is currently paused.
+        current_frame_time (int): Current time of the video frame being displayed.
+        clock (Clock): Pygame clock to manage time-related operations.
+        vitesse_lecture (int): Speed factor for video playback.
+        valeur (int): A value indicating something, not clearly specified in the docstring.
+        temps_ecoule (int): Elapsed time of the video playback.
+        duree_totale (int): Total duration of the loaded video.
     """
     def __init__(self, InterfaceGenerale):
         """
