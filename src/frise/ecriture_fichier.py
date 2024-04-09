@@ -55,6 +55,10 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
 
     for symptome in listeSymptome :
         EcrireSymptome(symptome, nomfichier)
+    
+    with open(nomfichier, 'a') as fichier :
+        fichier.write("\n\n")
+    
 
 
 def EcrireMetaData(Meta, nomfichier) :
@@ -108,13 +112,34 @@ def ecrire_rapport(Symptom_list, filename):
     k = 1
     with open(filename, 'a') as fichier :
          for symptom in Symptom_list:
-            tdeb = symptom.get_Tdeb().strip(":")
-            tfin = symptom.get_Tfin().strip(":")
-            duree = 60 #*( int(tfin[-2])-int(tdeb[-2]))+( int(tfin[-1])-int(tdeb[-1]))
+            tdeb = symptom.get_Tdeb()
+            tfin = symptom.get_Tfin()
+            duree = compute_duration(tdeb, tfin)
         
             fichier.write(f"{k} - {symptom.get_Name()}, {symptom.get_Topography()}, {symptom.get_Lateralization()} : debut a {symptom.get_Tdeb()}, duree : {duree} sec (fin : {symptom.get_Tfin()})\n")
             
             k+=1
+
+def compute_duration(deb, fin):
+    """
+    Compute the duration between two time strings in seconds.
+
+    Args:
+        deb (str): Start time string in the format "hh:mm:ss".
+        fin (str): End time string in the format "hh:mm:ss".
+
+    Returns:
+        int: Total duration between the start and end time in seconds.
+    """
+    deb_hours, deb_minutes, deb_seconds = map(int, deb.split(':'))
+    fin_hours, fin_minutes, fin_seconds = map(int, fin.split(':'))
+
+    total_deb_seconds = deb_hours * 3600 + deb_minutes * 60 + deb_seconds
+    total_fin_seconds = fin_hours * 3600 + fin_minutes * 60 + fin_seconds
+
+    duration_seconds = total_fin_seconds - total_deb_seconds
+
+    return duration_seconds            
 
 ##########################################################################################################
 if __name__ == "__main__" :
