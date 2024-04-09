@@ -259,8 +259,8 @@ class FriseSymptomes:
     Class used to generate a timeline summarising all the symptoms present during an epileptic seizure.
 
     Attributes: 
-        interfaceGenerale (:obj:'InterfaceGenerale'): 
-        MenuDeroulant (:obj:'Menu_symptomes'):
+        interfaceGenerale (:obj:`InterfaceGenerale`): the general interface with the symptoms list
+        MenuDeroulant (:obj:`Menu_symptomes`): dropdown menus
     """
     def __init__(self,InterfaceGenerale,MenuDeroulant):
         self.menu_deroulant=MenuDeroulant
