@@ -13,7 +13,6 @@ These tools enable practitioners to note directly on their patients' epileptic s
 <br />
 <div align="center">
   <img src="./docs/source/images/interface_utilisee2.png" alt="interface" width="500" height="268">
-  <h1 align="center">EpiScope</h1>
 </div>
 
 **Documentation :** 
