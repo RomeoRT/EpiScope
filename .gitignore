@@ -61,3 +61,8 @@ src/lecteur_video/__pycache__/barre_progression.cpython-312.pyc
 src/lecteur_video/__pycache__/csacade.cpython-312.pyc
 src/lecteur_video/__pycache__/interface_menu_deroulants.cpython-312.pyc
 src/lecteur_video/__pycache__/menu_indente.cpython-312.pyc
+
+data/crises_exemples_prive/090428FAEX_0001.MPG
+data/crises_exemples_prive/090429FAEX_0000.MPG
+data/crises_exemples_prive/130213I-DEX_0000.AVI
+data/crises_exemples_prive/130213I-EEX_0001.AVI
