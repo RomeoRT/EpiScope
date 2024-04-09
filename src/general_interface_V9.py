@@ -712,15 +712,40 @@ class InterfaceGenerale():
   
     
     def load_symptoms(self):
-      """
-      Loads a symptoms list from a text file
-      """  
-      file_path = filedialog.askopenfilename(filetypes=[("Fichiers textes", "*.txt")])
-      list_S = load.read_symptoms(file_path)
-      for s in list_S:
-          text = self.text_sympt(s)
-          attr = s.get_attributs()
-          self.update_right_panel(attr)
+        """
+        Loads a list of symptoms from a text file.
+
+        This function prompts the user to select a text file containing symptom data. It then reads the symptom data from the file 
+        using the read_symptoms function from the load module. For each symptom read from the file, it updates the right panel of 
+        the interface with the symptom attributes.
+
+        Raises:
+            FileNotFoundError: If the selected file is not found.
+            Exception: If an unexpected error occurs during the file reading process.
+
+        """
+        try:
+            file_path = filedialog.askopenfilename(filetypes=[("Fichiers textes", "*.txt")])
+            if file_path:  # Check if a file was selected
+                list_S = load.read_symptoms(file_path)
+                if list_S:
+                    for s in list_S:
+                        text = self.text_sympt(s)
+                        attr = s.get_attributs()
+                        self.update_right_panel(attr)
+                else:
+                    print("The file is empty or does not contain valid symptoms.")
+                    error.showerror("Episcope error", "The file is empty or does not contain valid symptoms.")
+            else:
+                print("No file selected.")
+                error.showerror("Episcope error","No file selected.")
+
+        except FileNotFoundError:
+            print("File not found.")
+            error.showerror("Episcope error", "File not found")
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+            error.showerror("Episcope error", f"An error occured: {str(e)}\n\nPlease check the file you tried to open ")
      
 
 class LecteurVideo():
