@@ -1,5 +1,14 @@
 """
-Ce fichier contient des classes et fonctions de base pour sauvegarder les fichiers '.txt' et frise de sortie
+
+This file contains basic classes and functions for saving '.txt' files and outputting timelines.
+
+Classes:
+    save: Class dedicated to saving files.
+    MetaData_WD: Toplevel window for entering metadata.
+
+Functions:
+    None
+
 """
 from tkinter import filedialog
 from tkinter import messagebox
@@ -12,20 +21,20 @@ from frise.class_metadata import MetaData
 
 class save :
     """
-    classe dédiée à la sauvegarde des fichiers 
+    Class dedicated to saving files.
 
     Attributes:
-       symptomes (Liste): liste des symptomes a sauvegarder 
+       symptomes (list): List of symptoms to be saved
     """
     def __init__(self, Liste_symptomes = []):
         self.symptomes = Liste_symptomes
         
     def save(self):
         """
-        Enregistre les symptomes dans un fichier pour etre rechargés
+        Saves the symptoms to a file for reloading.
 
         Raises:
-            FileNotFoundError: message d'erreur si echec de recuperation du chemin du fichier.
+            FileNotFoundError: Error message if failed to retrieve file path.
         """
         # récuperer le nom et emplacement des fichiers
         filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")])
@@ -43,10 +52,10 @@ class save :
 
     def write_report(self):
         """
-        Ecrit un fichier lisible par un humain
+        Writes a human-readable file.
 
         Raises:
-            FileNotFoundError: message d'erreur si echec de recuperation du chemin du fichier.
+            FileNotFoundError: Error message if failed to retrieve file path.
         """
         # récuperer le nom et emplacement des fichiers
         filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")])
@@ -68,10 +77,10 @@ class save :
     
     def set_symptomes(self, Liste_symptomes):
         """
-        Actualise les symptomes
+        Updates the symptoms.
 
         Args:
-            Liste_symptomes (list): Liste de symptomes
+            Liste_symptomes (list): List of symptoms
         """
         self.symptomes = Liste_symptomes
 
@@ -81,18 +90,18 @@ class save :
         
 class MetaData_WD(CTK.CTkToplevel) :
     """
-    fenetre toplevel pour saisir les metadonnées
+    Toplevel window for entering metadata.
 
     Attributes:
-        liste (list): liste de symptomes a sauvegarder
-        filename (string): chemin du fichier dans lequel ecrire
+        liste (list): List of symptoms to be saved.
+        filename (string): Path of the file to write to.
     """
     def __init__(self,filename) :
         """
-        constructeur de metadata
+        Constructor for metadata.
 
         Args:
-            filename (string) : chemin du ficher dans lequel ecrire
+            filename (string): Path of the file to write to.
         """
         super().__init__()
 
@@ -142,10 +151,10 @@ class MetaData_WD(CTK.CTkToplevel) :
 
     def get_metadata(self, event):
         """
-        ecrire une liste des metadonnées sous la forme [heure réelle, patient, praticien]
+        Write a list of metadata in the form [real time, patient, practitioner].
 
         Args:
-            event (any): correspont a l'ecriture dans les box de texte
+            event (any): Corresponds to writing in the text boxes.
         """
         
         self.data.set_dateCrise(self.hour_entry.get())

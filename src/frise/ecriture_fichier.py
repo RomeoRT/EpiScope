@@ -1,5 +1,13 @@
 """
-Ce module contient des fonctions pour créer et éditer les fichiers '.txt' de sortie avec les symptomes
+This module provides functions for writing symptom data, symptom lists, and metadata to text files.
+
+Functions:
+    EcrireSymptome: Writes a single symptom to a file.
+    EcrireListeSymptome: Writes a list of symptoms to a file.
+    EcrireMetaData: Writes metadata to a file.
+    format: Formats text data by replacing specified characters.
+    ecrire_rapport: Writes a report with symptom details.
+
 """
 from annotation.class_symptome import *
 from frise.class_metadata import MetaData
@@ -8,11 +16,11 @@ from frise.class_metadata import MetaData
 
 def EcrireSymptome(symptome, nomfichier) :
     """
-    Ecrit un symptome dans un fichier texte dont on specifie le nom
-    
+    Writes a single symptom to a file.
+
     Args:
-        symptome (:obj:`Symptome`): symptome à écrire
-        nomfichier (str): chemin du fichier
+        symptome (:obj:`Symptome`): The symptom object to be written to the file.
+        nomfichier (str): The path of the file to write to.
 
     Returns:
         None 
@@ -33,14 +41,11 @@ def EcrireSymptome(symptome, nomfichier) :
 
 def EcrireListeSymptome(listeSymptome, nomfichier) :
     """
-    Ecrit une liste de symptomes dans un fichier texte
-    
-    Chaque symptome est écrit sur une ligne
-    Fait appel à la fonction EcrireSymptome
+    Writes a list of symptoms to a file.
 
     Args:
-        symptome (:obj:`list` of :obj:`str`): liste des symptomes
-        nomfichier (str): chemin du fichier
+        listeSymptome (list): List of symptom objects to be written to the file.
+        nomfichier (str): The path of the file to write to.
     
     Returns:
         None 
@@ -54,11 +59,11 @@ def EcrireListeSymptome(listeSymptome, nomfichier) :
 
 def EcrireMetaData(Meta, nomfichier) :
     """
-    Ecrit les metadata d'une annotation dans un fichier texte sous la forme : heure réelle :\tpatient :\tpraticien :\tdate d'annotation : \n
+    Writes metadata to a file.
 
     Args:
-        Meta (:obj: MetaData): Les métadatas
-        nomfichier (str): chemin du fichier
+        Meta (:obj:`Matadata`): metadata information.
+        nomfichier (str): The path of the file to write to.
 
     Returns:
         None
@@ -76,14 +81,15 @@ def EcrireMetaData(Meta, nomfichier) :
         
 def format(data, caracteres):
     """
-    supprime les caracteres speciaux d'une liste de string
+    Formats text data by replacing specified characters.
     
     Args:
-        data (:obj:`list` of :obj:`str`) : liste de strings a traiter
-        caracteres (List): liste des caracteres et de leur remplacement, de la forme [("C1", "C2")]
+        data (:obj:`list` of :obj:`str`) : List of text data to be formatted.
+        caracteres (List): List containing character replacement pairs.
 
     Returns:
-        new_data (:obj:`list` of :obj:`str`) : liste de strings traitée
+        :obj:`list` of :obj:`str` : Formatted text data.
+
     """
     for element in caracteres :
         new_data = [txt.replace(element[0],element[1]) for txt in data]
@@ -93,11 +99,11 @@ def format(data, caracteres):
 
 def ecrire_rapport(Symptom_list, filename):
     """
-    Ecrit les symptomes dans le rapport lisible par les médecins
+    Writes a report with symptom details to a file.
 
     Args:
-        Symptom_list (:obj:`list` of :obj:`Symptome`): liste des symptomes a écrire
-        filename (str): chemein du fichier a ecrire
+        Symptom_list (:obj:`list` of :obj:`Symptome`): List of symptom objects.
+        filename (str): The path of the file to write to.
     """
     k = 1
     with open(filename, 'a') as fichier :

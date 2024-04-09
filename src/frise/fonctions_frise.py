@@ -1,14 +1,30 @@
+"""
+This module provides functions for visualizing a chronological timeline of symptoms.
+
+Functions:
+    chercherElt(list): Searches for a missing element in a list of integers.
+    chevauchement(liste, symp, current_index, levels): Manages the visual overlapping of symptoms.
+    on_text_click(event): Displays the annotation when the text is clicked.
+    afficher_frise(liste): Displays the chronological timeline of symptoms.
+
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 
-"""
-# pas git 
-from class_symptome import Symptome
-"""
+
 from annotation.class_symptome import Symptome
 
 def chercherElt(list):
-    """Cherche s'il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,..."""
+    """
+    Searches for a missing element in a list of integers.
+
+    Args:
+        list (list): A list of integers.
+
+    Returns:
+        int: The missing element in the list.
+    """    
     if len(list) != 0 :
         list = sorted(list)
         last = list[-1]
@@ -20,16 +36,19 @@ def chercherElt(list):
         return 0
 
 def chevauchement(liste, symp, current_index, levels):
-    """ Gère le problème de superposition visuelle des symptômes.
+    """
+    Manages the visual overlapping of symptoms.
 
     Args:
-        liste (list): liste des symptomes avec début et fin
-        symp (:obj:`Symptome`): symptome actuel.
-        current_index (int): indice du symp actuel dans la liste.
-    
-    Return: 
-        int: niveau y où afficher le rectangle. 
-        """
+        liste (list): List of symptoms with start and end times.
+        symp (:obj:`Symptome`): Current symptom.
+        current_index (int): Index of the current symptom in the list.
+        levels (list): List of levels.
+
+    Returns:
+        int: The y-level where to display the rectangle.
+    """
+
     level = 0
     list = []
     for i in range(len(levels)):
@@ -41,7 +60,12 @@ def chevauchement(liste, symp, current_index, levels):
     return level
 
 def on_text_click(event):
-    """Affiche l'annotation lorsque le texte est cliqué."""
+    """
+    Displays the annotation when the text is clicked.
+
+    Args:
+        event (matplotlib.backend_bases.MouseEvent): The mouse event.
+    """
     for annotation, rect in zip(annotations, rects):
         if rect.contains(event)[0]:
             annotation.set_visible(True)
@@ -50,9 +74,11 @@ def on_text_click(event):
     plt.draw()
 
 def afficher_frise(liste):
-    """ Affiche la frise chronologique des symptômes.
+    """
+    Displays the chronological timeline of symptoms.
+
     Args:
-        liste (:obj:list of :obj:list): liste des symptomes où chaque élément est une liste [Name, début, fin, Lateralization, seg corporel, orientation, attribut suppl, Comment, tdeb_str, tfin_str]. 
+        liste (:obj:list of :obj:list): List of symptoms where each element is a list [Name, start, end, Lateralization, seg corporel, orientation, additional attribute, Comment, tdeb_str, tfin_str].
     """
     liste = sorted(liste, key=lambda x: float(x[1]))
     levels = []

@@ -50,18 +50,24 @@
 </section>
 <section id="module-frise.ecriture_fichier">
 <span id="frise-ecriture-fichier-module"></span><h2>frise.ecriture_fichier module<a class="headerlink" href="#module-frise.ecriture_fichier" title="Link to this heading">¶</a></h2>
-<p>Ce module contient des fonctions pour créer et éditer les fichiers ‘.txt’ de sortie avec les symptomes</p>
+<p>This module provides functions for writing symptom data, symptom lists, and metadata to text files.</p>
+<dl class="simple">
+<dt>Functions:</dt><dd><p>EcrireSymptome: Writes a single symptom to a file.
+EcrireListeSymptome: Writes a list of symptoms to a file.
+EcrireMetaData: Writes metadata to a file.
+format: Formats text data by replacing specified characters.
+ecrire_rapport: Writes a report with symptom details.</p>
+</dd>
+</dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.ecriture_fichier.EcrireListeSymptome">
 <span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireListeSymptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeSymptome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireListeSymptome" title="Link to this definition">¶</a></dt>
-<dd><p>Ecrit une liste de symptomes dans un fichier texte</p>
-<p>Chaque symptome est écrit sur une ligne
-Fait appel à la fonction EcrireSymptome</p>
+<dd><p>Writes a list of symptoms to a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>symptome</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – liste des symptomes</p></li>
-<li><p><strong>nomfichier</strong> (<em>str</em>) – chemin du fichier</p></li>
+<li><p><strong>listeSymptome</strong> (<em>list</em>) – List of symptom objects to be written to the file.</p></li>
+<li><p><strong>nomfichier</strong> (<em>str</em>) – The path of the file to write to.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -73,12 +79,12 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.ecriture_fichier.EcrireMetaData">
 <span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireMetaData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireMetaData" title="Link to this definition">¶</a></dt>
-<dd><p>Ecrit les metadata d’une annotation dans un fichier texte sous la forme : heure réelle :    patient :       praticien :     date d’annotation :</p>
+<dd><p>Writes metadata to a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>(</strong> (<em>Meta</em>) – obj: MetaData): Les métadatas</p></li>
-<li><p><strong>nomfichier</strong> (<em>str</em>) – chemin du fichier</p></li>
+<li><p><strong>Meta</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Matadata</span></code>) – metadata information.</p></li>
+<li><p><strong>nomfichier</strong> (<em>str</em>) – The path of the file to write to.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -90,12 +96,12 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.ecriture_fichier.EcrireSymptome">
 <span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">EcrireSymptome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symptome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nomfichier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.EcrireSymptome" title="Link to this definition">¶</a></dt>
-<dd><p>Ecrit un symptome dans un fichier texte dont on specifie le nom</p>
+<dd><p>Writes a single symptom to a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>symptome</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – symptome à écrire</p></li>
-<li><p><strong>nomfichier</strong> (<em>str</em>) – chemin du fichier</p></li>
+<li><p><strong>symptome</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – The symptom object to be written to the file.</p></li>
+<li><p><strong>nomfichier</strong> (<em>str</em>) – The path of the file to write to.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -107,12 +113,12 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.ecriture_fichier.ecrire_rapport">
 <span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">ecrire_rapport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Symptom_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.ecrire_rapport" title="Link to this definition">¶</a></dt>
-<dd><p>Ecrit les symptomes dans le rapport lisible par les médecins</p>
+<dd><p>Writes a report with symptom details to a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Symptom_list</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – liste des symptomes a écrire</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – chemein du fichier a ecrire</p></li>
+<li><p><strong>Symptom_list</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – List of symptom objects.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The path of the file to write to.</p></li>
 </ul>
 </dd>
 </dl>
@@ -121,19 +127,19 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.ecriture_fichier.format">
 <span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caracteres</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.format" title="Link to this definition">¶</a></dt>
-<dd><p>supprime les caracteres speciaux d’une liste de string</p>
+<dd><p>Formats text data by replacing specified characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – liste de strings a traiter</p></li>
-<li><p><strong>caracteres</strong> (<em>List</em>) – liste des caracteres et de leur remplacement, de la forme [(“C1”, “C2”)]</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – List of text data to be formatted.</p></li>
+<li><p><strong>caracteres</strong> (<em>List</em>) – List containing character replacement pairs.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>liste de strings traitée</p>
+<dd class="field-even"><p>Formatted text data.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>new_data (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -141,33 +147,57 @@ Fait appel à la fonction EcrireSymptome</p>
 </section>
 <section id="module-frise.fonctions_frise">
 <span id="frise-fonctions-frise-module"></span><h2>frise.fonctions_frise module<a class="headerlink" href="#module-frise.fonctions_frise" title="Link to this heading">¶</a></h2>
+<p>This module provides functions for visualizing a chronological timeline of symptoms.</p>
+<dl class="simple">
+<dt>Functions:</dt><dd><p>chercherElt(list): Searches for a missing element in a list of integers.
+chevauchement(liste, symp, current_index, levels): Manages the visual overlapping of symptoms.
+on_text_click(event): Displays the annotation when the text is clicked.
+afficher_frise(liste): Displays the chronological timeline of symptoms.</p>
+</dd>
+</dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.fonctions_frise.afficher_frise">
 <span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">afficher_frise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liste</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.afficher_frise" title="Link to this definition">¶</a></dt>
-<dd><p>Affiche la frise chronologique des symptômes.
-:param liste (: obj:list of :obj:list): liste des symptomes où chaque élément est une liste [Name, début, fin, Lateralization, seg corporel, orientation, attribut suppl, Comment, tdeb_str, tfin_str].</p>
+<dd><p>Displays the chronological timeline of symptoms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>(</strong> (<em>liste</em>) – obj:list of :obj:list): List of symptoms where each element is a list [Name, start, end, Lateralization, seg corporel, orientation, additional attribute, Comment, tdeb_str, tfin_str].</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.fonctions_frise.chercherElt">
 <span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">chercherElt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.chercherElt" title="Link to this definition">¶</a></dt>
-<dd><p>Cherche s’il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,…</p>
+<dd><p>Searches for a missing element in a list of integers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>list</strong> (<em>list</em>) – A list of integers.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The missing element in the list.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.fonctions_frise.chevauchement">
 <span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">chevauchement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liste</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.chevauchement" title="Link to this definition">¶</a></dt>
-<dd><p>Gère le problème de superposition visuelle des symptômes.</p>
+<dd><p>Manages the visual overlapping of symptoms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>liste</strong> (<em>list</em>) – liste des symptomes avec début et fin</p></li>
-<li><p><strong>symp</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – symptome actuel.</p></li>
-<li><p><strong>current_index</strong> (<em>int</em>) – indice du symp actuel dans la liste.</p></li>
+<li><p><strong>liste</strong> (<em>list</em>) – List of symptoms with start and end times.</p></li>
+<li><p><strong>symp</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Symptome</span></code>) – Current symptom.</p></li>
+<li><p><strong>current_index</strong> (<em>int</em>) – Index of the current symptom in the list.</p></li>
+<li><p><strong>levels</strong> (<em>list</em>) – List of levels.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>niveau y où afficher le rectangle.</p>
+<dd class="field-even"><p>The y-level where to display the rectangle.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
@@ -178,22 +208,34 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="frise.fonctions_frise.on_text_click">
 <span class="sig-prename descclassname"><span class="pre">frise.fonctions_frise.</span></span><span class="sig-name descname"><span class="pre">on_text_click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.fonctions_frise.on_text_click" title="Link to this definition">¶</a></dt>
-<dd><p>Affiche l’annotation lorsque le texte est cliqué.</p>
+<dd><p>Displays the annotation when the text is clicked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>matplotlib.backend_bases.MouseEvent</em>) – The mouse event.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
 <section id="module-frise.save">
 <span id="frise-save-module"></span><h2>frise.save module<a class="headerlink" href="#module-frise.save" title="Link to this heading">¶</a></h2>
-<p>Ce fichier contient des classes et fonctions de base pour sauvegarder les fichiers ‘.txt’ et frise de sortie</p>
+<p>This file contains basic classes and functions for saving ‘.txt’ files and outputting timelines.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><p>save: Class dedicated to saving files.
+MetaData_WD: Toplevel window for entering metadata.</p>
+</dd>
+<dt>Functions:</dt><dd><p>None</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="frise.save.MetaData_WD">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">frise.save.</span></span><span class="sig-name descname"><span class="pre">MetaData_WD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.MetaData_WD" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CTkToplevel</span></code></p>
-<p>fenetre toplevel pour saisir les metadonnées</p>
+<p>Toplevel window for entering metadata.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="frise.save.MetaData_WD.liste">
 <span class="sig-name descname"><span class="pre">liste</span></span><a class="headerlink" href="#frise.save.MetaData_WD.liste" title="Link to this definition">¶</a></dt>
-<dd><p>liste de symptomes a sauvegarder</p>
+<dd><p>List of symptoms to be saved.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list</p>
@@ -204,7 +246,7 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="frise.save.MetaData_WD.filename">
 <span class="sig-name descname"><span class="pre">filename</span></span><a class="headerlink" href="#frise.save.MetaData_WD.filename" title="Link to this definition">¶</a></dt>
-<dd><p>chemin du fichier dans lequel ecrire</p>
+<dd><p>Path of the file to write to.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>string</p>
@@ -215,10 +257,10 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="frise.save.MetaData_WD.get_metadata">
 <span class="sig-name descname"><span class="pre">get_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.MetaData_WD.get_metadata" title="Link to this definition">¶</a></dt>
-<dd><p>ecrire une liste des metadonnées sous la forme [heure réelle, patient, praticien]</p>
+<dd><p>Write a list of metadata in the form [real time, patient, practitioner].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>event</strong> (<em>any</em>) – correspont a l’ecriture dans les box de texte</p>
+<dd class="field-odd"><p><strong>event</strong> (<em>any</em>) – Corresponds to writing in the text boxes.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -229,14 +271,14 @@ Fait appel à la fonction EcrireSymptome</p>
 <dt class="sig sig-object py" id="frise.save.save">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">frise.save.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Liste_symptomes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>classe dédiée à la sauvegarde des fichiers</p>
+<p>Class dedicated to saving files.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="frise.save.save.symptomes">
 <span class="sig-name descname"><span class="pre">symptomes</span></span><a class="headerlink" href="#frise.save.save.symptomes" title="Link to this definition">¶</a></dt>
-<dd><p>liste des symptomes a sauvegarder</p>
+<dd><p>List of symptoms to be saved</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Liste</p>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -244,10 +286,10 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="frise.save.save.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save.save" title="Link to this definition">¶</a></dt>
-<dd><p>Enregistre les symptomes dans un fichier pour etre rechargés</p>
+<dd><p>Saves the symptoms to a file for reloading.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> – message d’erreur si echec de recuperation du chemin du fichier.</p>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – Error message if failed to retrieve file path.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -255,10 +297,10 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="frise.save.save.set_symptomes">
 <span class="sig-name descname"><span class="pre">set_symptomes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Liste_symptomes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save.set_symptomes" title="Link to this definition">¶</a></dt>
-<dd><p>Actualise les symptomes</p>
+<dd><p>Updates the symptoms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>Liste_symptomes</strong> (<em>list</em>) – Liste de symptomes</p>
+<dd class="field-odd"><p><strong>Liste_symptomes</strong> (<em>list</em>) – List of symptoms</p>
 </dd>
 </dl>
 </dd></dl>
@@ -266,10 +308,10 @@ Fait appel à la fonction EcrireSymptome</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="frise.save.save.write_report">
 <span class="sig-name descname"><span class="pre">write_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frise.save.save.write_report" title="Link to this definition">¶</a></dt>
-<dd><p>Ecrit un fichier lisible par un humain</p>
+<dd><p>Writes a human-readable file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> – message d’erreur si echec de recuperation du chemin du fichier.</p>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – Error message if failed to retrieve file path.</p>
 </dd>
 </dl>
 </dd></dl>
