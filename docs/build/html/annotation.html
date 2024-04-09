@@ -44,24 +44,6 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-annotation.class_Menu_symptomes">
-<span id="annotation-class-menu-symptomes-module"></span><h2>annotation.class_Menu_symptomes module<a class="headerlink" href="#module-annotation.class_Menu_symptomes" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="annotation.class_Menu_symptomes.MenuSymptomes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">annotation.class_Menu_symptomes.</span></span><span class="sig-name descname"><span class="pre">MenuSymptomes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_Menu_symptomes.MenuSymptomes" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CTkFrame</span></code></p>
-<p>Classe pour avoir les menus déroulants et la recherche textuelle
-Les fichiers de symptomes doivent etre de la forme : Categorie; Symptome1; Symptome2; Symptome3</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="annotation.class_Menu_symptomes.MenuSymptomes.filtrer_options">
-<span class="sig-name descname"><span class="pre">filtrer_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.class_Menu_symptomes.MenuSymptomes.filtrer_options" title="Link to this definition">¶</a></dt>
-<dd><p>filtre les options d’un menu déroulant en fonction d’une recherche textuelle
-affiche dans le menu déroulant la premiere option correspondante</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
 <section id="module-annotation.class_symptome">
 <span id="annotation-class-symptome-module"></span><h2>annotation.class_symptome module<a class="headerlink" href="#module-annotation.class_symptome" title="Link to this heading">¶</a></h2>
 <p>This module defines a Symptome class used for instantiating symptom objects.</p>
@@ -307,9 +289,6 @@ Comment
 </dd></dl>
 
 </section>
-<section id="annotation-menu-deroulant-anaelle-module">
-<h2>annotation.menu_deroulant_anaelle module<a class="headerlink" href="#annotation-menu-deroulant-anaelle-module" title="Link to this heading">¶</a></h2>
-</section>
 <section id="module-annotation.pop_up">
 <span id="annotation-pop-up-module"></span><h2>annotation.pop_up module<a class="headerlink" href="#module-annotation.pop_up" title="Link to this heading">¶</a></h2>
 <p>This module defines a SymptomeEditor class for editing symptom attributes via a graphical user interface.</p>
@@ -359,17 +338,26 @@ Allows editing of symptoms through a window.</p>
 </dd></dl>
 
 </section>
-<section id="module-annotation.recherche_menu_deroulant">
-<span id="annotation-recherche-menu-deroulant-module"></span><h2>annotation.recherche_menu_déroulant module<a class="headerlink" href="#module-annotation.recherche_menu_deroulant" title="Link to this heading">¶</a></h2>
+<section id="module-annotation.load_symptomes">
+<span id="annotation-load-symptomes-module"></span><h2>annotation.load_symptomes module<a class="headerlink" href="#module-annotation.load_symptomes" title="Link to this heading">¶</a></h2>
+<p>Functions for loading symptoms from text files</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="annotation.recherche_menu_deroulant.filtrer_options">
-<span class="sig-prename descclassname"><span class="pre">annotation.recherche_menu_déroulant.</span></span><span class="sig-name descname"><span class="pre">filtrer_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.recherche_menu_deroulant.filtrer_options" title="Link to this definition">¶</a></dt>
-<dd><p>filtre les options d’un menu déroulant en fonction d’une recherche textuelle</p>
+<dt class="sig sig-object py" id="annotation.load_symptomes.read_symptoms">
+<span class="sig-prename descclassname"><span class="pre">annotation.load_symptomes.</span></span><span class="sig-name descname"><span class="pre">read_symptoms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.load_symptomes.read_symptoms" title="Link to this definition">¶</a></dt>
+<dd><p>Reads a text file containing symptoms and returns a list of Symptome objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – The path to the text file containing symptoms.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of Symptome objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-</section>
-<section id="annotation-symptom-label-module">
-<h2>annotation.symptom_label module<a class="headerlink" href="#annotation-symptom-label-module" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-annotation">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-annotation" title="Link to this heading">¶</a></h2>
@@ -388,13 +376,6 @@ Allows editing of symptoms through a window.</p>
     <ul>
 <li><a class="reference internal" href="#">annotation package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-annotation.class_Menu_symptomes">annotation.class_Menu_symptomes module</a><ul>
-<li><a class="reference internal" href="#annotation.class_Menu_symptomes.MenuSymptomes"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes</span></code></a><ul>
-<li><a class="reference internal" href="#annotation.class_Menu_symptomes.MenuSymptomes.filtrer_options"><code class="docutils literal notranslate"><span class="pre">MenuSymptomes.filtrer_options()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><a class="reference internal" href="#module-annotation.class_symptome">annotation.class_symptome module</a><ul>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome"><code class="docutils literal notranslate"><span class="pre">Symptome</span></code></a><ul>
 <li><a class="reference internal" href="#annotation.class_symptome.Symptome.ID"><code class="docutils literal notranslate"><span class="pre">Symptome.ID</span></code></a></li>
@@ -429,7 +410,6 @@ Allows editing of symptoms through a window.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#annotation-menu-deroulant-anaelle-module">annotation.menu_deroulant_anaelle module</a></li>
 <li><a class="reference internal" href="#module-annotation.pop_up">annotation.pop_up module</a><ul>
 <li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor</span></code></a><ul>
 <li><a class="reference internal" href="#annotation.pop_up.SymptomeEditor.Symp"><code class="docutils literal notranslate"><span class="pre">SymptomeEditor.Symp</span></code></a></li>
@@ -439,11 +419,10 @@ Allows editing of symptoms through a window.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-annotation.recherche_menu_deroulant">annotation.recherche_menu_déroulant module</a><ul>
-<li><a class="reference internal" href="#annotation.recherche_menu_deroulant.filtrer_options"><code class="docutils literal notranslate"><span class="pre">filtrer_options()</span></code></a></li>
+<li><a class="reference internal" href="#module-annotation.load_symptomes">annotation.load_symptomes module</a><ul>
+<li><a class="reference internal" href="#annotation.load_symptomes.read_symptoms"><code class="docutils literal notranslate"><span class="pre">read_symptoms()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#annotation-symptom-label-module">annotation.symptom_label module</a></li>
 <li><a class="reference internal" href="#module-annotation">Module contents</a></li>
 </ul>
 </li>

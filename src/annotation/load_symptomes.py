@@ -1,13 +1,20 @@
 """
-fonctions pour charger des symptomes
+Functions for loading symptoms from text files
 """
 from annotation.class_symptome import Symptome
 
 
 def read_symptoms(filename):
     """
-    lit un fichier texte de symptomes symptome dans un fichier texte
+    Reads a text file containing symptoms and returns a list of Symptome objects.
+
+    Args:
+        filename (str): The path to the text file containing symptoms.
+
+    Returns:
+        list: A list of Symptome objects.
     """
+
     symptom_list = []
     with open(filename, 'r') as file:
         

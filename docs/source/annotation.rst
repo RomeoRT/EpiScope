@@ -4,13 +4,6 @@ annotation package
 Submodules
 ----------
 
-annotation.class\_Menu\_symptomes module
-----------------------------------------
-
-.. automodule:: annotation.class_Menu_symptomes
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 annotation.class\_symptome module
 ---------------------------------
@@ -20,13 +13,6 @@ annotation.class\_symptome module
    :undoc-members:
    :show-inheritance:
 
-annotation.menu\_deroulant\_anaelle module
-------------------------------------------
-
-.. automodule:: annotation.menu_deroulant_anaelle
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 annotation.pop\_up module
 -------------------------
@@ -36,21 +22,14 @@ annotation.pop\_up module
    :undoc-members:
    :show-inheritance:
 
-annotation.recherche\_menu\_déroulant module
---------------------------------------------
+annotation.load\_symptomes module
+---------------------------------
 
-.. automodule:: annotation.recherche_menu_déroulant
+.. automodule:: annotation.load_symptomes
    :members:
    :undoc-members:
    :show-inheritance:
 
-annotation.symptom\_label module
---------------------------------
-
-.. automodule:: annotation.symptom_label
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 Module contents
 ---------------
