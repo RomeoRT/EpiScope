@@ -110,7 +110,7 @@ def afficher_frise(liste):
         if symp[8] != "":
             symp[8] = f"\nComment: {symp[8]}"
         
-        annotation = ax.annotate(f"{symp[0]}\nStart: {symp[9]}End: {symp[10]}{symp[3]}{symp[4]}{symp[5]}{symp[6]}{symp[7]}{symp[8]}", 
+        annotation = ax.annotate(f"{symp[0]}\nStart: {symp[9]}\nEnd: {symp[10]}{symp[3]}{symp[4]}{symp[5]}{symp[6]}{symp[7]}{symp[8]}", 
                                 xy=(float(symp[1]) + (float(symp[2]) - float(symp[1])) / 2, y + 0.15),
                                 bbox=dict(boxstyle="round", fc="w"), arrowprops=dict(arrowstyle="->"), zorder=3)
         annotation.set_visible(False)  # Rendre l'annotation initialement invisible
