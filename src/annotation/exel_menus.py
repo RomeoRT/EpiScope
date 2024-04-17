@@ -79,38 +79,22 @@ def Read_excel(file_path):
 
     return symptoms_structure
 
-# -----------------------------------------
-#            Initialize the GUI
-# -----------------------------------------
-root = tk.Tk()
-root.title('Symptom Selection')
+def add_submenus(menu, data, full_path, on_select):
+    """
+    Add submenus to the main menu based on the provided data.
+    
+    This function iterates through the data dictionary to add submenus 
+    and menu items to the provided Tkinter menu. It checks for different 
+    scenarios in the data structure to determine the appropriate way to 
+    add submenus and menu items.
+    
+    Args:
+        menu (tk.Menu): The menu to which the submenus will be added.
+        data (dict): The hierarchical data containing submenu information.
+        full_path (str): The full path to the current menu item.
+        on_select (function) : The function to select the symptom
+    """
 
-# Chemin vers le nouveau fichier Excel
-file_path = 'ictal_symptoms_zeft_copie.xlsx'  # Assurez-vous que ce chemin est correct
-symptoms_structure = Read_excel(file_path)
-
-# _________________________________________
-#       initialize the buttons
-largeur = 900
-
-my_font = tkFont.Font(size=12)    
-# Création du Menubutton
-menubutton_objective = tk.Menubutton(text="Objective/Motor Symptoms", width=largeur//9, direction='flush', relief="flat", font=my_font)
-menubutton_objective.pack(side='top', padx=5, pady=20, expand=False)
-# Création du Menubutton
-menubutton_subjective = tk.Menubutton(text="Subjective Symptoms", width=largeur//9, relief="flat", font=my_font)
-menubutton_subjective.pack(side='top', padx=5, pady=10, expand=False)
-
-
-# Création du menu principal
-menu_objective = tk.Menu(menubutton_objective, tearoff=0, font=my_font)
-menubutton_objective.config(menu=menu_objective)
-
-menu_subjective = tk.Menu(menubutton_subjective, tearoff=0, font=my_font)
-menubutton_subjective.config(menu=menu_subjective)
-
-# Function to add elements to the menu
-def add_submenus(menu, data, full_path):
     for desc, topo_lats in data.items():
         if topo_lats is not None:  # Check if there is additional information
             if desc == '':  # Si la description est vide, attacher directement les sous-éléments
@@ -157,25 +141,28 @@ def add_submenus(menu, data, full_path):
             new_path = full_path + f"{desc} >  >  >"
             menu.add_command(label=desc, command=lambda path=new_path: on_select(path))
 
-#____________________________________________________________________________
-# Build the cascading menu
+def build_menu(structure, main_menu, on_select):
+    """
+    Build a cascading menu based on the provided structure.
+    
+    This function builds a cascading menu using Tkinter based on the 
+    hierarchical structure provided. It iterates through the structure 
+    to add main menu items, submenus, and menu items. Depending on the 
+    data in the structure, it calls the add_submenus function to add 
+    appropriate submenus and menu items to the main menu.
+    
+    Args:
+        structure (dict): The hierarchical structure of the menu.
+        main_menu (tk.Menu): The main menu to which the cascading menu will be added.
+        on_select (function) : The function to select the symptom
+    """
 
-def on_select(path):
-    print(f"Selected Path: {path}")
-
-# build sub-structures for objective and subjectives symptoms
-symptoms_objective = symptoms_structure['Objective']
-symptoms_subjective = symptoms_structure['Subjective']
-
-def build_menu(structure, main_menu):
-    #for typology, designations in symptoms_structure.items():
-    #typology_menu = Menu(main_menu, tearoff=0)
     full_path = f""
     for designation, descriptions in structure.items():
         full_path = f"{designation} > "
         if descriptions is not None:  # Check if there are descriptions or it's a flag indicating no additional info
             designation_menu = Menu(main_menu, tearoff=0)
-            add_submenus(designation_menu, descriptions, full_path)
+            add_submenus(designation_menu, descriptions, full_path, on_select)
             if designation_menu.index('end') is not None:
                 main_menu.add_cascade(label=designation, menu=designation_menu)
             else:
@@ -184,13 +171,49 @@ def build_menu(structure, main_menu):
             full_path = f"{designation} > > > > "
             # Directly add the designation as a command if no additional info
             main_menu.add_command(label=designation, command=lambda path=full_path: on_select(path))
-   # if main_menu.index('end') is not None:
-    #    #### c'est là que l'on créé objective et subjective
-     #   main_menu.add_cascade(label=typology + "zeft", menu=main_menu) 
 
-build_menu(symptoms_objective, menu_objective)
-build_menu(symptoms_subjective, menu_subjective)
+if __name__ == "__main__":
+    # -----------------------------------------
+    #            Initialize the GUI
+    # -----------------------------------------
+    root = tk.Tk()
+    root.title('Symptom Selection')
+    
+    def on_select(path):
+            print(f"Selected Path: {path}")
+    
+    # Chemin vers le nouveau fichier Excel
+    file_path = 'ictal_symptoms_zeft_copie.xlsx'  # Assurez-vous que ce chemin est correct
+    symptoms_structure = Read_excel(file_path)
 
-root.mainloop()
+    # _________________________________________
+    #       initialize the buttons
+    largeur = 900
 
-# command=lambda path=full_path: on_select(path)
+    my_font = tkFont.Font(size=12)    
+    # Création du Menubutton
+    menubutton_objective = tk.Menubutton(text="Objective/Motor Symptoms", width=largeur//9, direction='flush', relief="flat", font=my_font)
+    menubutton_objective.pack(side='top', padx=5, pady=20, expand=False)
+    # Création du Menubutton
+    menubutton_subjective = tk.Menubutton(text="Subjective Symptoms", width=largeur//9, relief="flat", font=my_font)
+    menubutton_subjective.pack(side='top', padx=5, pady=10, expand=False)
+
+
+    # Création du menu principal
+    menu_objective = tk.Menu(menubutton_objective, tearoff=0, font=my_font)
+    menubutton_objective.config(menu=menu_objective)
+
+    menu_subjective = tk.Menu(menubutton_subjective, tearoff=0, font=my_font)
+    menubutton_subjective.config(menu=menu_subjective)
+
+    #____________________________________________________________________________
+    # Build the cascading menu
+
+    # build sub-structures for objective and subjectives symptoms
+    symptoms_objective = symptoms_structure['Objective']
+    symptoms_subjective = symptoms_structure['Subjective']
+
+    build_menu(symptoms_objective, menu_objective, on_select)
+    build_menu(symptoms_subjective, menu_subjective, on_select)
+
+    root.mainloop()
