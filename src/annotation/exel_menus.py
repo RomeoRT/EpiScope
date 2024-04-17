@@ -183,7 +183,7 @@ if __name__ == "__main__":
             print(f"Selected Path: {path}")
     
     # Chemin vers le nouveau fichier Excel
-    file_path = 'ictal_symptoms_zeft_copie.xlsx'  # Assurez-vous que ce chemin est correct
+    file_path = 'ictal_symptoms.xlsx'  # Assurez-vous que ce chemin est correct
     symptoms_structure = Read_excel(file_path)
 
     # _________________________________________
