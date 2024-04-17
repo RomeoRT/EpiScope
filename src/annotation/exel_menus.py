@@ -94,6 +94,7 @@ def add_submenus(menu, data, full_path, on_select):
         full_path (str): The full path to the current menu item.
         on_select (function) : The function to select the symptom
     """
+    ES = ""
 
     for desc, topo_lats in data.items():
         if topo_lats is not None:  # Check if there is additional information
@@ -102,13 +103,13 @@ def add_submenus(menu, data, full_path, on_select):
                     if topo:  # S'il y a une topographie, l'ajouter comme un menu en cascade
                         topo_menu = Menu(menu, tearoff=0)
                         for lat in lats:
-                            new_path = full_path + f"{desc} > {topo} > {lat} >"
+                            new_path = full_path + f"{ES}>{ES}>{topo}>{lat}>"
                             topo_menu.add_command(label=lat, command=lambda path=new_path: on_select(path))
                         menu.add_cascade(label=topo, menu=topo_menu)
                     
                     else:  # S'il n'y a pas de topo, attacher directement les latéralisations
                         for lat in lats:
-                            new_path = full_path + f"{desc} > > {lat} >"
+                            new_path = full_path + f"{ES}>{ES}>{ES}>{lat} >"
                             menu.add_command(label=lat, command=lambda path=new_path: on_select(path))
         
             
@@ -118,27 +119,27 @@ def add_submenus(menu, data, full_path, on_select):
                     if ss_desc =='':
                         topo_menu = Menu(desc_menu, tearoff=0)
                         for lat in lats:
-                            new_path = full_path + f"{desc} > > {topo} > {lat} >"
+                            new_path = full_path + f"{desc}>{ES}>{topo}>{lat} >"
                             topo_menu.add_command(label=lat, command=lambda path=new_path: on_select(path))
                         if topo:
                             desc_menu.add_cascade(label=topo, menu=topo_menu)
                         else:
                             for lat in lats:
-                                new_path = full_path + f"{desc} >  >  > {lat} >"
+                                new_path = full_path + f">{ES}>{desc}>{lat} >"     # /!\ strange behaviour here
                                 desc_menu.add_command(label=lat, command=lambda path=new_path: on_select(path))
                     else :
                         ss_desc_menu = Menu(desc_menu, tearoff=0)
-                        new_path = full_path + f"{desc} > {ss_desc[0]} >  >"
+                        new_path = full_path + f"{desc}>{ss_desc[0]}>{ES}>{ES}>"
                         desc_menu.add_command(label=ss_desc, command=lambda path=new_path: on_select(path))
 
                 if desc_menu.index('end') is not None:
                     menu.add_cascade(label=desc if desc else 'General', menu=desc_menu)
                 elif desc:
-                    new_path = full_path + f"{desc} > {topo} >  >"
+                    new_path = full_path + f"{desc}>{ES}>{topo}>{ES}>"
                     menu.add_command(label=desc, command=lambda path=new_path: on_select(path))
         else:
             # Add the designation as a command if there are no additional details
-            new_path = full_path + f"{desc} >  >  >"
+            new_path = full_path + f"{desc}>{ES}>{ES}>{ES}>"
             menu.add_command(label=desc, command=lambda path=new_path: on_select(path))
 
 def build_menu(structure, main_menu, on_select):
@@ -159,7 +160,7 @@ def build_menu(structure, main_menu, on_select):
 
     full_path = f""
     for designation, descriptions in structure.items():
-        full_path = f"{designation} > "
+        full_path = f"{designation}> "
         if descriptions is not None:  # Check if there are descriptions or it's a flag indicating no additional info
             designation_menu = Menu(main_menu, tearoff=0)
             add_submenus(designation_menu, descriptions, full_path, on_select)
@@ -168,7 +169,7 @@ def build_menu(structure, main_menu, on_select):
             else:
                 main_menu.add_command(label=designation)
         else:
-            full_path = f"{designation} > > > > "
+            full_path = f"{designation} >>>> "
             # Directly add the designation as a command if no additional info
             main_menu.add_command(label=designation, command=lambda path=full_path: on_select(path))
 
