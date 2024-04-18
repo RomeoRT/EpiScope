@@ -4,7 +4,7 @@ src/frise/__pycache__/save.cpython-312.pyc
 src\annotation\__pycache__*
 src\test_interface.py
 
-src/vido_player
+src/video_player
 
 data\crises_exemples_prive
 src/temp_audio.wav

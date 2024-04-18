@@ -84,19 +84,23 @@ class Menu_symptomes(ctk.CTkFrame):
         """
         super().__init__(master, fg_color=couleur, corner_radius=0, border_width=bordure, width=largeur)
         
+        try:
         
         
-        self.interface_generale = interface_generale
-        self.file_name = "Objective_Symptomes.txt"
-        title, symptoms = self.read_symptoms_from_file(self.file_name)
-        self.symptoms = symptoms
-        self.file_name2 = "Subjective_Symptomes.txt"
-        title2, symptoms2 = self.read_symptoms_from_file(self.file_name2)
-        self.symptoms2 = symptoms2
+            self.interface_generale = interface_generale
+            self.file_name = "Objective_Symptomes.txt"
+            title, symptoms = self.read_symptoms_from_file(self.file_name)
+            self.symptoms = symptoms
+            self.file_name2 = "Subjective_Symptomes.txt"
+            title2, symptoms2 = self.read_symptoms_from_file(self.file_name2)
+            self.symptoms2 = symptoms2
 
 
-       
-        self.create_dropdown_menus(master, largeur)  # Crée et affiche les menus déroulants
+        
+            self.create_dropdown_menus(master, largeur)  # Crée et affiche les menus déroulants
+        
+        except FileNotFoundError :
+            print("les fichiers ne sont pas a leur place, lolilol")
 
     def create_dropdown_menus(self,master,largeur):
         """
