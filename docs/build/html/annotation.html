@@ -374,12 +374,16 @@ This structure is designed to facilitate the creation of a graphical
 interface for displaying and interacting with the symptom data.</p>
 <p>The Excel file is expected to have columns named ‘Typologie’, ‘Designation’,
 ‘Description’, ‘Sub_description’,’Topography’, and ‘Lateralized’.</p>
-<p>The data is organized based on the following criteria:
-- There can not be sub sescription without description.
-- If there is no description, no sub_description no topography, but there are lateralizations, they are stored under an empty string.
-- If there is no additional information, a ‘None’ flag is stored.
-- If there is topography and lateralizations but no description, the data is stored based on topography.
-- Otherwise, the detailed information is stored including description, topography, and lateralizations.</p>
+<dl class="simple">
+<dt>The data is organized based on the following criteria:</dt><dd><ul class="simple">
+<li><p>There can not be sub sescription without description.</p></li>
+<li><p>If there is no description, no sub_description no topography, but there are lateralizations, they are stored under an empty string.</p></li>
+<li><p>If there is no additional information, a ‘None’ flag is stored.</p></li>
+<li><p>If there is topography and lateralizations but no description, the data is stored based on topography.</p></li>
+<li><p>Otherwise, the detailed information is stored including description, topography, and lateralizations.</p></li>
+</ul>
+</dd>
+</dl>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Read_excel</span><span class="p">(</span><span class="s1">&#39;ictal_symptoms.xlsx&#39;</span><span class="p">)</span>
 </pre></div>

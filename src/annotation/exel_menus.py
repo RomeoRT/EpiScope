@@ -27,11 +27,11 @@ def Read_excel(file_path):
     'Description', 'Sub_description','Topography', and 'Lateralized'.
     
     The data is organized based on the following criteria:
-    - There can not be sub sescription without description.
-    - If there is no description, no sub_description no topography, but there are lateralizations, they are stored under an empty string.
-    - If there is no additional information, a 'None' flag is stored.
-    - If there is topography and lateralizations but no description, the data is stored based on topography.
-    - Otherwise, the detailed information is stored including description, topography, and lateralizations.
+        - There can not be sub sescription without description.
+        - If there is no description, no sub_description no topography, but there are lateralizations, they are stored under an empty string.
+        - If there is no additional information, a 'None' flag is stored.
+        - If there is topography and lateralizations but no description, the data is stored based on topography.
+        - Otherwise, the detailed information is stored including description, topography, and lateralizations.
     
     Example:
         >>> Read_excel('ictal_symptoms.xlsx')
