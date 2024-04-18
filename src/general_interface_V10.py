@@ -91,14 +91,13 @@ class Menu_symptomes(ctk.CTkFrame):
 
         
 
-        self.create_dropdown_menus(master, largeur)  # Crée et affiche les menus déroulants
+        self.create_dropdown_menus(largeur)  # Crée et affiche les menus déroulants
 
-    def create_dropdown_menus(self,master,largeur):
+    def create_dropdown_menus(self,largeur):
         """
         Creates a drop-down menu containing the various symptoms classified according to whether they are objective or subjective.
 
         Args:
-            master (any): widget in which to display the menus
             largeur (int): width of the frame of the menus
         """
         my_font = tkFont.Font(size=12)    

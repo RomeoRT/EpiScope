@@ -99,6 +99,26 @@ ecrire_rapport: Writes a report with symptom details.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="frise.ecriture_fichier.compute_duration">
+<span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">compute_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.compute_duration" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the duration between two time strings in seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>deb</strong> (<em>str</em>) – Start time string in the format “hh:mm:ss”.</p></li>
+<li><p><strong>fin</strong> (<em>str</em>) – End time string in the format “hh:mm:ss”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Total duration between the start and end time in seconds.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="frise.ecriture_fichier.ecrire_rapport">
 <span class="sig-prename descclassname"><span class="pre">frise.ecriture_fichier.</span></span><span class="sig-name descname"><span class="pre">ecrire_rapport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Symptom_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frise.ecriture_fichier.ecrire_rapport" title="Link to this definition">¶</a></dt>
 <dd><p>Writes a report with symptom details to a file.</p>
@@ -335,6 +355,7 @@ MetaData_WD: Toplevel window for entering metadata.</p>
 <li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.EcrireListeSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireListeSymptome()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.EcrireMetaData"><code class="docutils literal notranslate"><span class="pre">EcrireMetaData()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.EcrireSymptome"><code class="docutils literal notranslate"><span class="pre">EcrireSymptome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.compute_duration"><code class="docutils literal notranslate"><span class="pre">compute_duration()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.ecrire_rapport"><code class="docutils literal notranslate"><span class="pre">ecrire_rapport()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#frise.ecriture_fichier.format"><code class="docutils literal notranslate"><span class="pre">format()</span></code></a></li>
 </ul>

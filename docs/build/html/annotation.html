@@ -350,6 +350,88 @@ Allows editing of symptoms through a window.</p>
 </dd></dl>
 
 </section>
+<section id="module-annotation.exel_menus">
+<span id="annotation-exel-menus-module"></span><h2>annotation.exel_menus module<a class="headerlink" href="#module-annotation.exel_menus" title="Link to this heading">¶</a></h2>
+<p>menus and submenus based on exel file</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="annotation.exel_menus.Read_excel">
+<span class="sig-prename descclassname"><span class="pre">annotation.exel_menus.</span></span><span class="sig-name descname"><span class="pre">Read_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.exel_menus.Read_excel" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an Excel file and organizes the data into a hierarchical structure for a graphical interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the Excel file containing the data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A hierarchical dictionary containing organized symptom data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p>The function reads an Excel file specified by ‘file_path’,
+processes the data, and organizes it into a hierarchical structure.
+This structure is designed to facilitate the creation of a graphical
+interface for displaying and interacting with the symptom data.</p>
+<p>The Excel file is expected to have columns named ‘Typologie’, ‘Designation’,
+‘Description’, ‘Sub_description’,’Topography’, and ‘Lateralized’.</p>
+<p>The data is organized based on the following criteria:
+- There can not be sub sescription without description.
+- If there is no description, no sub_description no topography, but there are lateralizations, they are stored under an empty string.
+- If there is no additional information, a ‘None’ flag is stored.
+- If there is topography and lateralizations but no description, the data is stored based on topography.
+- Otherwise, the detailed information is stored including description, topography, and lateralizations.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Read_excel</span><span class="p">(</span><span class="s1">&#39;ictal_symptoms.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The function uses Pandas to read the Excel file and defaultdict
+to create the hierarchical structure.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="annotation.exel_menus.add_submenus">
+<span class="sig-prename descclassname"><span class="pre">annotation.exel_menus.</span></span><span class="sig-name descname"><span class="pre">add_submenus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_select</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.exel_menus.add_submenus" title="Link to this definition">¶</a></dt>
+<dd><p>Add submenus to the main menu based on the provided data.</p>
+<p>This function iterates through the data dictionary to add submenus
+and menu items to the provided Tkinter menu. It checks for different
+scenarios in the data structure to determine the appropriate way to
+add submenus and menu items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu</strong> (<em>tk.Menu</em>) – The menu to which the submenus will be added.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The hierarchical data containing submenu information.</p></li>
+<li><p><strong>full_path</strong> (<em>str</em>) – The full path to the current menu item.</p></li>
+<li><p><strong>on_select</strong> (<em>function</em>) – The function to select the symptom</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="annotation.exel_menus.build_menu">
+<span class="sig-prename descclassname"><span class="pre">annotation.exel_menus.</span></span><span class="sig-name descname"><span class="pre">build_menu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_menu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_select</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.exel_menus.build_menu" title="Link to this definition">¶</a></dt>
+<dd><p>Build a cascading menu based on the provided structure.</p>
+<p>This function builds a cascading menu using Tkinter based on the
+hierarchical structure provided. It iterates through the structure
+to add main menu items, submenus, and menu items. Depending on the
+data in the structure, it calls the add_submenus function to add
+appropriate submenus and menu items to the main menu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>dict</em>) – The hierarchical structure of the menu.</p></li>
+<li><p><strong>main_menu</strong> (<em>tk.Menu</em>) – The main menu to which the cascading menu will be added.</p></li>
+<li><p><strong>on_select</strong> (<em>function</em>) – The function to select the symptom</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 
 
@@ -420,6 +502,12 @@ Allows editing of symptoms through a window.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-annotation.load_symptomes">annotation.load_symptomes module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#annotation.load_symptomes.read_symptoms"><code class="docutils literal notranslate"><span class="pre">read_symptoms()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-annotation.exel_menus">annotation.exel_menus module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#annotation.exel_menus.Read_excel"><code class="docutils literal notranslate"><span class="pre">Read_excel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotation.exel_menus.add_submenus"><code class="docutils literal notranslate"><span class="pre">add_submenus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotation.exel_menus.build_menu"><code class="docutils literal notranslate"><span class="pre">build_menu()</span></code></a></li>
 </ul>
 </li>
 </ul>

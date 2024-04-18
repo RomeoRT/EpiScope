@@ -13,10 +13,10 @@ def Read_excel(file_path):
     Reads an Excel file and organizes the data into a hierarchical structure for a graphical interface.
     
     Args:
-    - file_path (str): Path to the Excel file containing the data.
+        file_path (str): Path to the Excel file containing the data.
     
     Returns:
-    - dict: A hierarchical dictionary containing organized symptom data.
+        dict: A hierarchical dictionary containing organized symptom data.
     
     The function reads an Excel file specified by 'file_path', 
     processes the data, and organizes it into a hierarchical structure. 
@@ -28,20 +28,18 @@ def Read_excel(file_path):
     
     The data is organized based on the following criteria:
     - There can not be sub sescription without description.
-    - If there is no description, no sub_description no topography, but there are lateralizations, 
-      they are stored under an empty string.
+    - If there is no description, no sub_description no topography, but there are lateralizations, they are stored under an empty string.
     - If there is no additional information, a 'None' flag is stored.
-    - If there is topography and lateralizations but no description, 
-      the data is stored based on topography.
-    - Otherwise, the detailed information is stored including description, 
-      topography, and lateralizations.
+    - If there is topography and lateralizations but no description, the data is stored based on topography.
+    - Otherwise, the detailed information is stored including description, topography, and lateralizations.
     
     Example:
-    >>> Read_excel('ictal_symptoms.xlsx')
+        >>> Read_excel('ictal_symptoms.xlsx')
     
     Note:
-    - The function uses Pandas to read the Excel file and defaultdict 
-      to create the hierarchical structure.
+        The function uses Pandas to read the Excel file and defaultdict 
+        to create the hierarchical structure.
+    
     """
     
     # Load data from the Excel file
@@ -93,6 +91,7 @@ def add_submenus(menu, data, full_path, on_select):
         data (dict): The hierarchical data containing submenu information.
         full_path (str): The full path to the current menu item.
         on_select (function) : The function to select the symptom
+    
     """
     ES = ""
 

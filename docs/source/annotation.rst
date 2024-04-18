@@ -30,3 +30,12 @@ annotation.load\_symptomes module
    :show-inheritance:
 
 
+annotation.exel\_menus module
+---------------------------------
+
+.. automodule:: annotation.exel_menus
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
