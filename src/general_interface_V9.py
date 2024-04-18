@@ -38,7 +38,7 @@ from PIL import Image, ImageTk
 import datetime
 import tkinter.font as tkFont
 import os
-import tkinter.font as tkFont
+
 
 from moviepy.editor import VideoFileClip
 import pygame
