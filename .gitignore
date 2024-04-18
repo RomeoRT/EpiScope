@@ -1,9 +1,10 @@
+
 src/frise/__pycache__/ecriture_fichier.cpython-312.pyc
 src/frise/__pycache__/save.cpython-312.pyc
 src\annotation\__pycache__*
 src\test_interface.py
 
-
+src/vido_player
 
 data\crises_exemples_prive
 src/temp_audio.wav
@@ -67,3 +68,4 @@ data/crises_exemples_prive/090429FAEX_0000.MPG
 data/crises_exemples_prive/130213I-DEX_0000.AVI
 data/crises_exemples_prive/130213I-EEX_0001.AVI
 src/annotation/__pycache__/exel_menus.cpython-312.pyc
+temp_audio.wav
