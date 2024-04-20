@@ -63,6 +63,7 @@ from annotation.class_symptome import Symptome
 from annotation.pop_up import SymptomeEditor
 import annotation.load_symptomes as load
 import annotation.exel_menus as exel
+import annotation.search_bar as search
 
 
 class Menu_symptomes(ctk.CTkFrame):
@@ -92,6 +93,7 @@ class Menu_symptomes(ctk.CTkFrame):
         
 
         self.create_dropdown_menus(largeur)  # Crée et affiche les menus déroulants
+        self.bar = search.search_symptomes(self, self.symptoms_structure, self.on_select_bar, largeur//10) 
 
     def create_dropdown_menus(self,largeur):
         """
@@ -122,7 +124,6 @@ class Menu_symptomes(ctk.CTkFrame):
         exel.build_menu(symptoms_objective, menu_objective, self.on_select)
         exel.build_menu(symptoms_subjective, menu_subjective, self.on_select)
 
-
     def on_select(self, selection):
         """
         Symptoms selector
@@ -137,7 +138,7 @@ class Menu_symptomes(ctk.CTkFrame):
         """
         current_video_time = self.interface_generale.get_current_video_time() 
         
-        print(selection)
+        #print(selection)
 
         buffer_attributs = selection.split(">")
 
@@ -147,6 +148,23 @@ class Menu_symptomes(ctk.CTkFrame):
         attributs[2] = buffer_attributs[4]
         attributs[3] = buffer_attributs[3]
         attributs[5] = buffer_attributs[2]
+
+        attributs[6] = current_video_time
+
+        self.interface_generale.update_right_panel(attributs)
+
+    def on_select_bar(self, selection):
+        current_video_time = self.interface_generale.get_current_video_time()
+        
+        buffer_attributs = selection.split(";")
+        attributs = ["","","","","","","","",""]
+
+        if len(buffer_attributs)<2 or buffer_attributs[1] in ["Foot/Inferior limb","Hand/Superior limb",
+                                                              "Body","Eyes","Head","Eyelids","Mouth","Face",
+                                                              "Foot","Hand","Superior limb","Throat"]:
+            attributs[1] = f"{buffer_attributs[0]}"
+        else :
+            attributs[1] = f"{buffer_attributs[1]} {buffer_attributs[0]}"
 
         attributs[6] = current_video_time
 
