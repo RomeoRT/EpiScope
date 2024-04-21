@@ -1,7 +1,7 @@
 General Interface
 =================
 
-.. automodule:: general_interface_V10
+.. automodule:: general_interface
    :members:
    :undoc-members:
    :show-inheritance:
