@@ -446,17 +446,60 @@ appropriate submenus and menu items to the main menu.</p>
 <p>This class provides a search bar to look for symptoms in a hierarchical dictionary structure
 and display the matching results in a listbox. It also allows selecting an item from the listbox
 by clicking on it, triggering a specified function with the selected item as an argument.</p>
-<p>Attributes:
-- symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
-- search_entry (CTkEntry): Entry widget for user input.
-- symptom_listbox (Listbox): Listbox widget to display search results.</p>
-<p>Methods:
-- search_element(search_term): Searches for matching elements based on the search term.
-- get_selected(event, func): Retrieves the selected item from the listbox.
-- update_search(event): Updates the listbox based on the search input.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.symptoms_structure">
+<span class="sig-name descname"><span class="pre">symptoms_structure</span></span><a class="headerlink" href="#annotation.search_bar.search_symptomes.symptoms_structure" title="Link to this definition">¶</a></dt>
+<dd><p>Hierarchical dictionary containing organized symptom data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.search_entry">
+<span class="sig-name descname"><span class="pre">search_entry</span></span><a class="headerlink" href="#annotation.search_bar.search_symptomes.search_entry" title="Link to this definition">¶</a></dt>
+<dd><p>Entry widget for user input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CTkEntry</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.symptom_listbox">
+<span class="sig-name descname"><span class="pre">symptom_listbox</span></span><a class="headerlink" href="#annotation.search_bar.search_symptomes.symptom_listbox" title="Link to this definition">¶</a></dt>
+<dd><p>Listbox widget to display search results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Listbox</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.search_element">
+<span class="sig-name descname"><span class="pre">search_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.search_element" title="Link to this definition">¶</a></dt>
+<dd><p>Searches for matching elements based on the search term.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.get_selected">
 <span class="sig-name descname"><span class="pre">get_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.get_selected" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the selected item from the listbox.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.update_search">
+<span class="sig-name descname"><span class="pre">update_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.update_search" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the listbox based on the search input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">get_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
 <dd><p>Retrieves the selected item from the listbox and calls the specified function.</p>
 <p>Args:
 - event: The event object (not used directly, but required by Tkinter).
@@ -464,8 +507,8 @@ by clicking on it, triggering a specified function with the selected item as an 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.search_element">
-<span class="sig-name descname"><span class="pre">search_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.search_element" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">search_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
 <dd><p>Searches for elements matching the search term in the ‘Designation’ and ‘Description’ columns.</p>
 <p>Args:
 - symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
@@ -477,8 +520,8 @@ of the hierarchical structure and returns a list of matching elements.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.update_search">
-<span class="sig-name descname"><span class="pre">update_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.update_search" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">update_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
 <dd><p>Update the displayed symptoms based on the user input in the search bar.</p>
 <p>This function filters the symptoms based on the user input in the
 search bar and updates the listbox to show only the matching symptoms.</p>
@@ -569,9 +612,15 @@ search bar and updates the listbox to show only the matching symptoms.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-annotation.search_bar">annotation.search_bar</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#annotation.search_bar.search_symptomes"><code class="docutils literal notranslate"><span class="pre">search_symptomes</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.get_selected"><code class="docutils literal notranslate"><span class="pre">search_symptomes.get_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.symptoms_structure"><code class="docutils literal notranslate"><span class="pre">search_symptomes.symptoms_structure</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.search_entry"><code class="docutils literal notranslate"><span class="pre">search_symptomes.search_entry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.symptom_listbox"><code class="docutils literal notranslate"><span class="pre">search_symptomes.symptom_listbox</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.search_element"><code class="docutils literal notranslate"><span class="pre">search_symptomes.search_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.get_selected"><code class="docutils literal notranslate"><span class="pre">search_symptomes.get_selected()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.update_search"><code class="docutils literal notranslate"><span class="pre">search_symptomes.update_search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">search_symptomes.get_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">search_symptomes.search_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">search_symptomes.update_search()</span></code></a></li>
 </ul>
 </li>
 </ul>

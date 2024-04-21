@@ -10,14 +10,14 @@ class search_symptomes:
     by clicking on it, triggering a specified function with the selected item as an argument.
     
     Attributes:
-    - symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
-    - search_entry (CTkEntry): Entry widget for user input.
-    - symptom_listbox (Listbox): Listbox widget to display search results.
+        symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
+        search_entry (CTkEntry): Entry widget for user input.
+        symptom_listbox (Listbox): Listbox widget to display search results.
     
     Methods:
-    - search_element(search_term): Searches for matching elements based on the search term.
-    - get_selected(event, func): Retrieves the selected item from the listbox.
-    - update_search(event): Updates the listbox based on the search input.
+        search_element(search_term): Searches for matching elements based on the search term.
+        get_selected(event, func): Retrieves the selected item from the listbox.
+        update_search(event): Updates the listbox based on the search input.
     """
 
     def __init__(self, root, symptoms_struct, myfunc, width) :
