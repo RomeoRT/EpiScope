@@ -21,6 +21,7 @@ These tools enable practitioners to note directly on their patients' epileptic s
 
 **Installation :**
 ----------------
+**with pyinstaller :**
 Make sure you have the complete repository whith all dependencies installed.
 In the *Episcope/* folder, you can use the command 
 
