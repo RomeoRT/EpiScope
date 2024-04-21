@@ -130,8 +130,8 @@ class Menu_symptomes(ctk.CTkFrame):
 
         Sets the right attributes depending on the menu selection to update the symptom list 
         Recovers data linked to the video to obtain the current time
-        the selection is expected to be on the form 
-            designation > description > sub descrition> topography > lateralization
+        the selection is expected to be on the form :
+        designation > description > sub descrition> topography > lateralization
 
         Args:
             selection (path): selected symptom
@@ -154,6 +154,17 @@ class Menu_symptomes(ctk.CTkFrame):
         self.interface_generale.update_right_panel(attributs)
 
     def on_select_bar(self, selection):
+        """
+        Symptoms selector
+
+        Sets the right attributes depending on the search-bar selection to update the symptom list 
+        Recovers data linked to the video to obtain the current time
+        the selection is expected to be on the form :
+        designation ; description 
+
+        Args:
+            selection (path): selected symptom
+        """
         current_video_time = self.interface_generale.get_current_video_time()
         
         buffer_attributs = selection.split(";")
