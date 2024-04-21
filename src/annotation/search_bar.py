@@ -25,9 +25,9 @@ class search_symptomes:
         Initializes the search_symptomes object.
         
         Args:
-        - root (tk.Tk): The Tkinter root window.
-        - symptoms_struct (dict): Hierarchical dictionary containing organized symptom data.
-        - myfunc (function): Function to be called when an item is selected from the listbox.
+            root (tk.Tk): The Tkinter root window.
+            symptoms_struct (dict): Hierarchical dictionary containing organized symptom data.
+            myfunc (function): Function to be called when an item is selected from the listbox.
         """
         self.symptoms_structure = symptoms_struct
 
@@ -55,11 +55,11 @@ class search_symptomes:
         Searches for elements matching the search term in the 'Designation' and 'Description' columns.
         
         Args:
-        - symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
-        - search_term (str): Term to search for in 'Designation' and 'Description' columns.
+            symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
+            search_term (str): Term to search for in 'Designation' and 'Description' columns.
         
         Returns:
-        - list: List of matching elements found for the search term.
+            list: List of matching elements found for the search term.
         
         This function searches for the specified term in the 'Designation' and 'Description' columns 
         of the hierarchical structure and returns a list of matching elements.
@@ -86,8 +86,8 @@ class search_symptomes:
         Retrieves the selected item from the listbox and calls the specified function.
         
         Args:
-        - event: The event object (not used directly, but required by Tkinter).
-        - func (function): Function to be called with the selected item as an argument.
+            event: The event object (not used directly, but required by Tkinter).
+            func (function): Function to be called with the selected item as an argument.
         """
         # Récupérer l'index de l'élément sélectionné
         selected_index = self.symptom_listbox.curselection()
@@ -106,7 +106,7 @@ class search_symptomes:
         search bar and updates the listbox to show only the matching symptoms.
         
         Args:
-        - event: The event object (not used in this function, but required by Tkinter)
+            event: The event object (not used in this function, but required by Tkinter)
         """
         query = self.search_entry.get().lower()  # Get the user input and convert it to lowercase
         

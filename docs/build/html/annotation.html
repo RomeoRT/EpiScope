@@ -501,20 +501,34 @@ by clicking on it, triggering a specified function with the selected item as an 
 <dt class="sig sig-object py" id="id0">
 <span class="sig-name descname"><span class="pre">get_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
 <dd><p>Retrieves the selected item from the listbox and calls the specified function.</p>
-<p>Args:
-- event: The event object (not used directly, but required by Tkinter).
-- func (function): Function to be called with the selected item as an argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – The event object (not used directly, but required by Tkinter).</p></li>
+<li><p><strong>func</strong> (<em>function</em>) – Function to be called with the selected item as an argument.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id1">
 <span class="sig-name descname"><span class="pre">search_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
 <dd><p>Searches for elements matching the search term in the ‘Designation’ and ‘Description’ columns.</p>
-<p>Args:
-- symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
-- search_term (str): Term to search for in ‘Designation’ and ‘Description’ columns.</p>
-<p>Returns:
-- list: List of matching elements found for the search term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symptoms_structure</strong> (<em>dict</em>) – Hierarchical dictionary containing organized symptom data.</p></li>
+<li><p><strong>search_term</strong> (<em>str</em>) – Term to search for in ‘Designation’ and ‘Description’ columns.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of matching elements found for the search term.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 <p>This function searches for the specified term in the ‘Designation’ and ‘Description’ columns
 of the hierarchical structure and returns a list of matching elements.</p>
 </dd></dl>
@@ -525,8 +539,11 @@ of the hierarchical structure and returns a list of matching elements.</p>
 <dd><p>Update the displayed symptoms based on the user input in the search bar.</p>
 <p>This function filters the symptoms based on the user input in the
 search bar and updates the listbox to show only the matching symptoms.</p>
-<p>Args:
-- event: The event object (not used in this function, but required by Tkinter)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> – The event object (not used in this function, but required by Tkinter)</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
