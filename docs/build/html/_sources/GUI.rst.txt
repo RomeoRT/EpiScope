@@ -8,13 +8,13 @@ This interface generates a .txt text file listing all the symptoms occurring dur
 epileptic seizure. The timeline follows a temporal axis (identical to that of the seizure video) and indicates the moment of onset and end of each symptom. Practitioners must 
 also be able to modify the .txt file and the frieze in the event of an oversight or readjustment.
 
-Examples
+Overview
 --------
 
 .. image:: ./images/interface_vide.png
     :alt: logo EpiScope
-    :width: 500px
-    :height: 110px
+    :width: 1920px
+    :height: 1030px
     :scale: 100 %
     :align: center
 

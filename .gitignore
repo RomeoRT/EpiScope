@@ -1,4 +1,5 @@
 build/
+dist/
 
 src/frise/__pycache__/ecriture_fichier.cpython-312.pyc
 src/frise/__pycache__/save.cpython-312.pyc
