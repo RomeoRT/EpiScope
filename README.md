@@ -26,4 +26,4 @@ These tools enable practitioners to note directly on their patients' epileptic s
 Make sure you have the complete repository whith all dependencies installed.
 In the *Episcope/* folder, you can use the command 
 
-`pyinstaller --onefile --icon=.\docs\source\images\logo_cerveau.png  -w ./src/general_interface_V9.py`
+`pyinstaller --onefile --icon=.\docs\source\images\logo_cerveau.png  -w ./src/general_interface.py`

@@ -125,7 +125,7 @@ class Menu_symptomes(ctk.CTkFrame):
         Sets the right attributes depending on the menu selection to update the symptom list 
         Recovers data linked to the video to obtain the current time
         the selection is expected to be on the form 
-            designation > description > sub descrition> topography > lateralization
+        designation > description > sub descrition> topography > lateralization
 
         Args:
             selection (path): selected symptom

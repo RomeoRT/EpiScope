@@ -1,3 +1,4 @@
+build/
 
 src/frise/__pycache__/ecriture_fichier.cpython-312.pyc
 src/frise/__pycache__/save.cpython-312.pyc
@@ -5,6 +6,7 @@ src\annotation\__pycache__*
 src\test_interface.py
 
 src/video_player
+
 
 data\crises_exemples_prive
 src/temp_audio.wav

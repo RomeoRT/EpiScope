@@ -18,8 +18,7 @@ These tools enable practitioners to note directly on their patients' epileptic s
 
 
 .. toctree::
-
-   api
+   GUI
    general_interface
    frise
    annotation
