@@ -41,10 +41,14 @@ class search_symptomes:
     # Listbox to display the search results
         self.frame = ctk.CTkFrame(root, fg_color='gray97',corner_radius=0,border_width=0 ,width=width, height=5)  # Ajustement ici
         self.frame.pack(padx=5, pady=1, expand=True, fill=tk.BOTH)
-        self.symptom_listbox = tk.Listbox(self.frame, width=width, height=5, bg='gray97')
+
+        self.symptom_listbox = tk.Listbox(self.frame, width=width, height=5, bd=0, bg='gray97')
         self.symptom_listbox.pack(padx=5, pady=1, expand=True, fill=tk.BOTH)
         self.symptom_listbox.bind('<ButtonRelease-1>', lambda event, func=myfunc: self.get_selected(event, func))  # Lier l'événement de clic de souris à la fonction truc_special_cool
-
+       
+        self.bouton_nul = ctk.CTkButton(self.frame, text="", width=100, fg_color='gray97', hover_color='gray97') # pour gerer le placement
+        self.bouton_nul.pack(side=ctk.LEFT, padx=100, pady=200)
+        self.bouton_nul.configure(state="disabled")    
 
     def search_element(self, search_term):
         """
