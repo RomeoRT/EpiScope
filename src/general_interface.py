@@ -13,6 +13,7 @@ Episcope general interface containing
     * menus based on exel file (xls)
     * pre-load symptoms
     * cascading menus on left
+    * search bar
     * correct initialization of symptoms
     * retrieve symptoms from a list
     * retrieve start and end times
@@ -48,14 +49,6 @@ from pygame.time import Clock
 from tkinter import Menu
 import functools #pour update right panel
 
-
-"""
-# import pas git
-from fonctions_frise import afficher_frise
-import save as sauvg
-from class_symptome import Symptome
-from pop_up import SymptomeEditor
-"""
 # import git
 from frise.fonctions_frise import afficher_frise
 import frise.save as sauvg
@@ -602,7 +595,7 @@ class InterfaceGenerale():
 
     def rapport(self):
         """
-        ecrit le rapport de la crise
+        Writes the report of the seizure
         """
         save = sauvg.save(self.ListeSymptomes)
         save.write_report()
@@ -770,6 +763,18 @@ class LecteurVideo():
 
 
     def preparer_mixer(self, file_path):
+        """
+        Initializes pygame mixer with audio properties extracted from a video file using moviepy.
+
+        Args:
+            file_path (str): The path to the video file.
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         # Utiliser moviepy pour extraire les propriétés audio
         clip = mp.VideoFileClip(file_path)
         audio = clip.audio
@@ -788,7 +793,20 @@ class LecteurVideo():
         else:
             print("Aucune piste audio détectée.")
 
+
     def preparer_son_video(self, file_path):
+        """
+        Prepares the mixer for each video and plays its audio.
+
+        Args:
+            file_path (str): The path to the video file.
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         # Préparer le mixer pour chaque vidéo
         self.preparer_mixer(file_path)
 
@@ -800,6 +818,7 @@ class LecteurVideo():
 
         pygame.mixer.music.load(audio_path)
         pygame.mixer.music.play(-1)  # Jouer en boucle
+
 
     def afficher_video(self):
         """
@@ -895,34 +914,106 @@ class LecteurVideo():
 
     def avancer(self):
         """
-        Methode qui met à jour la position du curseur dans la barre e proggression
+
+        Updates the position of the progress slider in the user interface.
+
+        This method sets the position of the progress slider to the elapsed time and 
+        schedules itself to run again after a delay of 1 millisecond.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None        
         """
         self.interface_generale.progress_slider.set(self.temps_ecoule)
         self.interface_generale.fenetre.after(1, self.avancer)
 
 
     def configurer_barre_progression(self):
+       """
+        Configures the progress bar's range and binds events for slider interactions.
+
+        This method sets the total duration of the video as the range for the progress slider.
+        It also binds events for when the slider is pressed and released to handle dragging.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None 
         """
-        Methode qui contole l'eta de la barre de progression qu'elle soit relache ou appuiyé
-        """
-        total_duration = self.interface_generale.get_video_duration()
-        self.interface_generale.progress_slider.config(to=total_duration, from_=0)
-        self.interface_generale.progress_slider.bind("<ButtonPress>", self.on_drag_start)
-        self.interface_generale.progress_slider.bind("<ButtonRelease>", self.on_drag_end)
+       total_duration = self.interface_generale.get_video_duration()
+       self.interface_generale.progress_slider.config(to=total_duration, from_=0)
+       self.interface_generale.progress_slider.bind("<ButtonPress>", self.on_drag_start)
+       self.interface_generale.progress_slider.bind("<ButtonRelease>", self.on_drag_end)
+    
+
     def on_drag_start(self, event):
-        """Méthode appelée lorsque le curseur de la barre de progression est saisi."""
+        """
+        Method called when the progress bar slider is clicked and dragged.
+
+        This method is triggered when the user starts dragging the progress bar slider.
+        It pauses the video playback.
+
+        Args:
+            event (Event): The event object containing information about the event.
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         self.pause_lecture()
 
+
     def on_drag_end(self, event):
-        """Méthode appelée lorsque le curseur de la barre de progression est relâché."""
+        """
+        Method called when the progress bar slider is released after dragging.
+
+        This method is triggered when the user releases the progress bar slider after dragging.
+        It updates the video position based on the slider's position and resumes video playback.
+
+        Args:
+            event (Event): The event object containing information about the event.
+
+        Returns:
+            None
+
+        Raises:
+            None
+
+        """
         # Mettre à jour la position de la vidéo en fonction de la position du curseur
         position = self.interface_generale.progress_slider.get()
         self.manual_update_progress(position)
         # Reprendre la lecture
         self.resume_lecture()
 
+
     def resume_lecture(self):
-        """Reprend la lecture vidéo et audio."""
+        """
+        Resumes video and audio playback.
+
+        This method resumes the paused video and audio playback, updates the play/pause button text,
+        unpause the audio mixer, displays the video, and updates the video time.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         if self.video_paused:
             self.video_paused = False
             self.interface_generale.bouton_play_pause.configure(text="Pause")
@@ -932,15 +1023,47 @@ class LecteurVideo():
 
                 
     def manual_update_progress(self, value):
-        """Mise à jour manuelle de la position de la vidéo sans démarrer le son."""
+        """
+        Manually updates the video position without starting the audio.
+
+        This method updates the elapsed time based on the given value, calculates the frame number 
+        corresponding to the elapsed time, sets the video to that frame, and resumes audio playback 
+        from the updated position if the video was playing.
+
+        Args:
+            value (float): The new position value for the video in seconds.
+
+        Returns:
+            None
+
+        Raises:
+            None
+
+        """
         self.temps_ecoule = float(value)
         fps = self.interface_generale.cap.get(cv2.CAP_PROP_FPS)
         frame_number = self.temps_ecoule * fps
         self.interface_generale.cap.set(cv2.CAP_PROP_POS_FRAMES, int(frame_number))
         if not self.video_paused:
             pygame.mixer.music.play(-1, start=self.temps_ecoule)
+
+            
     def avance_progress(self):
-        """Avance la vidéo et gère correctement la pause de la vidéo et de l'audio."""
+        """
+        Advances the video by a short duration and handles video and audio pausing correctly.
+
+        This method advances the video by 0.25 seconds (by default) and ensures that both video 
+        and audio are paused if the video was originally playing.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         if self.interface_generale.cap.isOpened():
             if not self.video_paused:
                 self.pause_lecture()  # Mettre en pause avant de modifier la position
@@ -958,8 +1081,23 @@ class LecteurVideo():
             if self.video_paused:
                 pygame.mixer.music.pause()  # Assurez-vous que l'audio est aussi en pause
 
+
     def recule_progress(self):
-        """Recule la vidéo et gère correctement la pause de la vidéo et de l'audio."""
+        """
+        Rewinds the video by a short duration and handles video and audio pausing correctly.
+
+        This method rewinds the video by 0.25 seconds (by default) and ensures that both video 
+        and audio are paused if the video was originally playing.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         if self.interface_generale.cap.isOpened():
             if not self.video_paused:
                 self.pause_lecture()
@@ -979,7 +1117,22 @@ class LecteurVideo():
 
 
     def afficher_video_frame(self):
-        """Affiche la frame actuelle de la vidéo sans continuer la lecture."""
+        """
+        Displays the current video frame without continuing the playback.
+
+        This method reads the current frame from the video, displays it on the canvas, and 
+        stops the video from advancing. It also handles converting the frame to RGB color 
+        space, resizing it to fit the canvas dimensions, and updating the canvas image.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         if self.interface_generale.cap.isOpened():
             ret, frame = self.interface_generale.cap.read()
             if ret:
@@ -995,7 +1148,19 @@ class LecteurVideo():
 
     def revoir_video(self):
         """
-        Allows to play the video again 
+        Resets the video and audio to the beginning and resumes video playback.
+
+        This method sets the video frame position and audio playback to the beginning,
+        resumes video playback if it was paused, and updates the play/pause button text.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
         """
         if self.interface_generale.cap.isOpened():
         # Réinitialiser la vidéo au début
@@ -1013,15 +1178,44 @@ class LecteurVideo():
 
     def format_duree(self, seconds):
         """
-        Converts the time in seconds in a more readable format : minutes and secondes
+        Converts the time in seconds to a more readable format: minutes and seconds.
+
+        This method takes a duration in seconds and converts it to a string representation 
+        in the format "HH:MM:SS".
+
+        Args:
+            seconds (int or float): The time duration in seconds.
+
+        Returns:
+            str: The formatted time string in "HH:MM:SS" format.
+
+        Raises:
+            None
+
+        Example:
+            >>> player = LecteurVideo()
+            >>> formatted_time = player.format_duree(3665)  
+            "01:01:05"
         """
         return str(datetime.timedelta(seconds=seconds))
 
 
     def charger_son_video(self, file_path):
         """
-        Stops the previous audio, and extracts and loads the new audio track associated with the selected video. 
-        It also cleans up the resources used during the process. 
+        Stops the previous audio, extracts and loads the new audio track from the selected video.
+
+        This method stops the previous audio playback, extracts the audio track from the 
+        selected video file, saves it as a temporary WAV file, and loads it into the pygame 
+        mixer for playback. It also cleans up the resources used during the process.
+
+        Args:
+            file_path (str): The path to the video file from which to extract the audio.
+
+        Returns:
+            None
+
+        Raises:
+            None 
         """
         # Assurez-vous que le son précédent est arrêté et supprimé
         if self.sound:
