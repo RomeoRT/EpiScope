@@ -703,10 +703,23 @@ The black video must be in the same folder as the code : “video_noire.mp4”</
 <dd><p>Symptoms selector</p>
 <p>Sets the right attributes depending on the menu selection to update the symptom list
 Recovers data linked to the video to obtain the current time
-the selection is expected to be on the form</p>
-<blockquote>
-<div><p>designation &gt; description &gt; sub descrition&gt; topography &gt; lateralization</p>
-</div></blockquote>
+the selection is expected to be on the form :
+designation &gt; description &gt; sub descrition&gt; topography &gt; lateralization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selection</strong> (<em>path</em>) – selected symptom</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_interface_V10.Menu_symptomes.on_select_bar">
+<span class="sig-name descname"><span class="pre">on_select_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_interface_V10.Menu_symptomes.on_select_bar" title="Link to this definition">¶</a></dt>
+<dd><p>Symptoms selector</p>
+<p>Sets the right attributes depending on the search-bar selection to update the symptom list
+Recovers data linked to the video to obtain the current time
+the selection is expected to be on the form :
+designation ; description</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>selection</strong> (<em>path</em>) – selected symptom</p>
@@ -820,6 +833,7 @@ the selection is expected to be on the form</p>
 <li class="toctree-l2"><a class="reference internal" href="#general_interface_V10.Menu_symptomes"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#general_interface_V10.Menu_symptomes.create_dropdown_menus"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.create_dropdown_menus()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#general_interface_V10.Menu_symptomes.on_select"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.on_select()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general_interface_V10.Menu_symptomes.on_select_bar"><code class="docutils literal notranslate"><span class="pre">Menu_symptomes.on_select_bar()</span></code></a></li>
 </ul>
 </li>
 </ul>

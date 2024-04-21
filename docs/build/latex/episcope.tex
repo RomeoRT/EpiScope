@@ -63,7 +63,7 @@
 
 
 \title{Episcope}
-\date{Mar 27, 2024}
+\date{Apr 18, 2024}
 \release{0.1\sphinxhyphen{}alpha}
 \author{Roméo RAMOS\sphinxhyphen{}\sphinxhyphen{}TANGHE, Yosra SAID, Annaelle SARRAZIN, Rachel TECHI, Chloé THIRIET}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -88,11 +88,6 @@
 \sphinxstylestrong{EpiScope} is a GUI featuring ergonomic tools for annotating epileptic seizure videos.
 These tools enable practitioners to note directly on their patients’ epileptic seizure videos the various symptoms that appear, thanks to a pre\sphinxhyphen{}configured symptom semiology. This interface generates a .txt text file listing all the symptoms occurring during the seizure in chronological order, as well as a timeline illustrating the patient’s epileptic seizure. The timeline follows a temporal axis (identical to that of the seizure video) and indicates the moment of onset and end of each symptom. Practitioners must also be able to modify the .txt file and the frieze in the event of an oversight or readjustment.
 
-\begin{sphinxadmonition}{note}{Note:}
-\sphinxAtStartPar
-This project is under active development.
-\end{sphinxadmonition}
-
 \sphinxstepscope
 
 
@@ -113,198 +108,711 @@ This project is under active development.
 
 
 \chapter{General Interface}
-\label{\detokenize{general_interface:module-general_interface_V9}}\label{\detokenize{general_interface:general-interface}}\label{\detokenize{general_interface::doc}}\index{module@\spxentry{module}!general\_interface\_V9@\spxentry{general\_interface\_V9}}\index{general\_interface\_V9@\spxentry{general\_interface\_V9}!module@\spxentry{module}}\begin{description}
-\sphinxlineitem{interface générale Episcope contenant :}
+\label{\detokenize{general_interface:module-general_interface_V10}}\label{\detokenize{general_interface:general-interface}}\label{\detokenize{general_interface::doc}}\index{module@\spxentry{module}!general\_interface\_V10@\spxentry{general\_interface\_V10}}\index{general\_interface\_V10@\spxentry{general\_interface\_V10}!module@\spxentry{module}}
 \sphinxAtStartPar
-lecteur vidéo :
-\sphinxhyphen{} lecture video
-\sphinxhyphen{} boutons play/pause, skip\textgreater{}\textgreater{}, skip\textless{}\textless{}, revoir
-\sphinxhyphen{} avance et recule de 1s et mets en pause
-\sphinxhyphen{} son synchronisé
-\sphinxhyphen{} bonne vitesse
+Episcope general interface containing
+\begin{itemize}
+\item {} \begin{description}
+\sphinxlineitem{video player :}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+video playback
 
+\item {} 
 \sphinxAtStartPar
-annotations :
-\sphinxhyphen{} pré\sphinxhyphen{}charger des symptomes
-\sphinxhyphen{} les menus en cascade a gauche
-\sphinxhyphen{} initialisation correcte des symptomes
-\sphinxhyphen{} recuperer les symptomes dans une liste
-\sphinxhyphen{} recuperer les temps de debut et de fin
-\sphinxhyphen{} afficher les symptomes a droite
-\sphinxhyphen{} symptomes scrollables
-\sphinxhyphen{} pop\sphinxhyphen{}up pour modifier les symptomes
+play/pause, skip\textgreater{}\textgreater{}, skip\textless{}\textless{}, review buttons
 
+\item {} 
 \sphinxAtStartPar
-fichiers :
-\sphinxhyphen{} générer la frise
-\sphinxhyphen{} generer un rapport
-\sphinxhyphen{} générer un fichiers de s ymptomes
+advance and rewind by 1s and pause
+
+\item {} 
+\sphinxAtStartPar
+synchronised sound
+
+\item {} 
+\sphinxAtStartPar
+good speed
+
+\end{itemize}
 
 \end{description}
 
+\item {} \begin{description}
+\sphinxlineitem{annotations :}\begin{itemize}
+\item {} 
 \sphinxAtStartPar
-modification design general et boutons de menus deroulants et de gestion avancement video gestion
-tout est en anglais
-La document des fonctions est faite
-version : 0.9
-\index{FriseSymptomes (class in general\_interface\_V9)@\spxentry{FriseSymptomes}\spxextra{class in general\_interface\_V9}}
+menus based on exel file (xls)
+
+\item {} 
+\sphinxAtStartPar
+pre\sphinxhyphen{}load symptoms
+
+\item {} 
+\sphinxAtStartPar
+cascading menus on left
+
+\item {} 
+\sphinxAtStartPar
+correct initialization of symptoms
+
+\item {} 
+\sphinxAtStartPar
+retrieve symptoms from a list
+
+\item {} 
+\sphinxAtStartPar
+retrieve start and end times
+
+\item {} 
+\sphinxAtStartPar
+display symptoms on the right
+
+\item {} 
+\sphinxAtStartPar
+scrollable symptoms
+
+\item {} 
+\sphinxAtStartPar
+pop\sphinxhyphen{}up to modify symptoms
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\sphinxlineitem{files :}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+generate frieze
+
+\item {} 
+\sphinxAtStartPar
+generate a report
+
+\item {} 
+\sphinxAtStartPar
+generate a symptom file
+
+\end{itemize}
+
+\end{description}
+
+\end{itemize}
+
+\sphinxAtStartPar
+modification of the general design and buttons of the drop\sphinxhyphen{}down menus and the video progress management buttons
+everything is in english
+
+\sphinxAtStartPar
+version : 0.10
+\index{FriseSymptomes (class in general\_interface\_V10)@\spxentry{FriseSymptomes}\spxextra{class in general\_interface\_V10}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.FriseSymptomes}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.FriseSymptomes}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V9.}}\sphinxbfcode{\sphinxupquote{FriseSymptomes}}}{\sphinxparam{\DUrole{n}{InterfaceGenerale}}\sphinxparamcomma \sphinxparam{\DUrole{n}{MenuDeroulant}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V10.}}\sphinxbfcode{\sphinxupquote{FriseSymptomes}}}{\sphinxparam{\DUrole{n}{InterfaceGenerale}}\sphinxparamcomma \sphinxparam{\DUrole{n}{MenuDeroulant}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{object}}
 
 \sphinxAtStartPar
-Classe permettant de généré une frise chronologique récapitulant l’ensemble des symptomes présent lors de la crise épileptique
-\index{interfaceGenerale (general\_interface\_V9.FriseSymptomes attribute)@\spxentry{interfaceGenerale}\spxextra{general\_interface\_V9.FriseSymptomes attribute}}
+Class used to generate a timeline summarising all the symptoms present during an epileptic seizure.
+\index{interfaceGenerale (general\_interface\_V10.FriseSymptomes attribute)@\spxentry{interfaceGenerale}\spxextra{general\_interface\_V10.FriseSymptomes attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.FriseSymptomes.interfaceGenerale}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.FriseSymptomes.interfaceGenerale}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{interfaceGenerale}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigstopsignatures
+\sphinxAtStartPar
+the general interface with the symptoms list
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
-{\hyperref[\detokenize{general_interface:general_interface_V9.InterfaceGenerale}]{\sphinxcrossref{InterfaceGenerale}}}
+{\hyperref[\detokenize{general_interface:general_interface_V10.InterfaceGenerale}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{InterfaceGenerale}}}}}
 
 \end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{MenuDeroulant (general\_interface\_V9.FriseSymptomes attribute)@\spxentry{MenuDeroulant}\spxextra{general\_interface\_V9.FriseSymptomes attribute}}
+\index{MenuDeroulant (general\_interface\_V10.FriseSymptomes attribute)@\spxentry{MenuDeroulant}\spxextra{general\_interface\_V10.FriseSymptomes attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.FriseSymptomes.MenuDeroulant}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.FriseSymptomes.MenuDeroulant}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{MenuDeroulant}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigstopsignatures
+\sphinxAtStartPar
+dropdown menus
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
-{\hyperref[\detokenize{general_interface:general_interface_V9.Menu_symptomes}]{\sphinxcrossref{Menu\_symptomes}}}
+{\hyperref[\detokenize{general_interface:general_interface_V10.Menu_symptomes}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{Menu\_symptomes}}}}}
 
 \end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{afficher() (general\_interface\_V9.FriseSymptomes method)@\spxentry{afficher()}\spxextra{general\_interface\_V9.FriseSymptomes method}}
+\index{afficher() (general\_interface\_V10.FriseSymptomes method)@\spxentry{afficher()}\spxextra{general\_interface\_V10.FriseSymptomes method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.FriseSymptomes.afficher}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.FriseSymptomes.afficher}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{afficher}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Récuperation de la liste de symptomes instanciée dans class interface generale fonction update right panel
+Retrieves the list of symptoms instantiated in the InterfaceGenerale class’s update\_right\_panel function.
+
+\sphinxAtStartPar
+This method retrieves the list of symptoms stored in the InterfaceGenerale class instance’s ListeSymptomes attribute.
+It then processes each symptom in the list, extracting relevant information such as name, start time, end time,
+ID, lateralization, topography, orientation, additional attributes, and comments. This information is then formatted
+and sorted based on the start time of each symptom.
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+None
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
 
 \end{fulllineitems}
 
-\index{InterfaceGenerale (class in general\_interface\_V9)@\spxentry{InterfaceGenerale}\spxextra{class in general\_interface\_V9}}
+\index{InterfaceGenerale (class in general\_interface\_V10)@\spxentry{InterfaceGenerale}\spxextra{class in general\_interface\_V10}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V9.}}\sphinxbfcode{\sphinxupquote{InterfaceGenerale}}}{\sphinxparam{\DUrole{n}{fenetre}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V10.}}\sphinxbfcode{\sphinxupquote{InterfaceGenerale}}}{\sphinxparam{\DUrole{n}{fenetre}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{object}}
 
 \sphinxAtStartPar
-Classe interface Générale qui donne le visuel global de l’interface graphique.
+General interface class, which provides the overall look and feel of the graphical interface.
 
 \sphinxAtStartPar
-Elle est représenter sous forme de fenetre et permet aux autres classes de s’intégrer dedans.
-Elle appel la classe Lecteur\_video, FriseSymptomes et Menu\_symptomes
-\begin{description}
-\sphinxlineitem{Atributes:}
-\sphinxAtStartPar
-ListeSymptomes (list): liste des symptomes s’actualisant au fur et a mesure
-
-\sphinxAtStartPar
-\sphinxstylestrong{A completer !!!}
-
-\end{description}
-\index{get\_current\_video\_time() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{get\_current\_video\_time()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+It is represented in the form of a window and allows the other classes to be integrated into it.
+It calls the LecteurVideo, FriseSymptomes and Menu\_symptoms classes.
+\index{fenetre (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{fenetre}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.get_current_video_time}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.fenetre}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{fenetre}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Represents the main window of the graphical interface.
+
+\end{fulllineitems}
+
+\index{cap (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{cap}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.cap}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{cap}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Represents the video capture object.
+
+\end{fulllineitems}
+
+\index{lec\_video (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{lec\_video}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.lec_video}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{lec\_video}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+An instance of the LecteurVideo class.
+
+\end{fulllineitems}
+
+\index{frise (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{frise}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.frise}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{frise}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+An instance of the FriseSymptomes class.
+
+\end{fulllineitems}
+
+\index{set\_end\_time\_mode (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{set\_end\_time\_mode}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.set_end_time_mode}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{set\_end\_time\_mode}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A boolean variable indicating whether the end time mode is set.
+
+\end{fulllineitems}
+
+\index{current\_symptom (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{current\_symptom}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.current_symptom}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{current\_symptom}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Represents the current symptom being processed.
+
+\end{fulllineitems}
+
+\index{ListeSymptomes (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{ListeSymptomes}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.ListeSymptomes}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{ListeSymptomes}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A list containing symptom objects, initially empty.
+
+\end{fulllineitems}
+
+\index{theme (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{theme}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.theme}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{theme}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A list containing color theme values.
+
+\end{fulllineitems}
+
+\index{menu\_bar (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{menu\_bar}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.menu_bar}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{menu\_bar}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A menu bar for the interface.
+
+\end{fulllineitems}
+
+\index{menu\_open (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{menu\_open}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.menu_open}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{menu\_open}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A menu for opening different options like video and symptoms.
+
+\end{fulllineitems}
+
+\index{menu\_save (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{menu\_save}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.menu_save}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{menu\_save}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A menu for saving options like symptoms, report, and timeline.
+
+\end{fulllineitems}
+
+\index{clic\_x (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{clic\_x}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.clic_x}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{clic\_x}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+The x\sphinxhyphen{}coordinate of the click event.
+
+\end{fulllineitems}
+
+\index{clic\_y (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{clic\_y}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.clic_y}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{clic\_y}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+The y\sphinxhyphen{}coordinate of the click event.
+
+\end{fulllineitems}
+
+\index{frame\_left (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{frame\_left}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.frame_left}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{frame\_left}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Represents the left frame of the interface.
+
+\end{fulllineitems}
+
+\index{frame\_middle (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{frame\_middle}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.frame_middle}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{frame\_middle}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Represents the middle frame of the interface.
+
+\end{fulllineitems}
+
+\index{frame\_right (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{frame\_right}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.frame_right}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{frame\_right}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Represents the right frame of the interface.
+
+\end{fulllineitems}
+
+\index{scrollable1 (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{scrollable1}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.scrollable1}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{scrollable1}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A scrollable frame for the right panel.
+
+\end{fulllineitems}
+
+\index{text\_output (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{text\_output}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.text_output}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{text\_output}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A scrollable frame for displaying text output.
+
+\end{fulllineitems}
+
+\index{frame\_CTkButton (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{frame\_CTkButton}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.frame_CTkButton}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{frame\_CTkButton}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A frame for buttons in the middle frame.
+
+\end{fulllineitems}
+
+\index{bouton\_revoir (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{bouton\_revoir}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.bouton_revoir}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{bouton\_revoir}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Button for rewinding the video.
+
+\end{fulllineitems}
+
+\index{bouton\_reculer (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{bouton\_reculer}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.bouton_reculer}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{bouton\_reculer}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Button for moving the video backward.
+
+\end{fulllineitems}
+
+\index{bouton\_play\_pause (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{bouton\_play\_pause}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.bouton_play_pause}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{bouton\_play\_pause}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Button for playing or pausing the video.
+
+\end{fulllineitems}
+
+\index{bouton\_avancer (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{bouton\_avancer}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.bouton_avancer}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{bouton\_avancer}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Button for moving the video forward.
+
+\end{fulllineitems}
+
+\index{bouton\_nul (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{bouton\_nul}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.bouton_nul}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{bouton\_nul}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A dummy button.
+
+\end{fulllineitems}
+
+\index{frame\_frise (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{frame\_frise}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.frame_frise}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{frame\_frise}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A frame for displaying the symptom timeline.
+
+\end{fulllineitems}
+
+\index{bouton\_frise (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{bouton\_frise}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.bouton_frise}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{bouton\_frise}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Button for displaying the timeline.
+
+\end{fulllineitems}
+
+\index{bouton\_save (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{bouton\_save}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.bouton_save}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{bouton\_save}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Button for saving the report.
+
+\end{fulllineitems}
+
+\index{label\_temps (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{label\_temps}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.label_temps}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{label\_temps}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Label for displaying elapsed time and total time.
+
+\end{fulllineitems}
+
+\index{progress\_slider (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{progress\_slider}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.progress_slider}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{progress\_slider}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A slider for manual video progress.
+
+\end{fulllineitems}
+
+\index{canvas (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{canvas}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.canvas}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{canvas}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Canvas for displaying the video.
+
+\end{fulllineitems}
+
+\index{zone\_text (general\_interface\_V10.InterfaceGenerale attribute)@\spxentry{zone\_text}\spxextra{general\_interface\_V10.InterfaceGenerale attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.zone_text}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{zone\_text}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A text area for comments.
+
+\end{fulllineitems}
+
+\index{get\_current\_video\_time() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{get\_current\_video\_time()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.get_current_video_time}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_current\_video\_time}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Permet d’avoir le temps actuel de la vidéo
+Get the current time of the video.
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+\begin{description}
+\sphinxlineitem{A string representing the current time of the video in the format “HH:MM:SS”.}
+\sphinxAtStartPar
+Returns “00:00:00” if the video is not opened.
+
+\end{description}
+
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+str
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{get\_video\_duration() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{get\_video\_duration()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{get\_video\_duration() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{get\_video\_duration()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.get_video_duration}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.get_video_duration}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_video\_duration}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Permet d’avoir le temps total de la vidéo
+Get the total duration of the video.
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+\begin{description}
+\sphinxlineitem{The total duration of the video in seconds.}
+\sphinxAtStartPar
+Returns 0 if the video is not opened.
+
+\end{description}
+
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+int
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{lire\_fichier() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{lire\_fichier()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{lire\_fichier() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{lire\_fichier()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.lire_fichier}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.lire_fichier}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{lire\_fichier}}}{\sphinxparam{\DUrole{n}{nom\_fichier}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ouvre un fichier texte le lit et sauvegarde les informations dans une liste
+Opens a text file, reads it, and saves the information in a list.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{nom\_fichier}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The path to the text file to be read.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+A list containing all the lines read from the file.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list
+
+\sphinxlineitem{Raises}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{FileNotFoundError}} \textendash{} If the specified file is not found.
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{load\_symptoms() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{load\_symptoms()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{load\_symptoms() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{load\_symptoms()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.load_symptoms}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.load_symptoms}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{load\_symptoms}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-charge une liste de symptomes a partir d’un fichier
+Loads a list of symptoms from a text file.
+
+\sphinxAtStartPar
+This function prompts the user to select a text file containing symptom data. It then reads the symptom data from the file
+using the read\_symptoms function from the load\_symptomes module. For each symptom read from the file, it updates the right panel of
+the interface with the symptom attributes.
+\begin{quote}\begin{description}
+\sphinxlineitem{Raises}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{FileNotFoundError}} \textendash{} If the selected file is not found.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{Exception}} \textendash{} If an unexpected error occurs during the file reading process.
+
+\end{itemize}
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{ouvrir\_video() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{ouvrir\_video()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{ouvrir\_video() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{ouvrir\_video()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.ouvrir_video}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.ouvrir_video}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ouvrir\_video}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ouvre la vidéo en appelant la class Lecteur\_video
+Opens the video by calling the Lecteur\_video class
 
 \end{fulllineitems}
 
-\index{ouvrir\_video\_noire() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{ouvrir\_video\_noire()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{ouvrir\_video\_noire() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{ouvrir\_video\_noire()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.ouvrir_video_noire}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.ouvrir_video_noire}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ouvrir\_video\_noire}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ouvre la vidéo noire en appelant la class Lecteur\_video
+Opens the black\_video by calling the Lecteur\_video class
 
 \end{fulllineitems}
 
-\index{rapport() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{rapport()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{rapport() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{rapport()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.rapport}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.rapport}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{rapport}}}{}{}
 \pysigstopsignatures
@@ -313,361 +821,67 @@ ecrit le rapport de la crise
 
 \end{fulllineitems}
 
-\index{sauvegarde() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{sauvegarde()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{sauvegarde() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{sauvegarde()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.sauvegarde}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.sauvegarde}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{sauvegarde}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-sauvegarde de la liste de symtptomes dans un fichier texte
-fait appel a la classe save
+Saves the list of symptoms to a text file.
+It calls the save class for this purpose.
 
 \end{fulllineitems}
 
-\index{supprimer() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{supprimer()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{supprimer() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{supprimer()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.supprimer}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.supprimer}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{supprimer}}}{\sphinxparam{\DUrole{n}{selection}}\sphinxparamcomma \sphinxparam{\DUrole{n}{container}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Remove a symptom from the list of symptoms and destroy its display container.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{selection}} \textendash{} The symptom object to be removed.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{container}} \textendash{} The container containing the display elements of the symptom.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+None
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
-\index{text\_sympt() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{text\_sympt()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
+\index{text\_sympt() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{text\_sympt()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.text_sympt}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.text_sympt}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{text\_sympt}}}{\sphinxparam{\DUrole{n}{sympt}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-crée le texta a afficher dans le right\_pannel
+Creates the text to display in the right panel.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{sympt}} ({\hyperref[\detokenize{annotation:annotation.class_symptome.Symptome}]{\sphinxcrossref{\sphinxstyleliteralemphasis{\sphinxupquote{Symptome}}}}}) \textendash{} symptome dont on crée le texte
+\sphinxstyleliteralstrong{\sphinxupquote{sympt}} ({\hyperref[\detokenize{annotation:annotation.class_symptome.Symptome}]{\sphinxcrossref{\sphinxstyleliteralemphasis{\sphinxupquote{Symptome}}}}}) \textendash{} The symptom for which to create the text.
 
 \sphinxlineitem{Returns}
 \sphinxAtStartPar
-texte a afficher contenant les bonnes infos
+The text to display containing the relevant information.
 
 \sphinxlineitem{Return type}
-\sphinxAtStartPar
-text (string)
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{update\_right\_panel() (general\_interface\_V9.InterfaceGenerale method)@\spxentry{update\_right\_panel()}\spxextra{general\_interface\_V9.InterfaceGenerale method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.InterfaceGenerale.update_right_panel}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{update\_right\_panel}}}{\sphinxparam{\DUrole{n}{attributs}\DUrole{o}{=}\DUrole{default_value}{{[}{]}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{is\_start\_time}\DUrole{o}{=}\DUrole{default_value}{False}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Permet de gerer l’affichage dans la partie de droite du temps de début/fin des symptomes et gestion du pop\sphinxhyphen{}up pour modifier un symptome.
-\begin{quote}\begin{description}
-\sphinxlineitem{Parameters}
-\sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{attributs}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} liste d’initialisation du symptome | defaut = {[}{]}
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
-\index{LecteurVideo (class in general\_interface\_V9)@\spxentry{LecteurVideo}\spxextra{class in general\_interface\_V9}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V9.}}\sphinxbfcode{\sphinxupquote{LecteurVideo}}}{\sphinxparam{\DUrole{n}{InterfaceGenerale}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Bases: \sphinxcode{\sphinxupquote{object}}
-
-\sphinxAtStartPar
-Classe du lecteur video qui gére les differentes fonctionnalités de la video.
-
-\sphinxAtStartPar
-fonctionnalités : ouverture de la vidéo, de la vidéo noire,l’affichage de la vidéo,la synchroisation du son et la gestion des boutons
-Elle appelle la classe InterfaceGenerale
-
-
-\begin{fulllineitems}
-
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{\textbackslash{}*\textbackslash{}*A~completer**}}}
-\pysigstopsignatures
-\end{fulllineitems}
-
-\index{afficher\_menu\_annotations() (general\_interface\_V9.LecteurVideo method)@\spxentry{afficher\_menu\_annotations()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.afficher_menu_annotations}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{afficher\_menu\_annotations}}}{\sphinxparam{\DUrole{n}{event}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Récupére les coordonnées d’un clic sur la vidéo. Pour l’intant elle affiche une croix rouge
-Mais il ya possibilté d’utiliser cette croix roug pour afficher le symtoms en la survolant
-par le curseur
-
-\end{fulllineitems}
-
-\index{afficher\_video() (general\_interface\_V9.LecteurVideo method)@\spxentry{afficher\_video()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.afficher_video}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{afficher\_video}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-permet l’affichage et la lecture de la video:
-redimensionnement des frames de la video pour correspondre les dimensions de middle frame
-Calcule et affiche le temps totale et le temps écoulé
-
-\end{fulllineitems}
-
-\index{ajouter\_plus\_rouge() (general\_interface\_V9.LecteurVideo method)@\spxentry{ajouter\_plus\_rouge()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.ajouter_plus_rouge}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ajouter\_plus\_rouge}}}{\sphinxparam{\DUrole{n}{canvas}}\sphinxparamcomma \sphinxparam{\DUrole{n}{x}}\sphinxparamcomma \sphinxparam{\DUrole{n}{y}}\sphinxparamcomma \sphinxparam{\DUrole{n}{taille}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Ajoute la croix rouge durat 1 seconde là où on appuie
-
-\end{fulllineitems}
-
-\index{avance\_progress() (general\_interface\_V9.LecteurVideo method)@\spxentry{avance\_progress()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.avance_progress}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{avance\_progress}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-permet d’avancer la video d’une seonde et assure l’avancement du son aussi
-
-\end{fulllineitems}
-
-\index{avancer() (general\_interface\_V9.LecteurVideo method)@\spxentry{avancer()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.avancer}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{avancer}}}{}{}
-\pysigstopsignatures
-\end{fulllineitems}
-
-\index{charger\_son\_video() (general\_interface\_V9.LecteurVideo method)@\spxentry{charger\_son\_video()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.charger_son_video}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{charger\_son\_video}}}{\sphinxparam{\DUrole{n}{file\_path}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Arrête le son précédent, et fait l’extraction et le chargement
-de la nouvelle piste audio associée à la vidéo sélectionnée
-Elle fait aussi le nettoyage des ressources utilisées pendant le processus.
-
-\end{fulllineitems}
-
-\index{configurer\_barre\_progression() (general\_interface\_V9.LecteurVideo method)@\spxentry{configurer\_barre\_progression()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.configurer_barre_progression}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{configurer\_barre\_progression}}}{}{}
-\pysigstopsignatures
-\end{fulllineitems}
-
-\index{format\_duree() (general\_interface\_V9.LecteurVideo method)@\spxentry{format\_duree()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.format_duree}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{format\_duree}}}{\sphinxparam{\DUrole{n}{seconds}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-convertir une durée en secondes en un format de temps plus lisible,
-sous la forme de minutes et secondes.
-
-\end{fulllineitems}
-
-\index{manual\_update\_progress() (general\_interface\_V9.LecteurVideo method)@\spxentry{manual\_update\_progress()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.manual_update_progress}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{manual\_update\_progress}}}{\sphinxparam{\DUrole{n}{value}}}{}
-\pysigstopsignatures
-\end{fulllineitems}
-
-\index{mettre\_a\_jour\_frame\_video() (general\_interface\_V9.LecteurVideo method)@\spxentry{mettre\_a\_jour\_frame\_video()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.mettre_a_jour_frame_video}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{mettre\_a\_jour\_frame\_video}}}{\sphinxparam{\DUrole{n}{frame}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-permet de s’assurer que chaque frame de la vidéo est correctement traitée,
-redimensionnée et affichée dans l’interface utilisateur
-
-\end{fulllineitems}
-
-\index{mettre\_a\_jour\_temps\_video() (general\_interface\_V9.LecteurVideo method)@\spxentry{mettre\_a\_jour\_temps\_video()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.mettre_a_jour_temps_video}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{mettre\_a\_jour\_temps\_video}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Assure que le temps de la vidéo affichée est régulièrement mis à jour et que la lecture de la vidéo continue
-de manière fluide. Elle assure la sychronisation de  l’avancement de la vidéo avec le temps réel
-
-\end{fulllineitems}
-
-\index{ouvrir\_video() (general\_interface\_V9.LecteurVideo method)@\spxentry{ouvrir\_video()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.ouvrir_video}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ouvrir\_video}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Ouvre une vidéo depuis l’explorateur du fichier
-une fois choisie, elle se met en lecture dans middle\_frame
-
-\end{fulllineitems}
-
-\index{ouvrir\_video\_noire() (general\_interface\_V9.LecteurVideo method)@\spxentry{ouvrir\_video\_noire()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.ouvrir_video_noire}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ouvrir\_video\_noire}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Ouvre la vidéo noire directement qui doit étre dans le meme dossier que le code
-
-\end{fulllineitems}
-
-\index{pause\_lecture() (general\_interface\_V9.LecteurVideo method)@\spxentry{pause\_lecture()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.pause_lecture}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{pause\_lecture}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Cette fonction gère l’état de pause et reprise de la vidéo
-
-\end{fulllineitems}
-
-\index{preparer\_son\_video() (general\_interface\_V9.LecteurVideo method)@\spxentry{preparer\_son\_video()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.preparer_son_video}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{preparer\_son\_video}}}{\sphinxparam{\DUrole{n}{file\_path}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Prépare le son de la vidéo à partir de la vidéo originale.
-
-\end{fulllineitems}
-
-\index{recule\_progress() (general\_interface\_V9.LecteurVideo method)@\spxentry{recule\_progress()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.recule_progress}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{recule\_progress}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Permet de reculer de 1 seconde dans la video en assurant la synchronisation du son avec la video
-
-\end{fulllineitems}
-
-\index{revoir\_video() (general\_interface\_V9.LecteurVideo method)@\spxentry{revoir\_video()}\spxextra{general\_interface\_V9.LecteurVideo method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.LecteurVideo.revoir_video}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{revoir\_video}}}{}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Permet de revoir la video depuis le début
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
-\index{Menu\_symptomes (class in general\_interface\_V9)@\spxentry{Menu\_symptomes}\spxextra{class in general\_interface\_V9}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V9.}}\sphinxbfcode{\sphinxupquote{Menu\_symptomes}}}{\sphinxparam{\DUrole{n}{master}}\sphinxparamcomma \sphinxparam{\DUrole{n}{interface\_generale}}\sphinxparamcomma \sphinxparam{\DUrole{n}{couleur}}\sphinxparamcomma \sphinxparam{\DUrole{n}{bordure}}\sphinxparamcomma \sphinxparam{\DUrole{n}{largeur}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Bases: \sphinxcode{\sphinxupquote{CTkFrame}}
-
-\sphinxAtStartPar
-Classe permettant d’instancier les menus déroulants rassemblant les symptomes dans une frame qui se situe sur la gauche de l’interface
-\index{master (general\_interface\_V9.Menu\_symptomes attribute)@\spxentry{master}\spxextra{general\_interface\_V9.Menu\_symptomes attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.master}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{master}}}
-\pysigstopsignatures\begin{quote}\begin{description}
-\sphinxlineitem{Type}
-\sphinxAtStartPar
-any
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-
-\begin{fulllineitems}
-
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{interface~generale}}}
-\pysigstopsignatures\begin{quote}\begin{description}
-\sphinxlineitem{Type}
-\sphinxAtStartPar
-{\hyperref[\detokenize{general_interface:general_interface_V9.InterfaceGenerale}]{\sphinxcrossref{InterfaceGenerale}}}
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{couleur (general\_interface\_V9.Menu\_symptomes attribute)@\spxentry{couleur}\spxextra{general\_interface\_V9.Menu\_symptomes attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.couleur}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{couleur}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-couleur du fond
-\begin{quote}\begin{description}
-\sphinxlineitem{Type}
 \sphinxAtStartPar
 str
 
@@ -675,85 +889,265 @@ str
 
 \end{fulllineitems}
 
-\index{bordure (general\_interface\_V9.Menu\_symptomes attribute)@\spxentry{bordure}\spxextra{general\_interface\_V9.Menu\_symptomes attribute}}
+\index{update\_right\_panel() (general\_interface\_V10.InterfaceGenerale method)@\spxentry{update\_right\_panel()}\spxextra{general\_interface\_V10.InterfaceGenerale method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.bordure}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.InterfaceGenerale.update_right_panel}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{bordure}}}
-\pysigstopsignatures\begin{quote}\begin{description}
-\sphinxlineitem{Type}
-\sphinxAtStartPar
-int
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{largeur (general\_interface\_V9.Menu\_symptomes attribute)@\spxentry{largeur}\spxextra{general\_interface\_V9.Menu\_symptomes attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.largeur}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{largeur}}}
-\pysigstopsignatures\begin{quote}\begin{description}
-\sphinxlineitem{Type}
-\sphinxAtStartPar
-int
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{create\_dropdown\_menus() (general\_interface\_V9.Menu\_symptomes method)@\spxentry{create\_dropdown\_menus()}\spxextra{general\_interface\_V9.Menu\_symptomes method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.create_dropdown_menus}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create\_dropdown\_menus}}}{\sphinxparam{\DUrole{n}{master}}\sphinxparamcomma \sphinxparam{\DUrole{n}{largeur}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{update\_right\_panel}}}{\sphinxparam{\DUrole{n}{attributs}\DUrole{o}{=}\DUrole{default_value}{{[}{]}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{is\_start\_time}\DUrole{o}{=}\DUrole{default_value}{False}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Crée un menu déroulants contenant les différents symptomes classés selon s’ils sont objectifs ou subjectifs.
+manage the display of symptom start/end times on the right\sphinxhyphen{}hand side and pop\sphinxhyphen{}up management to modify a symptom.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{master}} (\sphinxstyleliteralemphasis{\sphinxupquote{fenetre}}) \textendash{} fenetre dans laquelle on veut afficher le sous menu déroulant
+\sphinxstyleliteralstrong{\sphinxupquote{attributs}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} symptom initialisation list | default = {[}{]}
 
 \end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{create\_submenu() (general\_interface\_V9.Menu\_symptomes method)@\spxentry{create\_submenu()}\spxextra{general\_interface\_V9.Menu\_symptomes method}}
+
+\end{fulllineitems}
+
+\index{LecteurVideo (class in general\_interface\_V10)@\spxentry{LecteurVideo}\spxextra{class in general\_interface\_V10}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.create_submenu}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create\_submenu}}}{\sphinxparam{\DUrole{n}{parent\_menu}}\sphinxparamcomma \sphinxparam{\DUrole{n}{symptom}}\sphinxparamcomma \sphinxparam{\DUrole{n}{sub\_symptoms}}\sphinxparamcomma \sphinxparam{\DUrole{n}{my\_font}}\sphinxparamcomma \sphinxparam{\DUrole{n}{on\_select}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V10.}}\sphinxbfcode{\sphinxupquote{LecteurVideo}}}{\sphinxparam{\DUrole{n}{InterfaceGenerale}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Crée les sous menus déroulants après avoir sélectionné un symptome.
-Les éléments de ce menu precisent la localisation du symptome sur le corps et la latéralité.
+Bases: \sphinxcode{\sphinxupquote{object}}
+
+\sphinxAtStartPar
+Video player class that manages the different functionalities of the video.
+\begin{description}
+\sphinxlineitem{Functionalities supported :}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+opening a video using the file explorer
+
+\item {} 
+\sphinxAtStartPar
+opening a dark video \sphinxhyphen{} in case there is no video to actually open
+
+\item {} 
+\sphinxAtStartPar
+sychronizing sound and video
+
+\item {} 
+\sphinxAtStartPar
+buttons gestion
+
+\end{itemize}
+
+\end{description}
+
+\sphinxAtStartPar
+This class calls the InterfaceGenerale class
+\index{interface\_generale (general\_interface\_V10.LecteurVideo attribute)@\spxentry{interface\_generale}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.interface_generale}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{interface\_generale}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+The main interface in which to open the video player.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+{\hyperref[\detokenize{general_interface:general_interface_V10.InterfaceGenerale}]{\sphinxcrossref{InterfaceGenerale}}}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{video\_paused (general\_interface\_V10.LecteurVideo attribute)@\spxentry{video\_paused}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.video_paused}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{video\_paused}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Indicates whether the video is currently paused.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+bool
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{current\_frame\_time (general\_interface\_V10.LecteurVideo attribute)@\spxentry{current\_frame\_time}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.current_frame_time}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{current\_frame\_time}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Current time of the video frame being displayed.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+int
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{clock (general\_interface\_V10.LecteurVideo attribute)@\spxentry{clock}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.clock}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{clock}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Pygame clock to manage time\sphinxhyphen{}related operations.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+Clock
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{vitesse\_lecture (general\_interface\_V10.LecteurVideo attribute)@\spxentry{vitesse\_lecture}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.vitesse_lecture}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{vitesse\_lecture}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Speed factor for video playback.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+int
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{valeur (general\_interface\_V10.LecteurVideo attribute)@\spxentry{valeur}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.valeur}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{valeur}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+A value indicating something, not clearly specified in the docstring.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+int
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{temps\_ecoule (general\_interface\_V10.LecteurVideo attribute)@\spxentry{temps\_ecoule}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.temps_ecoule}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{temps\_ecoule}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Elapsed time of the video playback.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+int
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{duree\_totale (general\_interface\_V10.LecteurVideo attribute)@\spxentry{duree\_totale}\spxextra{general\_interface\_V10.LecteurVideo attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.duree_totale}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{duree\_totale}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Total duration of the loaded video.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+int
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{afficher\_menu\_annotations() (general\_interface\_V10.LecteurVideo method)@\spxentry{afficher\_menu\_annotations()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.afficher_menu_annotations}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{afficher\_menu\_annotations}}}{\sphinxparam{\DUrole{n}{event}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Retrieve the coordinates by clicking on the video.
+
+\sphinxAtStartPar
+It currently displays a red cross.
+But you can use this red cross to display the symtoms by hovering over it with the cursor.
+
+\end{fulllineitems}
+
+\index{afficher\_video() (general\_interface\_V10.LecteurVideo method)@\spxentry{afficher\_video()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.afficher_video}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{afficher\_video}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Allows to display and play the video.
+
+\sphinxAtStartPar
+Resizes the frames of the video to match thoses  of the middle frame
+computes and displays the total and elapsed time of the video
+
+\end{fulllineitems}
+
+\index{ajouter\_plus\_rouge() (general\_interface\_V10.LecteurVideo method)@\spxentry{ajouter\_plus\_rouge()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.ajouter_plus_rouge}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ajouter\_plus\_rouge}}}{\sphinxparam{\DUrole{n}{canvas}}\sphinxparamcomma \sphinxparam{\DUrole{n}{x}}\sphinxparamcomma \sphinxparam{\DUrole{n}{y}}\sphinxparamcomma \sphinxparam{\DUrole{n}{taille}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Displays the red cross for 1 second where one clicks on the video
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{parent\_menu}} (\sphinxstyleliteralemphasis{\sphinxupquote{Menu}}) \textendash{} Menu déroulant lié au symptome sélectionné
+\sphinxstyleliteralstrong{\sphinxupquote{canvas}} (\sphinxstyleliteralemphasis{\sphinxupquote{tk.Canvas}}) \textendash{} the canvas of the video
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{symptom}} (\sphinxstyleliteralemphasis{\sphinxupquote{symptome}}) \textendash{} Symptome sélectionné
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} x\sphinxhyphen{}coordinate of the cross
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{sub\_symptoms}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} liste complémantaire au symptôme sélectionné (indique la position/latéralisation)
+\sphinxstyleliteralstrong{\sphinxupquote{y}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} y\sphinxhyphen{}coordinate of the cross
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{my\_font}} (\sphinxstyleliteralemphasis{\sphinxupquote{Font}}) \textendash{} indique la taille de la police d’écriture
-
-\item {} 
-\sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{on\_select}} (\sphinxstyleliteralemphasis{\sphinxupquote{function}}) \textendash{} commande de selection des symptomes
+\sphinxstyleliteralstrong{\sphinxupquote{taille}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} size of \sphinxstylestrong{????}
 
 \end{itemize}
 
@@ -761,68 +1155,234 @@ Les éléments de ce menu precisent la localisation du symptome sur le corps et 
 
 \end{fulllineitems}
 
-\index{on\_select\_obj() (general\_interface\_V9.Menu\_symptomes method)@\spxentry{on\_select\_obj()}\spxextra{general\_interface\_V9.Menu\_symptomes method}}
+\index{avance\_progress() (general\_interface\_V10.LecteurVideo method)@\spxentry{avance\_progress()}\spxextra{general\_interface\_V10.LecteurVideo method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.on_select_obj}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.avance_progress}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{on\_select\_obj}}}{\sphinxparam{\DUrole{n}{selection}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{avance\_progress}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Récupère des données lié à la video pour obtenir le temps actuel
+advances the video by one wave and ensures that the sound also advances
+
+\end{fulllineitems}
+
+\index{avancer() (general\_interface\_V10.LecteurVideo method)@\spxentry{avancer()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.avancer}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{avancer}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+\sphinxstylestrong{??}
+
+\end{fulllineitems}
+
+\index{charger\_son\_video() (general\_interface\_V10.LecteurVideo method)@\spxentry{charger\_son\_video()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.charger_son_video}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{charger\_son\_video}}}{\sphinxparam{\DUrole{n}{file\_path}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Stops the previous audio, and extracts and loads the new audio track associated with the selected video.
+It also cleans up the resources used during the process.
+
+\end{fulllineitems}
+
+\index{configurer\_barre\_progression() (general\_interface\_V10.LecteurVideo method)@\spxentry{configurer\_barre\_progression()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.configurer_barre_progression}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{configurer\_barre\_progression}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+\sphinxstylestrong{??}
+
+\end{fulllineitems}
+
+\index{format\_duree() (general\_interface\_V10.LecteurVideo method)@\spxentry{format\_duree()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.format_duree}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{format\_duree}}}{\sphinxparam{\DUrole{n}{seconds}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Converts the time in seconds in a more readable format : minutes and secondes
+
+\end{fulllineitems}
+
+\index{manual\_update\_progress() (general\_interface\_V10.LecteurVideo method)@\spxentry{manual\_update\_progress()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.manual_update_progress}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{manual\_update\_progress}}}{\sphinxparam{\DUrole{n}{value}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+\sphinxstylestrong{??}
+
+\end{fulllineitems}
+
+\index{mettre\_a\_jour\_frame\_video() (general\_interface\_V10.LecteurVideo method)@\spxentry{mettre\_a\_jour\_frame\_video()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.mettre_a_jour_frame_video}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{mettre\_a\_jour\_frame\_video}}}{\sphinxparam{\DUrole{n}{frame}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Checks if each frame of the video is correctly processed, resized and displayed in the GUI
+
+\end{fulllineitems}
+
+\index{mettre\_a\_jour\_temps\_video() (general\_interface\_V10.LecteurVideo method)@\spxentry{mettre\_a\_jour\_temps\_video()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.mettre_a_jour_temps_video}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{mettre\_a\_jour\_temps\_video}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Ensures that the displayed time of the video is regularly updated and that the video plays smoothly.
+It also ensures the sinchronization between the video advancement and the real time
+
+\end{fulllineitems}
+
+\index{ouvrir\_video() (general\_interface\_V10.LecteurVideo method)@\spxentry{ouvrir\_video()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.ouvrir_video}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ouvrir\_video}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Opens a video with the file explorer.
+Once chosen, it plays the video in the middle\_frame
+
+\end{fulllineitems}
+
+\index{ouvrir\_video\_noire() (general\_interface\_V10.LecteurVideo method)@\spxentry{ouvrir\_video\_noire()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.ouvrir_video_noire}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{ouvrir\_video\_noire}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Opens the black video.
+The black video must be in the same folder as the code : “video\_noire.mp4”
+
+\end{fulllineitems}
+
+\index{pause\_lecture() (general\_interface\_V10.LecteurVideo method)@\spxentry{pause\_lecture()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.pause_lecture}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{pause\_lecture}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Manage the play/pause state of the video
+
+\end{fulllineitems}
+
+\index{preparer\_son\_video() (general\_interface\_V10.LecteurVideo method)@\spxentry{preparer\_son\_video()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.preparer_son_video}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{preparer\_son\_video}}}{\sphinxparam{\DUrole{n}{file\_path}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Prepares the sound of the video from the original video
+
+\end{fulllineitems}
+
+\index{recule\_progress() (general\_interface\_V10.LecteurVideo method)@\spxentry{recule\_progress()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.recule_progress}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{recule\_progress}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Rewinds the video by 1 second, ensuring that the sound is synchronised with the video.
+
+\end{fulllineitems}
+
+\index{revoir\_video() (general\_interface\_V10.LecteurVideo method)@\spxentry{revoir\_video()}\spxextra{general\_interface\_V10.LecteurVideo method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.LecteurVideo.revoir_video}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{revoir\_video}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Allows to play the video again
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{Menu\_symptomes (class in general\_interface\_V10)@\spxentry{Menu\_symptomes}\spxextra{class in general\_interface\_V10}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.Menu_symptomes}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{general\_interface\_V10.}}\sphinxbfcode{\sphinxupquote{Menu\_symptomes}}}{\sphinxparam{\DUrole{n}{master}}\sphinxparamcomma \sphinxparam{\DUrole{n}{interface\_generale}}\sphinxparamcomma \sphinxparam{\DUrole{n}{couleur}}\sphinxparamcomma \sphinxparam{\DUrole{n}{bordure}}\sphinxparamcomma \sphinxparam{\DUrole{n}{largeur}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Bases: \sphinxcode{\sphinxupquote{CTkFrame}}
+
+\sphinxAtStartPar
+Class used to instantiate drop\sphinxhyphen{}down menus displaying symptoms in a frame on the left of the interface.
+\index{create\_dropdown\_menus() (general\_interface\_V10.Menu\_symptomes method)@\spxentry{create\_dropdown\_menus()}\spxextra{general\_interface\_V10.Menu\_symptomes method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.Menu_symptomes.create_dropdown_menus}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create\_dropdown\_menus}}}{\sphinxparam{\DUrole{n}{largeur}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Creates a drop\sphinxhyphen{}down menu containing the various symptoms classified according to whether they are objective or subjective.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{selection}} (\sphinxstyleliteralemphasis{\sphinxupquote{path}}) \textendash{} Symptome sélectionné
+\sphinxstyleliteralstrong{\sphinxupquote{largeur}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} width of the frame of the menus
 
 \end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{on\_select\_subj() (general\_interface\_V9.Menu\_symptomes method)@\spxentry{on\_select\_subj()}\spxextra{general\_interface\_V9.Menu\_symptomes method}}
+\index{on\_select() (general\_interface\_V10.Menu\_symptomes method)@\spxentry{on\_select()}\spxextra{general\_interface\_V10.Menu\_symptomes method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.on_select_subj}}
+\phantomsection\label{\detokenize{general_interface:general_interface_V10.Menu_symptomes.on_select}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{on\_select\_subj}}}{\sphinxparam{\DUrole{n}{selection}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{on\_select}}}{\sphinxparam{\DUrole{n}{selection}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Récupère des données lié à la video pour obtenir le temps actuel
+Symptoms selector
+
+\sphinxAtStartPar
+Sets the right attributes depending on the menu selection to update the symptom list
+Recovers data linked to the video to obtain the current time
+the selection is expected to be on the form
+\begin{quote}
+
+\sphinxAtStartPar
+designation \textgreater{} description \textgreater{} sub descrition\textgreater{} topography \textgreater{} lateralization
+\end{quote}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{selection}} (\sphinxstyleliteralemphasis{\sphinxupquote{path}}) \textendash{} Symptome sélectionné
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{read\_symptoms\_from\_file() (general\_interface\_V9.Menu\_symptomes method)@\spxentry{read\_symptoms\_from\_file()}\spxextra{general\_interface\_V9.Menu\_symptomes method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{general_interface:general_interface_V9.Menu_symptomes.read_symptoms_from_file}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{read\_symptoms\_from\_file}}}{\sphinxparam{\DUrole{n}{file\_name}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Lit les fichiers textes contenant la liste des symptomes pour remplir les menus
-
-\sphinxAtStartPar
-Les symptomes doivent etre ecrits avec des séparateurs spécifiques
-\sphinxstyleemphasis{example :  Negative myoclonus{[}Oriented(Left;Right;Bilateral);Hand/Superior limb;Foot/Inferior limb{]}}
-\begin{quote}\begin{description}
-\sphinxlineitem{Parameters}
-\sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{file\_name}} (\sphinxstyleliteralemphasis{\sphinxupquote{string}}) \textendash{} chemin du fichier
-
-\sphinxlineitem{Returns}
-\sphinxAtStartPar
-titre du menu
-symptoms (list): liste contenant les symptomes pour remplir les menus
-
-\sphinxlineitem{Return type}
-\sphinxAtStartPar
-title (string)
+\sphinxstyleliteralstrong{\sphinxupquote{selection}} (\sphinxstyleliteralemphasis{\sphinxupquote{path}}) \textendash{} selected symptom
 
 \end{description}\end{quote}
 
@@ -844,7 +1404,17 @@ title (string)
 \section{frise.ecriture\_fichier module}
 \label{\detokenize{frise:module-frise.ecriture_fichier}}\label{\detokenize{frise:frise-ecriture-fichier-module}}\index{module@\spxentry{module}!frise.ecriture\_fichier@\spxentry{frise.ecriture\_fichier}}\index{frise.ecriture\_fichier@\spxentry{frise.ecriture\_fichier}!module@\spxentry{module}}
 \sphinxAtStartPar
-Ce module contient des fonctions pour créer et éditer les fichiers ‘.txt’ de sortie avec les symptomes
+This module provides functions for writing symptom data, symptom lists, and metadata to text files.
+\begin{description}
+\sphinxlineitem{Functions:}
+\sphinxAtStartPar
+EcrireSymptome: Writes a single symptom to a file.
+EcrireListeSymptome: Writes a list of symptoms to a file.
+EcrireMetaData: Writes metadata to a file.
+format: Formats text data by replacing specified characters.
+ecrire\_rapport: Writes a report with symptom details.
+
+\end{description}
 \index{EcrireListeSymptome() (in module frise.ecriture\_fichier)@\spxentry{EcrireListeSymptome()}\spxextra{in module frise.ecriture\_fichier}}
 
 \begin{fulllineitems}
@@ -853,20 +1423,16 @@ Ce module contient des fonctions pour créer et éditer les fichiers ‘.txt’ 
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.ecriture\_fichier.}}\sphinxbfcode{\sphinxupquote{EcrireListeSymptome}}}{\sphinxparam{\DUrole{n}{listeSymptome}}\sphinxparamcomma \sphinxparam{\DUrole{n}{nomfichier}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ecrit une liste de symptomes dans un fichier texte
-
-\sphinxAtStartPar
-Chaque symptome est écrit sur une ligne
-Fait appel à la fonction EcrireSymptome
+Writes a list of symptoms to a file.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{symptome}} (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{str}}) \textendash{} liste des symptomes
+\sphinxstyleliteralstrong{\sphinxupquote{listeSymptome}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} List of symptom objects to be written to the file.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{nomfichier}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} chemin du fichier
+\sphinxstyleliteralstrong{\sphinxupquote{nomfichier}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The path of the file to write to.
 
 \end{itemize}
 
@@ -886,16 +1452,16 @@ None
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.ecriture\_fichier.}}\sphinxbfcode{\sphinxupquote{EcrireMetaData}}}{\sphinxparam{\DUrole{n}{Meta}}\sphinxparamcomma \sphinxparam{\DUrole{n}{nomfichier}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ecrit les metadata d’une annotation dans un fichier texte sous la forme : heure réelle :    patient :       praticien :     date d’annotation :
+Writes metadata to a file.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{(}} (\sphinxstyleliteralemphasis{\sphinxupquote{Meta}}) \textendash{} obj: MetaData): Les métadatas
+\sphinxstyleliteralstrong{\sphinxupquote{Meta}} (\sphinxcode{\sphinxupquote{Matadata}}) \textendash{} metadata information.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{nomfichier}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} chemin du fichier
+\sphinxstyleliteralstrong{\sphinxupquote{nomfichier}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The path of the file to write to.
 
 \end{itemize}
 
@@ -915,22 +1481,55 @@ None
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.ecriture\_fichier.}}\sphinxbfcode{\sphinxupquote{EcrireSymptome}}}{\sphinxparam{\DUrole{n}{symptome}}\sphinxparamcomma \sphinxparam{\DUrole{n}{nomfichier}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ecrit un symptome dans un fichier texte dont on specifie le nom
+Writes a single symptom to a file.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{symptome}} (\sphinxcode{\sphinxupquote{Symptome}}) \textendash{} symptome à écrire
+\sphinxstyleliteralstrong{\sphinxupquote{symptome}} (\sphinxcode{\sphinxupquote{Symptome}}) \textendash{} The symptom object to be written to the file.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{nomfichier}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} chemin du fichier
+\sphinxstyleliteralstrong{\sphinxupquote{nomfichier}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The path of the file to write to.
 
 \end{itemize}
 
 \sphinxlineitem{Returns}
 \sphinxAtStartPar
 None
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{compute\_duration() (in module frise.ecriture\_fichier)@\spxentry{compute\_duration()}\spxextra{in module frise.ecriture\_fichier}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{frise:frise.ecriture_fichier.compute_duration}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.ecriture\_fichier.}}\sphinxbfcode{\sphinxupquote{compute\_duration}}}{\sphinxparam{\DUrole{n}{deb}}\sphinxparamcomma \sphinxparam{\DUrole{n}{fin}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Compute the duration between two time strings in seconds.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{deb}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} Start time string in the format “hh:mm:ss”.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{fin}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} End time string in the format “hh:mm:ss”.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Total duration between the start and end time in seconds.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+int
 
 \end{description}\end{quote}
 
@@ -944,16 +1543,16 @@ None
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.ecriture\_fichier.}}\sphinxbfcode{\sphinxupquote{ecrire\_rapport}}}{\sphinxparam{\DUrole{n}{Symptom\_list}}\sphinxparamcomma \sphinxparam{\DUrole{n}{filename}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ecrit les symptomes dans le rapport lisible par les médecins
+Writes a report with symptom details to a file.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{Symptom\_list}} (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{Symptome}}) \textendash{} liste des symptomes a écrire
+\sphinxstyleliteralstrong{\sphinxupquote{Symptom\_list}} (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{Symptome}}) \textendash{} List of symptom objects.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{filename}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} chemein du fichier a ecrire
+\sphinxstyleliteralstrong{\sphinxupquote{filename}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The path of the file to write to.
 
 \end{itemize}
 
@@ -969,26 +1568,26 @@ Ecrit les symptomes dans le rapport lisible par les médecins
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.ecriture\_fichier.}}\sphinxbfcode{\sphinxupquote{format}}}{\sphinxparam{\DUrole{n}{data}}\sphinxparamcomma \sphinxparam{\DUrole{n}{caracteres}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-supprime les caracteres speciaux d’une liste de string
+Formats text data by replacing specified characters.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{data}} (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{str}}) \textendash{} liste de strings a traiter
+\sphinxstyleliteralstrong{\sphinxupquote{data}} (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{str}}) \textendash{} List of text data to be formatted.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{caracteres}} (\sphinxstyleliteralemphasis{\sphinxupquote{List}}) \textendash{} liste des caracteres et de leur remplacement, de la forme {[}(“C1”, “C2”){]}
+\sphinxstyleliteralstrong{\sphinxupquote{caracteres}} (\sphinxstyleliteralemphasis{\sphinxupquote{List}}) \textendash{} List containing character replacement pairs.
 
 \end{itemize}
 
 \sphinxlineitem{Returns}
 \sphinxAtStartPar
-liste de strings traitée
+Formatted text data.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-new\_data (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{str}})
+\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{str}}
 
 \end{description}\end{quote}
 
@@ -997,7 +1596,19 @@ new\_data (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{str}}
 
 
 \section{frise.fonctions\_frise module}
-\label{\detokenize{frise:module-frise.fonctions_frise}}\label{\detokenize{frise:frise-fonctions-frise-module}}\index{module@\spxentry{module}!frise.fonctions\_frise@\spxentry{frise.fonctions\_frise}}\index{frise.fonctions\_frise@\spxentry{frise.fonctions\_frise}!module@\spxentry{module}}\index{afficher\_frise() (in module frise.fonctions\_frise)@\spxentry{afficher\_frise()}\spxextra{in module frise.fonctions\_frise}}
+\label{\detokenize{frise:module-frise.fonctions_frise}}\label{\detokenize{frise:frise-fonctions-frise-module}}\index{module@\spxentry{module}!frise.fonctions\_frise@\spxentry{frise.fonctions\_frise}}\index{frise.fonctions\_frise@\spxentry{frise.fonctions\_frise}!module@\spxentry{module}}
+\sphinxAtStartPar
+This module provides functions for visualizing a chronological timeline of symptoms.
+\begin{description}
+\sphinxlineitem{Functions:}
+\sphinxAtStartPar
+chercherElt(list): Searches for a missing element in a list of integers.
+chevauchement(liste, symp, current\_index, levels): Manages the visual overlapping of symptoms.
+on\_text\_click(event): Displays the annotation when the text is clicked.
+afficher\_frise(liste): Displays the chronological timeline of symptoms.
+
+\end{description}
+\index{afficher\_frise() (in module frise.fonctions\_frise)@\spxentry{afficher\_frise()}\spxextra{in module frise.fonctions\_frise}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{frise:frise.fonctions_frise.afficher_frise}}
@@ -1005,8 +1616,13 @@ new\_data (\sphinxcode{\sphinxupquote{list}} of \sphinxcode{\sphinxupquote{str}}
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.fonctions\_frise.}}\sphinxbfcode{\sphinxupquote{afficher\_frise}}}{\sphinxparam{\DUrole{n}{liste}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Affiche la frise chronologique des symptômes.
-:param liste (: obj:list of :obj:list): liste des symptomes où chaque élément est une liste {[}Name, début, fin, Lateralization, seg corporel, orientation, attribut suppl, Comment, tdeb\_str, tfin\_str{]}.
+Displays the chronological timeline of symptoms.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{(}} (\sphinxstyleliteralemphasis{\sphinxupquote{liste}}) \textendash{} obj:list of :obj:list): List of symptoms where each element is a list {[}Name, start, end, Lateralization, seg corporel, orientation, additional attribute, Comment, tdeb\_str, tfin\_str{]}.
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
@@ -1018,7 +1634,21 @@ Affiche la frise chronologique des symptômes.
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.fonctions\_frise.}}\sphinxbfcode{\sphinxupquote{chercherElt}}}{\sphinxparam{\DUrole{n}{list}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Cherche s’il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,…
+Searches for a missing element in a list of integers.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{list}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A list of integers.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The missing element in the list.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+int
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
@@ -1030,26 +1660,30 @@ Cherche s’il y a un élément manquant dans une liste de chiffre 0,1,2,3,4,5,�
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.fonctions\_frise.}}\sphinxbfcode{\sphinxupquote{chevauchement}}}{\sphinxparam{\DUrole{n}{liste}}\sphinxparamcomma \sphinxparam{\DUrole{n}{symp}}\sphinxparamcomma \sphinxparam{\DUrole{n}{current\_index}}\sphinxparamcomma \sphinxparam{\DUrole{n}{levels}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Gère le problème de superposition visuelle des symptômes.
+Manages the visual overlapping of symptoms.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{liste}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} liste des symptomes avec début et fin
+\sphinxstyleliteralstrong{\sphinxupquote{liste}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} List of symptoms with start and end times.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{symp}} (\sphinxcode{\sphinxupquote{Symptome}}) \textendash{} symptome actuel.
+\sphinxstyleliteralstrong{\sphinxupquote{symp}} (\sphinxcode{\sphinxupquote{Symptome}}) \textendash{} Current symptom.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{current\_index}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} indice du symp actuel dans la liste.
+\sphinxstyleliteralstrong{\sphinxupquote{current\_index}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Index of the current symptom in the list.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{levels}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} List of levels.
 
 \end{itemize}
 
 \sphinxlineitem{Returns}
 \sphinxAtStartPar
-niveau y où afficher le rectangle.
+The y\sphinxhyphen{}level where to display the rectangle.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
@@ -1067,7 +1701,13 @@ int
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{frise.fonctions\_frise.}}\sphinxbfcode{\sphinxupquote{on\_text\_click}}}{\sphinxparam{\DUrole{n}{event}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Affiche l’annotation lorsque le texte est cliqué.
+Displays the annotation when the text is clicked.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{event}} (\sphinxstyleliteralemphasis{\sphinxupquote{matplotlib.backend\_bases.MouseEvent}}) \textendash{} The mouse event.
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
@@ -1076,7 +1716,18 @@ Affiche l’annotation lorsque le texte est cliqué.
 \section{frise.save module}
 \label{\detokenize{frise:module-frise.save}}\label{\detokenize{frise:frise-save-module}}\index{module@\spxentry{module}!frise.save@\spxentry{frise.save}}\index{frise.save@\spxentry{frise.save}!module@\spxentry{module}}
 \sphinxAtStartPar
-Ce fichier contient des classes et fonctions de base pour sauvegarder les fichiers ‘.txt’ et frise de sortie
+This file contains basic classes and functions for saving ‘.txt’ files and outputting timelines.
+\begin{description}
+\sphinxlineitem{Classes:}
+\sphinxAtStartPar
+save: Class dedicated to saving files.
+MetaData\_WD: Toplevel window for entering metadata.
+
+\sphinxlineitem{Functions:}
+\sphinxAtStartPar
+None
+
+\end{description}
 \index{MetaData\_WD (class in frise.save)@\spxentry{MetaData\_WD}\spxextra{class in frise.save}}
 
 \begin{fulllineitems}
@@ -1088,7 +1739,7 @@ Ce fichier contient des classes et fonctions de base pour sauvegarder les fichie
 Bases: \sphinxcode{\sphinxupquote{CTkToplevel}}
 
 \sphinxAtStartPar
-fenetre toplevel pour saisir les metadonnées
+Toplevel window for entering metadata.
 \index{liste (frise.save.MetaData\_WD attribute)@\spxentry{liste}\spxextra{frise.save.MetaData\_WD attribute}}
 
 \begin{fulllineitems}
@@ -1097,7 +1748,7 @@ fenetre toplevel pour saisir les metadonnées
 \pysigline{\sphinxbfcode{\sphinxupquote{liste}}}
 \pysigstopsignatures
 \sphinxAtStartPar
-liste de symptomes a sauvegarder
+List of symptoms to be saved.
 \begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
@@ -1115,7 +1766,7 @@ list
 \pysigline{\sphinxbfcode{\sphinxupquote{filename}}}
 \pysigstopsignatures
 \sphinxAtStartPar
-chemin du fichier dans lequel ecrire
+Path of the file to write to.
 \begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
@@ -1133,11 +1784,11 @@ string
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_metadata}}}{\sphinxparam{\DUrole{n}{event}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-ecrire une liste des metadonnées sous la forme {[}heure réelle, patient, praticien{]}
+Write a list of metadata in the form {[}real time, patient, practitioner{]}.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{event}} (\sphinxstyleliteralemphasis{\sphinxupquote{any}}) \textendash{} correspont a l’ecriture dans les box de texte
+\sphinxstyleliteralstrong{\sphinxupquote{event}} (\sphinxstyleliteralemphasis{\sphinxupquote{any}}) \textendash{} Corresponds to writing in the text boxes.
 
 \end{description}\end{quote}
 
@@ -1157,7 +1808,7 @@ ecrire une liste des metadonnées sous la forme {[}heure réelle, patient, prati
 Bases: \sphinxcode{\sphinxupquote{object}}
 
 \sphinxAtStartPar
-classe dédiée à la sauvegarde des fichiers
+Class dedicated to saving files.
 \index{symptomes (frise.save.save attribute)@\spxentry{symptomes}\spxextra{frise.save.save attribute}}
 
 \begin{fulllineitems}
@@ -1166,11 +1817,11 @@ classe dédiée à la sauvegarde des fichiers
 \pysigline{\sphinxbfcode{\sphinxupquote{symptomes}}}
 \pysigstopsignatures
 \sphinxAtStartPar
-liste des symptomes a sauvegarder
+List of symptoms to be saved
 \begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
-Liste
+list
 
 \end{description}\end{quote}
 
@@ -1184,11 +1835,11 @@ Liste
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{save}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Enregistre les symptomes dans un fichier pour etre rechargés
+Saves the symptoms to a file for reloading.
 \begin{quote}\begin{description}
 \sphinxlineitem{Raises}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{FileNotFoundError}} \textendash{} message d’erreur si echec de recuperation du chemin du fichier.
+\sphinxstyleliteralstrong{\sphinxupquote{FileNotFoundError}} \textendash{} Error message if failed to retrieve file path.
 
 \end{description}\end{quote}
 
@@ -1202,11 +1853,11 @@ Enregistre les symptomes dans un fichier pour etre rechargés
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_symptomes}}}{\sphinxparam{\DUrole{n}{Liste\_symptomes}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Actualise les symptomes
+Updates the symptoms.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{Liste\_symptomes}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} Liste de symptomes
+\sphinxstyleliteralstrong{\sphinxupquote{Liste\_symptomes}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} List of symptoms
 
 \end{description}\end{quote}
 
@@ -1220,11 +1871,11 @@ Actualise les symptomes
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{write\_report}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Ecrit un fichier lisible par un humain
+Writes a human\sphinxhyphen{}readable file.
 \begin{quote}\begin{description}
 \sphinxlineitem{Raises}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{FileNotFoundError}} \textendash{} message d’erreur si echec de recuperation du chemin du fichier.
+\sphinxstyleliteralstrong{\sphinxupquote{FileNotFoundError}} \textendash{} Error message if failed to retrieve file path.
 
 \end{description}\end{quote}
 
@@ -1234,9 +1885,6 @@ Ecrit un fichier lisible par un humain
 \end{fulllineitems}
 
 
-
-\section{Module contents}
-\label{\detokenize{frise:module-frise}}\label{\detokenize{frise:module-contents}}\index{module@\spxentry{module}!frise@\spxentry{frise}}\index{frise@\spxentry{frise}!module@\spxentry{module}}
 \sphinxstepscope
 
 
@@ -1246,40 +1894,11 @@ Ecrit un fichier lisible par un humain
 \section{Submodules}
 \label{\detokenize{annotation:submodules}}
 
-\section{annotation.class\_Menu\_symptomes module}
-\label{\detokenize{annotation:module-annotation.class_Menu_symptomes}}\label{\detokenize{annotation:annotation-class-menu-symptomes-module}}\index{module@\spxentry{module}!annotation.class\_Menu\_symptomes@\spxentry{annotation.class\_Menu\_symptomes}}\index{annotation.class\_Menu\_symptomes@\spxentry{annotation.class\_Menu\_symptomes}!module@\spxentry{module}}\index{MenuSymptomes (class in annotation.class\_Menu\_symptomes)@\spxentry{MenuSymptomes}\spxextra{class in annotation.class\_Menu\_symptomes}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{annotation:annotation.class_Menu_symptomes.MenuSymptomes}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{annotation.class\_Menu\_symptomes.}}\sphinxbfcode{\sphinxupquote{MenuSymptomes}}}{\sphinxparam{\DUrole{n}{master}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Bases: \sphinxcode{\sphinxupquote{CTkFrame}}
-
-\sphinxAtStartPar
-Classe pour avoir les menus déroulants et la recherche textuelle
-Les fichiers de symptomes doivent etre de la forme : Categorie; Symptome1; Symptome2; Symptome3
-\index{filtrer\_options() (annotation.class\_Menu\_symptomes.MenuSymptomes method)@\spxentry{filtrer\_options()}\spxextra{annotation.class\_Menu\_symptomes.MenuSymptomes method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{annotation:annotation.class_Menu_symptomes.MenuSymptomes.filtrer_options}}
-\pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{filtrer\_options}}}{\sphinxparam{\DUrole{n}{event}}}{}
-\pysigstopsignatures
-\sphinxAtStartPar
-filtre les options d’un menu déroulant en fonction d’une recherche textuelle
-affiche dans le menu déroulant la premiere option correspondante
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
-
-
 \section{annotation.class\_symptome module}
-\label{\detokenize{annotation:module-annotation.class_symptome}}\label{\detokenize{annotation:annotation-class-symptome-module}}\index{module@\spxentry{module}!annotation.class\_symptome@\spxentry{annotation.class\_symptome}}\index{annotation.class\_symptome@\spxentry{annotation.class\_symptome}!module@\spxentry{module}}\index{Symptome (class in annotation.class\_symptome)@\spxentry{Symptome}\spxextra{class in annotation.class\_symptome}}
+\label{\detokenize{annotation:module-annotation.class_symptome}}\label{\detokenize{annotation:annotation-class-symptome-module}}\index{module@\spxentry{module}!annotation.class\_symptome@\spxentry{annotation.class\_symptome}}\index{annotation.class\_symptome@\spxentry{annotation.class\_symptome}!module@\spxentry{module}}
+\sphinxAtStartPar
+This module defines a Symptome class used for instantiating symptom objects.
+\index{Symptome (class in annotation.class\_symptome)@\spxentry{Symptome}\spxextra{class in annotation.class\_symptome}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome}}
@@ -1290,14 +1909,17 @@ affiche dans le menu déroulant la premiere option correspondante
 Bases: \sphinxcode{\sphinxupquote{object}}
 
 \sphinxAtStartPar
-Classe permettant d’instancier un objet Symptome avec tous ses attributs
+A class used to instantiate a Symptome object with all its attributes.
 \index{ID (annotation.class\_symptome.Symptome attribute)@\spxentry{ID}\spxextra{annotation.class\_symptome.Symptome attribute}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.ID}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{ID}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigstopsignatures
+\sphinxAtStartPar
+The ID of the symptom.
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
 str
@@ -1312,7 +1934,10 @@ str
 \phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.Name}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{Name}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigstopsignatures
+\sphinxAtStartPar
+The name of the symptom.
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
 str
@@ -1327,7 +1952,10 @@ str
 \phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.Lateralization}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{Lateralization}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigstopsignatures
+\sphinxAtStartPar
+The lateralization of the symptom.
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
 str
@@ -1336,43 +1964,16 @@ str
 
 \end{fulllineitems}
 
-
+\index{Topography (annotation.class\_symptome.Symptome attribute)@\spxentry{Topography}\spxextra{annotation.class\_symptome.Symptome attribute}}
 
 \begin{fulllineitems}
-
+\phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.Topography}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{segment~corporel}}}
-\pysigstopsignatures\begin{quote}\begin{description}
-\sphinxlineitem{Type}
+\pysigline{\sphinxbfcode{\sphinxupquote{Topography}}}
+\pysigstopsignatures
 \sphinxAtStartPar
-str
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-
-\begin{fulllineitems}
-
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Tps~debut}}}
-\pysigstopsignatures\begin{quote}\begin{description}
-\sphinxlineitem{Type}
-\sphinxAtStartPar
-str
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-
-\begin{fulllineitems}
-
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Tps~fin}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+The topography of the symptom.
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
 str
@@ -1387,7 +1988,10 @@ str
 \phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.Orientation}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{Orientation}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigstopsignatures
+\sphinxAtStartPar
+The orientation of the symptom.
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
 str
@@ -1396,13 +2000,52 @@ str
 
 \end{fulllineitems}
 
-
+\index{AttributSuppl (annotation.class\_symptome.Symptome attribute)@\spxentry{AttributSuppl}\spxextra{annotation.class\_symptome.Symptome attribute}}
 
 \begin{fulllineitems}
-
+\phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.AttributSuppl}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Attributs~suppl}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigline{\sphinxbfcode{\sphinxupquote{AttributSuppl}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Additional attributes of the symptom.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+str
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{Tdeb (annotation.class\_symptome.Symptome attribute)@\spxentry{Tdeb}\spxextra{annotation.class\_symptome.Symptome attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.Tdeb}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{Tdeb}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+The start time of the symptom.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+str
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{Tfin (annotation.class\_symptome.Symptome attribute)@\spxentry{Tfin}\spxextra{annotation.class\_symptome.Symptome attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.Tfin}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{Tfin}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+The end time of the symptom.
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
 str
@@ -1417,7 +2060,10 @@ str
 \phantomsection\label{\detokenize{annotation:annotation.class_symptome.Symptome.Comment}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{Comment}}}
-\pysigstopsignatures\begin{quote}\begin{description}
+\pysigstopsignatures
+\sphinxAtStartPar
+Any additional comments related to the symptom.
+\begin{quote}\begin{description}
 \sphinxlineitem{Type}
 \sphinxAtStartPar
 str
@@ -1433,6 +2079,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_AttributSuppl}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the additional attributes of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_Comment() (annotation.class\_symptome.Symptome method)@\spxentry{get\_Comment()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1451,6 +2100,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_ID}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the ID of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_Lateralization() (annotation.class\_symptome.Symptome method)@\spxentry{get\_Lateralization()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1460,6 +2112,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_Lateralization}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the lateralization of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_Name() (annotation.class\_symptome.Symptome method)@\spxentry{get\_Name()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1469,6 +2124,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_Name}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the name of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_Orientation() (annotation.class\_symptome.Symptome method)@\spxentry{get\_Orientation()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1478,6 +2136,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_Orientation}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the orientation of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_Tdeb() (annotation.class\_symptome.Symptome method)@\spxentry{get\_Tdeb()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1487,6 +2148,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_Tdeb}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the start time of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_Tfin() (annotation.class\_symptome.Symptome method)@\spxentry{get\_Tfin()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1496,6 +2160,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_Tfin}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the end time of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_Topography() (annotation.class\_symptome.Symptome method)@\spxentry{get\_Topography()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1505,6 +2172,9 @@ str
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_Topography}}}{}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Returns the topography of the symptom.
+
 \end{fulllineitems}
 
 \index{get\_attributs() (annotation.class\_symptome.Symptome method)@\spxentry{get\_attributs()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1515,11 +2185,12 @@ str
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_attributs}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Retourne une liste contenant les valeurs des attributs de l’objet
+Returns a list containing the values of the object’s attributes.
 \begin{quote}\begin{description}
 \sphinxlineitem{Returns}
 \sphinxAtStartPar
-
+\begin{description}
+\sphinxlineitem{A list containing the values of all attributes.}
 \sphinxAtStartPar
 {[}
 ID,
@@ -1532,6 +2203,8 @@ Tdeb,
 Tfin,
 Comment
 {]}
+
+\end{description}
 
 
 \sphinxlineitem{Return type}
@@ -1549,6 +2222,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_AttributSuppl}}}{\sphinxparam{\DUrole{n}{new\_AttributSuppl}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the additional attributes of the symptom.
+
 \end{fulllineitems}
 
 \index{set\_Comment() (annotation.class\_symptome.Symptome method)@\spxentry{set\_Comment()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1558,6 +2234,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_Comment}}}{\sphinxparam{\DUrole{n}{new\_Comment}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets any additional comments related to the symptom.
+
 \end{fulllineitems}
 
 \index{set\_ID() (annotation.class\_symptome.Symptome method)@\spxentry{set\_ID()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1567,6 +2246,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_ID}}}{\sphinxparam{\DUrole{n}{new\_ID}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the ID of the symptom.
+
 \end{fulllineitems}
 
 \index{set\_Lateralization() (annotation.class\_symptome.Symptome method)@\spxentry{set\_Lateralization()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1576,6 +2258,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_Lateralization}}}{\sphinxparam{\DUrole{n}{new\_Lateralization}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the lateralization of the symptom.
+
 \end{fulllineitems}
 
 \index{set\_Name() (annotation.class\_symptome.Symptome method)@\spxentry{set\_Name()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1585,6 +2270,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_Name}}}{\sphinxparam{\DUrole{n}{new\_Name}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the name of the symptom.
+
 \end{fulllineitems}
 
 \index{set\_Orientation() (annotation.class\_symptome.Symptome method)@\spxentry{set\_Orientation()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1594,6 +2282,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_Orientation}}}{\sphinxparam{\DUrole{n}{new\_Orientation}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the orientation of the symptom.
+
 \end{fulllineitems}
 
 \index{set\_Tdeb() (annotation.class\_symptome.Symptome method)@\spxentry{set\_Tdeb()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1603,6 +2294,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_Tdeb}}}{\sphinxparam{\DUrole{n}{new\_Tdeb}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the start time of the symptom.
+
 \end{fulllineitems}
 
 \index{set\_Tfin() (annotation.class\_symptome.Symptome method)@\spxentry{set\_Tfin()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1612,6 +2306,9 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_Tfin}}}{\sphinxparam{\DUrole{n}{new\_Tfin}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the end time of the symptom.
+
 \end{fulllineitems}
 
 \index{set\_Topography() (annotation.class\_symptome.Symptome method)@\spxentry{set\_Topography()}\spxextra{annotation.class\_symptome.Symptome method}}
@@ -1621,18 +2318,21 @@ Comment
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_Topography}}}{\sphinxparam{\DUrole{n}{new\_Topography}}}{}
 \pysigstopsignatures
+\sphinxAtStartPar
+Sets the topography of the symptom.
+
 \end{fulllineitems}
 
 
 \end{fulllineitems}
 
 
-
-\section{annotation.menu\_deroulant\_anaelle module}
-\label{\detokenize{annotation:annotation-menu-deroulant-anaelle-module}}
 
 \section{annotation.pop\_up module}
-\label{\detokenize{annotation:module-annotation.pop_up}}\label{\detokenize{annotation:annotation-pop-up-module}}\index{module@\spxentry{module}!annotation.pop\_up@\spxentry{annotation.pop\_up}}\index{annotation.pop\_up@\spxentry{annotation.pop\_up}!module@\spxentry{module}}\index{SymptomeEditor (class in annotation.pop\_up)@\spxentry{SymptomeEditor}\spxextra{class in annotation.pop\_up}}
+\label{\detokenize{annotation:module-annotation.pop_up}}\label{\detokenize{annotation:annotation-pop-up-module}}\index{module@\spxentry{module}!annotation.pop\_up@\spxentry{annotation.pop\_up}}\index{annotation.pop\_up@\spxentry{annotation.pop\_up}!module@\spxentry{module}}
+\sphinxAtStartPar
+This module defines a SymptomeEditor class for editing symptom attributes via a graphical user interface.
+\index{SymptomeEditor (class in annotation.pop\_up)@\spxentry{SymptomeEditor}\spxextra{class in annotation.pop\_up}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{annotation:annotation.pop_up.SymptomeEditor}}
@@ -1643,7 +2343,26 @@ Comment
 Bases: \sphinxcode{\sphinxupquote{CTkToplevel}}
 
 \sphinxAtStartPar
-Permet l’edition de symptomes au travers d’une fenetre
+SymptomeEditor class for editing symptom attributes via a graphical user interface.
+Allows editing of symptoms through a window.
+\index{Symp (annotation.pop\_up.SymptomeEditor attribute)@\spxentry{Symp}\spxextra{annotation.pop\_up.SymptomeEditor attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{annotation:annotation.pop_up.SymptomeEditor.Symp}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{Symp}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+An instance of the Symptome class representing the symptom to be edited.
+\begin{quote}\begin{description}
+\sphinxlineitem{Type}
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{Symptome}}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
 \index{apply\_changes() (annotation.pop\_up.SymptomeEditor method)@\spxentry{apply\_changes()}\spxextra{annotation.pop\_up.SymptomeEditor method}}
 
 \begin{fulllineitems}
@@ -1652,7 +2371,13 @@ Permet l’edition de symptomes au travers d’une fenetre
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{apply\_changes}}}{\sphinxparam{\DUrole{n}{Symp}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Récupère les valeurs saisies et met à jour les attributs de la classe Symp
+Retrieves the entered values and updates the attributes of the Symp class.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{Symp}} (\sphinxcode{\sphinxupquote{Symptome}}) \textendash{} The Symptome object to be updated.
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
@@ -1664,20 +2389,20 @@ Récupère les valeurs saisies et met à jour les attributs de la classe Symp
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create\_entry}}}{\sphinxparam{\DUrole{n}{label\_text}}\sphinxparamcomma \sphinxparam{\DUrole{n}{initial\_value}}\sphinxparamcomma \sphinxparam{\DUrole{n}{i}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-crée et place des zones de texte (entrées) sur la fenêtre
+Creates and places text entry fields (entries) on the window.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{label\_text}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} label de l’entrée
+\sphinxstyleliteralstrong{\sphinxupquote{label\_text}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The label for the entry.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{initial\_value}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} valeur actuelle de l’entrée
+\sphinxstyleliteralstrong{\sphinxupquote{initial\_value}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The current value of the entry.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{i}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} indice de la ligne de l’entrée
+\sphinxstyleliteralstrong{\sphinxupquote{i}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} The index of the entry row.
 
 \end{itemize}
 
@@ -1690,49 +2415,190 @@ crée et place des zones de texte (entrées) sur la fenêtre
 
 
 
-\section{annotation.recherche\_menu\_déroulant module}
-\label{\detokenize{annotation:module-annotation.recherche_menu_deroulant}}\label{\detokenize{annotation:annotation-recherche-menu-deroulant-module}}\index{module@\spxentry{module}!annotation.recherche\_menu\_déroulant@\spxentry{annotation.recherche\_menu\_déroulant}}\index{annotation.recherche\_menu\_déroulant@\spxentry{annotation.recherche\_menu\_déroulant}!module@\spxentry{module}}\index{filtrer\_options() (in module annotation.recherche\_menu\_déroulant)@\spxentry{filtrer\_options()}\spxextra{in module annotation.recherche\_menu\_déroulant}}
+\section{annotation.load\_symptomes module}
+\label{\detokenize{annotation:module-annotation.load_symptomes}}\label{\detokenize{annotation:annotation-load-symptomes-module}}\index{module@\spxentry{module}!annotation.load\_symptomes@\spxentry{annotation.load\_symptomes}}\index{annotation.load\_symptomes@\spxentry{annotation.load\_symptomes}!module@\spxentry{module}}
+\sphinxAtStartPar
+Functions for loading symptoms from text files
+\index{read\_symptoms() (in module annotation.load\_symptomes)@\spxentry{read\_symptoms()}\spxextra{in module annotation.load\_symptomes}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{annotation:annotation.recherche_menu_deroulant.filtrer_options}}
+\phantomsection\label{\detokenize{annotation:annotation.load_symptomes.read_symptoms}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{annotation.recherche\_menu\_déroulant.}}\sphinxbfcode{\sphinxupquote{filtrer\_options}}}{\sphinxparam{\DUrole{n}{event}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{annotation.load\_symptomes.}}\sphinxbfcode{\sphinxupquote{read\_symptoms}}}{\sphinxparam{\DUrole{n}{filename}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-filtre les options d’un menu déroulant en fonction d’une recherche textuelle
+Reads a text file containing symptoms and returns a list of Symptome objects.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{filename}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The path to the text file containing symptoms.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+A list of Symptome objects.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
 
 
-\section{annotation.symptom\_label module}
-\label{\detokenize{annotation:annotation-symptom-label-module}}
+\section{annotation.exel\_menus module}
+\label{\detokenize{annotation:module-annotation.exel_menus}}\label{\detokenize{annotation:annotation-exel-menus-module}}\index{module@\spxentry{module}!annotation.exel\_menus@\spxentry{annotation.exel\_menus}}\index{annotation.exel\_menus@\spxentry{annotation.exel\_menus}!module@\spxentry{module}}
+\sphinxAtStartPar
+menus and submenus based on exel file
+\index{Read\_excel() (in module annotation.exel\_menus)@\spxentry{Read\_excel()}\spxextra{in module annotation.exel\_menus}}
 
-\section{Module contents}
-\label{\detokenize{annotation:module-annotation}}\label{\detokenize{annotation:module-contents}}\index{module@\spxentry{module}!annotation@\spxentry{annotation}}\index{annotation@\spxentry{annotation}!module@\spxentry{module}}
-\sphinxstepscope
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{annotation:annotation.exel_menus.Read_excel}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{annotation.exel\_menus.}}\sphinxbfcode{\sphinxupquote{Read\_excel}}}{\sphinxparam{\DUrole{n}{file\_path}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Reads an Excel file and organizes the data into a hierarchical structure for a graphical interface.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{file\_path}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} Path to the Excel file containing the data.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+A hierarchical dictionary containing organized symptom data.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+dict
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+The function reads an Excel file specified by ‘file\_path’,
+processes the data, and organizes it into a hierarchical structure.
+This structure is designed to facilitate the creation of a graphical
+interface for displaying and interacting with the symptom data.
+
+\sphinxAtStartPar
+The Excel file is expected to have columns named ‘Typologie’, ‘Designation’,
+‘Description’, ‘Sub\_description’,’Topography’, and ‘Lateralized’.
+\begin{description}
+\sphinxlineitem{The data is organized based on the following criteria:}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+There can not be sub sescription without description.
+
+\item {} 
+\sphinxAtStartPar
+If there is no description, no sub\_description no topography, but there are lateralizations, they are stored under an empty string.
+
+\item {} 
+\sphinxAtStartPar
+If there is no additional information, a ‘None’ flag is stored.
+
+\item {} 
+\sphinxAtStartPar
+If there is topography and lateralizations but no description, the data is stored based on topography.
+
+\item {} 
+\sphinxAtStartPar
+Otherwise, the detailed information is stored including description, topography, and lateralizations.
+
+\end{itemize}
+
+\end{description}
+\subsubsection*{Example}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{Read\PYGZus{}excel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ictal\PYGZus{}symptoms.xlsx}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+The function uses Pandas to read the Excel file and defaultdict
+to create the hierarchical structure.
+\end{sphinxadmonition}
+
+\end{fulllineitems}
+
+\index{add\_submenus() (in module annotation.exel\_menus)@\spxentry{add\_submenus()}\spxextra{in module annotation.exel\_menus}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{annotation:annotation.exel_menus.add_submenus}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{annotation.exel\_menus.}}\sphinxbfcode{\sphinxupquote{add\_submenus}}}{\sphinxparam{\DUrole{n}{menu}}\sphinxparamcomma \sphinxparam{\DUrole{n}{data}}\sphinxparamcomma \sphinxparam{\DUrole{n}{full\_path}}\sphinxparamcomma \sphinxparam{\DUrole{n}{on\_select}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Add submenus to the main menu based on the provided data.
+
+\sphinxAtStartPar
+This function iterates through the data dictionary to add submenus
+and menu items to the provided Tkinter menu. It checks for different
+scenarios in the data structure to determine the appropriate way to
+add submenus and menu items.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{menu}} (\sphinxstyleliteralemphasis{\sphinxupquote{tk.Menu}}) \textendash{} The menu to which the submenus will be added.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{data}} (\sphinxstyleliteralemphasis{\sphinxupquote{dict}}) \textendash{} The hierarchical data containing submenu information.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{full\_path}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} The full path to the current menu item.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{on\_select}} (\sphinxstyleliteralemphasis{\sphinxupquote{function}}) \textendash{} The function to select the symptom
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{build\_menu() (in module annotation.exel\_menus)@\spxentry{build\_menu()}\spxextra{in module annotation.exel\_menus}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{annotation:annotation.exel_menus.build_menu}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{annotation.exel\_menus.}}\sphinxbfcode{\sphinxupquote{build\_menu}}}{\sphinxparam{\DUrole{n}{structure}}\sphinxparamcomma \sphinxparam{\DUrole{n}{main\_menu}}\sphinxparamcomma \sphinxparam{\DUrole{n}{on\_select}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Build a cascading menu based on the provided structure.
+
+\sphinxAtStartPar
+This function builds a cascading menu using Tkinter based on the
+hierarchical structure provided. It iterates through the structure
+to add main menu items, submenus, and menu items. Depending on the
+data in the structure, it calls the add\_submenus function to add
+appropriate submenus and menu items to the main menu.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{structure}} (\sphinxstyleliteralemphasis{\sphinxupquote{dict}}) \textendash{} The hierarchical structure of the menu.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{main\_menu}} (\sphinxstyleliteralemphasis{\sphinxupquote{tk.Menu}}) \textendash{} The main menu to which the cascading menu will be added.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{on\_select}} (\sphinxstyleliteralemphasis{\sphinxupquote{function}}) \textendash{} The function to select the symptom
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
 
 
-\chapter{lecteur\_video package}
-\label{\detokenize{lecteur_video:lecteur-video-package}}\label{\detokenize{lecteur_video::doc}}
-
-\section{Submodules}
-\label{\detokenize{lecteur_video:submodules}}
-
-\section{lecteur\_video.barre\_progression module}
-\label{\detokenize{lecteur_video:lecteur-video-barre-progression-module}}
-
-\section{lecteur\_video.csacade module}
-\label{\detokenize{lecteur_video:lecteur-video-csacade-module}}
-
-\section{lecteur\_video.interface\_menu\_deroulants module}
-\label{\detokenize{lecteur_video:lecteur-video-interface-menu-deroulants-module}}
-
-\section{lecteur\_video.menu\_indente module}
-\label{\detokenize{lecteur_video:lecteur-video-menu-indente-module}}
-
-\section{Module contents}
-\label{\detokenize{lecteur_video:module-lecteur_video}}\label{\detokenize{lecteur_video:module-contents}}\index{module@\spxentry{module}!lecteur\_video@\spxentry{lecteur\_video}}\index{lecteur\_video@\spxentry{lecteur\_video}!module@\spxentry{module}}
 
 \chapter{Indices and tables}
 \label{\detokenize{index:indices-and-tables}}\begin{itemize}
@@ -1755,23 +2621,18 @@ filtre les options d’un menu déroulant en fonction d’une recherche textuell
 \begin{sphinxtheindex}
 \let\bigletter\sphinxstyleindexlettergroup
 \bigletter{a}
-\item\relax\sphinxstyleindexentry{annotation}\sphinxstyleindexpageref{annotation:\detokenize{module-annotation}}
-\item\relax\sphinxstyleindexentry{annotation.class\_Menu\_symptomes}\sphinxstyleindexpageref{annotation:\detokenize{module-annotation.class_Menu_symptomes}}
 \item\relax\sphinxstyleindexentry{annotation.class\_symptome}\sphinxstyleindexpageref{annotation:\detokenize{module-annotation.class_symptome}}
+\item\relax\sphinxstyleindexentry{annotation.exel\_menus}\sphinxstyleindexpageref{annotation:\detokenize{module-annotation.exel_menus}}
+\item\relax\sphinxstyleindexentry{annotation.load\_symptomes}\sphinxstyleindexpageref{annotation:\detokenize{module-annotation.load_symptomes}}
 \item\relax\sphinxstyleindexentry{annotation.pop\_up}\sphinxstyleindexpageref{annotation:\detokenize{module-annotation.pop_up}}
-\item\relax\sphinxstyleindexentry{annotation.recherche\_menu\_déroulant}\sphinxstyleindexpageref{annotation:\detokenize{module-annotation.recherche_menu_deroulant}}
 \indexspace
 \bigletter{f}
-\item\relax\sphinxstyleindexentry{frise}\sphinxstyleindexpageref{frise:\detokenize{module-frise}}
 \item\relax\sphinxstyleindexentry{frise.ecriture\_fichier}\sphinxstyleindexpageref{frise:\detokenize{module-frise.ecriture_fichier}}
 \item\relax\sphinxstyleindexentry{frise.fonctions\_frise}\sphinxstyleindexpageref{frise:\detokenize{module-frise.fonctions_frise}}
 \item\relax\sphinxstyleindexentry{frise.save}\sphinxstyleindexpageref{frise:\detokenize{module-frise.save}}
 \indexspace
 \bigletter{g}
-\item\relax\sphinxstyleindexentry{general\_interface\_V9}\sphinxstyleindexpageref{general_interface:\detokenize{module-general_interface_V9}}
-\indexspace
-\bigletter{l}
-\item\relax\sphinxstyleindexentry{lecteur\_video}\sphinxstyleindexpageref{lecteur_video:\detokenize{module-lecteur_video}}
+\item\relax\sphinxstyleindexentry{general\_interface\_V10}\sphinxstyleindexpageref{general_interface:\detokenize{module-general_interface_V10}}
 \end{sphinxtheindex}
 
 \renewcommand{\indexname}{Index}

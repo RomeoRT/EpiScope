@@ -436,6 +436,59 @@ appropriate submenus and menu items to the main menu.</p>
 </dd></dl>
 
 </section>
+<section id="module-annotation.search_bar">
+<span id="annotation-search-bar"></span><h2>annotation.search_bar<a class="headerlink" href="#module-annotation.search_bar" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">annotation.search_bar.</span></span><span class="sig-name descname"><span class="pre">search_symptomes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symptoms_struct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myfunc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to create a symptom search bar in the EpiScope GUI.</p>
+<p>This class provides a search bar to look for symptoms in a hierarchical dictionary structure
+and display the matching results in a listbox. It also allows selecting an item from the listbox
+by clicking on it, triggering a specified function with the selected item as an argument.</p>
+<p>Attributes:
+- symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
+- search_entry (CTkEntry): Entry widget for user input.
+- symptom_listbox (Listbox): Listbox widget to display search results.</p>
+<p>Methods:
+- search_element(search_term): Searches for matching elements based on the search term.
+- get_selected(event, func): Retrieves the selected item from the listbox.
+- update_search(event): Updates the listbox based on the search input.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.get_selected">
+<span class="sig-name descname"><span class="pre">get_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.get_selected" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the selected item from the listbox and calls the specified function.</p>
+<p>Args:
+- event: The event object (not used directly, but required by Tkinter).
+- func (function): Function to be called with the selected item as an argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.search_element">
+<span class="sig-name descname"><span class="pre">search_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.search_element" title="Link to this definition">¶</a></dt>
+<dd><p>Searches for elements matching the search term in the ‘Designation’ and ‘Description’ columns.</p>
+<p>Args:
+- symptoms_structure (dict): Hierarchical dictionary containing organized symptom data.
+- search_term (str): Term to search for in ‘Designation’ and ‘Description’ columns.</p>
+<p>Returns:
+- list: List of matching elements found for the search term.</p>
+<p>This function searches for the specified term in the ‘Designation’ and ‘Description’ columns
+of the hierarchical structure and returns a list of matching elements.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="annotation.search_bar.search_symptomes.update_search">
+<span class="sig-name descname"><span class="pre">update_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annotation.search_bar.search_symptomes.update_search" title="Link to this definition">¶</a></dt>
+<dd><p>Update the displayed symptoms based on the user input in the search bar.</p>
+<p>This function filters the symptoms based on the user input in the
+search bar and updates the listbox to show only the matching symptoms.</p>
+<p>Args:
+- event: The event object (not used in this function, but required by Tkinter)</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 </section>
 
 
@@ -512,6 +565,15 @@ appropriate submenus and menu items to the main menu.</p>
 <li class="toctree-l3"><a class="reference internal" href="#annotation.exel_menus.Read_excel"><code class="docutils literal notranslate"><span class="pre">Read_excel()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#annotation.exel_menus.add_submenus"><code class="docutils literal notranslate"><span class="pre">add_submenus()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#annotation.exel_menus.build_menu"><code class="docutils literal notranslate"><span class="pre">build_menu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-annotation.search_bar">annotation.search_bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#annotation.search_bar.search_symptomes"><code class="docutils literal notranslate"><span class="pre">search_symptomes</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.get_selected"><code class="docutils literal notranslate"><span class="pre">search_symptomes.get_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.search_element"><code class="docutils literal notranslate"><span class="pre">search_symptomes.search_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotation.search_bar.search_symptomes.update_search"><code class="docutils literal notranslate"><span class="pre">search_symptomes.update_search()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

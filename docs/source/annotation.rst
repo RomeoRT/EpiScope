@@ -38,4 +38,12 @@ annotation.exel\_menus module
    :undoc-members:
    :show-inheritance:
 
+annotation.search\_bar
+---------------------------------
+
+.. automodule:: annotation.search_bar
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
