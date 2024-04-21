@@ -70,3 +70,4 @@ data/crises_exemples_prive/130213I-EEX_0001.AVI
 src/annotation/__pycache__/exel_menus.cpython-312.pyc
 temp_audio.wav
 src/annotation/__pycache__/search_bar.cpython-312.pyc
+src/__pycache__/general_interface_V10.cpython-312.pyc
