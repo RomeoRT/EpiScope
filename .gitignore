@@ -1,11 +1,15 @@
 build/
 dist/
 
+
 src/frise/__pycache__/ecriture_fichier.cpython-312.pyc
 src/frise/__pycache__/save.cpython-312.pyc
-src\annotation\__pycache__*
+src/annotation/__pycache__*
 src\test_interface.py
 
+src/Objective_Symptomes.txt
+src/Subjective_Symptomes.txt
+src\annotation\__pycache__*
 src/video_player
 
 
